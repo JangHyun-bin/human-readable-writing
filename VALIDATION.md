@@ -99,3 +99,5 @@ README는 `korean-report-style`의 `SKILL.md` §1.4에 따라 평서체로 작�
 세 조건 모두 핵심 사실 보존 검토를 통과하였다. 축약 지침의 추가 효과가 이 sample에서 확인되지 않아 상시 추가하지 않았다. 전역 지침의 자동 읽기 절을 제거하고, Codex의 implicit invocation과 Claude Code의 자동 호출을 해제하였다. 이전 절의 implicit invocation 허용 기록은 최초 배포 상태이며 현재 설정과 구분한다.
 
 Timing 집계의 commentary 제외, 동결한 reference 반환, baseline의 예상하지 않은 reference 호출 차단을 확인하는 세 test가 통과하였다. 누적 input 사용량 차이는 관찰하였지만 cache 상태와 reasoning·output이 조건별로 달라 일정한 속도 개선을 주장하지 않는다.
+
+배포 후 Codex의 실제 기본 prompt에서 이 skill의 목록 항목과 description이 제외되고, `skills/list`에는 활성 등록으로 유지되는 것을 확인하였다. Claude의 명시적 호출용 setting도 확인하였다. 기존 benchmark output을 지정하면 덮어쓰지 않고 종료하는 동작과 원본 hash 보존도 확인하였다. 독립 review에서 중요 finding은 없었다.

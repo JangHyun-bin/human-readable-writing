@@ -65,6 +65,13 @@ Input 중앙값은 `loaded`가 `baseline`의 약 2.12배였다. 문서 내용의
 
 Codex는 `agents/openai.yaml`의 `allow_implicit_invocation: false`를 사용하고, Claude Code는 `skillOverrides`의 `user-invocable-only`를 사용한다. 자동 context에서 실제로 제외되는지는 각 runtime의 설정·prompt 확인 결과와 구분하여 기록한다. 동작의 근거는 [OpenAI 공식 skill 문서](https://learn.chatgpt.com/docs/build-skills)와 [Claude Code의 invocation 제어 문서](https://code.claude.com/docs/en/skills#control-who-invokes-a-skill)이다.
 
+배포 후 실제 symlink가 가리키는 checkout에서 다음을 확인하였다. 이 확인에는 추가 model 요청을 사용하지 않았다.
+
+- `codex debug prompt-input`의 기본 skills 목록에서 `human-readable-writing` 항목이 변경 전에는 있었고 변경 후에는 없었다. Description도 기본 prompt에 포함되지 않았다.
+- 같은 prompt에서 전역 자동 읽기 절이 제거되었음을 확인하였다. 다른 언어·인증·CI 지침의 본문은 보존하였다.
+- App-server의 `skills/list`에는 같은 skill이 `enabled: true`로 남아 있었다. 기본 prompt에서의 노출과 명시적 호출을 위한 등록을 구분하였다.
+- Claude Code `2.1.311`의 local settings에서 `user-invocable-only`를 확인하였고 다른 setting 값은 그대로 유지하였다. Claude의 실제 model 응답이나 prompt 구성은 이번에 측정하지 않았다.
+
 ## 6. 재실행과 한계
 
 원본 기록과 실제 output은 [invocation-pilot.jsonl](invocation-pilot.jsonl)에 있다. 측정 도구는 [benchmark_writing.py](benchmark_writing.py)이며, 마지막 답변의 첫 token을 commentary와 구분하는 검사 등 세 개는 [test_benchmark_writing.py](test_benchmark_writing.py)에 있다.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Human-readable writing"
+  short_description: "기술적 의미와 검증 범위를 보존하는 명료한 글쓰기 원칙"
+  default_prompt: "$human-readable-writing을 사용해 technical term·조건·불확실성을 보존하면서 이 설명을 명확하게 작성해줘."
+policy:
+  allow_implicit_invocation: true

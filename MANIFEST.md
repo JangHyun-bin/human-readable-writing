@@ -91,7 +91,7 @@ Repository에 채택할 때는 manifest를 해당 repository의 문서 위치에
 docs/WRITING_MANIFEST.md를 읽고 적용한다.
 ```
 
-이번 산출물에는 global instruction·기존 repository·skill 등록 변경이 포함되지 않는다. Skill로 재사용할 필요가 확인되면 핵심 실행 원칙을 `SKILL.md`에 두고, 예시와 [상세 분석](ANALYSIS.md)은 reference로 분리한다.
+최초 분석에서는 global instruction·기존 repository·skill 등록을 변경하지 않았다. 이후 사용자 요청에 따라 [SKILL.md](SKILL.md)를 전역 discovery의 진입점으로 추가하였다. 작성 원칙의 정본은 이 manifest로 유지한다. 설치 경로와 사용법은 [README.md](README.md)를 참조한다.
 
 ## 근거와 상태
 

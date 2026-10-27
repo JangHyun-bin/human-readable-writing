@@ -76,3 +76,17 @@ f300288c906d7e6cdaf285c9fda5b6894dadd20dab8ee7eeb2dcecf13bd504cc
 ```
 
 Global instruction, 기존 skill, repository 설정, 원문 source는 변경하지 않았다. 새 dependency 설치·training·원문 통계 재현·human reader 평가는 수행하지 않았다.
+
+## 7. 전역 skill 배포 추가
+
+최초 분석 이후 2026-10-27 사용자 요청에 따라 전역 discovery를 추가하였다. 앞 절의 원문 검토와 작성 평가 결과는 해당 분석 시점의 기록으로 유지한다.
+
+- Root의 `SKILL.md`가 기존 `MANIFEST.md`를 읽는 진입점이다. 새 작성 규칙이나 이해도 개선 주장을 추가하지 않았다.
+- `agents/openai.yaml`에 이름·설명·기본 호출 예시를 추가하고 implicit invocation을 허용하였다.
+- `~/.agents/skills/human-readable-writing`과 `~/.claude/skills/human-readable-writing`이 같은 repository를 가리키도록 연결하였다. 두 경로에서 같은 `SKILL.md`·`MANIFEST.md`를 읽는 것을 확인하였다.
+- `~/.agents/TERMINOLOGY.md`에 적용 시점을 추가하였다. Codex의 global `AGENTS.md`는 이 정본을 가리키는 symlink이며, Claude Code의 global `CLAUDE.md`도 이 정본을 읽도록 이미 설정되어 있다.
+- Skill validator가 통과하였고 implicit-invocation metadata, local link 46개, 두 runtime의 진입점, global instruction의 연결을 확인하였다. Repository 문서와 관련 global 지침에 credential 원문과 token pattern이 포함되지 않았음을 확인하였다.
+
+README는 `korean-report-style`의 `SKILL.md` §1.4에 따라 평서체로 작성하였다. 해당 skill의 morphology 규칙에는 `README.md`를 합니다체로 요구하는 고정 설정이 있어 filename 기준 검사에서 문체 지적 1건이 발생하였다. 작성 지침의 명시 규칙을 유지하고 README의 본문 검사는 stdin으로 수행한다. 검사기 자체는 변경하지 않았다.
+
+이 검증은 설치 경로·metadata·참조의 정합성 확인이다. 새 model session에서 자동 선택될 확률이나 인간 독해 효과를 측정한 결과는 아니다. Local skill directory를 읽지 않는 cloud runtime은 별도 설치가 필요하다.

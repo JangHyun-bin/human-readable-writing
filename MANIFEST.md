@@ -82,7 +82,7 @@
 
 현재 작업에 적용하려면 다음과 같이 요청한다.
 
-> `/Users/janghyunbin/dev/paper-practice-2610.29162/MANIFEST.md`를 읽고 이 설명에 적용해줘. 원문에 없는 관계와 미검증 조건은 보존해.
+> `/Users/janghyunbin/dev/human-readable-writing/MANIFEST.md`를 읽고 이 설명에 적용해줘. 원문에 없는 관계와 미검증 조건은 보존해.
 
 Repository에 채택할 때는 manifest를 해당 repository의 문서 위치에 복사하고, 그 repository의 `AGENTS.md`에 다음처럼 짧은 pointer를 연결할 수 있다. 아래 상대 경로는 배치 예시이다.
 

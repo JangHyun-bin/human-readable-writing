@@ -86,6 +86,7 @@ Global instruction, 기존 skill, repository 설정, 원문 source는 변경하�
 - `~/.agents/skills/human-readable-writing`과 `~/.claude/skills/human-readable-writing`이 같은 repository를 가리키도록 연결하였다. 두 경로에서 같은 `SKILL.md`·`MANIFEST.md`를 읽는 것을 확인하였다.
 - `~/.agents/TERMINOLOGY.md`에 적용 시점을 추가하였다. Codex의 global `AGENTS.md`는 이 정본을 가리키는 symlink이며, Claude Code의 global `CLAUDE.md`도 이 정본을 읽도록 이미 설정되어 있다.
 - Skill validator가 통과하였고 implicit-invocation metadata, local link 46개, 두 runtime의 진입점, global instruction의 연결을 확인하였다. Repository 문서와 관련 global 지침에 credential 원문과 token pattern이 포함되지 않았음을 확인하였다.
+- Private GitHub의 `db72849` commit을 bundled `skill-installer`로 임시 directory에 설치하였다. 설치한 `SKILL.md`·`MANIFEST.md`·`agents/openai.yaml`이 local 원본과 byte 단위로 일치하고 skill validator도 통과하였다. 첫 download에서는 local Python의 CA 설정으로 TLS 검증에 실패하였으며, 해당 child process에 설치된 `certifi` CA bundle을 지정한 뒤 통과하였다. TLS 검증과 전역 Python 설정은 유지하였다.
 
 README는 `korean-report-style`의 `SKILL.md` §1.4에 따라 평서체로 작성하였다. 해당 skill의 morphology 규칙에는 `README.md`를 합니다체로 요구하는 고정 설정이 있어 filename 기준 검사에서 문체 지적 1건이 발생하였다. 작성 지침의 명시 규칙을 유지하고 README의 본문 검사는 stdin으로 수행한다. 검사기 자체는 변경하지 않았다.
 

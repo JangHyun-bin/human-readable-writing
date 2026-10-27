@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from benchmark_writing import Client
+from benchmark_writing import Client, CORE
 
 
 class MeasurementTests(unittest.TestCase):
@@ -48,6 +48,21 @@ class MeasurementTests(unittest.TestCase):
     def test_baseline_rejects_reference_call(self, _clock):
         with self.assertRaisesRegex(RuntimeError, "Unexpected tool call"):
             self.client(tool=True).run("task", "baseline", "prompt", "reference", "test", "high", ".")
+
+    @patch("benchmark_writing.time.perf_counter", return_value=1.0)
+    def test_candidate_replaces_core_without_contaminating_baseline(self, _clock):
+        for arm in ("native", "baseline"):
+            with self.subTest(arm=arm):
+                client = self.client()
+                requests = []
+                def request(method, params):
+                    requests.append(params)
+                    return {"thread": {"id": "thread"}, "model": "test"}
+                client.request = request
+                client.run("task", arm, "prompt", "", "test", "high", ".", core="candidate wording")
+                instruction = requests[0]["developerInstructions"]
+                self.assertNotIn(CORE, instruction)
+                self.assertEqual("candidate wording" in instruction, arm == "native")
 
 
 if __name__ == "__main__":

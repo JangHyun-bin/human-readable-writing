@@ -91,10 +91,10 @@ class Client:
             if "error" in event:
                 raise RuntimeError(event["error"])
 
-    def run(self, task, arm, prompt, reference, model, effort, cwd):
+    def run(self, task, arm, prompt, reference, model, effort, cwd, *, core=CORE):
         instruction = COMMON
         if arm == "native":
-            instruction += "\n" + CORE
+            instruction += "\n" + core
         elif arm == "loaded":
             instruction += "\nBefore writing, call read_writing_reference exactly once and apply it."
         thread = self.request("thread/start", {

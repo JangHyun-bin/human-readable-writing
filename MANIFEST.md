@@ -96,3 +96,5 @@ docs/WRITING_MANIFEST.md를 읽고 적용한다.
 ## 근거와 상태
 
 근거는 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1)이다. 위 원칙과 한국어 적용 예시는 논문의 저자들이 검증한 writing intervention이 아니라 실무 제안이다. 이 연구는 인간의 이해도를 직접 측정하지 않았다. Manifest 적용에 따른 독해 개선 효과도 미측정이다. [상세 분석](ANALYSIS.md) · [검증 기록](VALIDATION.md).
+
+원논문의 license는 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)이며, 저자와 변경 내역은 [NOTICE.md](NOTICE.md)에 명시하였다.

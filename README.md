@@ -60,4 +60,6 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 
 논문은 영어 corpus의 언어적 특성과 작은 model의 length-penalty 실험을 보고하였다. 이 skill의 한국어 작성 원칙은 실무 제안이며, 사람의 독해 개선 효과를 검증한 결과는 아니다.
 
+원논문은 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)으로 제공된다. 저자·출처·변경 내역과 적용 범위는 [NOTICE.md](NOTICE.md)에 명시하였다. 이 repository 자체의 배포 license는 아직 별도로 지정하지 않았다.
+
 호출 방식과 token·응답 시간의 비교 결과는 [비용 비교](research/invocation-cost.md)를 참조한다. 기본 instructions도 input tokens를 사용하므로, 추가 file 조회가 없다는 사실을 비용이 전혀 없다는 의미로 해석하지 않는다.

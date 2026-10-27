@@ -101,3 +101,15 @@ README는 `korean-report-style`의 `SKILL.md` §1.4에 따라 평서체로 작�
 Timing 집계의 commentary 제외, 동결한 reference 반환, baseline의 예상하지 않은 reference 호출 차단을 확인하는 세 test가 통과하였다. 누적 input 사용량 차이는 관찰하였지만 cache 상태와 reasoning·output이 조건별로 달라 일정한 속도 개선을 주장하지 않는다.
 
 배포 후 Codex의 실제 기본 prompt에서 이 skill의 목록 항목과 description이 제외되고, `skills/list`에는 활성 등록으로 유지되는 것을 확인하였다. Claude의 명시적 호출용 setting도 확인하였다. 기존 benchmark output을 지정하면 덮어쓰지 않고 종료하는 동작과 원본 hash 보존도 확인하였다. 독립 review에서 중요 finding은 없었다.
+
+## 9. 같은 token budget의 core 고도화 비교
+
+기존 축약 core와 후보를 `o200k_base` 기준 각각 61 tokens로 고정하고, baseline을 포함한 21개 답변을 생성하였다. Coding 과제는 조건별 5회, 새 API 문서·incident 과제는 조건별 1회 실행하였다. Model·effort는 `gpt-6-astra/high`로 고정하였다. [설계·계측·판단](research/core-refinement.md), [실제 답변의 blind 비교](research/core-refinement-blind.md), [원본 기록](research/core-refinement.jsonl)을 보존하였다.
+
+전체 일곱 block에서 두 core의 실제 input usage가 같고 baseline보다 정확히 61 tokens 많으며, reference tool 왕복이 0임을 확인하였다. 이 counter만으로 builtin tool 사용 부재까지 입증하지는 않는다. 작성자가 전체 21개 답변의 필수 사실과 불확실성을 입력에 대조하였다. 별도 agent가 조건을 모르는 상태에서 수행한 사실 보존 검토에서도 중대한 누락이나 모순은 보고되지 않았다. 읽기 선호는 agent 판단으로 구분하며 사용자 평가나 인간 독해 측정으로 취급하지 않는다.
+
+후보 지침이 기존 core에 덧붙지 않고 교체되며 baseline에는 포함되지 않는지 확인하는 test를 추가하였다. 전체 네 test가 통과하였고, 새 runner도 기존 output 경로를 지정하면 model 요청 전에 종료하여 원본을 보존하는지 별도 sentinel로 확인하였다. Blind file의 각 답변과 원본 output이 일치하고, 조건 대응표의 label과 원본 hash가 일치하는지 확인하였다.
+
+후보의 일관된 개선 근거가 확보되지 않아 새 core의 전역 적용은 수행하지 않았다. 기존의 명시적 skill 호출 설정과 기본 응답 경로를 유지하였다.
+
+별도 code·method review에서 Critical·Important finding은 없었다. 조건별 중앙값의 집계 설명 한 곳을 바로잡고, reference tool counter의 계측 범위를 명시하였다. 실제 model 요청을 반복 실행하지 않고 원본 usage·계측 표·blind mapping과 output 일치 여부를 대조하였다.

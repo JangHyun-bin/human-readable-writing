@@ -76,6 +76,8 @@ Codex는 `agents/openai.yaml`의 `allow_implicit_invocation: false`를 사용하
 
 ## 6. 재실행과 한계
 
+후속 [core 고도화 비교](core-refinement.md)에서 기존 runner의 계측 범위를 추가 확인하였다. 원본의 `tool_rounds`와 위 표의 tool 왕복은 `read_writing_reference`라는 dynamic tool의 호출 수이다. Builtin tool의 completed item type은 보존하지 않았으므로 이 값만으로 모든 종류의 tool 사용 부재까지 입증하지는 않는다.
+
 원본 기록과 실제 output은 [invocation-pilot.jsonl](invocation-pilot.jsonl)에 있다. 측정 도구는 [benchmark_writing.py](benchmark_writing.py)이며, 마지막 답변의 첫 token을 commentary와 구분하는 검사 등 세 개는 [test_benchmark_writing.py](test_benchmark_writing.py)에 있다.
 
 ```sh

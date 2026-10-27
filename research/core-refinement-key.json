@@ -1,0 +1,78 @@
+{
+  "source_sha256": "62270e35fa1337dddad5b93f94e3216d07078b69602a61e6278da6e2ef90fc71",
+  "seed": 20261027,
+  "human_pair": {
+    "case": "coding-1",
+    "selection_rule": "first repeat, selected before generation",
+    "labels": {
+      "A": "current",
+      "B": "candidate"
+    },
+    "response": null
+  },
+  "cases": {
+    "T1": {
+      "task": "coding",
+      "repeat": 1,
+      "labels": {
+        "A": "current",
+        "B": "candidate",
+        "C": "baseline"
+      }
+    },
+    "T2": {
+      "task": "coding",
+      "repeat": 2,
+      "labels": {
+        "A": "current",
+        "B": "candidate",
+        "C": "baseline"
+      }
+    },
+    "T3": {
+      "task": "coding",
+      "repeat": 3,
+      "labels": {
+        "A": "current",
+        "B": "baseline",
+        "C": "candidate"
+      }
+    },
+    "T4": {
+      "task": "coding",
+      "repeat": 4,
+      "labels": {
+        "A": "candidate",
+        "B": "baseline",
+        "C": "current"
+      }
+    },
+    "T5": {
+      "task": "coding",
+      "repeat": 5,
+      "labels": {
+        "A": "current",
+        "B": "candidate",
+        "C": "baseline"
+      }
+    },
+    "T6": {
+      "task": "api_doc",
+      "repeat": 1,
+      "labels": {
+        "A": "candidate",
+        "B": "current",
+        "C": "baseline"
+      }
+    },
+    "T7": {
+      "task": "incident",
+      "repeat": 1,
+      "labels": {
+        "A": "baseline",
+        "B": "candidate",
+        "C": "current"
+      }
+    }
+  }
+}

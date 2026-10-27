@@ -91,3 +91,11 @@ Global instruction, 기존 skill, repository 설정, 원문 source는 변경하�
 README는 `korean-report-style`의 `SKILL.md` §1.4에 따라 평서체로 작성하였다. 해당 skill의 morphology 규칙에는 `README.md`를 합니다체로 요구하는 고정 설정이 있어 filename 기준 검사에서 문체 지적 1건이 발생하였다. 작성 지침의 명시 규칙을 유지하고 README의 본문 검사는 stdin으로 수행한다. 검사기 자체는 변경하지 않았다.
 
 이 검증은 설치 경로·metadata·참조의 정합성 확인이다. 새 model session에서 자동 선택될 확률이나 인간 독해 효과를 측정한 결과는 아니다. Local skill directory를 읽지 않는 cloud runtime은 별도 설치가 필요하다.
+
+## 8. 명시적 호출 전환과 비용 비교
+
+이후 사용자 요청에 따라 기본 경로·전체 지침 읽기·축약 지침 추가의 세 조건을 비교하였다. 가상 과제 세 개에서 총 9회 실행하였으며, 원본 usage·시간·실제 답변과 한계는 [비용 비교](research/invocation-cost.md)에 기록하였다.
+
+세 조건 모두 핵심 사실 보존 검토를 통과하였다. 축약 지침의 추가 효과가 이 sample에서 확인되지 않아 상시 추가하지 않았다. 전역 지침의 자동 읽기 절을 제거하고, Codex의 implicit invocation과 Claude Code의 자동 호출을 해제하였다. 이전 절의 implicit invocation 허용 기록은 최초 배포 상태이며 현재 설정과 구분한다.
+
+Timing 집계의 commentary 제외, 동결한 reference 반환, baseline의 예상하지 않은 reference 호출 차단을 확인하는 세 test가 통과하였다. 누적 input 사용량 차이는 관찰하였지만 cache 상태와 reasoning·output이 조건별로 달라 일정한 속도 개선을 주장하지 않는다.

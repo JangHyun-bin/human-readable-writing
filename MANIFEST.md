@@ -87,11 +87,11 @@
 Repository에 채택할 때는 manifest를 해당 repository의 문서 위치에 복사하고, 그 repository의 `AGENTS.md`에 다음처럼 짧은 pointer를 연결할 수 있다. 아래 상대 경로는 배치 예시이다.
 
 ```markdown
-기술 설명·PR 설명·보고 문장을 작성하거나 개정할 때는
+문장 개선·문서 검토를 명시적으로 요청받으면
 docs/WRITING_MANIFEST.md를 읽고 적용한다.
 ```
 
-최초 분석에서는 global instruction·기존 repository·skill 등록을 변경하지 않았다. 이후 사용자 요청에 따라 [SKILL.md](SKILL.md)를 전역 discovery의 진입점으로 추가하였다. 작성 원칙의 정본은 이 manifest로 유지한다. 설치 경로와 사용법은 [README.md](README.md)를 참조한다.
+최초 분석에서는 global instruction·기존 repository·skill 등록을 변경하지 않았다. 이후 사용자 요청에 따라 [SKILL.md](SKILL.md)를 전역 설치하였고, 누적 비용을 줄이기 위해 명시적으로 호출하는 검토용으로 전환하였다. 상세 작성 원칙의 정본은 이 manifest로 유지한다. 평소 답변은 기존 기본 instructions로 바로 작성한다. 설치 경로와 사용법은 [README.md](README.md)를 참조한다.
 
 ## 근거와 상태
 

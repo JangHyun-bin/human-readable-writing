@@ -1,0 +1,162 @@
+{
+  "integrity": "pass",
+  "completed": 6,
+  "start": {
+    "kind": "start",
+    "recorded_at": "2026-10-29T08:23:52.607939+00:00",
+    "protocol_sha256": "d7e4c1d17a1ed40908c571f15315b104f1a7b03b46f53ed830865fb6d7e665fc",
+    "adapter_sha256": "57f302303f26e8fc8288389f0b958245fc57bf9f5d88a0132f14629de505ce0e",
+    "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+    "common_runner_sha256": "f7c30e50947e3c8ef840f43b412842ccff98ce14db22f8f867c223c0116d392b",
+    "cwd": "/private/tmp/human-readable-fidelity-six-run-20261029",
+    "event_clock_origin": "client construction"
+  },
+  "hashes": {
+    "results.jsonl": "ee9c2a6bc486907b35b58019f5423eb78604a1c6a4ed93af5deac1c40726b7b4",
+    "events.jsonl": "1f3385622b232c15622c3875e4367ec42fb4be2e412c1227077300ab6f9a37e2",
+    "app-server.stderr": "ec221e36577af41c0f907d6d70882f3ef1afefaf3c7f3292601043e19498d418"
+  },
+  "methods": {
+    "remoteControl/status/changed": 1,
+    "mcpServer/startupStatus/updated": 71,
+    "thread/started": 6,
+    "thread/status/changed": 12,
+    "turn/started": 6,
+    "account/updated": 1,
+    "hook/started": 12,
+    "hook/completed": 12,
+    "item/started": 16,
+    "item/completed": 16,
+    "item/agentMessage/delta": 290,
+    "turn/moderationMetadata": 6,
+    "thread/tokenUsage/updated": 6,
+    "account/rateLimits/updated": 6,
+    "turn/completed": 6,
+    "thread/settings/updated": 3
+  },
+  "item_types": {
+    "userMessage": 12,
+    "agentMessage": 12,
+    "reasoning": 8
+  },
+  "usage": {
+    "totalTokens": 105173,
+    "inputTokens": 104473,
+    "cachedInputTokens": 0,
+    "cacheWriteInputTokens": 0,
+    "outputTokens": 700,
+    "reasoningOutputTokens": 377
+  },
+  "ttft_median_ms": 7022.461499999999,
+  "elapsed_median_ms": 8058.672500000001,
+  "evaluation": {
+    "kind": "lead and fresh-context separate agent audit; arm visible; not human comprehension",
+    "reviewer": "six_case_audit",
+    "content_gate": "pass",
+    "recorded_execution_checks": "pass",
+    "adoption": "no writing-rule expansion; existing MANIFEST also preserved meaning in a separate N2/E2 application check; reuse guidance synchronized with the active native pilot"
+  },
+  "cases": [
+    {
+      "case_id": "N1",
+      "order": 1,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 2,
+      "rationale": "worker의 삭제 동작과 >7일 AND pinned == false의 필요조건을 경우에만으로 보존. 충분조건으로 바꾸지 않았고 복원 가능성 미검증 유지.",
+      "independent_rationale": "worker가 삭제 주체이며 보관 기간 > 7일과 pinned == false의 AND를 '경우에만'으로 유지하여 필요조건을 충분조건으로 바꾸지 않았다. 삭제한 snapshot의 복원 가능성 미검증도 유지했다. Formal한 technical 문체이고, 2문장 각각을 빈 줄로 구분했다."
+    },
+    {
+      "case_id": "N2",
+      "order": 2,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 3,
+      "rationale": "controller가 batch 재시작을 허용할 수 있는 역할, operator 사전 승인 필요조건, batch당 최대 2회, 자동 승인 없음 유지. 검증 상태 추가 없음.",
+      "independent_rationale": "controller의 역할을 batch 재시작 허용으로 유지했으며 재시작 실행 주체로 바꾸지 않았다. operator 승인 후에만 허용 가능하다는 필요조건, batch당 최대 2회, 자동 승인 기능 없음이 보존됐다. 구현이나 실제 동작의 검증 여부를 추가하지 않았다. Formal한 technical 문체이고, 3문장 각각을 빈 줄로 구분했다."
+    },
+    {
+      "case_id": "E1",
+      "order": 3,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 2,
+      "rationale": "80 session에서 timeout 12개를 제외한 68개의 median error 0.8 m라는 범위와 timeout error 미계산 보존.",
+      "independent_rationale": "evaluator가 보고한 0.8 m median error의 범위를 전체 80 session에서 timeout 12 session을 제외한 68 session으로 정확히 유지했다. timeout 12 session의 error를 계산하지 않았다는 사실도 유지해 결과를 전체 80 session으로 확대하지 않았다. Formal한 technical 문체이고, 2문장 각각을 빈 줄로 구분했다."
+    },
+    {
+      "case_id": "E2",
+      "order": 4,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 3,
+      "rationale": "5 s timeout이면 같은 request_id로 재시도하고 timeout은 server 실패 확정이 아님을 보존. 다른 ID의 중복 방지 여부 미검증 유지.",
+      "independent_rationale": "5 s timeout이 발생하면 client가 같은 request_id로 재시도한다는 조건과 동작을 유지했다. timeout이 server 처리 실패를 함의하지 않는다는 원문 관계를 보존하며 성공을 확정하지 않았다. 미검증 대상도 다른 request_id를 사용할 때의 중복 처리 방지 여부로 유지했고 같은 request_id의 중복 방지 보장을 추가하지 않았다. Formal한 technical 문체이고, 3문장 각각을 빈 줄로 구분했다."
+    },
+    {
+      "case_id": "C1",
+      "order": 5,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 2,
+      "rationale": "retry_count >= 3 조건과 재실행 부정, unit test 9개, 실제 traffic 미검증 유지.",
+      "independent_rationale": "retry_count >= 3이라는 조건과 경계, worker가 job을 다시 실행하지 않는다는 부정을 보존했다. 확인 범위는 unit test 9개이며 실제 traffic에서는 미검증이라는 한계도 유지했다. Formal한 technical 문체이고, 2문장 각각을 빈 줄로 구분했다."
+    },
+    {
+      "case_id": "C2",
+      "order": 6,
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 3,
+      "rationale": "같은 replay에서 48→36 ms 관측, 원인 미확인, 독립 holdout 평가 제안과 실행 일정 미정 유지.",
+      "independent_rationale": "같은 replay에서 p95 latency가 48 ms에서 36 ms로 감소했다는 관찰과 원인 미확인을 유지했다. 독립 holdout 평가는 제안으로 남고 실행 일정도 미정이며, 실행 확정이나 인과·일반화 보장을 추가하지 않았다. Formal한 technical 문체이고, 3문장 각각을 빈 줄로 구분했다."
+    }
+  ],
+  "runtime_limits": [
+    "thread/settings/updated 3회는 E2·C1·C2 turn/start 단계에서 관측됐지만 payload는 기록되지 않았다. 설정 변화의 내용이나 부재를 확인할 수 없다.",
+    "hook started/completed 각 12회이며 payload는 기록되지 않았다. Tool item 부재와 모든 외부 작업 부재는 같은 주장이 아니다.",
+    "Sent event timestamp가 없어 TTFT/elapsed의 절대 시작점은 journal만으로 독립 재계산할 수 없다."
+  ],
+  "inference_limits": [
+    "이미 본 사례를 revised만 한 번씩 생성한 확인이다. 독립 holdout·human comprehension·current 대비 개선 효과를 측정하지 않았다.",
+    "Core를 직접 전달한 실험이므로 full MANIFEST와 기존 global original CORE의 효과를 검증한 것이 아니다."
+  ],
+  "wall_seconds_from_journal_start_to_last_record": 48.62,
+  "manifest_application_check": {
+    "reviewer": "manifest_source_check",
+    "context": "fresh context; existing SKILL.md and MANIFEST.md only; no research files, prior audits or conclusions",
+    "request": "Rewrite two short technical explanations using the existing skill; preserve supplied facts, formal Korean register, and blank lines between complete sentences.",
+    "sources": {
+      "N2": "controller는 operator가 승인한 후에만 batch 재시작을 허용할 수 있다. batch당 최대 2회로 제한된다. 자동 승인은 제공하지 않는다.",
+      "E2": "client는 5 s timeout이 나면 같은 request_id로 재시도한다. timeout은 server의 처리 실패를 뜻하지 않는다. 다른 request_id를 쓸 때 중복 처리가 방지되는지는 검증하지 않았다."
+    },
+    "outputs": {
+      "N2": "controller는 operator가 승인한 후에만 batch 재시작을 허용할 수 있다.\n\n재시작 횟수는 batch당 최대 2회로 제한된다.\n\n자동 승인은 제공하지 않는다.",
+      "E2": "client는 5 s timeout이 발생하면 같은 request_id로 재시도한다.\n\ntimeout은 server의 처리 실패를 뜻하지 않는다.\n\n다른 request_id를 사용할 때 중복 처리가 방지되는지는 검증하지 않았다."
+    },
+    "lead_verdicts": {
+      "N2": "pass: permission actor, approval condition, maximum, and absence of automatic approval preserved; no verification status added",
+      "E2": "pass: timeout relation, retry condition, and target of unverified duplicate prevention preserved"
+    },
+    "decision": "No writing-rule or example expansion; reuse guidance only updated to reflect the existing 61-token native pilot.",
+    "limits": "One sample per known case, task explicitly requested formal register and blank lines; not a success-rate estimate or comparative benefit test. Separate agent check excluded from frozen app-server token/timing totals."
+  }
+}

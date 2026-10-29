@@ -128,3 +128,56 @@ Journal의 sent event에는 timestamp가 없어 각 TTFT·elapsed의 시작점�
 후속 6-case 결과 directory는 아직 없으며 실제 생성은 0/6이다. 기존 계획에 따라 제한된 agent 환경에서 app-server를 재시도하지 않았다. 위 일반 Terminal command로 실행하고 완료된 뒤 결과·event·adapter를 보존하여 판정한다. 현재 61-token 전역 실사용 core와 명시적 skill 호출 설정은 유지한다.
 
 기존 날짜별 연구 기록의 문체 검사에서는 182건이 검출되었으며, 검토 전 snapshot과 rule·위치·내용이 동일하였다. 전역의 날짜별 과거 문서 append-only 원칙에 따라 해당 기록을 일괄 재작성하지 않았다. 이번에 추가한 안내·출처·checkpoint 문단에서는 새 문체 지적이 없었고 번호·참조 검사는 통과하였다. 이를 전체 과거 문서의 문체 검사 통과로 보고하지 않는다.
+
+
+## 2026-10-29 전체 6회 결과 — 의미·형식 6/6 pass
+
+사용자가 일반 Terminal에서 후속 6회를 실행하였다. 시작은 `2026-10-29T08:23:52.607939+00:00`, 마지막 결과 기록은 `08:24:41.227809+00:00`이며 약 48.620 s가 걸렸다. 앞 절의 0/6은 실행 전 상태다. [Six-case audit](source-fidelity-six-audit.json)에 사례별 판정과 실행 기록의 한계를 함께 남겼다.
+
+Lead와 별도 context의 reviewer `six_case_audit`가 frozen source·acceptance와 여섯 output을 따로 대조하였다. Reviewer는 lead 판정문이나 이전 audit을 읽지 않았으며, arm 이름은 보이는 agent 평가다.
+
+| Case | 의미·Formal·문단 형식 | 확인한 핵심 |
+|---|---|---|
+| N1 | pass | worker, >7일 AND pinned false의 필요조건, 복원 가능성 미검증 |
+| N2 | pass | controller의 허용 역할, 사전 승인, 최대 2회, 자동 승인 없음 |
+| E1 | pass | 전체 80개 중 12개 제외, 68개의 median error 0.8 m, 제외 대상 error 미계산 |
+| E2 | pass | timeout만으로 실패 확정 불가, 같은 ID 재시도, 다른 ID의 중복 방지 미검증 |
+| C1 | pass | >=3 조건·재실행 부정, unit test 9개와 실제 traffic 미검증 |
+| C2 | pass | 같은 replay의 48→36 ms 관측, 원인 미확인, holdout 평가 제안·일정 미정 |
+
+문장 수는 2·3·2·3·2·3개이며 모두 완결된 문장마다 빈 줄을 유지하였다. N1의 “경우에만”은 필요조건을 충분조건으로 바꾸지 않았다. N2는 재시작 수행 주체로 바뀌지 않았으며, E2와 C2도 불확실성의 대상·강도 및 행동의 확정 여부를 보존하였다. 원문에 없는 검증 상태를 추가한 사례는 없었다.
+
+### 원본 보존과 실행 확인
+
+- [Six-case 결과](source-fidelity-six-results.jsonl): SHA-256 `ee9c2a6bc486907b35b58019f5423eb78604a1c6a4ed93af5deac1c40726b7b4`.
+- [Event journal](source-fidelity-six-events.jsonl): SHA-256 `1f3385622b232c15622c3875e4367ec42fb4be2e412c1227077300ab6f9a37e2`.
+- [실행 당시 adapter](source-fidelity-six-adapter.txt): SHA-256 `57f302303f26e8fc8288389f0b958245fc57bf9f5d88a0132f14629de505ce0e`.
+- 원본 directory `/private/tmp/human-readable-fidelity-six-run-20261029`와 stderr를 유지하였다. Stderr SHA-256은 `ec221e36577af41c0f907d6d70882f3ef1afefaf3c7f3292601043e19498d418`이다.
+
+Protocol·source·common runner·adapter hash, 순서, 실제 전송 core·prompt·model·effort, 여섯 완료 event·최종 응답·usage가 기록상 일치하였다. `complete: 6`이며 failure record는 없었다. 관측 item type은 agentMessage·reasoning·userMessage이고 tool item이나 item/tool call은 없었다.
+
+다만 E2·C1·C2의 turn/start 단계에서 `thread/settings/updated`가 각각 한 번 관측되었다. Payload를 보존하지 않아 어떤 설정이 달라졌는지 또는 실질적인 변화가 없었는지 확인할 수 없다. Hook started/completed도 각각 12회이며 payload가 없다. 이를 protocol 위반의 증거로 취급하지 않지만, 기록된 전송 조건의 일치를 runtime 전체의 동일성 입증으로 확대하지 않는다. Sent timestamp 부재에 따른 기존 timing 재계산 한계도 그대로다.
+
+Input 104,473 + output 700 = total 105,173 tokens다. Reasoning 377은 output에 포함되며 cached input은 0이다. TTFT median은 7.022 s, elapsed median은 8.059 s다. Current를 같이 생성하지 않았고 case당 한 번이므로 비용·속도 우위를 추정하지 않는다.
+
+### 반영 여부 검토와 종료 범위
+
+사전에 정한 출력 기준을 모두 통과하였으며, 확인 가능한 실행 기록도 일치하였다. 이번 4회→6회 확인 단계는 완료한다. 추가 generation을 자동으로 늘리지 않는다.
+
+검토 결론은 명시적으로 호출하는 writing skill의 의미 보존 지침을 아래 범위에서 구체화할 근거를 확보하였다는 것이다.
+
+1. 원문의 주체·동작·조건·이유와 제시된 검증 상태를 보존한다. 검증에 대한 언급이 없다는 사실을 “미검증”이라는 새 주장으로 바꾸지 않는다.
+2. 불확실성의 대상과 강도를 유지한다. “중복 방지 여부 미검증”을 “위험이 확인되지 않음”으로 바꾸지 않는다.
+3. 사용자가 선호한 짧은 기술 설명에서는 formal 문체와 문장별 문단 분리를 사용한다. 다른 길이·문서 형식의 효과까지 검증한 것으로 취급하지 않는다.
+
+직접 전달한 revised core의 출력 준수 확인이므로 full MANIFEST에 통합했을 때의 동작, 기존 61-token global core, 사람의 이해도 개선은 별도 문제다. 직전 4회에서 current도 통과했으므로 revised의 우위는 미확인이다. 이번 결과 검토에서는 MANIFEST·SKILL·global core를 변경하지 않았다. 실제 반영 시에는 위 범위의 변경을 확인하고 실사용 문장에 대한 사용자 feedback으로 평가하는 것이 적절하다.
+
+### 기존 manifest 적용 확인과 최종 판단
+
+규칙을 추가하기 전에 별도 context의 `manifest_source_check`가 현재 SKILL·MANIFEST를 읽고 N2·E2 원문을 다시 작성하였다. Formal 문체와 문장별 빈 줄은 요청에 명시하였다. Research 기록이나 이전 판정은 제공하지 않았다. [Audit의 `manifest_application_check`](source-fidelity-six-audit.json)에 요청·원문·실제 output과 lead 판정을 보존하였다.
+
+두 output 모두 의미를 보존하였다. N2는 controller의 허용 역할과 operator 승인·최대 2회·자동 승인 없음만 서술하였다. E2는 timeout의 의미와 재시도 조건, 다른 request_id의 중복 방지 여부 미검증을 유지하였다. 따라서 이 확인에서는 기존 manifest의 부족함을 재현하지 못하였으며, 작성 규칙이나 예시를 추가하지 않았다. 재사용 안내에 현재 61-token native pilot 상태를 기재하였다.
+
+각 사례 한 번의 적용 확인이며, 기존 manifest의 일반적인 성공률이나 추가 지침의 불필요함을 입증하지 않는다. Frozen app-server 실험과 별도인 agent 확인이므로 token·timing 합계에도 포함하지 않는다. 다음 평가는 [실사용 pilot](native-pilot.md)의 실제 사례와 사용자 feedback으로 진행한다. 추가 generation이나 전역 core 교체는 수행하지 않았다.
+
+이미 완료된 output directory를 같은 command로 다시 지정하면 `FileExistsError`로 중단된다. 이 경로에서는 app-server를 시작하기 전에 중단하므로 해당 실패로 추가 generation이 발생하지 않는다. 이번 directory는 `complete: 6`인 기존 결과를 보존하고 있어 재실행이 필요하지 않았다.

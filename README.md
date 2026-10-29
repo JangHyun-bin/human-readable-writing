@@ -76,6 +76,6 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 | [문장 구조·줄바꿈 선호](research/structure-layout-pilot.md) | 사용자의 formal 문체·문장별 문단 선호 기록. 이해도 측정과 구분 |
 | [Layout generation](research/layout-generation-pilot.md) | 12/12 생성 완료. 원문 밖 검증 상태 추가와 불확실성 재해석으로 채택 보류 |
 | [Source fidelity](research/source-fidelity-pilot.md) | 문제 사례의 4/4 비교 완료. 두 arm 모두 pass로 보완 효과는 미확정 |
-| [전체 6개 사례 protocol](research/source-fidelity-six-protocol.json) | 동결·offline 검증 완료, 실제 생성 0/6 |
+| [전체 6개 사례 protocol](research/source-fidelity-six-protocol.json) · [audit](research/source-fidelity-six-audit.json) | 6/6 생성 완료. Agent의 의미·형식 기준 모두 pass |
 
-별도 실험의 revised core는 93 reference tokens이며, 전역 실사용 pilot의 original CORE 61 tokens와 구분한다. 여섯 사례의 결과를 확인하기 전 기존 skill·manifest·global 설정에 이 후보를 반영하지 않는다. 성공·실패 결과를 모두 보존하며, token·timing 관측을 일반적인 품질·속도 우위로 해석하지 않는다.
+별도 실험의 revised core는 93 reference tokens이며, 전역 실사용 pilot의 original CORE 61 tokens와 구분한다. 여섯 사례는 revised만 한 번씩 확인한 결과로, 기존 core보다 낫다는 근거는 아니다. 기존 manifest를 적용한 문제 사례 두 개도 의미를 보존하여 작성 규칙을 추가하지 않았다. 전역 core와 명시적 skill 호출 정책을 유지하고, 다음 평가는 실사용 pilot의 사용자 feedback으로 진행한다.

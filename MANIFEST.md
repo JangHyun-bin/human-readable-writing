@@ -91,7 +91,7 @@ Repository에 채택할 때는 manifest를 해당 repository의 문서 위치에
 docs/WRITING_MANIFEST.md를 읽고 적용한다.
 ```
 
-최초 분석에서는 global instruction·기존 repository·skill 등록을 변경하지 않았다. 이후 사용자 요청에 따라 [SKILL.md](SKILL.md)를 전역 설치하였고, 누적 비용을 줄이기 위해 명시적으로 호출하는 검토용으로 전환하였다. 상세 작성 원칙의 정본은 이 manifest로 유지한다. 평소 답변은 기존 기본 instructions로 바로 작성한다. 설치 경로와 사용법은 [README.md](README.md)를 참조한다.
+상세 작성 원칙의 정본은 이 manifest이며, [SKILL.md](SKILL.md)를 명시적으로 호출한 검토에서 읽는다. 평소 답변은 [실사용 pilot](research/native-pilot.md)의 61-token core를 기본 instructions에 포함하여 작성한다. 설치 경로와 현재 적용 상태는 [README.md](README.md)를 참조한다.
 
 ## 근거와 상태
 

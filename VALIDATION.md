@@ -113,3 +113,10 @@ Timing 집계의 commentary 제외, 동결한 reference 반환, baseline의 예�
 후보의 일관된 개선 근거가 확보되지 않아 새 core의 전역 적용은 수행하지 않았다. 기존의 명시적 skill 호출 설정과 기본 응답 경로를 유지하였다.
 
 별도 code·method review에서 Critical·Important finding은 없었다. 조건별 중앙값의 집계 설명 한 곳을 바로잡고, reference tool counter의 계측 범위를 명시하였다. 실제 model 요청을 반복 실행하지 않고 원본 usage·계측 표·blind mapping과 output 일치 여부를 대조하였다.
+
+
+## 2026-10-29 Source fidelity 후속 확인
+
+[고정된 4회→6회 확인](research/source-fidelity-pilot.md)을 완료하였다. 4회에서는 current·revised의 N2·E2가 모두 pass였고, 동일 revised core를 사용한 후속 6개 사례도 agent의 의미·Formal·문단 형식 기준을 모두 충족하였다. [Six-case audit](research/source-fidelity-six-audit.json)에 원본 hash·전송 조건·판정 근거와 runtime 기록 한계를 보존하였다. Core를 직접 전달한 known-case 확인이며 full MANIFEST 적용 효과·global core 개선·human comprehension 측정은 아니다.
+
+별도 context의 agent가 기존 SKILL·MANIFEST를 적용한 N2·E2도 의미를 보존하였다. 작성 규칙을 추가하지 않고 manifest의 재사용 안내에 현재 pilot 상태를 기재하였다. 전역 61-token core와 명시적 skill 호출 정책은 유지하였다. Offline unit test 23개와 skill 구조 검사는 통과하였다.

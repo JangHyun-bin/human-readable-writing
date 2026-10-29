@@ -2,7 +2,7 @@
 
 ## 적용 상태
 
-2026-10-29 사용자 승인에 따라 기존 61-token core의 실사용 pilot을 준비하였다. 현재 session의 filesystem 정책은 `~/.agents/TERMINOLOGY.md`의 쓰기를 허용하지 않아 전역 적용은 미완료이다. 실제 사례는 아직 수집하지 않았다.
+2026-10-29 사용자가 일반 Terminal에서 `native_pilot.py enable`을 실행하였고 `enabled` 결과를 전달하였다. Agent도 read-only `status` 조회로 `~/.agents/TERMINOLOGY.md`의 활성 상태를 확인하였다. 현재 대화에 새로 전달된 AGENTS.md instructions에도 같은 core가 포함되어 있다. 실제 사례는 아직 수집하지 않았다.
 
 ## 고정한 core
 
@@ -56,4 +56,4 @@ PR 설명·coding 결과·연구 해석의 실제 답변 5–10개를 확인한�
 
 ## 검증 범위
 
-임시 문서에서 중복 설치 방지, byte 단위 복원, 후속 편집 보존, read-only status, symlink·permission 보존, 실패 시 원문 보존을 검사한다. 실제 전역 enable과 새 session의 동작, 사람의 이해도·실사용 latency는 아직 미검증이다. 이 session에서는 전역 file 쓰기와 추가 model 요청을 수행하지 않았다.
+준비 단계에서 임시 문서의 중복 설치 방지, byte 단위 복원, 후속 편집 보존, read-only status, symlink·permission 보존, 실패 시 원문 보존을 검사하였다. 적용 후에는 정본의 활성 상태와 현재 대화에 전달된 core를 확인하였다. 별도의 새 session·Claude Code 응답, 사람의 이해도·실사용 latency는 아직 미검증이다. Agent는 전역 file을 쓰지 않고 상태 조회와 기록 갱신만 수행하였다.

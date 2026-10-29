@@ -14,9 +14,9 @@
 
 ## 사용
 
-평소 답변은 기존 기본 instructions로 바로 작성한다. 이 skill을 위한 상시 지침이나 skill·manifest를 자동으로 읽는 절차는 두지 않는다.
+실사용 pilot 기간에는 61-token core를 기본 instructions에 직접 포함하여 답변을 작성한다. 상세 skill·manifest는 명시적으로 호출할 때만 읽는다.
 
-2026-10-29에는 기존 61-token core를 기본 instructions에 직접 포함하는 [실사용 pilot](research/native-pilot.md)을 준비하였다. 현재 session의 전역 file 쓰기 제한으로 실제 적용은 대기 상태이다. 적용·확인·되돌리기 command와 5–10개 사례의 기록 기준은 해당 문서에 있다. 상세 skill의 명시적 호출 정책은 유지한다.
+2026-10-29 사용자가 일반 Terminal에서 core를 적용하였고 상태 조회에서 `enabled`를 확인하였다. [실사용 pilot](research/native-pilot.md)에 적용·확인·되돌리기 command와 5–10개 사례의 기록 기준이 있다. 상세 skill의 명시적 호출 정책은 유지한다.
 
 문장 개선·문서 검토가 필요하면 Codex에서는 `$human-readable-writing`, Claude Code에서는 `/human-readable-writing`으로 명시적으로 호출한다. 호출한 작업에서만 상세 manifest와 필요한 예시를 읽는다. 이미 현재 context에 있는 내용은 재사용한다.
 
@@ -36,7 +36,7 @@ Codex와 Claude Code가 같은 checkout을 읽도록 다음 위치를 연결하�
 
 두 skill directory는 이 repository를 가리키는 symlink이다. 상세 지침은 이 repository에서 한 번 변경한다. Codex는 `agents/openai.yaml`의 `allow_implicit_invocation: false`를 사용한다. Claude Code는 `~/.claude/settings.json`의 `skillOverrides`에서 이 skill을 `user-invocable-only`로 설정한다.
 
-용어 표기의 정본은 `~/.agents/TERMINOLOGY.md`이다. 이 정본에서 skill을 매번 읽으라는 지시를 제거하였다. 세 조건의 비교에서 기본 답변도 의미 보존 검토를 통과하였고 축약 지침의 추가 효과가 확인되지 않아, 축약 지침도 상시 추가하지 않았다. Codex의 `~/.codex/AGENTS.md`와 Claude Code의 `~/.claude/CLAUDE.md`가 참조하는 기존 정본은 유지한다.
+용어 표기의 정본은 `~/.agents/TERMINOLOGY.md`이다. 최초 비용 비교 후 이 정본에서 skill을 매번 읽으라는 지시를 제거하였고 축약 지침도 상시 추가하지 않았다. 2026-10-29에는 사용자가 승인한 실사용 pilot을 위해 core 본문만 정본에 직접 추가하였다. Codex의 `~/.codex/AGENTS.md`와 Claude Code의 `~/.claude/CLAUDE.md`가 참조하는 기존 정본은 유지한다.
 
 다른 machine에서는 이 private repository를 clone한 뒤 **repo root에서**, 대상 경로가 비어 있을 때 다음과 같이 설치할 수 있다.
 
@@ -66,4 +66,4 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 
 호출 방식과 token·응답 시간의 비교 결과는 [비용 비교](research/invocation-cost.md)를 참조한다. 기본 instructions도 input tokens를 사용하므로, 추가 file 조회가 없다는 사실을 비용이 전혀 없다는 의미로 해석하지 않는다.
 
-기존 축약 core와 같은 token budget의 후보를 비교한 후속 실험은 [고도화 비교](research/core-refinement.md), 조건 이름을 가린 실제 답변은 [blind 비교](research/core-refinement-blind.md)에 있다. 기본 적용 설정은 변경하지 않았다.
+기존 축약 core와 같은 token budget의 후보를 비교한 후속 실험은 [고도화 비교](research/core-refinement.md), 조건 이름을 가린 실제 답변은 [blind 비교](research/core-refinement-blind.md)에 있다. 해당 실험 직후에는 기본 적용 설정을 유지하였으며, 이후 시작한 실사용 pilot의 현재 상태는 위 사용 절에 명시하였다.

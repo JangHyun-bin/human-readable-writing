@@ -1,0 +1,128 @@
+{
+  "integrity": "pass",
+  "completed": 4,
+  "start": {
+    "kind": "start",
+    "recorded_at": "2026-10-29T07:23:31.151487+00:00",
+    "protocol_sha256": "f7237f874c55b1aa3a87947b9fd861c3e43a2f5fec1e7f8c2931c412b8bfb4ef",
+    "adapter_sha256": "94a3140e79e12e0b07b5863f55a0e3ef07b60197df1b0e6db3e043f36b9bded6",
+    "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+    "common_runner_sha256": "f7c30e50947e3c8ef840f43b412842ccff98ce14db22f8f867c223c0116d392b",
+    "cwd": "/private/tmp/human-readable-fidelity-run-20261029",
+    "event_clock_origin": "client construction"
+  },
+  "hashes": {
+    "results.jsonl": "23b9b15e3b750f7192eb0580f1e6b6cd779ebb8fafe1617fc49ac43458cdb49b",
+    "events.jsonl": "f80c345f17dcb24601840382df71e355b1c402693a409a5d3d67596c39380081",
+    "app-server.stderr": "cbb817c34a0ca31ac7311ea65b7dc6426bb059d44361b2f4965a291292d3b44d"
+  },
+  "item_types": {
+    "userMessage": 8,
+    "reasoning": 2,
+    "agentMessage": 8
+  },
+  "methods": {
+    "remoteControl/status/changed": 1,
+    "account/updated": 1,
+    "thread/started": 4,
+    "mcpServer/startupStatus/updated": 40,
+    "thread/status/changed": 8,
+    "turn/started": 4,
+    "hook/started": 8,
+    "hook/completed": 8,
+    "item/started": 9,
+    "item/completed": 9,
+    "item/agentMessage/delta": 199,
+    "turn/moderationMetadata": 4,
+    "thread/tokenUsage/updated": 4,
+    "account/rateLimits/updated": 4,
+    "turn/completed": 4
+  },
+  "arms": {
+    "current": {
+      "totalTokens": 35019,
+      "inputTokens": 34819,
+      "cachedInputTokens": 0,
+      "cacheWriteInputTokens": 0,
+      "outputTokens": 200,
+      "reasoningOutputTokens": 88,
+      "ttft_median_ms": 5937.2955,
+      "elapsed_median_ms": 6951.048999999999
+    },
+    "revised": {
+      "totalTokens": 34936,
+      "inputTokens": 34829,
+      "cachedInputTokens": 0,
+      "cacheWriteInputTokens": 0,
+      "outputTokens": 107,
+      "reasoningOutputTokens": 0,
+      "ttft_median_ms": 3484.078,
+      "elapsed_median_ms": 4422.705
+    }
+  },
+  "input_deltas": {
+    "N2": 5,
+    "E2": 5
+  },
+  "evaluation": {
+    "kind": "lead audit plus fresh-context agent audit; arm labels visible; not human comprehension",
+    "reviewer": "fidelity_six_review",
+    "gate": "pass",
+    "adoption": "deferred pending six-case check"
+  },
+  "cases": [
+    {
+      "order": 1,
+      "case_id": "N2",
+      "arm": "current",
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 2,
+      "rationale": "controller의 허용 역할·operator 사전 승인 필요조건·batch당 최대 2회·자동 승인 없음 보존. 원문 밖 검증 상태 추가 없음."
+    },
+    {
+      "order": 2,
+      "case_id": "N2",
+      "arm": "revised",
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 3,
+      "rationale": "controller의 허용 역할과 나머지 세 조건을 보존하며 검증 상태 추가 없음."
+    },
+    {
+      "order": 3,
+      "case_id": "E2",
+      "arm": "revised",
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 2,
+      "rationale": "5 s timeout과 같은 request_id 재시도, timeout만으로 실패 확정 불가, 다른 request_id의 중복 방지 미검증을 보존. 위험 없음·성공·중복 방지 보장 추가 없음."
+    },
+    {
+      "order": 4,
+      "case_id": "E2",
+      "arm": "current",
+      "lead": "pass",
+      "independent_agent": "pass",
+      "semantic": "pass",
+      "formal": "pass",
+      "sentence_per_paragraph": "pass",
+      "sentence_count": 3,
+      "rationale": "동일 E2 사실을 보존. 다른 request_id로 재시도한다는 표현은 원문의 재시도 문맥을 명시하며 불확실성의 대상·강도를 유지함."
+    }
+  ],
+  "limits": [
+    "Current도 2/2 pass이므로 revised 개선 효과를 입증하지 않음.",
+    "한 번씩의 known-case 확인이며 human comprehension·일반적인 신뢰도·latency 우위의 근거가 아님.",
+    "hook started/completed 각 8회 관측; payload는 보존하지 않아 모든 외부 작업 부재를 주장하지 않음."
+  ]
+}

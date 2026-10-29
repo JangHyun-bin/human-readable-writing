@@ -1,0 +1,83 @@
+{
+  "study": "structure-layout-pilot-2026-10-28",
+  "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+  "variants_sha256": "4adab206db0960157bd06db9b7b27145c64cd196696521013073bbab2beed130",
+  "events": [
+    {
+      "received_on": "2026-10-28",
+      "verbatim": "사례 1은 읽기 편함보다 formal한 텍스트와 casual 텍스트의 차이로 보여. 난 Y가 개인적인 선호에 가까워. // 사례 2 : 난 X가 좋아.",
+      "responses": [
+        {
+          "case_id": "N1",
+          "question_kind": "syntax_preference",
+          "choice": "Y",
+          "selected_version": "source",
+          "reason": "이 쌍에서는 읽기 편함보다 formal/casual 차이로 보며, Y가 개인 선호에 가깝다고 밝혔다.",
+          "interpretation": "이 사례의 register를 포함한 개인 선호. Readability 순위나 nominalization의 독립 효과로 집계하지 않는다."
+        },
+        {
+          "case_id": "N2",
+          "question_kind": "layout_preference",
+          "choice": "X",
+          "selected_version": "separated",
+          "reason": null,
+          "interpretation": "문구가 동일한 이 사례에서 문장 사이에 빈 줄을 둔 배치를 선호했다. 모든 문장에 빈 줄을 요구한다는 일반 규칙으로 확대하지 않는다."
+        }
+      ],
+      "unanswered_at_this_event": [
+        {
+          "case_id": "E1",
+          "question_kind": "open_book_comprehension",
+          "response": null,
+          "score": null
+        }
+      ]
+    },
+    {
+      "received_on": "2026-10-28",
+      "verbatim": "응 좋다.",
+      "responses": [
+        {
+          "case_id": "N1",
+          "question_kind": "example_and_direction_endorsement",
+          "presented_text": "worker의 snapshot 삭제 수행은 보관 기간 7일 초과와 `pinned == false` 조건이 모두 충족될 때에만 이루어진다.\n\n삭제한 snapshot의 복원 가능성은 검증하지 않았다.",
+          "response": "positive",
+          "reason": null,
+          "interpretation": "직전에 제시한 formal한 N1 source와 문단 분리 조합 및 그 방향에 대한 긍정 응답. 강제 선택 비교나 이해도 검증이 아니다."
+        }
+      ],
+      "unanswered_at_this_event": [
+        {
+          "case_id": "E1",
+          "question_kind": "open_book_comprehension",
+          "response": null,
+          "score": null
+        }
+      ]
+    },
+    {
+      "received_on": "2026-10-28",
+      "verbatim": "Y가 더 좋아",
+      "responses": [
+        {
+          "study": "layout-followup-2026-10-28",
+          "question_kind": "layout_preference",
+          "stimulus": "research/layout-followup.json",
+          "stimulus_sha256": "78f82696c414db09028086960991f23f03c8ccab56ddb5b3a50e11a22f453581",
+          "choice": "Y",
+          "selected_version": "one_sentence_per_paragraph",
+          "reason": null,
+          "interpretation": "동일한 네 문장의 API 답변에서 두 문단으로 묶은 X보다 문장마다 문단을 나눈 Y를 선호했다. 두 번째 사례의 배치 선호이며 이해도나 원래 B 대비 우위를 측정한 것은 아니다."
+        }
+      ],
+      "unanswered_at_this_event": [
+        {
+          "case_id": "E1",
+          "question_kind": "open_book_comprehension",
+          "response": null,
+          "score": null
+        }
+      ]
+    }
+  ]
+}

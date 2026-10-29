@@ -1,0 +1,104 @@
+{
+  "study": "source-fidelity-six-case-check-2026-10-29",
+  "purpose": "4회 확인을 통과한 동일 revised core가 이미 본 전체 6개 사례에서 의미·형식을 보존하는지 확인",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+  "common_runner_sha256": "f7c30e50947e3c8ef840f43b412842ccff98ce14db22f8f867c223c0116d392b",
+  "entry_evidence": {
+    "protocol_sha256": "f7237f874c55b1aa3a87947b9fd861c3e43a2f5fec1e7f8c2931c412b8bfb4ef",
+    "results_sha256": "23b9b15e3b750f7192eb0580f1e6b6cd779ebb8fafe1617fc49ac43458cdb49b",
+    "events_sha256": "f80c345f17dcb24601840382df71e355b1c402693a409a5d3d67596c39380081",
+    "integrity": "4회 전송 조건·schedule·완료 event·usage 일치, failure 없음",
+    "semantic": "lead와 fresh-context agent의 별도 대조에서 revised N2·E2 pass; current도 두 사례 모두 pass"
+  },
+  "cores": {
+    "revised": "원문의 주체·동작·조건·이유를 보존하고 제시된 검증·한계만 쓴다. 수치·단위·범위·부정과 불확실성의 대상·강도를 보존하고 관찰·가설·인과를 구분한다. Formal한 문체와 technical term을 유지한다. 짧은 기술 설명은 문장마다 빈 줄로 구분한다."
+  },
+  "reference_tokens": {
+    "encoding": "o200k_base",
+    "revised": 93,
+    "scope": "core 본문만; 실제 provider usage는 실행에서 측정"
+  },
+  "prompts": {
+    "N1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nworker의 snapshot 삭제 수행은 보관 기간 7일 초과와 `pinned == false` 조건이 모두 충족될 때에만 이루어진다. 삭제한 snapshot의 복원 가능성은 검증하지 않았다.",
+    "N2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\ncontroller의 batch 재시작 허용은 operator의 승인 후에만 가능하다. 재시작 횟수의 제한은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+    "E1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nevaluator는 전체 80 session 중, timeout이 발생한 12 session을 제외한, 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+    "E2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nclient는, server의 처리 실패를 뜻하지는 않는, 5 s timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다.",
+    "C1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\n`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다. 이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다.",
+    "C2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\n같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다. 원인은 확인하지 않았다. 다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다."
+  },
+  "schedule": [
+    {
+      "case_id": "N1",
+      "arm": "revised"
+    },
+    {
+      "case_id": "N2",
+      "arm": "revised"
+    },
+    {
+      "case_id": "E1",
+      "arm": "revised"
+    },
+    {
+      "case_id": "E2",
+      "arm": "revised"
+    },
+    {
+      "case_id": "C1",
+      "arm": "revised"
+    },
+    {
+      "case_id": "C2",
+      "arm": "revised"
+    }
+  ],
+  "repeats_per_case_arm": 1,
+  "acceptance": {
+    "N1": [
+      "삭제 주체 worker, 보관 기간 > 7일 AND pinned == false의 필요조건을 보존한다. 충분조건이나 정확히 7일 포함으로 바꾸지 않는다.",
+      "삭제한 snapshot의 복원 가능성 미검증을 유지한다."
+    ],
+    "N2": [
+      "controller가 허용하는 대상은 batch 재시작이며, controller가 재시작을 수행한다고 바꾸지 않는다.",
+      "operator 승인 후에만 허용되는 필요조건, batch당 최대 2회, 자동 승인 기능 없음이 모두 유지된다.",
+      "원문에 없는 구현·실제 동작의 검증 여부를 추가하지 않는다."
+    ],
+    "E1": [
+      "evaluator가 전체 80 session 중 timeout이 발생한 12 session을 제외한 68 session의 median error를 0.8 m로 보고했다는 범위·수치·단위를 유지한다.",
+      "timeout session의 error는 계산하지 않았다는 사실을 유지하며 0.8 m를 전체 80 session의 결과로 확대하지 않는다."
+    ],
+    "E2": [
+      "5 s timeout이면 client가 같은 request_id로 재시도한다.",
+      "timeout만으로 server 처리 실패를 뜻하지 않으며 처리 성공도 확정하지 않는다.",
+      "미검증 대상은 다른 request_id를 쓸 때의 중복 처리 방지 여부다. 위험이 없거나 위험이 확인되지 않았다는 판단으로 바꾸지 않는다.",
+      "같은 request_id에서의 중복 방지 보장 등 원문 밖의 상태·보장을 추가하지 않는다."
+    ],
+    "C1": [
+      "retry_count >= 3이면 worker가 job을 다시 실행하지 않는 조건·경계·부정을 유지한다.",
+      "unit test 9개에서 확인했고 실제 traffic에서는 미검증이라는 검증 범위를 유지한다."
+    ],
+    "C2": [
+      "같은 replay의 p95 latency가 48 ms에서 36 ms로 줄었다는 관측과 원인 미확인을 유지한다.",
+      "독립 holdout 평가는 제안이며 실행 일정은 미정이다. 실행 확정이나 인과·일반화 보장을 추가하지 않는다."
+    ],
+    "all": [
+      "제시된 사실·관계·조건·수치·단위·범위·부정과 불확실성의 대상·강도를 모두 보존한다.",
+      "Formal한 문체와 technical term을 유지하고 4문장 이내, 완결된 한 문장마다 빈 줄로 구분한다.",
+      "모든 output을 동일 기준으로 pass·fail·uncertain 판정한다. uncertain은 통과로 세지 않는다."
+    ]
+  },
+  "decision": "전체 6회 실행이 protocol과 일치하고 모든 사례가 의미·형식에서 pass여야 기존 writing skill 반영 여부를 검토한다. Fail·uncertain 또는 실행 불완전·protocol 불일치이면 채택을 보류하고 해당 원인을 검토한다. 이번 command는 생성만 하며 자동 채택·추가 generation·global 변경을 수행하지 않는다.",
+  "runtime_checks": [
+    "실제 전송 core·prompt·model·effort와 frozen schedule을 대조하고 완료 event·usage를 확인한다.",
+    "관측 event method·item type을 기록한다. 비대화 item은 중단하고 hook 등 비내용 event의 의미는 별도로 검토한다.",
+    "결과 directory는 새로 만들고 기존 결과를 덮어쓰거나 자동 재시도하지 않는다."
+  ],
+  "limits": [
+    "모두 이미 본 사례이며 독립 holdout이 아니다. N2·E2는 직전 4회와 별개의 재확인으로 기록한다.",
+    "Revised만 생성하는 6회 확인이므로 current 대비 개선 효과를 분리할 수 없다.",
+    "한 번씩의 결과로 일반적인 품질·human comprehension·latency 우위 또는 실패 원인의 인과를 입증하지 않는다.",
+    "Global native pilot의 original CORE와 이 revised core의 결과를 합치지 않는다."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "study": "layout-followup-2026-10-28",
+  "status": "frozen before question",
+  "question_kind": "layout_preference",
+  "source": {
+    "path": "research/core-refinement.jsonl",
+    "sha256": "62270e35fa1337dddad5b93f94e3216d07078b69602a61e6278da6e2ef90fc71",
+    "order": 18,
+    "task": "api_doc",
+    "arm": "candidate",
+    "output": "Caller가 같은 `job_id`로 요청하면 server는 처음 성공한 결과를 반환하며, 같은 `job_id`의 payload가 바뀌면 HTTP 409를 반환합니다.\nClient timeout은 server의 실행 실패를 뜻하지 않으므로, timeout 뒤 재시도에는 같은 `job_id`를 사용하세요.\n\n결과 보관 기간은 24 h이며, 그 이후 또는 다른 region에서는 중복 실행 방지를 보장하지 않습니다.\nUnit test 12개는 통과했지만 production 검증은 수행하지 않았습니다."
+  },
+  "variants": {
+    "X": "Caller가 같은 `job_id`로 요청하면 server는 처음 성공한 결과를 반환하며, 같은 `job_id`의 payload가 바뀌면 HTTP 409를 반환합니다. Client timeout은 server의 실행 실패를 뜻하지 않으므로, timeout 뒤 재시도에는 같은 `job_id`를 사용하세요.\n\n결과 보관 기간은 24 h이며, 그 이후 또는 다른 region에서는 중복 실행 방지를 보장하지 않습니다. Unit test 12개는 통과했지만 production 검증은 수행하지 않았습니다.",
+    "Y": "Caller가 같은 `job_id`로 요청하면 server는 처음 성공한 결과를 반환하며, 같은 `job_id`의 payload가 바뀌면 HTTP 409를 반환합니다.\n\nClient timeout은 server의 실행 실패를 뜻하지 않으므로, timeout 뒤 재시도에는 같은 `job_id`를 사용하세요.\n\n결과 보관 기간은 24 h이며, 그 이후 또는 다른 region에서는 중복 실행 방지를 보장하지 않습니다.\n\nUnit test 12개는 통과했지만 production 검증은 수행하지 않았습니다."
+  },
+  "key": {
+    "X": "two_related_sentence_groups",
+    "Y": "one_sentence_per_paragraph"
+  },
+  "assignment": "fixed; not random or blind",
+  "constraints": [
+    "문구·어휘·정보 순서·문장 수 동일",
+    "동일 원문에서 whitespace만 변경",
+    "선호 평가이며 comprehension·recall 평가가 아님"
+  ],
+  "response": null
+}

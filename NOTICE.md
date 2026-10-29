@@ -17,6 +17,17 @@
 
 원논문에서 재사용한 표현과 변경한 내용에는 원논문의 license 조건을 따른다. 위 출처 표시는 논문 저자들의 이 repository에 대한 승인·후원·보증을 의미하지 않는다.
 
+## 후속 참고문헌 — 2026-10-29
+
+후속 연구 노트의 상세 출처는 [관련 문헌](research/related-literature.md)에 기록하였다. 다음 두 핵심 문헌은 최초 Clark 논문과 다른 license로 제공된다.
+
+| 문헌 | 원문과 확인한 license |
+|---|---|
+| Martínez, Mollica & Gibson (2022), 법률 문장 독해 연구 | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |
+| Reinhart et al. (2025), LLM 문체 비교 연구 | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |
+
+위 license는 해당 원문에 관한 것이며, 최초 Clark 논문의 CC BY 4.0을 다른 참고문헌에 일괄 적용하지 않는다. 후속 노트는 연구 결과의 요약·해석과 별도로 작성한 가상 예시이며, 원문 PDF·figure·연구 code·원본 corpus를 이 repository에 포함하지 않았다. 논문 저자들의 검토·승인·효과 검증을 의미하지 않는다.
+
 ## Repository 자체의 license
 
 이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다. Repository 자체의 배포 license는 아직 별도로 지정하지 않았다.

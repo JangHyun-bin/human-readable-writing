@@ -1,0 +1,143 @@
+{
+  "study": "structure-layout-pilot-2026-10-28",
+  "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+  "authorship": "assistant-authored controlled rewrites; no separate model-generation calls",
+  "assignment_seed": 20261028,
+  "initial_questions": [
+    {
+      "kind": "open_book_comprehension",
+      "case_id": "E1",
+      "version": "rewrite"
+    },
+    {
+      "kind": "syntax_preference",
+      "case_id": "N1"
+    },
+    {
+      "kind": "layout_preference",
+      "case_id": "N2"
+    }
+  ],
+  "cases": [
+    {
+      "id": "N1",
+      "rewrite": "worker는 보관 기간이 7일을 넘고 `pinned == false`인 snapshot만 삭제한다. 삭제한 snapshot을 복원할 수 있는지는 검증하지 않았다.",
+      "syntax_pair_order": [
+        "rewrite",
+        "source"
+      ],
+      "layout": {
+        "paragraph": "worker는 보관 기간이 7일을 넘고 `pinned == false`인 snapshot만 삭제한다. 삭제한 snapshot을 복원할 수 있는지는 검증하지 않았다.",
+        "separated": "worker는 보관 기간이 7일을 넘고 `pinned == false`인 snapshot만 삭제한다.\n\n삭제한 snapshot을 복원할 수 있는지는 검증하지 않았다."
+      },
+      "layout_pair_order": [
+        "paragraph",
+        "separated"
+      ],
+      "characters": {
+        "source": 108,
+        "rewrite": 91
+      }
+    },
+    {
+      "id": "N2",
+      "rewrite": "controller는 operator가 승인한 뒤에만 batch 재시작을 허용한다. 재시작은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+      "syntax_pair_order": [
+        "rewrite",
+        "source"
+      ],
+      "layout": {
+        "paragraph": "controller는 operator가 승인한 뒤에만 batch 재시작을 허용한다. 재시작은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+        "separated": "controller는 operator가 승인한 뒤에만 batch 재시작을 허용한다.\n\n재시작은 batch당 최대 2회다.\n\n자동 승인 기능은 제공하지 않는다."
+      },
+      "layout_pair_order": [
+        "separated",
+        "paragraph"
+      ],
+      "characters": {
+        "source": 95,
+        "rewrite": 86
+      }
+    },
+    {
+      "id": "E1",
+      "rewrite": "전체 80 session 중 12 session에서 timeout이 발생했다. evaluator는 이 12 session을 제외한 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+      "syntax_pair_order": [
+        "source",
+        "rewrite"
+      ],
+      "layout": {
+        "paragraph": "전체 80 session 중 12 session에서 timeout이 발생했다. evaluator는 이 12 session을 제외한 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+        "separated": "전체 80 session 중 12 session에서 timeout이 발생했다.\n\nevaluator는 이 12 session을 제외한 68 session의 median error를 0.8 m로 보고했다.\n\ntimeout이 발생한 session의 error는 계산하지 않았다."
+      },
+      "layout_pair_order": [
+        "paragraph",
+        "separated"
+      ],
+      "characters": {
+        "source": 135,
+        "rewrite": 150
+      }
+    },
+    {
+      "id": "E2",
+      "rewrite": "5 s timeout은 server의 처리 실패를 뜻하지 않는다. client는 이 timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다.",
+      "syntax_pair_order": [
+        "source",
+        "rewrite"
+      ],
+      "layout": {
+        "paragraph": "5 s timeout은 server의 처리 실패를 뜻하지 않는다. client는 이 timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다.",
+        "separated": "5 s timeout은 server의 처리 실패를 뜻하지 않는다.\n\nclient는 이 timeout이 발생하면 같은 `request_id`로 재시도한다.\n\n다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다."
+      },
+      "layout_pair_order": [
+        "separated",
+        "paragraph"
+      ],
+      "characters": {
+        "source": 122,
+        "rewrite": 132
+      }
+    },
+    {
+      "id": "C1",
+      "rewrite": "`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다. 이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다.",
+      "syntax_pair_order": [
+        "source",
+        "rewrite"
+      ],
+      "layout": {
+        "paragraph": "`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다. 이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다.",
+        "separated": "`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다.\n\n이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다."
+      },
+      "layout_pair_order": [
+        "separated",
+        "paragraph"
+      ],
+      "characters": {
+        "source": 98,
+        "rewrite": 98
+      }
+    },
+    {
+      "id": "C2",
+      "rewrite": "같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다. 원인은 확인하지 않았다. 다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다.",
+      "syntax_pair_order": [
+        "source",
+        "rewrite"
+      ],
+      "layout": {
+        "paragraph": "같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다. 원인은 확인하지 않았다. 다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다.",
+        "separated": "같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다.\n\n원인은 확인하지 않았다.\n\n다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다."
+      },
+      "layout_pair_order": [
+        "paragraph",
+        "separated"
+      ],
+      "characters": {
+        "source": 102,
+        "rewrite": 102
+      }
+    }
+  ]
+}

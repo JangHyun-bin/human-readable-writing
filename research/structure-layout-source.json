@@ -1,0 +1,61 @@
+{
+  "study": "structure-layout-pilot-2026-10-28",
+  "status": "frozen before variants and participant exposure",
+  "kind": "synthetic examples; not product behavior or measurements",
+  "cases": [
+    {
+      "id": "N1",
+      "category": "nominalization",
+      "source": "worker의 snapshot 삭제 수행은 보관 기간 7일 초과와 `pinned == false` 조건이 모두 충족될 때에만 이루어진다. 삭제한 snapshot의 복원 가능성은 검증하지 않았다.",
+      "facts": ["삭제 주체는 worker다.", "보관 기간 > 7일 AND pinned == false는 삭제의 필요 조건이다. 충분 조건이라고 단정하지 않는다.", "삭제한 snapshot의 복원 가능성은 미검증이다."],
+      "literals": ["worker", "snapshot", "7일", "`pinned == false`"],
+      "question": "보관 기간이 정확히 7일이고 pinned == false인 snapshot은 위 삭제 조건을 충족하는가?",
+      "answer": "아니다. 7일을 초과해야 한다."
+    },
+    {
+      "id": "N2",
+      "category": "nominalization",
+      "source": "controller의 batch 재시작 허용은 operator의 승인 후에만 가능하다. 재시작 횟수의 제한은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+      "facts": ["controller가 batch 재시작을 허용한다.", "operator의 사전 승인이 필요하다.", "재시작은 batch당 최대 2회다.", "자동 승인 기능은 없다."],
+      "literals": ["controller", "batch", "operator", "2회"],
+      "question": "operator가 승인하면 같은 batch를 세 번째로 재시작할 수 있는가?",
+      "answer": "아니다. batch당 최대 2회다."
+    },
+    {
+      "id": "E1",
+      "category": "insertion",
+      "source": "evaluator는 전체 80 session 중, timeout이 발생한 12 session을 제외한, 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+      "facts": ["전체 session은 80개다.", "12 session에서 timeout이 발생했다.", "evaluator는 이 12 session을 제외한 68 session의 median error를 0.8 m로 보고했다.", "timeout이 발생한 session의 error는 계산하지 않았다."],
+      "literals": ["evaluator", "80", "12 session", "68 session", "median error", "0.8 m", "timeout"],
+      "question": "여기서 median error 0.8 m는 어떤 범위의 결과인가?",
+      "answer": "timeout이 발생한 12 session을 제외한 68 session의 결과다. 전체 80 session의 결과는 아니다."
+    },
+    {
+      "id": "E2",
+      "category": "insertion",
+      "source": "client는, server의 처리 실패를 뜻하지는 않는, 5 s timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다.",
+      "facts": ["5 s timeout은 server의 처리 실패를 뜻하지 않는다.", "client는 이 timeout이 발생하면 같은 request_id로 재시도한다.", "다른 request_id를 사용했을 때 중복 처리 방지 여부는 미검증이다."],
+      "literals": ["client", "server", "5 s", "timeout", "`request_id`"],
+      "question": "5 s timeout이 발생했다는 사실만으로 server의 처리 실패가 확인되는가?",
+      "answer": "아니다. timeout만으로 처리 실패라고 판단할 수 없다."
+    },
+    {
+      "id": "C1",
+      "category": "already_clear",
+      "source": "`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다. 이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다.",
+      "facts": ["retry_count >= 3이면 worker는 job을 다시 실행하지 않는다.", "unit test 9개에서 확인했다.", "실제 traffic에서는 미검증이다."],
+      "literals": ["`retry_count >= 3`", "worker", "job", "unit test 9개", "traffic"],
+      "question": "이 동작을 실제 traffic에서도 확인했는가?",
+      "answer": "아니다. 실제 traffic에서는 검증하지 않았다."
+    },
+    {
+      "id": "C2",
+      "category": "already_clear",
+      "source": "같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다. 원인은 확인하지 않았다. 다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다.",
+      "facts": ["같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다.", "원인은 미확인이다.", "독립 holdout 평가는 제안이며 실행 일정은 미정이다."],
+      "literals": ["replay", "p95 latency", "48 ms", "36 ms", "holdout"],
+      "question": "독립 holdout 평가를 실행하기로 확정했는가?",
+      "answer": "확정했다는 근거가 없다. 제안이며 실행 일정은 정하지 않았다."
+    }
+  ]
+}

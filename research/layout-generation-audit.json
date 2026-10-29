@@ -1,0 +1,133 @@
+{
+  "checked_on": "2026-10-29",
+  "generation_started_at": "2026-10-28T05:45:49.795205+00:00",
+  "results_sha256": "62d75ad83dc396a70cff7aeb36cebbaf0a6418de224d1fab2e7891b22ea789b1",
+  "events_sha256": "720f8e7beb0ea1db0eb61ffa2612c101d967a71f7ab56fe7bcd817809cf8fed7",
+  "executed_adapter_sha256": "bba3c6888673792d80e72646d38d6ea53d4287403de7e8aac3c5d035e0ac4891",
+  "review": "Fresh-context independent agent layout_results_audit; lead separately checked source/output and agreed with verdicts.",
+  "scope": "Agent semantic audit and observed generation adherence; not human comprehension or general quality superiority.",
+  "trials": [
+    {
+      "order": 1,
+      "case_id": "N1",
+      "arm": "formal",
+      "semantic_verdict": "pass",
+      "rationale": "AND 필요조건과 >7일 경계, worker, 복원 미검증 보존. 보장 불가라는 부연은 복원 불가능을 뜻하지 않음.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    },
+    {
+      "order": 2,
+      "case_id": "N1",
+      "arm": "formal_layout",
+      "semantic_verdict": "pass",
+      "rationale": "원래 actor·AND 필요조건·>7일·복원 미검증 보존.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 3,
+      "case_id": "N2",
+      "arm": "formal_layout",
+      "semantic_verdict": "fail",
+      "rationale": "source에 없는 실제 동작 미검증을 추가. controller의 재시작 허용을 controller가 재시작할 수 있음으로 바꾸어 역할 구분도 약화.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 4,
+      "case_id": "N2",
+      "arm": "formal",
+      "semantic_verdict": "fail",
+      "rationale": "source에 없는 실제 구현의 조건 준수 미확인을 추가. 원래 네 사실은 보존.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    },
+    {
+      "order": 5,
+      "case_id": "E1",
+      "arm": "formal",
+      "semantic_verdict": "pass",
+      "rationale": "80/12/68, 0.8 m, timeout error 미계산 보존. 전체로 일반화할 수 없다는 부연은 범위 명시.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    },
+    {
+      "order": 6,
+      "case_id": "E1",
+      "arm": "formal_layout",
+      "semantic_verdict": "pass",
+      "rationale": "80/12/68, 0.8 m, timeout error 미계산 보존. 전체로 일반화할 수 없다는 부연은 범위 명시.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 7,
+      "case_id": "E2",
+      "arm": "formal_layout",
+      "semantic_verdict": "uncertain",
+      "rationale": "세 사실은 보존하지만 중복 처리 위험은 확인되지 않았다는 부연이 위험 여부 미확인 또는 확인된 위험 없음으로 읽혀 확정 pass로 세지 않음.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 8,
+      "case_id": "E2",
+      "arm": "formal",
+      "semantic_verdict": "pass",
+      "rationale": "timeout만으로 실패를 뜻하지 않음, 같은 ID 재시도, 다른 ID 중복 방지 미검증 보존.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    },
+    {
+      "order": 9,
+      "case_id": "C1",
+      "arm": "formal",
+      "semantic_verdict": "pass",
+      "rationale": ">=3 경계, 재실행 부정, unit test9개, 실제 traffic 미검증 보존.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    },
+    {
+      "order": 10,
+      "case_id": "C1",
+      "arm": "formal_layout",
+      "semantic_verdict": "pass",
+      "rationale": ">=3 경계, 재실행 부정, unit test9개, 실제 traffic 미검증 보존.",
+      "sentence_count": 2,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 11,
+      "case_id": "C2",
+      "arm": "formal_layout",
+      "semantic_verdict": "pass",
+      "rationale": "같은 replay, 48→36 ms, 원인 미확인, holdout 제안·일정 미정 보존.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": true
+    },
+    {
+      "order": 12,
+      "case_id": "C2",
+      "arm": "formal",
+      "semantic_verdict": "pass",
+      "rationale": "같은 replay, 48→36 ms, 원인 미확인, holdout 제안·일정 미정 보존.",
+      "sentence_count": 3,
+      "formal_register": true,
+      "one_sentence_per_paragraph": null
+    }
+  ],
+  "decision": "Generation complete 12/12; full guidance adoption withheld because candidate semantic acceptance is not met.",
+  "runtime_note": "Observed item types were agentMessage/reasoning/userMessage. No tool item or item/tool/call observed. hook/started and hook/completed each occurred 24 times; payloads were not retained, so all external activity absence is not established."
+}

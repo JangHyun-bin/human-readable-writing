@@ -1,0 +1,84 @@
+{
+  "study": "layout-generation-pilot-2026-10-28",
+  "purpose": "사실 보존과 single-pass 형식 지침 준수 확인; 사람의 이해도·선호·latency 우위 추정이 아님",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+  "common_runner_sha256": "f7c30e50947e3c8ef840f43b412842ccff98ce14db22f8f867c223c0116d392b",
+  "cores": {
+    "formal": "주체·동작·조건·이유를 밝히고 검증·한계는 묶어 중복을 줄인다. 수치·단위·범위·부정·불확실성을 보존하고 관찰·가설·인과를 구분한다. Formal한 문체와 technical term을 유지한다.",
+    "formal_layout": "주체·동작·조건·이유를 밝히고 검증·한계는 묶어 중복을 줄인다. 수치·단위·범위·부정·불확실성을 보존하고 관찰·가설·인과를 구분한다. Formal한 문체와 technical term을 유지한다. 짧은 기술 설명은 문장마다 빈 줄로 구분한다."
+  },
+  "prompts": {
+    "N1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nworker의 snapshot 삭제 수행은 보관 기간 7일 초과와 `pinned == false` 조건이 모두 충족될 때에만 이루어진다. 삭제한 snapshot의 복원 가능성은 검증하지 않았다.",
+    "N2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\ncontroller의 batch 재시작 허용은 operator의 승인 후에만 가능하다. 재시작 횟수의 제한은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+    "E1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nevaluator는 전체 80 session 중, timeout이 발생한 12 session을 제외한, 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+    "E2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nclient는, server의 처리 실패를 뜻하지는 않는, 5 s timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다.",
+    "C1": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\n`retry_count >= 3`이면 worker는 job을 다시 실행하지 않는다. 이 동작은 unit test 9개에서 확인했으며, 실제 traffic에서는 검증하지 않았다.",
+    "C2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\n같은 replay에서 p95 latency가 48 ms에서 36 ms로 줄었다. 원인은 확인하지 않았다. 다음 단계로 독립 holdout 평가를 제안하며, 실행 일정은 정하지 않았다."
+  },
+  "schedule": [
+    {
+      "case_id": "N1",
+      "arm": "formal"
+    },
+    {
+      "case_id": "N1",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "N2",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "N2",
+      "arm": "formal"
+    },
+    {
+      "case_id": "E1",
+      "arm": "formal"
+    },
+    {
+      "case_id": "E1",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "E2",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "E2",
+      "arm": "formal"
+    },
+    {
+      "case_id": "C1",
+      "arm": "formal"
+    },
+    {
+      "case_id": "C1",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "C2",
+      "arm": "formal_layout"
+    },
+    {
+      "case_id": "C2",
+      "arm": "formal"
+    }
+  ],
+  "repeats_per_case_arm": 1,
+  "decision": "기존 24회 B/C 비교 대신 선택된 layout 동작의 12회 준수 확인으로 범위를 줄인다. 추가 반복은 실패나 미해결 문제에 필요한 경우에만 수행한다.",
+  "checks": [
+    "source facts·조건·수치·부정·불확실성 보존을 문장별로 검토",
+    "각 paragraph가 완결된 한 문장인지 확인; literal 일치와 의미 보존은 별개",
+    "formal 문체가 유지되는지 확인; 평가자는 agent이며 user 선호로 세지 않음",
+    "모든 관측 event method와 item type을 기록; 비대화 item 또는 예상 밖 event는 별도 검토",
+    "input·cached input·output·reasoning·TTFT·elapsed 기록; 1반복으로 latency 우위 주장 안 함"
+  ],
+  "limits": [
+    "source에 노출된 사용자의 이후 평가는 독립 이해도 평가로 세지 않음",
+    "C1/C2는 이미 명확한 사례이나 다른 core 지시도 작용하므로 그대로 두는지의 완전한 인과 실험이 아님",
+    "formal 공통 조건을 추가했으므로 과거 B와 동일한 arm이 아님"
+  ]
+}

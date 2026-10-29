@@ -8,7 +8,12 @@
       "A": "current",
       "B": "candidate"
     },
-    "response": null
+    "response": "B",
+    "responded_on": "2026-10-28",
+    "verbatim": "B가 훨씬 나은데?",
+    "reason": null,
+    "prior_exposure": "사용자에게 agent의 전체 선호 집계와 후보의 일관된 우위가 없다는 해석을 먼저 공개하였다.",
+    "scope": "첫 Coding 답변 쌍에 대한 개인 선호. 독립적인 blind 평가나 이해도·읽기 시간 측정이 아니다."
   },
   "cases": {
     "T1": {

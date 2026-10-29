@@ -1,0 +1,72 @@
+{
+  "study": "source-fidelity-pilot-2026-10-29",
+  "purpose": "기존 실패 N2·E2에서 의미 보존 보완안의 single-pass 준수 확인",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+  "common_runner_sha256": "f7c30e50947e3c8ef840f43b412842ccff98ce14db22f8f867c223c0116d392b",
+  "parent_protocol_sha256": "a0573f11039be65b0462217ce5c41ef498b4518c2d7bcfe85256e748f5986331",
+  "cores": {
+    "current": "주체·동작·조건·이유를 밝히고 검증·한계는 묶어 중복을 줄인다. 수치·단위·범위·부정·불확실성을 보존하고 관찰·가설·인과를 구분한다. Formal한 문체와 technical term을 유지한다. 짧은 기술 설명은 문장마다 빈 줄로 구분한다.",
+    "revised": "원문의 주체·동작·조건·이유를 보존하고 제시된 검증·한계만 쓴다. 수치·단위·범위·부정과 불확실성의 대상·강도를 보존하고 관찰·가설·인과를 구분한다. Formal한 문체와 technical term을 유지한다. 짧은 기술 설명은 문장마다 빈 줄로 구분한다."
+  },
+  "reference_tokens": {
+    "encoding": "o200k_base",
+    "current": 88,
+    "revised": 93,
+    "scope": "core 본문만; 실제 provider usage는 실행에서 측정"
+  },
+  "prompts": {
+    "N2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\ncontroller의 batch 재시작 허용은 operator의 승인 후에만 가능하다. 재시작 횟수의 제한은 batch당 최대 2회다. 자동 승인 기능은 제공하지 않는다.",
+    "E2": "아래 사실을 동료에게 전달할 짧은 기술 설명을 4문장 이내로 작성해줘.\nclient는, server의 처리 실패를 뜻하지는 않는, 5 s timeout이 발생하면 같은 `request_id`로 재시도한다. 다른 `request_id`를 사용했을 때 중복 처리가 방지되는지는 검증하지 않았다."
+  },
+  "schedule": [
+    {
+      "case_id": "N2",
+      "arm": "current"
+    },
+    {
+      "case_id": "N2",
+      "arm": "revised"
+    },
+    {
+      "case_id": "E2",
+      "arm": "revised"
+    },
+    {
+      "case_id": "E2",
+      "arm": "current"
+    }
+  ],
+  "repeats_per_case_arm": 1,
+  "acceptance": {
+    "N2": [
+      "controller가 허용하는 대상은 batch 재시작이며, controller가 재시작을 수행한다고 바꾸지 않는다.",
+      "operator 승인 후에만 허용되는 필요조건, batch당 최대 2회, 자동 승인 기능 없음이 모두 유지된다.",
+      "원문에 없는 구현·실제 동작의 검증 여부를 추가하지 않는다."
+    ],
+    "E2": [
+      "5 s timeout이면 client가 같은 request_id로 재시도한다.",
+      "timeout만으로 server 처리 실패를 뜻하지 않으며 처리 성공도 확정하지 않는다.",
+      "미검증 대상은 다른 request_id를 쓸 때의 중복 처리 방지 여부다. 위험이 없거나 위험이 확인되지 않았다는 판단으로 바꾸지 않는다.",
+      "같은 request_id에서의 중복 방지 보장 등 원문 밖의 상태·보장을 추가하지 않는다."
+    ],
+    "all": [
+      "제시된 사실·관계·조건·수치·단위·범위·부정과 불확실성의 대상·강도를 모두 보존한다.",
+      "Formal한 문체와 technical term을 유지하고 4문장 이내, 완결된 한 문장마다 빈 줄로 구분한다.",
+      "모든 output을 동일 기준으로 pass·fail·uncertain 판정한다. uncertain은 통과로 세지 않는다."
+    ]
+  },
+  "progression": "4회 실행이 protocol과 일치하고 revised N2·E2가 모두 pass이면 같은 revised core로 N1·N2·E1·E2·C1·C2를 한 번씩 생성하는 6회 확인을 별도로 고정한다. Current는 같은 기준으로 평가·기록하되 그 pass·fail·uncertain은 진입 조건이 아니다. Current도 통과하면 개선 효과로 단정하지 않는다. Revised에 fail·uncertain이 있거나 4회 실행이 불완전·protocol 불일치이면 6회로 진행하지 않고 원인을 검토한다.",
+  "runtime_checks": [
+    "실제 전송 core·prompt·model·effort와 frozen schedule을 대조하고 완료 event·usage를 확인한다.",
+    "관측 event method·item type을 기록한다. 비대화 item은 중단하고 hook 등 비내용 event의 의미는 별도로 검토한다.",
+    "결과 directory는 새로 만들고 기존 결과를 덮어쓰거나 자동 재시도하지 않는다."
+  ],
+  "limits": [
+    "기존 실패를 보고 만든 known-case 확인으로 독립 holdout이 아니다. 후속 6개도 이미 본 사례다.",
+    "한 번씩 생성하므로 일반적인 품질·human comprehension·latency 우위나 실패 원인의 인과를 입증하지 않는다.",
+    "Current는 이전 formal_layout이며 global native pilot의 original CORE와 다르다. 이번 준비는 global 설정을 변경하지 않는다.",
+    "Core 문구 묶음이 달라지는 비교이며 개별 문구의 효과를 분리하지 않는다."
+  ]
+}

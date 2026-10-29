@@ -67,3 +67,15 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 호출 방식과 token·응답 시간의 비교 결과는 [비용 비교](research/invocation-cost.md)를 참조한다. 기본 instructions도 input tokens를 사용하므로, 추가 file 조회가 없다는 사실을 비용이 전혀 없다는 의미로 해석하지 않는다.
 
 기존 축약 core와 같은 token budget의 후보를 비교한 후속 실험은 [고도화 비교](research/core-refinement.md), 조건 이름을 가린 실제 답변은 [blind 비교](research/core-refinement-blind.md)에 있다. 해당 실험 직후에는 기본 적용 설정을 유지하였으며, 이후 시작한 실사용 pilot의 현재 상태는 위 사용 절에 명시하였다.
+
+## 후속 연구와 검증 상태
+
+| 자료 | 2026-10-29 확인 상태 |
+|---|---|
+| [관련 문헌](research/related-literature.md) · [두 논문 적용 제안](research/two-paper-application.md) | 연구 근거와 독립적인 적용 가설을 구분하여 기록 |
+| [문장 구조·줄바꿈 선호](research/structure-layout-pilot.md) | 사용자의 formal 문체·문장별 문단 선호 기록. 이해도 측정과 구분 |
+| [Layout generation](research/layout-generation-pilot.md) | 12/12 생성 완료. 원문 밖 검증 상태 추가와 불확실성 재해석으로 채택 보류 |
+| [Source fidelity](research/source-fidelity-pilot.md) | 문제 사례의 4/4 비교 완료. 두 arm 모두 pass로 보완 효과는 미확정 |
+| [전체 6개 사례 protocol](research/source-fidelity-six-protocol.json) | 동결·offline 검증 완료, 실제 생성 0/6 |
+
+별도 실험의 revised core는 93 reference tokens이며, 전역 실사용 pilot의 original CORE 61 tokens와 구분한다. 여섯 사례의 결과를 확인하기 전 기존 skill·manifest·global 설정에 이 후보를 반영하지 않는다. 성공·실패 결과를 모두 보존하며, token·timing 관측을 일반적인 품질·속도 우위로 해석하지 않는다.

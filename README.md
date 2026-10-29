@@ -16,6 +16,8 @@
 
 평소 답변은 기존 기본 instructions로 바로 작성한다. 이 skill을 위한 상시 지침이나 skill·manifest를 자동으로 읽는 절차는 두지 않는다.
 
+2026-10-29에는 기존 61-token core를 기본 instructions에 직접 포함하는 [실사용 pilot](research/native-pilot.md)을 준비하였다. 현재 session의 전역 file 쓰기 제한으로 실제 적용은 대기 상태이다. 적용·확인·되돌리기 command와 5–10개 사례의 기록 기준은 해당 문서에 있다. 상세 skill의 명시적 호출 정책은 유지한다.
+
 문장 개선·문서 검토가 필요하면 Codex에서는 `$human-readable-writing`, Claude Code에서는 `/human-readable-writing`으로 명시적으로 호출한다. 호출한 작업에서만 상세 manifest와 필요한 예시를 읽는다. 이미 현재 context에 있는 내용은 재사용한다.
 
 ```text

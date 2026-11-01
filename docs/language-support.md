@@ -1,6 +1,6 @@
 # Language support and validation
 
-Korean and English are equal primary languages of this project. Maintain a complete user path in both: documentation, invocation examples, writing guidance, and language-appropriate evaluation tasks. This is a maintenance priority, not a claim that native-level quality or human comprehension gains have been validated.
+The skill does not limit input or output to a fixed set of languages. It follows the requested language, or preserves the source language when editing without a translation request. Korean and English have equal priority for documentation and validation. Maintain a complete user path in both: documentation, invocation examples, writing guidance, and language-appropriate evaluation tasks. This is a maintenance priority, not a claim that native-level quality or human comprehension gains have been validated.
 
 The requested output language always takes precedence. Editing without a language instruction preserves the source language. Shared instructions are written in English; that does not require translating other requests into English.
 
@@ -13,7 +13,7 @@ The requested output language always takes precedence. Editing without a languag
 | Translation | French | [French README](../README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
 | Translation | Simplified Chinese | [Simplified Chinese README](../README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
 | Translation | Japanese | [Japanese README](../README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
-| Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding a language |
+| Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding maintained guidance or language-specific evaluation |
 
 French, Chinese, and Japanese are not labeled as validated language releases. A model's ability to produce those languages does not establish that this skill has been evaluated for them.
 

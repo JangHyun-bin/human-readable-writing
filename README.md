@@ -4,7 +4,7 @@
 
 <p align="center"><strong>English</strong> · <a href="README.ko.md">한국어</a></p>
 
-A writing skill that helps readers follow a technical explanation: what happened, why a claim is warranted, and what action follows. Use it for PR descriptions, incident updates, research notes, and operational guidance in English and Korean.
+A writing skill that helps readers follow a technical explanation: what happened, why a claim is warranted, and what action follows. Use it for PR descriptions, incident updates, research notes, and operational guidance.
 
 It unpacks compressed terminology into concrete actors and actions, keeps conditions and uncertainty beside the claims they qualify, and orders information for the reader’s task. Technical terms and source facts stay intact; missing relationships become questions to resolve.
 
@@ -69,7 +69,7 @@ On 2026-11-02, project-local installations passed the bounded English/Korean inv
 
 ## Languages
 
-**English and Korean are equal primary languages.** Both READMEs cover installation, use, support status, and evidence. Examples should read naturally in their own language; changes to these shared facts belong in both documents.
+The skill follows your requested language and preserves the source language when you do not request translation. **English and Korean have equal priority for documentation and validation.** This maintenance scope does not restrict which languages you can request. Both READMEs cover installation, use, support status, and evidence. Examples should read naturally in their own language; changes to these shared facts belong in both documents.
 
 The common [writing principles](MANIFEST.md) stay in one English file. Korean and mixed Korean–English writing also use the [Korean guidance](references/korean.md). The language of the instructions does not dictate the output language.
 

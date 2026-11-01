@@ -4,21 +4,25 @@
 
 <p align="center"><strong>English</strong> · <a href="README.ko.md">한국어</a></p>
 
-A skill for editing technical prose in English and Korean. It clarifies who did what, under which conditions, while preserving facts, technical terms, and uncertainty. Use it for PR descriptions, incident updates, research notes, and operational guidance.
+A writing skill that helps readers follow a technical explanation: what happened, why a claim is warranted, and what action follows. Use it for PR descriptions, incident updates, research notes, and operational guidance in English and Korean.
+
+It unpacks compressed terminology into concrete actors and actions, keeps conditions and uncertainty beside the claims they qualify, and orders information for the reader’s task. Technical terms and source facts stay intact; missing relationships become questions to resolve.
 
 ## Example
 
+A PR description should explain the problem, how the change addresses it, and what has been checked.
+
 **Before**
 
-> The evaluator reported a median error of 0.8 m across 68 of the 80 sessions, excluding the 12 that timed out; errors for the timed-out sessions were not calculated.
+> To prevent previous-user data from reappearing when a profile response arrives after logout, this change gates screen updates on a match between the `sessionVersion` captured when the request starts and its current value when the response arrives, with the value incremented on logout. In-flight requests are not cancelled, and the behavior has been checked only in a browser.
 
 **After**
 
-> Of the 80 sessions, 12 timed out. The evaluator reported a median error of 0.8 m across the remaining 68 sessions.
+> A profile response that arrives after logout can put the previous user’s data back on screen. This change prevents that by incrementing `sessionVersion` on logout. When a response arrives, the app updates the screen only if the version saved when the request started still matches the current version.
 >
-> Errors were not calculated for the 12 timed-out sessions.
+> In-flight requests are not cancelled. The behavior has been checked only in a browser.
 
-The measured and excluded groups are easier to distinguish; the numbers and limits stay intact. This illustrative example is adapted from a [recorded Korean editing case](research/structure-layout-responses.json), not a measurement of reader comprehension.
+The revision leads with the problem and the fix, then explains when the version is saved, changed, and compared. The version-match condition, lack of request cancellation, and browser-only verification remain explicit. This is an illustrative case; [recorded runs and their limits](#evidence-and-limits) appear below.
 
 ## Installation
 

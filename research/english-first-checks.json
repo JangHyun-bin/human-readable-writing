@@ -1,0 +1,117 @@
+{
+  "recorded_on": "2026-11-01",
+  "kind": "unblinded agent workflow check",
+  "baseline_commit": "88ec41b0cda9c48fa78ecd71d0a4b85bcb24218b",
+  "method": {
+    "baseline": "english_baseline_check; fresh context; five requests in one context",
+    "candidate": "english_candidate_check; separate fresh context; same five requests in one context",
+    "assessment": "Lead-agent manual source and format comparison of all ten verbatim outputs",
+    "human_native_reader_review": false,
+    "normal_runtime_invocation_tested": false,
+    "no_guidance_control": false,
+    "repetitions_per_case_per_arm": 1
+  },
+  "input_hashes": {
+    "cases_json_sha256": "c3712c85b3ddbf448bbbaafd4b3b8a79b2f833c05d7d0776d327e782db7eb9b5",
+    "baseline_skill_sha256": "d9db9624001d1ec170b2b1d62637f56fb6623aebbb85b3399be48efee72620ba",
+    "baseline_manifest_sha256": "9453eb0dac5c3f73271e164ca4e737c30a8ffd6bd4eca7dda9d95367394e5af0",
+    "candidate_evaluated": {
+      "SKILL.md": "2d4a55d47b89750e45e88990a9dd8c84bc7d66625d4078610775e6c076c9eab3",
+      "MANIFEST.md": "386ce8c01b3cc4e29d7c98483856ea4b4f3fbba84376ad4754c44f9c0a539bac",
+      "references/korean.md": "d7b4ac60b0fabec89e9afb5b6a272a9a5ddd776a57e903baa5f1504be8919f45"
+    }
+  },
+  "cases": [
+    {
+      "id": "EN-PR",
+      "request": "Rewrite this pull request description in natural English for a maintainer. Keep it to one paragraph. Return only the revised description.",
+      "source": "The cache invalidation race mitigation gate prevents stale profile reuse after a successful write. An unsuccessful write retains the existing cache entry. This changes client-side cache behaviour only; server validation is unchanged. We added a regression test for two overlapping successful writes. We have not tested a write overlapping with logout.",
+      "criteria_checked": [
+        "Successful write prevents stale profile reuse; failed write retains the existing cache entry.",
+        "Client-side scope only; server validation unchanged.",
+        "Regression test covers two overlapping successful writes; overlap with logout remains untested.",
+        "English output, one paragraph."
+      ],
+      "baseline_output": "This change prevents the client from reusing a stale cached profile after a successful write and preserves the existing cache entry if a write fails. It affects only client-side cache behavior; server validation is unchanged. We added a regression test for two overlapping successful writes. We have not tested a write overlapping with logout.",
+      "candidate_output": "This change prevents the client from reusing stale profile data after a successful write while retaining the existing cache entry if a write fails. It affects only client-side cache behaviour; server validation is unchanged. A new regression test covers two overlapping successful writes. A write overlapping with logout has not been tested.",
+      "baseline_source_and_format": "pass",
+      "candidate_source_and_format": "pass"
+    },
+    {
+      "id": "EN-INCIDENT",
+      "request": "Rewrite this incident update in clear professional English. Preserve what is known and what remains uncertain. Return only the update.",
+      "source": "From 14:05 to 14:17 UTC, 38 of 412 checkout requests returned HTTP 503. A connection-pool limit may have contributed. Restarting the worker was followed by recovery, but we have not established that the restart caused it. We do not yet know whether customers retried the failed requests.",
+      "criteria_checked": [
+        "14:05–14:17 UTC; 38 of 412 checkout requests; HTTP 503.",
+        "Connection-pool limit is a possible contributor.",
+        "Recovery follows restart without establishing causality.",
+        "Customer retries remain unknown; English output."
+      ],
+      "baseline_output": "From 14:05 to 14:17 UTC, 38 of 412 checkout requests returned HTTP 503.\n\nA connection-pool limit may have contributed. Recovery followed a worker restart, but we have not established that the restart caused the recovery. We do not yet know whether customers retried the failed requests.",
+      "candidate_output": "From 14:05 to 14:17 UTC, 38 of 412 checkout requests returned HTTP 503. A connection-pool limit may have contributed to the failures. The service recovered after the worker was restarted, but we have not established that the restart caused the recovery. We do not yet know whether customers retried the failed requests.",
+      "baseline_source_and_format": "pass",
+      "candidate_source_and_format": "pass"
+    },
+    {
+      "id": "EN-RESEARCH",
+      "request": "Rewrite this research note in natural English without strengthening its conclusion. Return only the note.",
+      "source": "Across six paired runs, the candidate median latency was 1.8 s and the baseline median was 2.1 s. The ranges overlapped. Two timed-out candidate runs were excluded, and their latencies were not measured. These observations do not establish an overall speed improvement.",
+      "criteria_checked": [
+        "Six paired runs; candidate median 1.8 s; baseline median 2.1 s; ranges overlap.",
+        "Two candidate timeouts excluded; their latencies unmeasured.",
+        "No established overall speed improvement; English output."
+      ],
+      "baseline_output": "Across six paired runs, the median latencies were:\n\n| Condition | Median latency |\n|---|---:|\n| Candidate | 1.8 s |\n| Baseline | 2.1 s |\n\nThe latency ranges overlapped. Two candidate runs that timed out were excluded, and their latencies were not measured. These observations do not establish an overall speed improvement.",
+      "candidate_output": "Across six paired runs, median latency was 1.8 s for the candidate and 2.1 s for the baseline, with overlapping ranges. Two candidate runs that timed out were excluded, and their latencies were not measured. These observations do not establish an overall speed improvement.",
+      "baseline_source_and_format": "pass",
+      "candidate_source_and_format": "pass"
+    },
+    {
+      "id": "EN-AMBIGUOUS",
+      "request": "Make this release requirement clear in English. Do not invent the missing relationship. Return the revised text or the clarification needed.",
+      "source": "Independent holdout noise mitigation approval gate.",
+      "criteria_checked": [
+        "Requests the missing relationship between independent holdout, noise mitigation, and approval.",
+        "Does not invent a measured outcome or release condition; English output."
+      ],
+      "baseline_output": "Clarification needed: How are the independent holdout, noise mitigation, and release approval related? The requirement does not specify what must be checked or what condition permits release.",
+      "candidate_output": "How are the independent holdout, noise mitigation, and approval related: what must be demonstrated, and what condition permits release?",
+      "baseline_source_and_format": "pass",
+      "candidate_source_and_format": "pass"
+    },
+    {
+      "id": "KO-REGRESSION",
+      "request": "다음 안내를 자연스러운 한국어로 다듬어줘. technical term은 영문 그대로 유지하고, 원문에 없는 동작을 추가하지 마. 안내문만 반환해.",
+      "source": "output directory에 complete: 6 결과가 이미 있으므로 다시 생성할 필요가 없다. 같은 directory를 지정하면 app-server 시작 전에 FileExistsError로 중단된다. 이 실패로 추가 generation은 발생하지 않는다.",
+      "criteria_checked": [
+        "Korean output preserves English technical names.",
+        "Existing complete: 6 means regeneration is unnecessary.",
+        "Same directory fails with FileExistsError before app-server starts; no additional generation."
+      ],
+      "baseline_output": "output directory에 complete: 6 결과가 이미 있어 다시 생성할 필요가 없습니다.\n\n같은 directory를 지정하면 app-server가 시작되기 전에 FileExistsError로 중단됩니다. 이때 추가 generation은 발생하지 않습니다.",
+      "candidate_output": "output directory에 `complete: 6` 결과가 이미 있으므로 다시 생성할 필요가 없다.\n\n같은 directory를 지정하면 app-server 시작 전에 FileExistsError로 중단되며, 추가 generation은 발생하지 않는다.",
+      "baseline_source_and_format": "pass",
+      "candidate_source_and_format": "pass"
+    }
+  ],
+  "limits": [
+    "Both versions passed the checked source facts and formats; no improvement claim.",
+    "Five outputs within each arm shared a context.",
+    "No independent native-reader evaluation or human comprehension measurement.",
+    "No token, latency, normal-runtime discovery, or Claude Code invocation measurement.",
+    "Earlier frozen Korean experiments were not modified or rerun."
+  ],
+  "published_instruction_sha256": {
+    "SKILL.md": "2d4a55d47b89750e45e88990a9dd8c84bc7d66625d4078610775e6c076c9eab3",
+    "MANIFEST.md": "a321cb7490b3eeced44893ceebf0c1978f8819f0dab7795c9e510911fd22ad10",
+    "references/korean.md": "d7b4ac60b0fabec89e9afb5b6a272a9a5ddd776a57e903baa5f1504be8919f45"
+  },
+  "post_generation_edits": [
+    {
+      "path": "MANIFEST.md",
+      "change": "Clarify reuse by pointing to the original accessible manifest or copying the complete skill directory so relative references resolve.",
+      "reason": "Independent document review found that copying the manifest alone could omit the Korean reference.",
+      "verification": "Local reference resolution and retained evaluated-versus-published hashes; output generation not repeated."
+    }
+  ]
+}

@@ -131,3 +131,14 @@ Fresh-context reviewer `manifest_preference_review`는 변경 전후 문서와 �
 의미 보존 원칙·사용자 지정 형식·technical term 유지 규칙은 보존하였다. Source code·SKILL.md·호출 설정·전역 core는 변경하지 않았다. Codex와 Claude Code의 설치 경로가 이 checkout을 가리키는지, 해당 경로에서 최종 MANIFEST를 읽을 수 있는지 확인하였다. 별도 benchmark나 추가 사용자 A/B 평가는 실행하지 않았다. 기존 Python test는 이 문서 동작을 검증하지 않으므로 이번 문서 변경을 위해 재실행하지 않았다.
 
 이는 개인 선호를 문서에 반영하고 문서의 범위·충돌을 확인한 결과다. 변경 후 새 session의 실제 출력 준수율·읽기 시간·이해도 개선이나 core의 인과 효과는 측정하지 않았다.
+
+
+## 2026-11-01 English-first foundation
+
+The user set the development order to English, Korean, French, then Chinese, Japanese, and other languages. README, the skill entry point, the shared manifest, and UI metadata now use English. A Korean README and a scoped Korean reference preserve the existing user path and personal layout preference. The requested output language takes precedence over development priority.
+
+[Language support and validation](docs/language-support.md) records the scope and limits in English. In a small workflow check, two fresh agent contexts processed the same four English requests and one Korean request using the previous and revised instructions. The lead agent checked all ten outputs against the source and requested format; both versions passed. [Verbatim evidence](research/english-first-checks.json) includes the requests, outputs, criteria, and instruction hashes. This is not a no-guidance control, native-reader validation, or a demonstrated quality gain.
+
+The original global core, explicit invocation policy, benchmark runner, frozen protocols, and earlier results remain unchanged. Fresh-session runtime invocation, native-reader quality, comprehension, reading time, and this revision's token/latency cost remain unverified.
+
+The skill structure validator, UI metadata constraints, local links and anchors, instruction hashes, and preservation of the previous validation text were checked. Independent document review found one incomplete reuse instruction: copying the manifest alone could omit its Korean reference. The final guide now keeps the directory together or points to the original accessible location. This documentation-only correction was checked through reference resolution; model outputs were not regenerated, and evaluated/published hashes are recorded separately.

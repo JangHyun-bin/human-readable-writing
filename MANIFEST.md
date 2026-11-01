@@ -1,106 +1,82 @@
 # Human-readable technical writing
 
-## 작성 목표
+## Purpose and scope
 
-독자가 결론과 근거를 연결하고 다음 행동을 판단할 수 있도록 작성한다. 의미를 확정한 뒤 불필요한 내용을 제거한다.
+Help readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request descriptions, incident updates, research notes, and instructions.
 
-## 적용 범위
+Keep the requested language, register, spelling variety, and document format. Write idiomatically in that language. Preserve code, identifiers, paths, commands, API names, quotations, and established technical terms. Follow the user's glossary; explain an unfamiliar term when the intended reader needs it.
 
-기술 설명·PR 설명·진행 보고·연구 해석·agent 지시의 자연어를 작성하거나 개정할 때 사용한다. 기존 용어·문서 형식·사용자 요청을 유지한다. Code, 식별자, 경로, command, API 이름, 원문 인용은 원형을 보존한다. 정착한 전문 용어는 읽는 사람에게 필요한 경우 처음 한 번 설명한다.
+## Writing principles
 
-## 실행 원칙
+1. **Establish the facts before editing the wording.** Identify the actor, action, conditions, observations, and unresolved questions. When the source leaves a relationship unclear, state what needs clarification instead of inventing a connection.
+2. **Keep technical names; explain their relationships.** Unpack noun clusters with verbs and explicit links between concepts. Distinguish an established term from a compressed label created for the document.
+3. **Keep the main statement easy to follow.** Bring the subject and its action together. Move lengthy interruptions into a separate sentence when that clarifies the relationship. Group closely related actions and conditions; use paragraph breaks at meaningful shifts. Follow a requested layout rather than imposing one sentence per paragraph.
+4. **Describe concrete events and actions.** If a metaphor or improvised verb hides what failed, changed, or was prevented, name that event. Keep conventional technical usage.
+5. **Preserve the strength and scope of the evidence.** Keep numbers, units, denominators, exclusions, conditions, negation, exceptions, and uncertainty next to the claims they qualify. Distinguish observations, hypotheses, and established causes. Use a table when it makes a comparison easier to inspect, retaining the basis and limits of that comparison.
+6. **Order information for the reader's task.** In operational guidance, lead with the current state and the decision or action needed, then explain why. In research interpretation, connect observations to the judgment and its limits. Follow any requested ordering. Use an example where it clarifies a relationship, and remove repetition that adds no meaning.
 
-1. **판단에 필요한 사실을 먼저 확정한다.** 누가 무엇을 하였고, 무엇을 관찰하였으며, 무엇이 아직 미검증인지 구분한다. 원인·대상·조건의 관계가 원문에 없으면 확인이 필요한 부분으로 표시한다.
-2. **이름은 보존하고 관계는 풀어 쓴다.** 낯선 명사 연쇄는 조사·전치사·동사로 연결한다. `guard`, `gate`, `holdout`, `regression dilution` 같은 검색 가능한 이름은 유지한다. 기존 식별자와 임의로 만든 문장 표현을 구분한다.
-3. **핵심 서술을 가까이 배치한다.** 주어와 동작 사이의 긴 수식, 여러 조건이 중첩된 문장, 지시 대상이 불분명한 `이것`을 검토한다. 필요하면 문장을 분리하고 조건·이유·결과를 연결하는 말을 명시한다. 짧은 기술 설명과 사용 안내는 문장별로 문단을 나누고, 밀접한 동작·조건은 함께 둔다.
-4. **현상과 행동을 구체적으로 쓴다.** 은유나 새 용법의 동사가 실제 현상을 숨기면, 무엇이 실패·변화·차단되는지 기재한다. 정착한 기술 용어는 그대로 사용한다.
-5. **근거의 강도를 보존한다.** 관찰·가능한 설명·확인한 인과를 구분한다. 수치와 단위, 분모·제외 대상, 조건·부정·예외, 검증 범위를 해당 주장 곁에 둔다. 여러 조건의 수치를 나란히 비교할 때는 기준·단위·비교 범위를 유지한 표를 사용한다.
-6. **글의 목적에 맞춰 정보 순서를 정한다.** 실행 안내는 현재 상태와 필요한 판단·행동을 먼저 제시하고 이유를 잇는다. 연구·측정 결과를 해석할 때는 관측 내용 뒤에 판단과 한계를 둔다. Agent 지시는 행동과 완료 조건을 명시한다. 필요한 예시 하나로 관계를 설명하고 반복을 제거한다.
+## Final check
 
-## 마지막 확인
+Read the revised text on its own, then compare it with the source:
 
-최종 문장만 읽고 다음 질문에 답한다.
+- Is it clear who or what acts, and under which conditions?
+- Can the reader connect each claim to its evidence and limits?
+- Are quantities, exclusions, negation, and the target and strength of uncertainty intact?
+- Does the text separate what happened, what might explain it, and what has been established?
+- If an action is needed, is its owner and completion condition clear from the supplied information?
 
-- 무엇이 달라졌고, 그 판단은 어떤 근거에 의존하는가?
-- 누구 또는 무엇이 작용하며, 어떤 조건에서 결과가 성립하는가?
-- 원문과 비교할 때 수치·부정·조건·불확실성·검증 범위가 보존되었는가?
-- 다음 행동이 필요하다면 누가 무엇을 확인하거나 수행해야 하는가?
+Revise the unclear parts. If required information is absent, ask a focused question or mark the gap. Sentence length, word count, and noun density are clues to inspect, not pass/fail thresholds.
 
-답이 불분명한 부분만 다시 쓴다. 원문에 없는 관계는 추측으로 보충하지 않는다. 단어 수·문장 길이·명사 개수는 검토 단서이며 합격 기준이 아니다.
+## Examples
 
-## 적용 예시
+These are illustrative writing examples, not measurements from this project.
 
-아래 문장은 가상 예시이며 프로젝트의 실제 측정 결과가 아니다.
+### Clarify a compressed label without inventing its meaning
 
-### 1. 압축된 제목의 관계 명시
+**Source:** `holdout regression dilution mitigation gate`
 
-원문: `holdout regression dilution mitigation gate`
+The label alone does not establish what is measured, whether mitigation has happened, or what permits the next step. Ask for that relationship before rewriting it as a release requirement.
 
-**관계를 모를 때:** `holdout`에서 무엇을 측정하고 어떤 조건으로 진행을 허용하는지 확인이 필요하다. 제목만으로는 `mitigation`을 수행하였는지 알 수 없다.
+**If the source explanation confirms that progress requires remeasuring the effect of label noise on an independent holdout:**
 
-**원문 설명에서 “독립 holdout으로 label noise 영향을 다시 측정한 뒤 진행”이라는 뜻이 확인된 경우:**
+> Remeasure the effect of label noise on an independent holdout before proceeding.
 
-> 독립 holdout의 label noise 영향 재측정과 진행 조건
+The relationship comes from the supplied explanation, not from expanding the label by guesswork.
 
-관계를 확인한 뒤 제목을 바꾸었다. 어색한 제목을 자연스럽게 만드는 과정에서 새로운 기술적 의미를 만들지 않는다.
+### Preserve exclusions and uncertainty
 
-### 2. 짧은 보고의 조건 보존
+**Source facts:** A replay analysis reported a drop in median error from 1.4 m to 1.1 m. It included 96 successful sessions out of 120 and excluded 24 failed sessions. The same replay data was used to select the threshold. Android timestamps were snapped to a 10 ms grid. Additional label noise and regression dilution are possible explanations, not established causes. iOS and field performance have not been verified.
 
-원문:
+**Revised:**
 
-> timestamp snap이 label noise를 먹여 holdout regression dilution gate를 흔들었다. median error 1.4 m → 1.1 m, 개선 확인.
-
-추가로 확인한 사실:
-
-> Android timestamp는 10 ms grid에 snap되었다. regression dilution은 가설이다. 120 session 중 성공한 96 session만 집계하였고 실패 24 session은 제외하였다. 같은 replay data로 threshold를 선택하였다. iOS·현장 실기는 미검증이다.
-
-개정:
-
-> 성공한 96 session의 replay에서 median error가 1.4 m에서 1.1 m로 감소하였다. 전체 120 session 중 실패한 24 session은 집계에서 제외하였고, 같은 data로 threshold도 선택하여 independent holdout 결과로 볼 수 없다.
+> Median error fell from 1.4 m to 1.1 m across the 96 successful sessions in the replay analysis. The analysis excluded 24 failed sessions out of 120 and used the same data to select the threshold, so this is not an independent holdout result.
 >
-> Android timestamp가 10 ms grid에 snap되어 label에 noise가 추가되었을 가능성이 있다. regression dilution이 원인인지는 확인하지 않았다. iOS·현장 실기는 미검증이다. 후속 측정으로 성공·실패 전체 session을 포함한 새 holdout 평가를 제안한다.
+> Snapping Android timestamps to a 10 ms grid may have introduced label noise. Whether regression dilution explains the result remains unconfirmed. iOS and field performance have not been verified.
 
-원문만으로 복원할 수 없는 사실은 추가 근거가 확보된 뒤 포함하였다. 마지막 문장은 원문 사실에 근거한 후속 측정 제안이며, 합의된 계획이나 수행한 검증으로 표시하지 않았다.
+The revision retains the denominator, exclusions, selection procedure, and uncertainty. A proposed follow-up evaluation would need to be labeled as a proposal, not as work already agreed or completed.
 
-### 3. 논문 해석의 범위 보존
+### Preserve the boundary between a study and an application
 
-과도한 결론:
+**Overstatement:**
 
-> Reasoning training이 AI 문장을 어렵게 만들기 때문에 문장을 길게 쓰면 해결된다.
+> Reasoning training makes AI writing hard to understand, so longer sentences solve the problem.
 
-개정:
+**Revised:**
 
-> 논문은 영어 AI output에서 읽기 어려움과 관련된 언어적 특성을 관찰하였다.
->
-> 작은 model의 통제 실험에서는 length penalty가 일부 짧은 문법 형태에 대한 preference를 강화하였다.
->
-> Frontier model의 실제 훈련 원인과 한국어 독해 개선 효과는 확인하지 않았다.
+> The paper observed linguistic features associated with reading difficulty in English AI-generated text. In a controlled experiment with smaller models, a length penalty increased preference for some shorter grammatical forms. The study did not establish the causes in frontier-model training or show that this writing guidance improves human comprehension.
 
-관찰과 제한된 실험 결과를 구분하였다. 해결책의 효과까지 입증한 것처럼 서술하지 않는다.
+An observation, a limited experiment, and a proposed writing intervention support different claims.
 
-## 다른 지시와의 관계
+## Language and user preferences
 
-사용자가 정한 용어와 문서 목적을 따른다. 한국어·영어 code-switching에서는 technical term의 표기를 유지하고 주변의 관계를 자연스러운 한국어로 작성한다. 영어 commit message에는 같은 명료성 원칙을 영어로 적용한다. 글의 내용을 기술적으로 바꾸거나 과거 증거 문서를 개정하는 권한은 이 manifest에서 부여하지 않는다.
+English is the canonical language of these instructions. Output follows the user's requested language and audience. For Korean and Korean–English writing, use the scoped guidance in [references/korean.md](references/korean.md). A project's language priority does not override an explicit request to write in another language.
 
-## 재사용
+The maintainer's earlier preferences for short paragraphs, comparison tables, and observation-first research notes came from five Korean document comparisons. They inform optional layout choices; they are not evidence of a universal rule for English or other languages. Keep tightly connected reasoning together when that reads more naturally.
 
-현재 작업에 적용하려면 다음과 같이 요청한다.
+## Reuse and evidence
 
-> `/Users/janghyunbin/dev/human-readable-writing/MANIFEST.md`를 읽고 이 설명에 적용해줘. 원문에 없는 관계와 미검증 조건은 보존해.
+Invoke [SKILL.md](SKILL.md) for a writing task. To reuse it in another repository, reference this manifest at its existing accessible location or copy the complete skill directory so its relative references still resolve. Keep this file as the single source for the shared principles. This guidance does not authorize changes to technical behavior or historical evidence.
 
-Repository에 채택할 때는 manifest를 해당 repository의 문서 위치에 복사하고, 그 repository의 `AGENTS.md`에 다음처럼 짧은 pointer를 연결할 수 있다. 아래 상대 경로는 배치 예시이다.
+The starting point was Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). The writing principles and examples are practical proposals, not an intervention validated by the paper's authors. That study did not directly measure human comprehension of this skill's outputs.
 
-```markdown
-문장 개선·문서 검토를 명시적으로 요청받으면
-docs/WRITING_MANIFEST.md를 읽고 적용한다.
-```
-
-상세 작성 원칙의 정본은 이 manifest이며, [SKILL.md](SKILL.md)를 명시적으로 호출한 검토에서 읽는다. 평소 답변은 [실사용 pilot](research/native-pilot.md)의 61-token core를 기본 instructions에 포함하여 작성한다. 설치 경로와 현재 적용 상태는 [README.md](README.md)를 참조한다.
-
-## 근거와 상태
-
-근거는 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1)이다. 위 원칙과 한국어 적용 예시는 논문의 저자들이 검증한 writing intervention이 아니라 실무 제안이다. 이 연구는 인간의 이해도를 직접 측정하지 않았다. Manifest 적용에 따른 독해 개선 효과도 미측정이다. [상세 분석](ANALYSIS.md) · [검증 기록](VALIDATION.md).
-
-2026-10-30 문단 배치·수치 비교·정보 순서에 관한 지침에 [실제 문서 다섯 쌍의 사용자 선호](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계)를 반영하였다. 이 사용자의 표현 선호이며 일반적인 독해 개선이나 core의 성능 향상을 입증한 결과는 아니다.
-
-원논문의 license는 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)이며, 저자와 변경 내역은 [NOTICE.md](NOTICE.md)에 명시하였다.
+See [language coverage and validation](docs/language-support.md) for current scope, and the original [analysis](ANALYSIS.md), [validation history](VALIDATION.md), and [attribution record](NOTICE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.

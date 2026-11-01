@@ -1,0 +1,117 @@
+{
+  "recorded_on": "2026-11-01",
+  "kind": "English PR-description draft and revision for an actual completed change",
+  "task": "Write a professional English PR description for the English-first change. Explain the resulting language behavior, Korean guidance, invocation scope, and recorded validation limits. Use three prose paragraphs. Preserve the same facts in the draft and revision.",
+  "source": {
+    "repository": "human-readable-writing",
+    "commit": "3fd34b8334c3e83f9950285f34a8945bc5637dbc",
+    "parent": "88ec41b0cda9c48fa78ecd71d0a4b85bcb24218b",
+    "diff_sha256": "b0dfb9dc42e58f2e440e18572a94190537ccc5460a9671bc7500562ed67198b8",
+    "working_checkpoint": "461d5ea6113dcd592ffb1f0570bed447e44d60f1",
+    "status": "The source change is already on main. These are retrospective PR-body drafts, not the body of an existing or newly opened GitHub PR.",
+    "facts": [
+      {
+        "claim": "SKILL.md, MANIFEST.md, the main README, and UI metadata become English-first.",
+        "paths": [
+          "SKILL.md",
+          "MANIFEST.md",
+          "README.md",
+          "agents/openai.yaml"
+        ]
+      },
+      {
+        "claim": "An explicit requested language wins; edits otherwise retain their source language; drafting without a source or language request follows the established language.",
+        "paths": [
+          "SKILL.md"
+        ]
+      },
+      {
+        "claim": "A Korean README and a scoped Korean reference preserve Korean usage and the maintainer’s prior Korean layout preferences; Korean and mixed Korean–English work reads the reference.",
+        "paths": [
+          "README.ko.md",
+          "references/korean.md",
+          "SKILL.md"
+        ]
+      },
+      {
+        "claim": "A language-support guide records the supported scope and validation limits.",
+        "paths": [
+          "docs/language-support.md"
+        ]
+      },
+      {
+        "claim": "Explicit invocation and the existing 61-token global core are unchanged.",
+        "paths": [
+          "agents/openai.yaml",
+          "VALIDATION.md"
+        ]
+      },
+      {
+        "claim": "Two fresh contexts, one per instruction version, handled the same four English and one Korean request. All ten outputs passed the lead’s source and format checks. No quality improvement was established.",
+        "paths": [
+          "research/english-first-checks.json",
+          "VALIDATION.md"
+        ]
+      },
+      {
+        "claim": "At that revision, fresh-session runtime invocation, native-reader quality, comprehension, reading time, and token/latency costs were unverified.",
+        "paths": [
+          "VALIDATION.md"
+        ]
+      }
+    ]
+  },
+  "method": {
+    "author": "lead agent in the current conversation",
+    "baseline": "A is a newly written first draft based on the actual diff, not a pre-existing PR body or unguided generation.",
+    "revision": "B is a revision using the current human-readable-writing guidance. The same conversation already contains that guidance and earlier preferences.",
+    "wording_and_order_vary": true,
+    "paragraph_count_each": 3,
+    "independent_generations": false,
+    "randomized": false,
+    "blinded": false,
+    "claim": "An editing preference check on a real change; it cannot isolate the skill’s effect."
+  },
+  "samples": [
+    {
+      "label": "A",
+      "role": "first draft",
+      "output": "This change makes English the canonical language for SKILL.md, MANIFEST.md, the main README, and the UI prompt. It adds a Korean README, a Korean-specific reference, and a language-support guide. The reference carries the maintainer's earlier Korean layout preferences and is read for Korean or mixed Korean–English prose.\n\nThe output-language policy gives an explicit request priority. When editing without a language instruction, the skill preserves the source language; when drafting without a source or language instruction, it uses the user's established language. Explicit invocation and the existing 61-token global core remain unchanged.\n\nThe recorded workflow check used two fresh agent contexts, one per instruction version, on the same four English requests and one Korean request. The lead agent checked all ten outputs for source fidelity and requested format; both versions passed. This does not establish a quality improvement. Normal runtime invocation in fresh Codex and Claude Code sessions, native-reader quality, comprehension, reading time, and token and latency costs remain unverified."
+    },
+    {
+      "label": "B",
+      "role": "edited draft",
+      "output": "This change puts the shared instructions in SKILL.md and MANIFEST.md, the main README, and the UI prompt in English while keeping the output language under the user's control. An explicit language request takes priority. Without one, edits retain the source language, and drafts without a source use the user's established language.\n\nA new Korean README provides the Korean usage guide. Korean and mixed Korean–English tasks also read a separate reference containing language-specific guidance and the maintainer's earlier layout preferences. A new language-support guide explains the scope. Explicit invocation and the existing 61-token global core remain unchanged.\n\nThe recorded workflow check used a separate fresh agent context for each instruction version. Each context handled the same four English requests and one Korean request. The lead agent checked all ten outputs against the source facts and requested formats. Both versions passed, which does not establish a quality improvement. Normal runtime invocation in fresh Codex and Claude Code sessions, native-reader quality, comprehension, reading time, and token and latency costs remain unverified."
+    }
+  ],
+  "source_fidelity_review": {
+    "by": "lead agent",
+    "result": "After clarifying the separate contexts in B, both drafts retain the listed source facts, output-language conditions, invocation boundary, historical check counts, and unverified scope. The initially presented B is retained in presentation_revisions.",
+    "independent_review": false
+  },
+  "presentation": {
+    "html": "english-pr-description-ab-20261101.html",
+    "url": "https://jang-macbookpro.tail569454.ts.net/english-ab/pr.html",
+    "html_sha256": "8b43d16894f652c6ff50f56acfd953da98a6d603ddc71a1e4c53ebf42a111cdc"
+  },
+  "user_feedback": null,
+  "limits": [
+    "One draft/revision pair; both produced in the same exposed context.",
+    "No actual GitHub PR was created or edited.",
+    "No comprehension, reading-time, generation-cost, or latency measurement.",
+    "No user preference has been inferred."
+  ],
+  "presentation_revisions": [
+    {
+      "changed_at": "2026-11-01T12:47:08.598513+00:00",
+      "previous_B": "This change puts the shared instructions in SKILL.md and MANIFEST.md, the main README, and the UI prompt in English while keeping the output language under the user's control. An explicit language request takes priority. Without one, edits retain the source language, and drafts without a source use the user's established language.\n\nA new Korean README provides the Korean usage guide. Korean and mixed Korean–English tasks also read a separate reference containing language-specific guidance and the maintainer's earlier layout preferences. A new language-support guide explains the scope. Explicit invocation and the existing 61-token global core remain unchanged.\n\nIn the recorded workflow check, one fresh agent context used each instruction version on the same four English requests and one Korean request. The lead agent checked all ten outputs against the source facts and requested formats. Both versions passed, which does not establish a quality improvement. Normal runtime invocation in fresh Codex and Claude Code sessions, native-reader quality, comprehension, reading time, and token and latency costs remain unverified.",
+      "previous_html_sha256": "b885f65cde9e8ced3262fdbf608984bf89ee65937465058cb8ab0765ad344111",
+      "reason": "Clarify that instruction versions used separate contexts. The previous wording could imply one context used both versions. Changed before any user feedback was received; the change was disclosed in the conversation."
+    }
+  ],
+  "instruction_sha256": {
+    "SKILL.md": "2d4a55d47b89750e45e88990a9dd8c84bc7d66625d4078610775e6c076c9eab3",
+    "MANIFEST.md": "a321cb7490b3eeced44893ceebf0c1978f8819f0dab7795c9e510911fd22ad10",
+    "agents/openai.yaml": "532bc46f3277fdbc48273b6e3a31f1acecf6825f48d085ee8bae77c6d63a3e70"
+  }
+}

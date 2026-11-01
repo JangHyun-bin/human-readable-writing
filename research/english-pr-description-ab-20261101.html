@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>English PR description — A/B 비교</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; color: #242424; background: #fff; font-family: system-ui, sans-serif; }
+main { max-width: 1180px; margin: 0 auto; padding: 40px 24px; }
+h1 { margin: 0 0 12px; font-size: 26px; }
+.intro { margin: 0 0 28px; line-height: 1.65; }
+.comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid #bdbdbd; }
+article { padding: 24px 28px; min-width: 0; }
+article + article { border-left: 1px solid #bdbdbd; }
+h2 { margin: 0 0 18px; font-size: 20px; }
+.prose { font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 1.7; overflow-wrap: break-word; }
+.prose p { margin: 0 0 1.25em; }
+.prose p:last-child { margin-bottom: 0; }
+.prompt { margin-top: 26px; line-height: 1.65; }
+.note { color: #555; font-size: 14px; line-height: 1.65; }
+@media (max-width: 720px) {
+ main { padding: 24px 16px; }
+ .comparison { grid-template-columns: 1fr; }
+ article { padding: 22px; }
+ article + article { border-left: 0; border-top: 1px solid #bdbdbd; }
+}
+@media print { main { max-width: none; padding: 0; } article { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+<h1>English PR description — A/B 비교</h1>
+<p class="intro">실제 English-first 변경을 설명하는 PR 본문 초안입니다. Reviewer 입장에서 변경 내용과 범위가 더 잘 읽히는 쪽을 골라주세요.</p>
+<div class="comparison">
+<article aria-labelledby="label-a"><h2 id="label-a">A</h2><div class="prose" lang="en"><p>This change makes English the canonical language for SKILL.md, MANIFEST.md, the main README, and the UI prompt. It adds a Korean README, a Korean-specific reference, and a language-support guide. The reference carries the maintainer&#x27;s earlier Korean layout preferences and is read for Korean or mixed Korean–English prose.</p><p>The output-language policy gives an explicit request priority. When editing without a language instruction, the skill preserves the source language; when drafting without a source or language instruction, it uses the user&#x27;s established language. Explicit invocation and the existing 61-token global core remain unchanged.</p><p>The recorded workflow check used two fresh agent contexts, one per instruction version, on the same four English requests and one Korean request. The lead agent checked all ten outputs for source fidelity and requested format; both versions passed. This does not establish a quality improvement. Normal runtime invocation in fresh Codex and Claude Code sessions, native-reader quality, comprehension, reading time, and token and latency costs remain unverified.</p></div></article>
+<article aria-labelledby="label-b"><h2 id="label-b">B</h2><div class="prose" lang="en"><p>This change puts the shared instructions in SKILL.md and MANIFEST.md, the main README, and the UI prompt in English while keeping the output language under the user&#x27;s control. An explicit language request takes priority. Without one, edits retain the source language, and drafts without a source use the user&#x27;s established language.</p><p>A new Korean README provides the Korean usage guide. Korean and mixed Korean–English tasks also read a separate reference containing language-specific guidance and the maintainer&#x27;s earlier layout preferences. A new language-support guide explains the scope. Explicit invocation and the existing 61-token global core remain unchanged.</p><p>The recorded workflow check used a separate fresh agent context for each instruction version. Each context handled the same four English requests and one Korean request. The lead agent checked all ten outputs against the source facts and requested formats. Both versions passed, which does not establish a quality improvement. Normal runtime invocation in fresh Codex and Claude Code sessions, native-reader quality, comprehension, reading time, and token and latency costs remain unverified.</p></div></article>
+</div>
+<p class="prompt"><strong>A / B / 차이 없음</strong> 중 하나를 대화에 알려주세요. 특정 문장이 걸리면 함께 짚어주셔도 됩니다.</p>
+<p class="note">대상: commit 3fd34b8. 이미 main에 반영된 변경을 설명하는 초안이며, 기존 GitHub PR 본문은 아닙니다. 이번 선택은 글 전체의 읽기 선호로 기록합니다.</p>
+</main>
+</body>
+</html>

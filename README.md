@@ -79,3 +79,6 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 | [전체 6개 사례 protocol](research/source-fidelity-six-protocol.json) · [audit](research/source-fidelity-six-audit.json) | 6/6 생성 완료. Agent의 의미·형식 기준 모두 pass |
 
 별도 실험의 revised core는 93 reference tokens이며, 전역 실사용 pilot의 original CORE 61 tokens와 구분한다. 여섯 사례는 revised만 한 번씩 확인한 결과로, 기존 core보다 낫다는 근거는 아니다. 기존 manifest를 적용한 문제 사례 두 개도 의미를 보존하여 작성 규칙을 추가하지 않았다. 전역 core와 명시적 skill 호출 정책을 유지하고, 다음 평가는 실사용 pilot의 사용자 feedback으로 진행한다.
+
+
+2026-10-30 실제 문서 다섯 쌍에 대한 사용자 선택을 반영하여 [MANIFEST](MANIFEST.md)의 짧은 설명 문단 배치·수치 비교 표·목적별 정보 순서를 구체화하였다. 명시적으로 skill을 호출할 때 이 상세 지침을 읽는다. 기존 61-token core와 호출 정책은 유지하며, 이번 변경은 개인 선호의 반영이지 일반적인 독해 개선 효과의 입증은 아니다.

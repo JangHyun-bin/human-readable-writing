@@ -120,3 +120,14 @@ Timing 집계의 commentary 제외, 동결한 reference 반환, baseline의 예�
 [고정된 4회→6회 확인](research/source-fidelity-pilot.md)을 완료하였다. 4회에서는 current·revised의 N2·E2가 모두 pass였고, 동일 revised core를 사용한 후속 6개 사례도 agent의 의미·Formal·문단 형식 기준을 모두 충족하였다. [Six-case audit](research/source-fidelity-six-audit.json)에 원본 hash·전송 조건·판정 근거와 runtime 기록 한계를 보존하였다. Core를 직접 전달한 known-case 확인이며 full MANIFEST 적용 효과·global core 개선·human comprehension 측정은 아니다.
 
 별도 context의 agent가 기존 SKILL·MANIFEST를 적용한 N2·E2도 의미를 보존하였다. 작성 규칙을 추가하지 않고 manifest의 재사용 안내에 현재 pilot 상태를 기재하였다. 전역 61-token core와 명시적 skill 호출 정책은 유지하였다. Offline unit test 23개와 skill 구조 검사는 통과하였다.
+
+
+## 2026-10-30 개인 선호를 상세 지침에 반영
+
+[실제 문서 다섯 쌍의 편집 선호](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계)를 A·B·B·B·A로 기록한 뒤, 사용자가 진행을 승인하여 MANIFEST의 원칙 3·5·6에 반영하였다. 짧은 기술 설명·사용 안내의 문단 구분, 여러 조건의 수치를 비교할 때의 표 사용, 실행 안내와 연구 해석의 정보 순서를 구체화하였다. 기존의 모든 결과 보고를 결론부터 시작한다는 규칙은 목적별 순서로 바꾸었다.
+
+Fresh-context reviewer `manifest_preference_review`는 변경 전후 문서와 사용자 선택을 read-only로 비교하였다. Critical·Important finding은 없었으며, 두 Minor 제안을 반영하였다. 표 사용 조건을 단순히 수치가 여러 개인 경우가 아닌 나란히 비교하는 경우로 좁혔고, 관찰·통제 실험·미확인 범위를 설명하는 기존 예시 세 문장의 문구는 유지하면서 문단만 나누었다.
+
+의미 보존 원칙·사용자 지정 형식·technical term 유지 규칙은 보존하였다. Source code·SKILL.md·호출 설정·전역 core는 변경하지 않았다. Codex와 Claude Code의 설치 경로가 이 checkout을 가리키는지, 해당 경로에서 최종 MANIFEST를 읽을 수 있는지 확인하였다. 별도 benchmark나 추가 사용자 A/B 평가는 실행하지 않았다. 기존 Python test는 이 문서 동작을 검증하지 않으므로 이번 문서 변경을 위해 재실행하지 않았다.
+
+이는 개인 선호를 문서에 반영하고 문서의 범위·충돌을 확인한 결과다. 변경 후 새 session의 실제 출력 준수율·읽기 시간·이해도 개선이나 core의 인과 효과는 측정하지 않았다.

@@ -78,6 +78,42 @@
           "score": null
         }
       ]
+    },
+    {
+      "received_on": "2026-10-30",
+      "verbatim": "ㅊ이건 B지 당연히",
+      "responses": [
+        {
+          "study": "e1-readability-preference-followup-2026-10-30",
+          "case_id": "E1",
+          "question_kind": "whole_rewrite_preference",
+          "presented_versions": {
+            "A": "evaluator는 전체 80 session 중, timeout이 발생한 12 session을 제외한, 68 session의 median error를 0.8 m로 보고했다. timeout이 발생한 session의 error는 계산하지 않았다.",
+            "B": "evaluator는 전체 80 session 중 timeout이 발생한 12 session을 제외하고, 나머지 68 session의 median error를 0.8 m로 보고했다.\n\ntimeout이 발생한 12 session의 error는 계산하지 않았다."
+          },
+          "provenance": {
+            "A": "structure-layout-source.json E1 source",
+            "A_source_sha256": "23c72411ba85f21493f4db0bb359bd0c2875964387928143765c90c33718e9d1",
+            "B": "source-fidelity-six-results.jsonl order 3 revised output",
+            "B_results_sha256": "ee9c2a6bc486907b35b58019f5423eb78604a1c6a4ed93af5deac1c40726b7b4"
+          },
+          "question": "A / B / 차이 없음 중 하나. 특히 0.8 m가 어느 session들의 결과인지 바로 파악되는 쪽.",
+          "choice": "B",
+          "selected_version": "six_case_revised",
+          "reason": null,
+          "interpretation": "사용자는 B를 명확히 선호했다. 문장 구조·문단 배치·12 session의 재명시가 함께 달라져 B 전체 표현의 선호로 기록한다. 이유를 따로 설명한 것은 아니다.",
+          "limits": "이미 노출된 가상 사례이며 순서 고정·범위 파악 cue 포함. 독립 blind 평가·이해도 정답·특정 변경의 인과 효과로 세지 않는다.",
+          "counted_in_real_work_pilot": false
+        }
+      ],
+      "unanswered_at_this_event": [
+        {
+          "case_id": "E1",
+          "question_kind": "open_book_comprehension",
+          "response": null,
+          "score": null
+        }
+      ]
     }
   ]
 }

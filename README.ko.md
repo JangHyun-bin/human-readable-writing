@@ -2,7 +2,7 @@
   <img src="assets/readme-header.svg" alt="Human-readable writing — 용어는 보존하고, 관계는 풀어 쓴다." width="100%">
 </p>
 
-<p align="center"><a href="README.md">English</a> · <strong>한국어</strong></p>
+<p align="center"><a href="README.md">English</a> · <strong>한국어</strong> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">中文（简体）</a> · <a href="README.ja.md">日本語</a></p>
 
 <p align="center">
   <strong>기술적 의미를 보존하는 Codex · Claude Code writing skill</strong>
@@ -121,8 +121,12 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 |---|---|---|
 | 1 | English | 공통 지침·기본 README·예시를 영어로 작성한다. Native reader의 품질 평가는 아직 남아 있다. |
 | 2 | 한국어 | 이 안내와 한국어 보완 지침, 기존 개인 선호·사실 보존 기록을 유지한다. |
-| 3 | Français | 언어별 지침과 검증을 앞으로 진행한다. |
-| 4 | 中文 · 日本語 · 기타 | 언어별 지침과 검증을 앞으로 진행한다. |
+| 3 | Français | [불어 README](README.fr.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
+| 4 | 中文（简体） | [중국어 간체 README](README.zh-CN.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
+| 4 | 日本語 | [일본어 README](README.ja.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
+| 4 | 기타 언어 | 해당 언어의 문서와 검증을 앞으로 진행한다. |
+
+다섯 언어의 README에서 설치·사용 방법을 확인할 수 있다. Agent가 읽는 공통 지침은 영어 정본이며, README 제공 여부와 해당 언어 출력의 native 품질 검증은 구분한다.
 
 영어 우선은 개발·검증 순서이며 출력 언어를 영어로 고정한다는 뜻이 아니다. 사용자가 지정한 언어가 우선한다. 공통 원칙은 [영어 MANIFEST](MANIFEST.md)가 정본이며, 한국어 작업에는 [한국어 보완 지침](references/korean.md)을 함께 적용한다. 기존 한국어의 개인 문단 선호를 다른 언어 전체에 강제하지 않는다.
 
@@ -136,7 +140,7 @@ Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필�
 |---|---|
 | [실제 문서 다섯 쌍의 A/B 선호](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 개인의 문단·표·정보 순서 선호를 상세 지침에 반영. Core 효과나 이해도 측정과 구분한다. |
 | [Layout generation 12회](research/layout-generation-pilot.md) | 원문 밖 검증 상태 추가와 불확실성 재해석이 발견되어 채택을 보류했다. |
-| [문제 사례 비교 4회](research/source-fidelity-pilot.md) | 두 arm 모두 pass. 보완안의 우위는 확인하지 못했다. |
+| [문제 사례 4회 생성](research/source-fidelity-pilot.md) | 두 arm 모두 pass. 보완안의 우위는 확인하지 못했다. |
 | [Revised core의 6개 사례](research/source-fidelity-six-audit.json) | Agent의 의미·형식 기준은 6/6 pass. 기존 core와의 비교 실험은 아니다. |
 
 실험의 revised core는 93 reference tokens이며, 현재 global pilot의 original core 61 tokens와 구분한다. 기존 MANIFEST를 적용한 문제 사례 두 개도 의미를 보존하였다. [전체 검증 기록](VALIDATION.md)

@@ -10,10 +10,14 @@ The requested output language always takes precedence. Editing without a languag
 |---|---|---|---|
 | 1 | English | Canonical README, skill entry point, manifest, UI prompt, original English workflow requests, and English validation summary | Fresh-session runtime checks and native-reader review of real work |
 | 2 | Korean | Localized README, scoped language guidance, and the earlier personal pilot | Continued real-work feedback under the shared manifest |
-| 3 | French | Roadmap only | French-authored tasks, language-specific guidance where needed, and native-reader review |
-| 4 | Chinese, Japanese, and other languages | Roadmap only | Define the relevant locale/script and audience, then author tasks and validate each language separately |
+| 3 | French | [Localized README](../README.fr.md) with installation, invocation examples, and evidence limits | French-authored tasks, language-specific guidance where needed, and native-reader review |
+| 4 | Simplified Chinese | [Localized README](../README.zh-CN.md) with installation, invocation examples, and evidence limits | Chinese-authored tasks, language-specific guidance, and native-reader review; Traditional Chinese documentation is not yet provided |
+| 4 | Japanese | [Localized README](../README.ja.md) with installation, invocation examples, and evidence limits | Japanese-authored tasks, language-specific guidance where needed, and native-reader review |
+| 4 | Other languages | Roadmap only | Define the relevant locale/script and audience, then author tasks and validate each language separately |
 
 French, Chinese, and Japanese are not labeled as validated language releases. A model's ability to produce those languages does not establish that this skill has been evaluated for them.
+
+The five README versions link to one another and document the same installation and usage path. The English README is the documentation source of truth. The shared skill instructions remain in English; translated documentation is separate from language-specific behavior and native-reader validation.
 
 ## What native support requires
 
@@ -50,7 +54,7 @@ The earlier [validation history](../VALIDATION.md), [literature notes](../resear
 
 - The five document comparisons recorded one user's layout preferences.
 - The 12-generation layout pilot exposed unsupported verification claims and changes to uncertainty; adoption was deferred.
-- The four-case source-fidelity comparison passed in both arms and did not establish superiority.
+- The four-generation source-fidelity comparison passed in both arms and did not establish superiority.
 - The six-case follow-up checked the revised core alone and passed the agent's meaning and format criteria.
 
 The old 61-token global core, 93-token experimental core, frozen protocols, and benchmark runner remain unchanged. Earlier token and timing results do not measure this English-first revision.

@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <strong>English</strong> · <a href="README.ko.md">한국어</a>
+  <strong>English</strong> · <a href="README.ko.md">한국어</a> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">中文（简体）</a> · <a href="README.ja.md">日本語</a>
 </p>
 
 <p align="center">
@@ -129,8 +129,12 @@ English is the primary language for authoring the skill, its examples, and its p
 |---|---|---|
 | 1 | English | Canonical instructions, documentation, examples, and workflow checks. Native-reader evaluation is pending. |
 | 2 | Korean | [Korean guide](README.ko.md), scoped language guidance, and the existing personal pilot evidence. |
-| 3 | French | Planned; language-specific guidance and validation have not been completed. |
-| 4 | Chinese, Japanese, and other languages | Planned; language-specific guidance and validation have not been completed. |
+| 3 | French | [French README](README.fr.md) available. Language-specific guidance and output validation are still planned. |
+| 4 | Simplified Chinese | [Simplified Chinese README](README.zh-CN.md) available. Language-specific guidance and output validation are still planned. |
+| 4 | Japanese | [Japanese README](README.ja.md) available. Language-specific guidance and output validation are still planned. |
+| 4 | Other languages | Planned; localized documentation and language-specific validation have not been completed. |
+
+The five READMEs cover the same installation and usage path. Shared agent instructions remain in English; localized documentation does not establish native-level output quality.
 
 [Language support and validation criteria](docs/language-support.md) distinguish translated documentation, observed agent behavior, and native-reader validation.
 
@@ -143,7 +147,7 @@ English is the primary language for authoring the skill, its examples, and its p
 | [English-first workflow check](docs/language-support.md#workflow-check) | Limited checks of language choice, requested format, and source fidelity; not proof of native-level quality. |
 | [Five Korean document comparisons](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | One user's preferences for paragraphs, tables, and information order. |
 | [12 layout generations](research/layout-generation-pilot.md) | Adoption was deferred after unsupported verification claims and shifts in uncertainty were found. |
-| [Four source-fidelity comparisons](research/source-fidelity-pilot.md) | Both arms passed; superiority of the revised version was not established. |
+| [Four source-fidelity generations](research/source-fidelity-pilot.md) | Both arms passed; superiority of the revised version was not established. |
 | [Six revised-core cases](research/source-fidelity-six-audit.json) | All six met the agent's meaning and format criteria; there was no concurrent comparison arm. |
 
 The earlier generation studies used Korean technical prose. Their experimental 93-token revised core is distinct from the 61-token global core and the full manifest. Results from those studies do not validate the new English-first skill.

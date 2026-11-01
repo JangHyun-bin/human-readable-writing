@@ -117,26 +117,26 @@ L’environnement personnel du responsable du projet comprend aussi un noyau de 
 
 Ce noyau a été activé le 2026-10-29 dans `~/.agents/TERMINOLOGY.md`, via les chemins d’instructions existants de Codex et de Claude Code. Il n’a pas été modifié. Sa taille de 61 tokens est un décompte de référence obtenu avec `o200k_base`, pas une garantie sur la consommation totale d’une requête.
 
-Le [compte rendu de l’essai initial](research/native-pilot.md), en coréen, contient l’historique de l’installation locale et les commandes permettant de revenir en arrière. Le skill conçu d’abord en anglais constitue une couche distincte, utilisable uniquement sur invocation explicite.
+Le [compte rendu de l’essai initial](research/native-pilot.md), en coréen, contient l’historique de l’installation locale et les commandes permettant de revenir en arrière. Le skill constitue une couche distincte, utilisable uniquement sur invocation explicite.
 
 </details>
 
 ## Langues
 
-L’anglais reste la langue de référence pour la rédaction du skill, de ses exemples et de sa documentation publique. L’ordre de priorité des langues guide le développement et la validation ; il ne remplace pas la langue que vous demandez.
+**Le coréen et l’anglais ont le même statut de langues principales.** Les [README en coréen](README.ko.md) et [en anglais](README.md) sont maintenus ensemble pour l’installation, l’utilisation, le périmètre de prise en charge et les résultats des vérifications. Les exemples peuvent être adaptés à chaque langue.
 
-| Priorité | Langue | Périmètre actuel |
-|---|---|---|
-| 1 | Anglais | Instructions, documentation et exemples de référence, ainsi que vérifications du fonctionnement. L’évaluation par des lecteurs natifs reste à faire. |
-| 2 | Coréen | [Guide en coréen](README.ko.md), consignes linguistiques ciblées et résultats de l’essai personnel existant. |
-| 3 | Français | [README en français](README.fr.md) disponible. Les consignes propres à la langue et la validation des textes produits sont prévues, mais restent à réaliser. |
-| 4 | Chinois simplifié | [README en chinois simplifié](README.zh-CN.md) disponible. Les consignes propres à la langue et la validation des textes produits sont prévues, mais restent à réaliser. |
-| 4 | Japonais | [README en japonais](README.ja.md) disponible. Les consignes propres à la langue et la validation des textes produits sont prévues, mais restent à réaliser. |
-| 4 | Autres langues | Prévues ; la traduction de la documentation et la validation propre à chaque langue ne sont pas achevées. |
+Les instructions communes restent dans un seul manifeste en anglais. La langue demandée pour le texte reste prioritaire ; sans demande de traduction, la révision conserve la langue du texte source.
 
-Les cinq README décrivent le même parcours d’installation et d’utilisation. Les instructions communes destinées aux agents restent en anglais ; la documentation traduite ne démontre pas que les textes produits atteignent la qualité attendue d’un locuteur natif.
+| Langue | Périmètre actuel |
+|---|---|
+| Coréen et anglais | Documentation principale, exemples et vérifications limitées déjà consignées. Une validation générale de la qualité reste à faire. |
+| Français | Ce guide traduit est disponible ; les textes produits n’ont pas fait l’objet d’une validation propre au français. |
+| Chinois simplifié | [Guide traduit](README.zh-CN.md) disponible ; validation des textes produits non réalisée. |
+| Japonais | [Guide traduit](README.ja.md) disponible ; validation des textes produits non réalisée. |
 
-Le document sur la [prise en charge des langues et les critères de validation](docs/language-support.md), en anglais, distingue la traduction de la documentation, le comportement observé de l’agent et la validation par des lecteurs natifs.
+Aucun ordre de développement n’est fixé entre les langues des trois guides traduits. Les travaux suivants dépendent des usages réels et de la disponibilité de lecteurs compétents dans chaque langue. La traduction de la documentation ne démontre pas une qualité de rédaction équivalente à celle d’un locuteur natif.
+
+Voir la [politique linguistique et les résultats consignés](docs/language-support.md). OpenCode 2, Pi et oh-my-pi sont à l’étude ; les [notes de compatibilité](docs/tool-support.md) distinguent la documentation consultée des vérifications d’exécution encore à faire.
 
 ## Éléments probants et limites
 
@@ -150,7 +150,7 @@ Le document sur la [prise en charge des langues et les critères de validation](
 | [Quatre générations évaluées pour leur fidélité à la source](research/source-fidelity-pilot.md) | Les deux variantes ont satisfait aux critères ; la supériorité de la version révisée n’a pas été établie. |
 | [Six cas avec le noyau révisé](research/source-fidelity-six-audit.json) | Les six cas ont satisfait aux critères de sens et de format de l’agent ; aucune variante de comparaison n’a été évaluée en parallèle. |
 
-Les études de génération antérieures portaient sur des textes techniques en coréen. Leur noyau révisé expérimental de 93 tokens est distinct du noyau global de 61 tokens et du manifeste complet. Leurs résultats ne valident pas le nouveau skill conçu d’abord en anglais.
+Les études de génération antérieures portaient sur des textes techniques en coréen. Leur noyau révisé expérimental de 93 tokens est distinct du noyau global de 61 tokens et du manifeste complet. Leurs résultats ne valident pas la version actuelle du skill.
 
 ## Pour aller plus loin
 

@@ -2,30 +2,11 @@
   <img src="assets/readme-header.svg" alt="Human-readable writing" width="100%">
 </p>
 
-<p align="center">
-  <strong>A writing skill for clear, precise technical prose.</strong><br>
-  Built for Codex and Claude Code.
-</p>
+<p align="center"><strong>English</strong> · <a href="README.ko.md">한국어</a></p>
 
-<p align="center">
-  <strong>English</strong> · <a href="README.ko.md">한국어</a> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">中文（简体）</a> · <a href="README.ja.md">日本語</a>
-</p>
+A skill for editing technical prose in English and Korean. It clarifies who did what, under which conditions, while preserving facts, technical terms, and uncertainty. Use it for PR descriptions, incident updates, research notes, and operational guidance.
 
-<p align="center">
-  <a href="#quick-start">Quick start</a> ·
-  <a href="MANIFEST.md">Writing principles</a> ·
-  <a href="#installation">Installation</a> ·
-  <a href="#languages">Languages</a> ·
-  <a href="#evidence-and-limits">Evidence</a>
-</p>
-
----
-
-Make it clear who did what, under which conditions, and what the evidence supports. Use this skill for pull request descriptions, incident updates, research notes, and operational guidance.
-
-## The same facts, easier to follow
-
-An illustrative example adapted from a [preserved Korean writing case](research/structure-layout-responses.json). It is not a new measurement or an English preference test.
+## Example
 
 **Before**
 
@@ -37,45 +18,11 @@ An illustrative example adapted from a [preserved Korean writing case](research/
 >
 > Errors were not calculated for the 12 timed-out sessions.
 
-The revision makes the measured group and the excluded group explicit while keeping the numbers and limits intact.
-
-## Quick start
-
-After installing the skill, invoke it and include the text you want to revise.
-
-**Codex**
-
-```text
-$human-readable-writing Revise this pull request description for a maintainer.
-Preserve the technical terms, facts, conditions, and uncertainty.
-```
-
-**Claude Code**
-
-```text
-/human-readable-writing Clarify this incident update.
-Keep observations, possible causes, and unverified claims distinct.
-```
-
-The skill reads [MANIFEST.md](MANIFEST.md) when invoked and reuses guidance already in context. The output follows the requested language; editing preserves the source language unless you ask for a translation.
-
-## What it changes
-
-| What to inspect | How to improve it |
-|---|---|
-| Dense noun clusters | Make the actors, actions, and relationships explicit. |
-| Interruptions and nested conditions | Keep the main statement easy to follow and related conditions together. |
-| Comparisons across several conditions | Use a table when it clarifies the comparison; retain units, scope, and caveats. |
-| Operational guidance | Lead with the current state and the decision or action needed, then explain why. |
-| Research interpretation | Connect observations to the judgment and its limits. |
-
-**What stays intact:** technical names, identifiers, quantities, units, exclusions, negation, and the target and strength of uncertainty. Missing relationships stay unresolved until the source supports them.
-
-Paragraphs follow the reasoning and the requested format. A preference for one sentence per paragraph is not imposed across languages or document types.
+The measured and excluded groups are easier to distinguish; the numbers and limits stay intact. This illustrative example is adapted from a [recorded Korean editing case](research/structure-layout-responses.json), not a measurement of reader comprehension.
 
 ## Installation
 
-Clone with an account that can access this repository. Run the linking commands **from the repository root**, with both destination skill paths unoccupied.
+Clone the repository once, then link the checkout to the local skill directories. Run these commands from the repository root with both destination paths unoccupied. If a path already exists, inspect it before changing it.
 
 ```sh
 git clone https://github.com/JangHyun-bin/human-readable-writing.git
@@ -86,17 +33,9 @@ ln -s "$PWD" "$HOME/.agents/skills/human-readable-writing"
 ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 ```
 
-Both runtimes read the same checkout. If you have already cloned it, run only the `mkdir` and `ln` commands from that directory.
+Already cloned? Run only the `mkdir` and `ln` commands from that checkout. Keep the complete directory: `SKILL.md` reads `MANIFEST.md` and, for Korean writing, `references/korean.md`.
 
-<details>
-<summary><strong>Runtime settings and explicit invocation</strong></summary>
-
-| Runtime | Entry point | Invocation policy |
-|---|---|---|
-| Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` includes `allow_implicit_invocation: false`. |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | Merge the `skillOverrides` setting below into the existing settings file. |
-
-Preserve other settings in `~/.claude/settings.json` when adding:
+Codex's explicit-invocation policy is included in `agents/openai.yaml`. For Claude Code, merge this entry into `~/.claude/settings.json`, preserving existing settings:
 
 ```json
 {
@@ -106,67 +45,53 @@ Preserve other settings in `~/.claude/settings.json` when adding:
 }
 ```
 
-Cloud sessions that cannot read local skill directories need a separate installation. See the personal-skill guidance for [Codex](https://learn.chatgpt.com/docs/build-skills) and [Claude Code](https://code.claude.com/docs/en/skills).
+These instructions cover local sessions. For environments that cannot read these directories, follow the personal-skill instructions for [Codex](https://learn.chatgpt.com/docs/build-skills) or [Claude Code](https://code.claude.com/docs/en/skills).
 
-</details>
+## Use
 
-<details>
-<summary><strong>The maintainer's separate global-core pilot</strong></summary>
+Invoke the skill and include the text you want to edit:
 
-The maintainer's personal environment also includes an earlier, compact Korean core in the global instructions. Installing the symlinks above does not install that core.
+| Tool | Start your request with |
+|---|---|
+| Codex | `$human-readable-writing` |
+| Claude Code | `/human-readable-writing` |
 
-The core was enabled on 2026-10-29 in `~/.agents/TERMINOLOGY.md`, through the existing Codex and Claude Code instruction paths. It remains unchanged. Its 61-token size is a reference count using `o200k_base`, not a promise about total request usage.
+```text
+$human-readable-writing Revise this PR description for a maintainer.
+Preserve the technical terms, facts, conditions, and uncertainty.
 
-The [original pilot record](research/native-pilot.md) contains the local installation history and reversal commands in Korean. The English-first skill is a separate, explicitly invoked layer.
+[Paste the description here.]
+```
 
-</details>
+The skill follows your requested language and format. Without a translation request, it keeps the source language. It preserves identifiers, quantities, units, exclusions, negation, and uncertainty; it asks about missing relationships instead of inventing them. Paragraphs and tables serve the document's purpose, with no fixed sentence-per-paragraph rule.
+
+**OpenCode 2, Pi, and oh-my-pi are under review.** Their documentation describes compatible skill formats, but this project's discovery and invocation checks have not been run. See [tool compatibility and remaining checks](docs/tool-support.md). The earlier writing checks also did not verify normal discovery and invocation in fresh Codex or Claude Code sessions.
 
 ## Languages
 
-English is the primary language for authoring the skill, its examples, and its public-facing documentation. Language priority governs development and validation; it does not override the language you request.
+**English and Korean are equal primary languages.** Both READMEs cover installation, use, support status, and evidence. Examples should read naturally in their own language; changes to these shared facts belong in both documents.
 
-| Priority | Language | Current scope |
-|---|---|---|
-| 1 | English | Canonical instructions, documentation, examples, and workflow checks. Native-reader evaluation is pending. |
-| 2 | Korean | [Korean guide](README.ko.md), scoped language guidance, and the existing personal pilot evidence. |
-| 3 | French | [French README](README.fr.md) available. Language-specific guidance and output validation are still planned. |
-| 4 | Simplified Chinese | [Simplified Chinese README](README.zh-CN.md) available. Language-specific guidance and output validation are still planned. |
-| 4 | Japanese | [Japanese README](README.ja.md) available. Language-specific guidance and output validation are still planned. |
-| 4 | Other languages | Planned; localized documentation and language-specific validation have not been completed. |
+The common [writing principles](MANIFEST.md) stay in one English file. Korean and mixed Korean–English writing also use the [Korean guidance](references/korean.md). The language of the instructions does not dictate the output language.
 
-The five READMEs cover the same installation and usage path. Shared agent instructions remain in English; localized documentation does not establish native-level output quality.
-
-[Language support and validation criteria](docs/language-support.md) distinguish translated documentation, observed agent behavior, and native-reader validation.
+Existing translations: [Français](README.fr.md) · [中文（简体）](README.zh-CN.md) · [日本語](README.ja.md). These are translated guides, not validated language releases. No development order is assigned among them; further work depends on actual use and language-specific review. See [language support and evidence](docs/language-support.md).
 
 ## Evidence and limits
 
-**This is an evolving personal writing tool.** The guidance combines literature-informed ideas with recorded editing preferences. Improvements in human comprehension or reading time have not been established.
+This is a personal writing tool with limited evaluation. Improved human comprehension, reading time, and general writing quality have not been established.
 
-| Evidence | What it supports |
+| Record | What was observed |
 |---|---|
-| [English-first workflow check](docs/language-support.md#workflow-check) | Limited checks of language choice, requested format, and source fidelity; not proof of native-level quality. |
+| [English and Korean workflow cases](docs/language-support.md#workflow-check) | Both instruction versions passed the agent's source-fidelity and format checks. No improvement or runtime-compatibility claim follows. |
 | [Five Korean document comparisons](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | One user's preferences for paragraphs, tables, and information order. |
-| [12 layout generations](research/layout-generation-pilot.md) | Adoption was deferred after unsupported verification claims and shifts in uncertainty were found. |
-| [Four source-fidelity generations](research/source-fidelity-pilot.md) | Both arms passed; superiority of the revised version was not established. |
-| [Six revised-core cases](research/source-fidelity-six-audit.json) | All six met the agent's meaning and format criteria; there was no concurrent comparison arm. |
+| [12 layout generations](research/layout-generation-pilot.md) | Unsupported verification claims and shifts in uncertainty led to deferring adoption. |
+| [Four source-fidelity generations](research/source-fidelity-pilot.md) · [Six follow-up cases](research/source-fidelity-six-audit.json) | Both arms passed the four-generation comparison; the six-case follow-up had no concurrent comparison arm. Neither established superiority. |
 
-The earlier generation studies used Korean technical prose. Their experimental 93-token revised core is distinct from the 61-token global core and the full manifest. Results from those studies do not validate the new English-first skill.
+These records concern the instruction versions they evaluated. Earlier token and timing results do not measure the current skill. Installing it does not install the maintainer's separate [global-core pilot](research/native-pilot.md).
 
 ## Further reading
 
-| Purpose | Documents |
-|---|---|
-| Shared writing guidance | [Manifest](MANIFEST.md) · [Skill entry point](SKILL.md) |
-| Language-specific guidance | [Korean](references/korean.md) · [Coverage and validation](docs/language-support.md) |
-| Original paper analysis, in Korean | [Analysis](ANALYSIS.md) · [Evidence review](research/evidence-review.md) |
-| Related literature and applications, in Korean | [Literature notes](research/related-literature.md) · [Two-paper application](research/two-paper-application.md) |
-| Earlier cost and timing studies, in Korean | [Invocation cost](research/invocation-cost.md) · [Fixed-budget comparison](research/core-refinement.md) · [Blinded outputs](research/core-refinement-blind.md) |
-| Historical validation and preferences, in Korean | [Validation log](VALIDATION.md) · [Layout preferences](research/structure-layout-pilot.md) |
+- [Writing principles](MANIFEST.md) and [skill entry point](SKILL.md).
+- [Language policy and validation](docs/language-support.md) and [tool compatibility](docs/tool-support.md).
+- [Validation history](VALIDATION.md), [literature review](research/related-literature.md), and [cost study](research/invocation-cost.md), in Korean.
 
-Instructions consume input tokens even when they require no additional file reads. Earlier token and latency measurements do not measure the cost of this revision.
-
----
-
-This project began with an analysis of Thomas Hikaru Clark, Matias B. Martin, and Kyle Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). Its writing guidance and examples are separate practical proposals, not interventions validated or endorsed by the paper's authors.
-
-The original paper is available under CC BY 4.0. The [attribution record](NOTICE.md), in Korean, identifies sources and their separate licenses. **This repository does not yet have a separate distribution license.**
+This project began with an analysis of Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). The skill's guidance is a practical proposal, not an intervention validated or endorsed by the paper's authors. The paper is available under CC BY 4.0; [NOTICE.md](NOTICE.md) records attribution and separate source licenses. **This repository has no separate distribution license.**

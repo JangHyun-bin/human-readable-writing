@@ -94,17 +94,9 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 | 运行环境 | 入口 | 调用规则 |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` 中包含 `allow_implicit_invocation: false`，禁止隐式调用。 |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | 将下面的 `skillOverrides` 设置合并到现有设置文件中，使技能仅可由用户显式调用。 |
+| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
 
-向 `~/.claude/settings.json` 添加以下内容时，保留其他已有设置：
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+共用的 `SKILL.md` 已包含 `disable-model-invocation: true`。已测试的 Claude Code 版本无需额外添加 `skillOverrides`；保留其他已有设置。
 
 无法读取本地技能目录的云端会话需要单独安装。请参阅 [Codex](https://learn.chatgpt.com/docs/build-skills) 和 [Claude Code](https://code.claude.com/docs/en/skills) 的个人技能指南。
 
@@ -117,26 +109,26 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 这份核心规则于 2026-10-29 在 `~/.agents/TERMINOLOGY.md` 中启用，通过 Codex 和 Claude Code 已有的指令路径生效，至今保持不变。其 61 个 token 的大小是使用 `o200k_base` 得到的参考计数，并不代表请求总用量。
 
-[原始试用记录](research/native-pilot.md)以韩语记录了本地安装经过和撤销命令。以英语为主的技能是独立的一层，需要显式调用。
+[原始试用记录](research/native-pilot.md)以韩语记录了本地安装经过和撤销命令。此技能是独立的一层，需要显式调用。
 
 </details>
 
 ## 语言支持
 
-技能、示例和对外文档以英语为主要编写语言，英语版本为准。语言优先级决定开发和验证的顺序，不会覆盖你要求使用的语言。
+**韩语和英语是同等优先的主要支持语言。** [韩语 README](README.ko.md) 和[英语 README](README.md) 同步维护安装、使用、支持范围和验证结果；示例可以根据各自语言的表达习惯调整。
 
-| 优先级 | 语言 | 当前范围 |
-|---|---|---|
-| 1 | 英语 | 指令、文档和示例的基准版本，以及工作流程检查。母语读者评估尚未开展。 |
-| 2 | 韩语 | [韩语指南](README.ko.md)、限定范围的语言指引，以及已有的个人试用证据。 |
-| 3 | 法语 | 已提供[法语 README](README.fr.md)。针对法语的写作指引和输出验证仍在计划中。 |
-| 4 | 简体中文 | 已提供[简体中文 README](README.zh-CN.md)。针对简体中文的写作指引和输出验证仍在计划中。 |
-| 4 | 日语 | 已提供[日语 README](README.ja.md)。针对日语的写作指引和输出验证仍在计划中。 |
-| 4 | 其他语言 | 已列入计划；本地化文档和针对各语言的验证尚未完成。 |
+共用指令仍保存在一份英语写作原则文件中。输出始终以用户要求的语言为准；没有翻译要求时，编辑会保留原文语言。
 
-五份 README 涵盖相同的安装和使用步骤。智能体共用的指令仍以英语编写；提供本地化文档并不意味着输出质量已达到母语水平。本页为简体中文文档，不代表已覆盖中文的所有书写形式。
+| 语言 | 当前范围 |
+|---|---|
+| 韩语和英语 | 主要文档、示例和已记录的有限检查。尚未完成普遍适用的写作质量验证。 |
+| 简体中文 | 提供本翻译指南，尚未验证简体中文输出质量。不代表已覆盖中文的所有书写形式。 |
+| 法语 | 提供[翻译指南](README.fr.md)，尚未验证法语输出质量。 |
+| 日语 | 提供[翻译指南](README.ja.md)，尚未验证日语输出质量。 |
 
-[语言支持与验证标准](docs/language-support.md)（英语）区分了翻译文档、观察到的智能体行为和母语读者验证。
+三种翻译指南的语言之间不设开发先后顺序。后续工作取决于实际需求及相应语言的审阅条件。提供翻译文档不等于已验证输出具有母语水平。
+
+详见[语言政策](docs/language-support.md)。Codex、Claude Code、Pi 和 oh-my-pi 通过了有限的英语及韩语运行检查。OpenCode 2 仅得到部分验证，仍有失败记录。[兼容性说明](docs/tool-support.md)列出了版本、测试路径和限制；这些结果并不验证中文输出质量。
 
 ## 证据与局限
 
@@ -150,7 +142,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 | [四次生成结果的原文忠实度检查](research/source-fidelity-pilot.md)（韩语） | 两个实验组均通过检查，未能证明修订版更优。 |
 | [六个修订核心规则案例](research/source-fidelity-six-audit.json)（韩语） | 六个案例均满足智能体的语义和格式标准，但没有同期对照组。 |
 
-早期生成研究使用的是韩语技术文字。其中用于实验的修订核心规则为 93 个 token，与 61 个 token 的全局核心规则及完整写作原则均不相同。这些研究的结果不能验证新的、以英语为主的技能。
+早期生成研究使用的是韩语技术文字。其中用于实验的修订核心规则为 93 个 token，与 61 个 token 的全局核心规则及完整写作原则均不相同。这些研究的结果不能验证当前版本的技能。
 
 ## 延伸阅读
 

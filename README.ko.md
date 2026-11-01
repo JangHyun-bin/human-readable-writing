@@ -2,26 +2,11 @@
   <img src="assets/readme-header.svg" alt="Human-readable writing" width="100%">
 </p>
 
-<p align="center"><a href="README.md">English</a> · <strong>한국어</strong> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">中文（简体）</a> · <a href="README.ja.md">日本語</a></p>
+<p align="center"><a href="README.md">English</a> · <strong>한국어</strong></p>
 
-<p align="center">
-  <strong>기술적 의미를 보존하는 Codex · Claude Code writing skill</strong>
-</p>
+한국어와 영어 기술 문서를 다듬는 스킬이다. 사실·기술 용어·불확실성을 보존하면서 누가 무엇을 했는지, 어떤 조건에서 결과가 성립하는지를 분명하게 쓴다. PR 설명, 장애 보고, 연구 메모, 업무 안내에 적용한다.
 
-<p align="center">
-  <a href="#바로-사용하기">사용법</a> ·
-  <a href="MANIFEST.md">작성 원칙</a> ·
-  <a href="#설치">설치</a> ·
-  <a href="#검증과-한계">검증 근거</a>
-</p>
-
----
-
-Technical term은 그대로 두고, 누가 무엇을 했는지와 어떤 조건에서 결과가 성립하는지를 분명하게 쓴다. PR 설명·기술 조사·업무 안내·연구 해석에 적용한다.
-
-## 같은 사실, 더 분명한 관계
-
-아래는 문장 구조와 문단 배치를 비교하는 **가상 예시**다.
+## 예시
 
 **원문**
 
@@ -33,43 +18,11 @@ Technical term은 그대로 두고, 누가 무엇을 했는지와 어떤 조건�
 >
 > timeout이 발생한 12 session의 error는 계산하지 않았다.
 
-수치와 측정 범위를 유지하면서 삽입 설명을 풀고, 계산하지 않은 대상을 별도 문단에 둔다. [예시 출처와 사용자 선호 기록](research/structure-layout-responses.json)
-
-## 바로 사용하기
-
-설치한 뒤, 문장이나 문서를 붙여 넣고 skill을 명시적으로 호출한다.
-
-**Codex**
-
-```text
-$human-readable-writing 이 PR 설명을 다듬어줘.
-Technical term과 수치·조건·불확실성은 보존해.
-```
-
-**Claude Code**
-
-```text
-/human-readable-writing 이 기술 설명을 다듬어줘.
-관찰한 사실과 가설, 아직 확인하지 않은 부분을 구분해.
-```
-
-호출한 작업에서 [MANIFEST.md](MANIFEST.md)의 상세 지침과 필요한 예시를 읽는다. 이미 context에 있는 내용은 재사용한다.
-
-## 무엇을 바꾸는가
-
-| 검토할 부분 | 작성 방향 |
-|---|---|
-| 명사가 이어진 문장 | 주체·동작·대상 사이의 관계를 풀어 쓴다. |
-| 조건이 끼어든 설명 | 핵심 서술을 가까이 두고, 밀접한 동작·조건을 함께 묶는다. |
-| 여러 조건의 수치 비교 | 기준·단위·범위를 유지한 표로 비교한다. |
-| 실행 안내 | 현재 상태와 필요한 판단·행동을 먼저 제시하고 이유를 잇는다. |
-| 연구 결과 해석 | 관측 내용 뒤에 판단과 한계를 둔다. |
-
-**보존할 것:** technical term, 식별자, 수치·단위·범위, 조건·부정, 불확실성의 대상과 강도. 원문에 없는 사실이나 관계는 추측으로 채우지 않는다.
+수치와 조건을 유지하면서 집계 대상과 제외 대상을 구분했다. [기존 편집 사례](research/structure-layout-responses.json)에 기록된 가상 예시이며, 사람의 이해도 개선을 측정한 결과는 아니다.
 
 ## 설치
 
-Repository에 접근할 수 있는 계정으로 clone한 뒤 **repo root에서** 설치한다. 대상 skill 경로가 비어 있을 때 사용하는 command다.
+저장소를 한 번 복제한 뒤 로컬 스킬 경로에 연결한다. **저장소 루트에서, 두 대상 경로가 비어 있을 때** 실행한다. 경로가 이미 있다면 연결 대상을 먼저 확인한다.
 
 ```sh
 git clone https://github.com/JangHyun-bin/human-readable-writing.git
@@ -80,85 +33,62 @@ ln -s "$PWD" "$HOME/.agents/skills/human-readable-writing"
 ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 ```
 
-두 skill directory가 같은 checkout을 가리키므로 상세 지침은 한 곳에서 관리한다. 이미 clone했다면 해당 directory에서 `mkdir`와 `ln` 단계만 수행한다.
+이미 복제했다면 해당 디렉터리에서 `mkdir`와 `ln` 단계만 수행한다. `SKILL.md`가 `MANIFEST.md`와 한국어용 `references/korean.md`를 읽으므로 디렉터리 전체를 유지해야 한다.
 
-<details>
-<summary><strong>Runtime별 호출 설정</strong></summary>
+Codex의 명시적 호출 설정은 `agents/openai.yaml`에 포함되어 있다. 공통 `SKILL.md`에는 Claude Code 등 호환 도구를 위한 `disable-model-invocation: true`가 포함되어 있다. 검증한 Claude Code 버전에는 별도의 `skillOverrides` 추가가 필요하지 않다. 기존의 다른 설정은 유지한다.
 
-| Runtime | 진입점 | 명시적 호출 설정 |
-|---|---|---|
-| Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | 이 repo의 `agents/openai.yaml`에 `allow_implicit_invocation: false` 포함 |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | 아래 `skillOverrides`를 기존 설정에 병합 |
+위 방법은 로컬 세션용이다. 이 경로를 읽을 수 없는 환경에서는 [Codex](https://learn.chatgpt.com/docs/build-skills) 또는 [Claude Code](https://code.claude.com/docs/en/skills)의 개인 스킬 설치 안내를 따른다.
 
-Claude Code의 `~/.claude/settings.json`에서 기존 설정을 보존하면서 다음 항목을 병합한다.
+## 사용
 
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
+스킬을 명시적으로 호출하고 다듬을 원문을 함께 넣는다.
+
+| 도구 | 요청 앞에 붙일 명령 |
+|---|---|
+| Codex | `$human-readable-writing` |
+| Claude Code | `/human-readable-writing` |
+
+```text
+$human-readable-writing 이 PR 설명을 유지보수자가 읽기 좋게 다듬어줘.
+기술 용어와 사실·조건·불확실성은 보존해.
+
+[이곳에 원문을 붙여 넣는다.]
 ```
 
-Local skill directory를 읽지 않는 cloud session에는 별도 설치가 필요하다. 설치 경로와 symlink 지원은 [OpenAI 공식 문서](https://learn.chatgpt.com/docs/build-skills)와 [Claude Code 공식 문서](https://code.claude.com/docs/en/skills)의 personal skill 범위를 따른다.
+사용자가 지정한 언어와 형식을 따른다. 번역을 요청하지 않았다면 원문의 언어를 유지한다. 식별자, 수치·단위, 제외 조건, 부정과 불확실성을 보존하며, 원문에 없는 관계는 추측으로 채우지 않고 확인한다. 문단과 표는 문서의 목적에 맞게 사용하고, 문장마다 문단을 나누는 규칙은 강제하지 않는다.
 
-</details>
+## 도구 지원
 
-<details>
-<summary><strong>현재 개인 환경의 global core pilot</strong></summary>
+2026-11-02에 **Codex 0.166.0, Claude Code 2.1.312, Pi 1.4.0, oh-my-pi 18.15.0**의 프로젝트 로컬 설치에서 제한된 한·영 호출·참조 파일 로딩 검사를 통과했다. 도구별 호출 없는 비교 요청 한 건에서는 이 스킬을 읽지 않았다. 임시 프로젝트에서 검사했으며, 위 사용자 전역 설치 경로를 별도로 시험한 것은 아니다.
 
-현재 개인 환경에서는 기존 61-token core를 기본 instructions에 포함하고, 상세 skill은 명시적으로 호출한다. 위 symlink 설치만으로 global core까지 추가되지는 않는다.
+**OpenCode 2.2.1은 부분 검증 상태이며 실패가 있다.** 영어 네이티브 로딩 한 건은 성공했지만 CLI 멘션과 참조 파일 경로 처리가 일관되지 않았다. 추가 출력에서는 원문의 조건도 바뀌었다. Pi·oh-my-pi 사용법을 포함한 [검증 경로·명령·모델·제약](docs/tool-support.md)을 참고한다. 이 관찰은 일반적인 글쓰기 품질을 입증하지 않는다.
 
-2026-10-29 사용자가 core를 `~/.agents/TERMINOLOGY.md`에 적용하였고 상태 조회에서 `enabled`를 확인하였다. Codex의 `~/.codex/AGENTS.md`와 Claude Code의 `~/.claude/CLAUDE.md`가 참조하는 기존 정본은 유지하였다. 61 tokens는 `o200k_base` 기준 core 본문의 reference 값이며 모든 요청의 청구량을 뜻하지 않는다.
+## 언어
 
-[Pilot 기록](research/native-pilot.md)에 적용·확인·되돌리기 command와 기존 설치 경로의 이력이 있다. 상세 지침은 2026-10-30 사용자 선호를 반영했고, 기존 global core와 호출 정책은 유지하였다.
+**한국어와 영어를 동등한 주 지원 언어로 둔다.** 두 README에서 설치·사용 방법, 지원 상태, 검증 근거를 함께 관리한다. 예시는 각 언어에서 자연스럽게 작성하되, 공통 정보가 바뀌면 두 문서에 반영한다.
 
-</details>
+공통 [작성 원칙](MANIFEST.md)은 영어 파일 하나로 유지한다. 한국어 및 한·영 혼용 문서에는 [한국어 보완 지침](references/korean.md)을 함께 적용한다. 지침 파일의 언어가 출력 언어를 정하지는 않는다.
 
-## 언어 지원 순서
-
-| 우선순위 | 언어 | 현재 범위 |
-|---|---|---|
-| 1 | English | 공통 지침·기본 README·예시를 영어로 작성한다. Native reader의 품질 평가는 아직 남아 있다. |
-| 2 | 한국어 | 이 안내와 한국어 보완 지침, 기존 개인 선호·사실 보존 기록을 유지한다. |
-| 3 | Français | [불어 README](README.fr.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
-| 4 | 中文（简体） | [중국어 간체 README](README.zh-CN.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
-| 4 | 日本語 | [일본어 README](README.ja.md)를 제공한다. 언어별 지침과 출력 검증은 앞으로 진행한다. |
-| 4 | 기타 언어 | 해당 언어의 문서와 검증을 앞으로 진행한다. |
-
-다섯 언어의 README에서 설치·사용 방법을 확인할 수 있다. Agent가 읽는 공통 지침은 영어 정본이며, README 제공 여부와 해당 언어 출력의 native 품질 검증은 구분한다.
-
-영어 우선은 개발·검증 순서이며 출력 언어를 영어로 고정한다는 뜻이 아니다. 사용자가 지정한 언어가 우선한다. 공통 원칙은 [영어 MANIFEST](MANIFEST.md)가 정본이며, 한국어 작업에는 [한국어 보완 지침](references/korean.md)을 함께 적용한다. 기존 한국어의 개인 문단 선호를 다른 언어 전체에 강제하지 않는다.
-
-[언어 지원 기준과 영어 workflow 확인](docs/language-support.md)은 영어로 관리한다. 기존 benchmark는 한국어 technical prose를 대상으로 했으므로 영어 지원의 검증 근거로 확대하지 않는다.
+기존 번역 문서: [Français](README.fr.md) · [中文（简体）](README.zh-CN.md) · [日本語](README.ja.md). 번역 안내를 제공하는 상태이며 해당 언어의 출력 품질 검증을 뜻하지 않는다. 세 언어 사이에 개발 순위를 두지 않고, 실제 사용 수요와 언어별 검토 여건에 따라 후속 작업을 정한다. [언어 지원과 검증 기록](docs/language-support.md)에 상세 범위를 정리했다.
 
 ## 검증과 한계
 
-**현재 단계는 개인 실사용 pilot이다.** 문헌에서 얻은 아이디어와 이 사용자의 표현 선호를 작성 지침에 반영하였다. 사람의 이해도·읽기 시간 개선이나 일반적인 성능 우위는 아직 입증하지 않았다.
+제한적인 검증을 거친 개인 글쓰기 도구다. 사람의 이해도·읽기 시간 개선이나 일반적인 글쓰기 품질 우위는 입증하지 않았다.
 
-| 확인한 내용 | 결과와 해석 범위 |
+| 기록 | 확인한 내용 |
 |---|---|
-| [실제 문서 다섯 쌍의 A/B 선호](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 개인의 문단·표·정보 순서 선호를 상세 지침에 반영. Core 효과나 이해도 측정과 구분한다. |
-| [Layout generation 12회](research/layout-generation-pilot.md) | 원문 밖 검증 상태 추가와 불확실성 재해석이 발견되어 채택을 보류했다. |
-| [문제 사례 4회 생성](research/source-fidelity-pilot.md) | 두 arm 모두 pass. 보완안의 우위는 확인하지 못했다. |
-| [Revised core의 6개 사례](research/source-fidelity-six-audit.json) | Agent의 의미·형식 기준은 6/6 pass. 기존 core와의 비교 실험은 아니다. |
+| [네이티브 호출 검사, 2026-11-02](research/runtime-validation-20261102.json) | 네 도구는 제한된 검사를 통과했고 OpenCode는 성공·실패가 섞였다. 버전·명령·출력·파일 로딩 근거와 제약을 기록했다. |
+| [영어·한국어 작업 사례](docs/language-support.md#workflow-check) | 두 지침 버전 모두 에이전트의 원문 충실도·형식 점검을 통과했다. 개선 효과나 도구 호환성을 입증한 결과는 아니다. |
+| [한국어 문서 다섯 쌍 비교](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 한 사용자의 문단·표·정보 순서 선호를 기록했다. |
+| [문단 배치 생성 12회](research/layout-generation-pilot.md) | 근거 없는 검증 상태 추가와 불확실성 변경이 발견되어 채택을 보류했다. |
+| [원문 충실도 생성 4회](research/source-fidelity-pilot.md) · [후속 사례 6개](research/source-fidelity-six-audit.json) | 4회 비교는 두 조건 모두 통과했고, 후속 6개 사례에는 동시 비교 조건이 없었다. 두 기록 모두 우위를 입증하지 않았다. |
 
-실험의 revised core는 93 reference tokens이며, 현재 global pilot의 original core 61 tokens와 구분한다. 기존 MANIFEST를 적용한 문제 사례 두 개도 의미를 보존하였다. [전체 검증 기록](VALIDATION.md)
+각 기록은 당시 평가한 지침 버전에 한정된다. 과거 토큰·응답 시간 측정값은 현재 스킬의 비용을 나타내지 않는다. 위 설치 과정은 유지보수자의 별도 [전역 지침 실험](research/native-pilot.md)을 설치하지 않는다.
 
 ## 더 읽기
 
-| 목적 | 문서 |
-|---|---|
-| 작성 원칙과 적용 예시 | [MANIFEST](MANIFEST.md) · [Skill 진입점](SKILL.md) |
-| 출발점이 된 논문의 설계·결과·한계 | [논문 분석](ANALYSIS.md) · [원문 근거 검토](research/evidence-review.md) |
-| 관련 연구와 적용 아이디어 | [관련 문헌](research/related-literature.md) · [두 논문 적용 제안](research/two-paper-application.md) |
-| 문장 구조·문단 배치의 사용자 선호 | [선호 기록](research/structure-layout-pilot.md) |
-| Input 비용과 응답 시간 | [호출 비용 비교](research/invocation-cost.md) · [동일 budget 비교](research/core-refinement.md) · [Blind 답변](research/core-refinement-blind.md) |
+- [작성 원칙](MANIFEST.md)과 [스킬 진입점](SKILL.md).
+- [언어 정책·검증 기준](docs/language-support.md)과 [도구별 호환성](docs/tool-support.md).
+- [검증 이력](VALIDATION.md), [관련 문헌 검토](research/related-literature.md), [호출 비용 비교](research/invocation-cost.md).
 
-기본 instructions도 input tokens를 사용한다. 추가 file 조회가 없다는 사실이 비용이 전혀 없다는 뜻은 아니다.
-
----
-
-[arXiv:2610.29162v1](https://arxiv.org/abs/2610.29162v1)의 분석에서 시작하였다. 논문은 영어 corpus의 언어적 특성과 작은 model의 length-penalty 실험을 보고했으며, 이 skill의 한국어 작성 지침은 실무 제안이다.
-
-원논문은 CC BY 4.0으로 제공된다. 저자·출처·변경 내역은 [NOTICE.md](NOTICE.md)에 있다. **이 repository 자체의 배포 license는 아직 별도로 지정하지 않았다.**
+Clark·Martin·Mahowald의 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) 분석에서 시작한 프로젝트다. 스킬의 작성 지침은 실무 제안이며, 원논문의 저자가 검증하거나 보증한 방법이 아니다. 원논문은 CC BY 4.0으로 제공되며 출처와 개별 라이선스는 [NOTICE.md](NOTICE.md)에 기록했다. **이 저장소 자체의 배포 라이선스는 별도로 지정하지 않았다.**

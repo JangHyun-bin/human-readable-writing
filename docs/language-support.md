@@ -1,23 +1,25 @@
 # Language support and validation
 
-English is the primary authoring language of this project. The goal is an end-to-end English experience: documentation, invocation prompts, writing guidance, examples, and evaluation tasks written naturally in English.
+Korean and English are equal primary languages of this project. Maintain a complete user path in both: documentation, invocation examples, writing guidance, and language-appropriate evaluation tasks. This is a maintenance priority, not a claim that native-level quality or human comprehension gains have been validated.
 
-The requested output language always takes precedence. Editing without a language instruction preserves the source language. English-first development does not mean translating Korean, French, or other requests into English.
+The requested output language always takes precedence. Editing without a language instruction preserves the source language. Shared instructions are written in English; that does not require translating other requests into English.
 
-## Development order
+## Current scope
 
-| Priority | Language | Implemented scope | Remaining work |
+| Maintenance scope | Language | Available material | Remaining work |
 |---|---|---|---|
-| 1 | English | Canonical README, skill entry point, manifest, UI prompt, original English workflow requests, and English validation summary | Fresh-session runtime checks and further native-reader review of real work |
-| 2 | Korean | Localized README, scoped language guidance, and the earlier personal pilot | Continued real-work feedback under the shared manifest |
-| 3 | French | [Localized README](../README.fr.md) with installation, invocation examples, and evidence limits | French-authored tasks, language-specific guidance where needed, and native-reader review |
-| 4 | Simplified Chinese | [Localized README](../README.zh-CN.md) with installation, invocation examples, and evidence limits | Chinese-authored tasks, language-specific guidance, and native-reader review; Traditional Chinese documentation is not yet provided |
-| 4 | Japanese | [Localized README](../README.ja.md) with installation, invocation examples, and evidence limits | Japanese-authored tasks, language-specific guidance where needed, and native-reader review |
-| 4 | Other languages | Roadmap only | Define the relevant locale/script and audience, then author tasks and validate each language separately |
+| Primary | Korean | [Korean README](../README.ko.md), scoped language guidance, workflow checks, and personal editing records | Bounded runtime checks recorded; continued reader feedback on real work |
+| Primary | English | [English README](../README.md), shared instructions, original English workflow requests, and validation summary | Bounded runtime checks recorded; further native-reader review of real work |
+| Translation | French | [French README](../README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
+| Translation | Simplified Chinese | [Simplified Chinese README](../README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
+| Translation | Japanese | [Japanese README](../README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
+| Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding a language |
 
 French, Chinese, and Japanese are not labeled as validated language releases. A model's ability to produce those languages does not establish that this skill has been evaluated for them.
 
-The five README versions link to one another and document the same installation and usage path. The English README is the documentation source of truth. The shared skill instructions remain in English; translated documentation is separate from language-specific behavior and native-reader validation.
+The Korean and English READMEs are maintained together. Installation, invocation, support status, and evidence must agree; examples and wording can differ to suit each language. Keep existing translations accessible and correct shared facts when they change, without promising equal editorial coverage. Further language work depends on actual use and review capacity, not a fixed ranking among French, Chinese, and Japanese.
+
+The shared skill instructions remain in one English manifest. Add language-specific guidance only where it changes a concrete writing decision. The current policy replaces the earlier English-first priority; the dated checks below retain the policy and instruction versions used at the time.
 
 ## What native support requires
 
@@ -71,6 +73,8 @@ On 2026-11-01, the maintainer compared the original limitations paragraph above 
 
 The document adopts B’s three-paragraph structure with one fidelity correction: the middle paragraph removes an unsupported causal link and keeps the three untested runtime items explicit. That corrected wording was not separately rated. This single comparison does not establish a general English writing rule, an isolated skill effect, or completed native-reader validation.
 
-## Next English milestone
+## Next validation work
 
-Continue using the explicit skill on real English PR descriptions, incident updates, and research notes; this work can continue in the existing session. Separately check normal discovery and explicit invocation in fresh Codex and Claude Code sessions. Retain the original requests and outputs, check meaning separately, and collect native-reader feedback on wording and flow. Keep the English-first foundation distinct from a claim that native-reader validation has been completed. Extend the language-specific evaluation to Korean, then French, before Chinese, Japanese, and other languages.
+Use real Korean and English PR descriptions, incident updates, and research notes under the shared manifest. Include mixed Korean–English terminology and requests that must preserve uncertainty or ask about a missing relationship. Retain the original requests and outputs, check meaning separately, and collect reader feedback on wording and flow in each language.
+
+The [2026-11-02 runtime checks](../research/runtime-validation-20261102.json) cover fresh-session invocation and reference loading for four runtimes, with mixed OpenCode results. See [tool compatibility](tool-support.md) for tested versions, models, paths, and remaining limitations. Repeat the checks when runtime behavior or skill instructions change. A successful load is not a writing-quality evaluation, and the dated writing checks above do not validate later instruction revisions. Further language evaluation remains unscheduled until there is a concrete use case and a reviewer for that language.

@@ -1,6 +1,7 @@
 ---
 name: human-readable-writing
-description: Review technical prose for unclear relationships and lost meaning when explicitly requested.
+description: Use when explicitly asked to edit or review technical prose.
+disable-model-invocation: true
 ---
 
 # Human-readable writing

@@ -8,7 +8,7 @@ The requested output language always takes precedence. Editing without a languag
 
 | Priority | Language | Implemented scope | Remaining work |
 |---|---|---|---|
-| 1 | English | Canonical README, skill entry point, manifest, UI prompt, original English workflow requests, and English validation summary | Fresh-session runtime checks and native-reader review of real work |
+| 1 | English | Canonical README, skill entry point, manifest, UI prompt, original English workflow requests, and English validation summary | Fresh-session runtime checks and further native-reader review of real work |
 | 2 | Korean | Localized README, scoped language guidance, and the earlier personal pilot | Continued real-work feedback under the shared manifest |
 | 3 | French | [Localized README](../README.fr.md) with installation, invocation examples, and evidence limits | French-authored tasks, language-specific guidance where needed, and native-reader review |
 | 4 | Simplified Chinese | [Localized README](../README.zh-CN.md) with installation, invocation examples, and evidence limits | Chinese-authored tasks, language-specific guidance, and native-reader review; Traditional Chinese documentation is not yet provided |
@@ -46,7 +46,11 @@ One fresh agent context used the previous skill from commit `88ec41b0cda9c48fa78
 
 A subsequent document review clarified that copying the complete skill directory preserves the Korean reference path. The outputs were not regenerated for that reuse-instruction edit; the evidence file records the evaluated and published instruction hashes separately.
 
-This was a small, unblinded agent check with one output per case and version. It was not a no-guidance experiment, a repeated statistical comparison, or an independent human review. The five outputs within each arm shared a context. Agents were directed to read the skill files; normal runtime discovery, a new Codex session, and a Claude Code invocation were not exercised. Native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured for this revision.
+Each instruction version was checked on five cases, with one output per case. Within each version, the same agent context handled all five cases. This was a small, unblinded check. It included no comparison against unguided outputs, no repeated statistical comparison, and no independent human review.
+
+Agents were told to read the skill files. The check did not exercise normal runtime discovery, a new Codex session, or invocation in Claude Code.
+
+For this revision, native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured.
 
 ## Earlier evidence
 
@@ -61,6 +65,12 @@ The old 61-token global core, 93-token experimental core, frozen protocols, and 
 
 The work draws on Clark, Martin, and Mahowald's [AI-language analysis](https://arxiv.org/abs/2610.29162v1), Reinhart et al.'s [human/LLM style comparison](https://arxiv.org/abs/2410.16107), and Martínez, Mollica, and Gibson's [legal-language study](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf). These sources motivate writing ideas; none validates this skill's outputs. The original [attribution record](../NOTICE.md) distinguishes the sources and their licenses.
 
+## Real-document reading preference
+
+On 2026-11-01, the maintainer compared the original limitations paragraph above with an edited version in the existing conversation and a side-by-side HTML page, then selected B (the edit). [The preference record](../research/english-document-preference-20261101.json) retains both presented texts and the exact response. No reason was given. Wording, information order, and paragraph breaks changed together, so this is a preference for the whole passage.
+
+The document adopts B’s three-paragraph structure with one fidelity correction: the middle paragraph removes an unsupported causal link and keeps the three untested runtime items explicit. That corrected wording was not separately rated. This single comparison does not establish a general English writing rule, an isolated skill effect, or completed native-reader validation.
+
 ## Next English milestone
 
-Use the explicit skill in a new session on real English PR descriptions, incident updates, and research notes. Retain the original requests and outputs, check meaning separately, and collect native-reader feedback on wording and flow. Keep the English-first foundation distinct from a claim that native-reader validation has been completed. Extend the language-specific evaluation to Korean, then French, before Chinese, Japanese, and other languages.
+Continue using the explicit skill on real English PR descriptions, incident updates, and research notes; this work can continue in the existing session. Separately check normal discovery and explicit invocation in fresh Codex and Claude Code sessions. Retain the original requests and outputs, check meaning separately, and collect native-reader feedback on wording and flow. Keep the English-first foundation distinct from a claim that native-reader validation has been completed. Extend the language-specific evaluation to Korean, then French, before Chinese, Japanese, and other languages.

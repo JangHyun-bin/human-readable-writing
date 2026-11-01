@@ -142,3 +142,11 @@ The user set the development order to English, Korean, French, then Chinese, Jap
 The original global core, explicit invocation policy, benchmark runner, frozen protocols, and earlier results remain unchanged. Fresh-session runtime invocation, native-reader quality, comprehension, reading time, and this revision's token/latency cost remain unverified.
 
 The skill structure validator, UI metadata constraints, local links and anchors, instruction hashes, and preservation of the previous validation text were checked. Independent document review found one incomplete reuse instruction: copying the manifest alone could omit its Korean reference. The final guide now keeps the directory together or points to the original accessible location. This documentation-only correction was checked through reference resolution; model outputs were not regenerated, and evaluated/published hashes are recorded separately.
+
+## 2026-11-01 Korean essay A/B preference
+
+Two fresh-context agents independently wrote Korean essays on how model, context, tools, and verification contribute to coding-agent performance. Both received the same research facts, audience, prose format, length range, and existing 61-token core. A used those common instructions; B additionally read the current SKILL, MANIFEST, and Korean reference. The [verbatim outputs, condition mapping, instruction hashes, and feedback](research/coding-agent-essay-ab-20261101.json) accompany the [plain HTML comparison](research/essay-ab-20261101.html).
+
+After reading the HTML without the condition names, the user said, “A가 훨씬 나아 진짜”. This is a strong preference for A, the existing-core-only essay. The user did not give a specific reason; none is inferred as their explanation. The lead's source comparison found no material factual issue in either essay.
+
+This pair does not support a claim that adding the detailed skill improved the user's reading preference. With one output per condition, it also does not establish why the preference occurred or a general advantage for either condition. Both arms already included the core and ordinary agent instructions. Comprehension, reading time, tokens, and latency were not measured. The core, manifest, and invocation policy remain unchanged.

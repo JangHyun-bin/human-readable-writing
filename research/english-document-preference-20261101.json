@@ -1,0 +1,58 @@
+{
+  "recorded_on": "2026-11-01",
+  "kind": "real English document editing preference",
+  "source": {
+    "path": "docs/language-support.md",
+    "section": "Workflow check — limitations paragraph",
+    "commit": "f3c57edd14ed94cba546b4780cd2738803e97e60",
+    "sha256_before_edit": "0bacf9fa881a7e0a9fa961b7b91bde1a4af95923398039b116892a7bfb17191d"
+  },
+  "presentation": {
+    "method": "Shown in the conversation, then the same A/B prose displayed side by side in a Funnel HTML page at the user’s request.",
+    "url": "https://jang-macbookpro.tail569454.ts.net/english-ab/",
+    "html_sha256": "b044a8e688c6f4b59fa5fb3b7b6d8a45e7d2030c89845146e0780291f5c0dabf",
+    "randomized": false,
+    "blinded": false,
+    "context": "The existing conversation already contained the skill, manifest, and earlier preferences. This was a source-versus-edit comparison, not independent skill-on/skill-off generation."
+  },
+  "samples": [
+    {
+      "label": "A",
+      "role": "existing source paragraph",
+      "output": "This was a small, unblinded agent check with one output per case and version. It was not a no-guidance experiment, a repeated statistical comparison, or an independent human review. The five outputs within each arm shared a context. Agents were directed to read the skill files; normal runtime discovery, a new Codex session, and a Claude Code invocation were not exercised. Native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured for this revision."
+    },
+    {
+      "label": "B",
+      "role": "edited candidate",
+      "output": "Each instruction version was checked on five cases, with one output per case. Within each version, the same agent context handled all five cases. This was a small, unblinded check. It included no comparison against unguided outputs, no repeated statistical comparison, and no independent human review.\n\nAgents were told to read the skill files. The check therefore did not test whether the skill would be discovered and invoked through the normal workflow in a new Codex session or in Claude Code.\n\nFor this revision, native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured."
+    }
+  ],
+  "user_feedback": {
+    "verbatim": "B",
+    "choice": "B",
+    "reason": null,
+    "rated_dimension": "naturalness and ease of following the prose",
+    "comprehension_score": null
+  },
+  "source_fidelity_review": {
+    "by": "lead agent",
+    "preserved": [
+      "Five cases per instruction version; one output per case; shared context within each version.",
+      "Small, unblinded check; no unguided control, repeated statistical comparison, or independent human review.",
+      "Explicit instruction to read the skill files; normal runtime discovery, a new Codex session, and Claude Code invocation were not exercised.",
+      "Native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured for the revision."
+    ],
+    "issue_in_presented_B": "The word therefore introduces an unnecessary causal link, and the combined discovery/invocation wording blurs three separately untested items.",
+    "applied_correction": "Keep B’s three-paragraph structure; remove that causal link and explicitly retain the three untested items.",
+    "applied_text": "Each instruction version was checked on five cases, with one output per case. Within each version, the same agent context handled all five cases. This was a small, unblinded check. It included no comparison against unguided outputs, no repeated statistical comparison, and no independent human review.\n\nAgents were told to read the skill files. The check did not exercise normal runtime discovery, a new Codex session, or invocation in Claude Code.\n\nFor this revision, native-level English quality, human comprehension, reading time, token cost, and latency remain unmeasured.",
+    "corrected_text_separately_rated_by_user": false
+  },
+  "interpretation": "One user preferred B as a whole in this English documentation comparison. No reason was given; the preference does not isolate paragraph breaks, wording, or information order.",
+  "limits": [
+    "One document pair and one reader response.",
+    "Not evidence of an isolated skill effect or a universal English writing rule.",
+    "No comprehension, reading-time, token-cost, or latency measurement.",
+    "This feedback does not apply to the separate Korean coding-agent essay comparison."
+  ],
+  "action": "Record the exact presented texts and feedback; apply B’s structure with the documented fidelity correction to the source document. No change to the manifest, global core, or invocation policy."
+}

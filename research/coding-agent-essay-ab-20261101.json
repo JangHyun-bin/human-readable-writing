@@ -1,0 +1,73 @@
+{
+  "study": "korean-coding-agent-essay-ab-20261101",
+  "title": "Coding agent의 실력은 어디까지 model의 능력인가?",
+  "task": {
+    "language": "Korean with original English technical terms",
+    "audience": "Developers who have used coding agents",
+    "format": "Continuous essay prose; no title, subheadings, lists or tables in each body",
+    "target_characters_including_spaces": [
+      1500,
+      2000
+    ],
+    "citation_text_excluded_from_character_count": true
+  },
+  "common_core": "기술 설명은 명사 연쇄의 관계와 주체·행동·조건을 분명하게 쓴다. 수치·단위·범위·부정·불확실성을 보존하고 관찰·가설·확인한 인과를 구분한다.",
+  "generation": {
+    "method": "Two separate fresh-context subagents; fork_turns=none; one output per condition; inherited model and effort with no overrides",
+    "provider_usage_or_latency_measured": false,
+    "source_packet": "Same supplied research facts, URLs and scope limits in both task requests; no independent source research by the writers"
+  },
+  "source_urls": [
+    "https://arxiv.org/html/2405.15793v3",
+    "https://aclanthology.org/2024.tacl-1.9/",
+    "https://arxiv.org/html/2310.06770v3"
+  ],
+  "instruction_sha256": {
+    "SKILL.md": "2d4a55d47b89750e45e88990a9dd8c84bc7d66625d4078610775e6c076c9eab3",
+    "MANIFEST.md": "a321cb7490b3eeced44893ceebf0c1978f8819f0dab7795c9e510911fd22ad10",
+    "references/korean.md": "d7b4ac60b0fabec89e9afb5b6a272a9a5ddd776a57e903baa5f1504be8919f45"
+  },
+  "presentation": {
+    "html": "essay-ab-20261101.html",
+    "sha256": "c6493ba2d4d82945f05b2fcde25fe6459186a9933501fcbb8112ae3c35c3fcd8",
+    "order_fixed_before_generation": true,
+    "condition_names_hidden_from_html": true,
+    "lead_knew_conditions": true
+  },
+  "samples": [
+    {
+      "label": "A",
+      "condition": "existing_61_token_core_only",
+      "characters_without_citations": 1963,
+      "output": "Coding agent가 bug를 고치면 흔히 model이 똑똑하다고 말한다. 그러나 눈앞의 patch는 model이 무엇을 판단했는지뿐 아니라 무엇을 읽었고, 어떤 행동을 할 수 있었으며, 그 결과를 어떻게 확인했는지에 따라 달라진다. 그 실력을 이해하려면 model의 판단과 함께 관찰된 결과를 만든 조건을 구별해야 한다.\n\nModel은 주어진 근거에서 가설을 세우고 다음 행동을 고르며 code를 작성한다. Context는 그 판단에 사용할 재료를 정한다. Tool은 재료를 추가로 찾거나 code에 변화를 줄 수 있게 하고, 검증 환경은 그 변화가 정해진 조건을 만족하는지 알려준다. 이는 역할을 설명하기 위한 구분이다. 네 요소의 성능 기여율을 따로 측정했다는 뜻은 아니며, 실제 실행에서는 서로의 효과가 얽힌다.\n\nSWE-agent 연구는 같은 model을 써도 행동 환경에 따라 결과가 달라질 수 있음을 보여준다. SWE-bench Lite에서 GPT-4 Turbo를 사용한 SWE-agent는 18.00%, demonstration을 포함한 Shell-only agent는 11.00%의 task를 해결했다. 여기서 ACI는 가능한 command뿐 아니라 결과를 model에게 보여주는 형식까지 포함한다. 연구진은 search 결과 표시, edit와 linting, file viewer 범위, interaction history 관리도 바꿔 평가했다. 따라서 전체 차이를 한 tool의 효과나 tools의 기여 비율로 읽을 수 없다. 이는 2024년 특정 model과 benchmark 설정에서 얻은 결과이며 현재 agent의 순위를 뜻하지 않는다. [SWE-agent](https://arxiv.org/html/2405.15793v3)\n\nContext도 단순히 길수록 유리한 저장 공간으로 볼 수 없다. Lost in the Middle은 multi-document QA와 synthetic key-value retrieval에서 길이와 정보 위치를 통제했다. QA에서는 같은 정답을 담은 document도 놓인 위치에 따라 성능이 달랐고, 평가한 model들은 대체로 처음이나 끝의 관련 정보를 중간의 정보보다 잘 활용했다. 정보를 넣었다는 사실과 판단에 활용되었다는 사실을 구별해야 한다는 해석이 가능하다. 다만 coding 실험이 아니므로 모든 최신 model이나 모든 긴 context에 적용할 보편 법칙은 아니다. [Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)\n\n검증 환경은 성공이라는 말의 범위를 정한다. 원 SWE-bench는 12개 Python repository의 GitHub issue와 대응 PR에서 2,294개 task를 구성했다. Issue 설명과 당시 codebase를 받아 만든 patch를 repository의 testing framework로 평가한다. FAIL_TO_PASS는 reference fix 전 실패하고 후 통과하는 tests이며, PASS_TO_PASS는 기존 통과를 유지해야 하는 tests다. 평가 성공은 지정된 두 집합을 모두 통과했다는 뜻이다. 이 범위에서 보면 성공률만으로 모든 요구사항, 보안, 유지보수성, 실제 운영 조건까지 보장되었다고 해석할 수는 없다. [SWE-bench](https://arxiv.org/html/2310.06770v3)\n\n가령 관련 caller가 context에서 빠진 채 bug를 고치는 상황을 생각할 수 있다. Caller를 찾아 읽는 tool과 failing test 및 regression test를 실행할 환경이 있다면 model이 판단에 쓸 근거는 달라진다. 이는 설명용 가상 상황이며 언제나 올바른 fix에 도달한다는 보장은 아니다. Tool이 근거를 주어도 model은 이를 잘못 읽을 수 있고, test가 통과해도 검사하지 않은 동작에는 문제가 남을 수 있다.\n\n그러므로 coding agent의 실력을 model 이름 하나로 설명하기는 어렵다. Model의 개선은 여전히 중요하지만, model 비교에서도 context와 가능한 행동, feedback 형식, 검증 기준을 함께 밝혀야 결과를 해석할 수 있다. 개발자는 필요한 근거가 판단에 닿고 잘못된 patch가 드러날 조건이 갖춰졌는지 확인해야 한다."
+    },
+    {
+      "label": "B",
+      "condition": "same_core_plus_explicit_detailed_skill",
+      "characters_without_citations": 1965,
+      "output": "Coding agent의 실력은 model이 무엇을 아는지만으로 정해지지 않는다. Model은 issue를 해석하고 code에서 원인을 추론해 다음 행동과 patch를 선택한다. 그러나 판단에 필요한 근거가 context에 들어오는지, tool로 무엇을 할 수 있는지, 그 결과를 어떤 형식으로 받는지에 따라 판단의 조건도 달라진다. 검증 환경은 만든 patch가 어떤 기준을 충족했는지 판별한다.\n\nSWE-agent 연구에서는 같은 model도 agent의 interface에 따라 다른 결과를 냈다. SWE-bench Lite에서 GPT-4 Turbo를 사용한 SWE-agent는 task의 18.00%를 해결했고, demonstration을 포함한 Shell-only agent는 11.00%를 해결했다. 여기서 ACI는 사용할 command뿐 아니라 tool의 결과를 model에 보여주는 형식까지 포함한다. 연구진은 search 결과 표시, edit command와 linting, file viewer 범위, interaction history 관리도 바꿔 평가했다. 그러므로 전체 ACI의 차이를 한 요소의 효과나 tools의 기여율로 바꿔 읽을 수 없다. 이 수치는 2024년의 특정 model·benchmark·설정에서 얻은 결과이며 현재 coding agent의 순위를 뜻하지 않는다. [SWE-agent](https://arxiv.org/html/2405.15793v3)\n\nContext도 분량만으로 설명하기 어렵다. Lost in the Middle은 multi-document QA와 synthetic key-value retrieval에서 context 길이와 필요한 정보의 위치를 통제했다. QA에서는 같은 정답을 담은 document라도 위치를 바꾸면 성능이 달랐고, 평가한 model들은 대체로 관련 정보가 처음이나 끝에 있을 때 중간에 있을 때보다 잘했다. 이는 당시 model과 과제에서의 관찰이며 coding 실험은 아니다. 모든 최신 model이나 긴 context에 적용할 법칙으로 삼을 수 없다. Coding agent도 제공한 정보와 그 배치를 함께 살펴야 한다는 해석은 가능하다. [Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)\n\n관련 caller가 context에서 빠진 채 bug를 고치는 상황을 가정한다. Agent가 caller를 찾아 읽을 수 있다면 변경이 다른 경로에 미치는 영향을 판단할 근거가 늘어난다. Failing test와 regression test를 실행할 수 있다면 처음 가설이 맞았는지, 기존 동작을 깨뜨렸는지도 확인할 기회가 생긴다. 이 가상 상황에서 tool은 근거를 얻고 행동할 통로이며, model은 근거를 해석해 다음 행동을 정한다. 통로가 있다는 사실만으로 올바른 해석이나 성공이 보장되지는 않는다.\n\n검증이 판별하는 성공의 범위도 명확해야 한다. 원래 SWE-bench는 12개 Python repository의 GitHub issue와 대응 PR에서 2,294개 task를 구성했다. Issue 설명과 당시 codebase를 받아 만든 patch를 repository의 testing framework로 평가한다. FAIL_TO_PASS는 reference fix 전에는 실패하고 후에는 통과하는 tests이며, PASS_TO_PASS는 기존 통과를 유지해야 하는 tests다. 평가 성공은 지정된 두 집합의 tests가 모두 통과했음을 뜻한다. 이 기준만으로 모든 요구사항과 보안, 유지보수성, 실제 운영 조건까지 보장할 수 없다는 판단은 검증 범위에서 도출하는 해석이다. [SWE-bench](https://arxiv.org/html/2310.06770v3)\n\n이 연구들이 model·context·tool·검증의 성능 기여를 네 몫으로 나눠 측정한 것은 아니다. 각각은 agent가 판단하고 행동하며 결과를 확인하는 과정에서 상호작용한다. 따라서 model 개선의 필요성은 그대로 남는다. Coding agent를 비교하며 model 이름과 성공률을 제시할 때는 제공한 context와 tool, feedback 형식, 통과 기준도 밝혀야 한다. 그래야 실패가 무엇을 드러내는지, 성공이 어디까지 확인한 것인지 구체적으로 말할 수 있다."
+    }
+  ],
+  "source_fidelity_review": {
+    "source_fidelity": "Both preserve the supplied facts, historical scope and inference boundaries; no material factual issue found",
+    "by": "lead"
+  },
+  "user_feedback": {
+    "received_on": "2026-11-01",
+    "verbatim": "A가 훨씬 나아 진짜",
+    "choice": "A",
+    "strength": "strong preference",
+    "reason": null,
+    "rated_dimension": "reading preference",
+    "comprehension_score": null
+  },
+  "interpretation": "The user strongly preferred the existing-core-only essay in this pair. The detailed skill did not win this comparison. No specific reason or causal mechanism was supplied by the user.",
+  "limits": [
+    "One writing sample per condition; output variation remains uncontrolled.",
+    "Both conditions include the existing core and ordinary agent instructions; no pure or core-free baseline was generated.",
+    "The user saw hidden condition labels, but this was not a formal blinded study with an independent experimenter.",
+    "Source fidelity was checked by the lead, not a separate blinded reviewer.",
+    "No comprehension, reading-time, token or latency measurement; no general superiority claim."
+  ],
+  "action": "Preserve the actual outputs and feedback; no changes to the core, manifest or invocation policy from this single comparison."
+}

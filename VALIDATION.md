@@ -133,9 +133,9 @@ Fresh-context reviewer `manifest_preference_review`는 변경 전후 문서와 �
 이는 개인 선호를 문서에 반영하고 문서의 범위·충돌을 확인한 결과다. 변경 후 새 session의 실제 출력 준수율·읽기 시간·이해도 개선이나 core의 인과 효과는 측정하지 않았다.
 
 
-## 2026-11-01 English-first foundation
+## 2026-11-01 Shared instructions and language coverage
 
-The user set the development order to English, Korean, French, then Chinese, Japanese, and other languages. README, the skill entry point, the shared manifest, and UI metadata now use English. A Korean README and a scoped Korean reference preserve the existing user path and personal layout preference. The requested output language takes precedence over development priority.
+This entry records the policy at the time of the 2026-11-01 check; the [current policy](docs/language-support.md) gives Korean and English equal priority. At that time, the user set the development order to English, Korean, French, then Chinese, Japanese, and other languages. README, the skill entry point, the shared manifest, and UI metadata were changed to English. A Korean README and a scoped Korean reference preserve the existing user path and personal layout preference. The requested output language takes precedence over development priority.
 
 [Language support and validation](docs/language-support.md) records the scope and limits in English. In a small workflow check, two fresh agent contexts processed the same four English requests and one Korean request using the previous and revised instructions. The lead agent checked all ten outputs against the source and requested format; both versions passed. [Verbatim evidence](research/english-first-checks.json) includes the requests, outputs, criteria, and instruction hashes. This is not a no-guidance control, native-reader validation, or a demonstrated quality gain.
 

@@ -1,6 +1,6 @@
 # Language support and validation
 
-Korean and English are equal primary languages of this project. Maintain a complete user path in both: documentation, invocation examples, writing guidance, and language-appropriate evaluation tasks. This is a maintenance priority, not a claim that native-level quality or human comprehension gains have been validated.
+The skill does not limit input or output to a fixed set of languages. It follows the requested language, or preserves the source language when editing without a translation request. Korean and English have equal priority for documentation and validation. Maintain a complete user path in both: documentation, invocation examples, writing guidance, and language-appropriate evaluation tasks. This is a maintenance priority, not a claim that native-level quality or human comprehension gains have been validated.
 
 The requested output language always takes precedence. Editing without a language instruction preserves the source language. Shared instructions are written in English; that does not require translating other requests into English.
 
@@ -13,13 +13,13 @@ The requested output language always takes precedence. Editing without a languag
 | Translation | French | [French README](../README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
 | Translation | Simplified Chinese | [Simplified Chinese README](../README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
 | Translation | Japanese | [Japanese README](../README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
-| Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding a language |
+| Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding maintained guidance or language-specific evaluation |
 
 French, Chinese, and Japanese are not labeled as validated language releases. A model's ability to produce those languages does not establish that this skill has been evaluated for them.
 
 The Korean and English READMEs are maintained together. Installation, invocation, support status, and evidence must agree; examples and wording can differ to suit each language. Keep existing translations accessible and correct shared facts when they change, without promising equal editorial coverage. Further language work depends on actual use and review capacity, not a fixed ranking among French, Chinese, and Japanese.
 
-The shared skill instructions remain in one English manifest. Add language-specific guidance only where it changes a concrete writing decision. The current policy replaces the earlier English-first priority; the dated checks below retain the policy and instruction versions used at the time.
+The shared skill instructions remain in one English manifest. Add language-specific guidance only where it changes a concrete writing decision. The dated checks below retain the policy and instruction versions used at the time; current maintenance gives Korean and English equal priority.
 
 ## What native support requires
 
@@ -34,9 +34,9 @@ Keep shared semantic rules in [MANIFEST.md](../MANIFEST.md). Add language-specif
 
 On 2026-11-01, five requests were fixed before the instruction revision: an English PR description, an incident update, a research note, an ambiguous release requirement, and a Korean operational notice. The English requests were authored in English rather than translated from the earlier Korean benchmark.
 
-One fresh agent context used the previous skill from commit `88ec41b0cda9c48fa78ecd71d0a4b85bcb24218b`. A separate fresh context used the English-first skill. Each agent processed the same five requests in one context and returned the requested prose. The lead agent compared all ten outputs with the source facts and requested formats.
+One fresh agent context used the previous skill from commit `88ec41b0cda9c48fa78ecd71d0a4b85bcb24218b`. A separate fresh context used the revised skill. Each agent processed the same five requests in one context and returned the requested prose. The lead agent compared all ten outputs with the source facts and requested formats.
 
-| Check | Previous skill | English-first skill |
+| Check | Previous skill | Revised skill |
 |---|---|---|
 | English PR: write outcome, client-only scope, test coverage, untested logout overlap; one paragraph | Pass | Pass |
 | English incident: time window, counts, status code, possible cause, sequence without causal proof, unknown retries | Pass | Pass |
@@ -63,7 +63,7 @@ The earlier [validation history](../VALIDATION.md), [literature notes](../resear
 - The four-generation source-fidelity comparison passed in both arms and did not establish superiority.
 - The six-case follow-up checked the revised core alone and passed the agent's meaning and format criteria.
 
-The old 61-token global core, 93-token experimental core, frozen protocols, and benchmark runner remain unchanged. Earlier token and timing results do not measure this English-first revision.
+The old 61-token global core, 93-token experimental core, frozen protocols, and benchmark runner remain unchanged. Earlier token and timing results do not measure the instruction revision evaluated on 2026-11-01.
 
 The work draws on Clark, Martin, and Mahowald's [AI-language analysis](https://arxiv.org/abs/2610.29162v1), Reinhart et al.'s [human/LLM style comparison](https://arxiv.org/abs/2410.16107), and Martínez, Mollica, and Gibson's [legal-language study](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf). These sources motivate writing ideas; none validates this skill's outputs. The original [attribution record](../NOTICE.md) distinguishes the sources and their licenses.
 

@@ -115,7 +115,7 @@ Le [compte rendu de l’essai initial](research/native-pilot.md), en coréen, co
 
 ## Langues
 
-**Le coréen et l’anglais ont le même statut de langues principales.** Les [README en coréen](README.ko.md) et [en anglais](README.md) sont maintenus ensemble pour l’installation, l’utilisation, le périmètre de prise en charge et les résultats des vérifications. Les exemples peuvent être adaptés à chaque langue.
+Le skill suit la langue demandée, sans limiter son usage à une liste de langues. **Le coréen et l’anglais ont la même priorité pour la documentation et la validation.** Les [README en coréen](README.ko.md) et [en anglais](README.md) sont maintenus ensemble pour l’installation, l’utilisation, le périmètre de prise en charge et les résultats des vérifications. Les exemples peuvent être adaptés à chaque langue.
 
 Les instructions communes restent dans un seul manifeste en anglais. La langue demandée pour le texte reste prioritaire ; sans demande de traduction, la révision conserve la langue du texte source.
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/readme-header.svg" alt="Human-readable writing — 용어는 보존하고, 관계는 풀어 쓴다." width="100%">
+  <img src="assets/readme-header.svg" alt="Human-readable writing" width="100%">
 </p>
 
 <p align="center"><a href="README.md">English</a> · <strong>한국어</strong> · <a href="README.fr.md">Français</a> · <a href="README.zh-CN.md">中文（简体）</a> · <a href="README.ja.md">日本語</a></p>

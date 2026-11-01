@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/readme-header.svg" alt="Human-readable writing — conserver les termes, clarifier les relations." width="100%">
+  <img src="assets/readme-header.svg" alt="Human-readable writing" width="100%">
 </p>
 
 <p align="center">

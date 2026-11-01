@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/readme-header.svg" alt="Human-readable writing — 用語はそのままに、関係を明確に。" width="100%">
+  <img src="assets/readme-header.svg" alt="Human-readable writing" width="100%">
 </p>
 
 <p align="center">

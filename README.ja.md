@@ -94,17 +94,9 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 | 実行環境 | 読み込み先 | 呼び出し方針 |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` に `allow_implicit_invocation: false` を設定済み。 |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | 以下の `skillOverrides` 設定を既存の設定ファイルに追加する。 |
+| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
 
-`~/.claude/settings.json` のほかの設定を残したまま、次の内容を追加してください。
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+共通の `SKILL.md` に `disable-model-invocation: true` を設定済みです。検証した Claude Code のバージョンでは `skillOverrides` の追加は不要です。ほかの既存設定は維持してください。
 
 ローカルのスキルディレクトリを読み込めないクラウドセッションでは、別途インストールが必要です。[Codex](https://learn.chatgpt.com/docs/build-skills) と [Claude Code](https://code.claude.com/docs/en/skills) の個人用スキルに関する案内を参照してください。
 
@@ -136,7 +128,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 三つの翻訳ガイドの言語間に開発順位は設けません。今後の作業は実際の需要と各言語のレビュー体制に応じて決めます。文書の翻訳は、母語話者に相当する出力品質の検証を意味しません。
 
-詳細は[言語方針と検証記録](docs/language-support.md)を参照してください。OpenCode 2、Pi、oh-my-pi は対応を検討中です。[ツール互換性の記録](docs/tool-support.md)では、文書で確認した内容と未実施の動作確認を区別しています。
+詳細は[言語方針](docs/language-support.md)を参照してください。Codex、Claude Code、Pi、oh-my-pi は限定的な英語・韓国語の動作確認を通過しました。OpenCode 2 は一部のみ確認でき、失敗もあります。[互換性の記録](docs/tool-support.md)にバージョン、検証したパス、制約を記載しています。日本語の出力品質を検証した結果ではありません。
 
 ## 根拠と限界
 

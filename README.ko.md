@@ -35,15 +35,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 이미 복제했다면 해당 디렉터리에서 `mkdir`와 `ln` 단계만 수행한다. `SKILL.md`가 `MANIFEST.md`와 한국어용 `references/korean.md`를 읽으므로 디렉터리 전체를 유지해야 한다.
 
-Codex의 명시적 호출 설정은 `agents/openai.yaml`에 포함되어 있다. Claude Code에서는 `~/.claude/settings.json`의 기존 설정을 보존하면서 다음 항목을 병합한다.
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+Codex의 명시적 호출 설정은 `agents/openai.yaml`에 포함되어 있다. 공통 `SKILL.md`에는 Claude Code 등 호환 도구를 위한 `disable-model-invocation: true`가 포함되어 있다. 검증한 Claude Code 버전에는 별도의 `skillOverrides` 추가가 필요하지 않다. 기존의 다른 설정은 유지한다.
 
 위 방법은 로컬 세션용이다. 이 경로를 읽을 수 없는 환경에서는 [Codex](https://learn.chatgpt.com/docs/build-skills) 또는 [Claude Code](https://code.claude.com/docs/en/skills)의 개인 스킬 설치 안내를 따른다.
 
@@ -65,7 +57,11 @@ $human-readable-writing 이 PR 설명을 유지보수자가 읽기 좋게 다듬
 
 사용자가 지정한 언어와 형식을 따른다. 번역을 요청하지 않았다면 원문의 언어를 유지한다. 식별자, 수치·단위, 제외 조건, 부정과 불확실성을 보존하며, 원문에 없는 관계는 추측으로 채우지 않고 확인한다. 문단과 표는 문서의 목적에 맞게 사용하고, 문장마다 문단을 나누는 규칙은 강제하지 않는다.
 
-**OpenCode 2·Pi·oh-my-pi는 지원 검토 중이다.** 공식 문서에서 호환 가능한 스킬 형식을 확인했지만 이 저장소의 스킬 탐색·호출 시험은 아직 진행하지 않았다. [도구별 호환성과 남은 점검](docs/tool-support.md)을 참고한다. 기존 글쓰기 점검 역시 새 Codex·Claude Code 세션의 일반적인 탐색·호출 과정을 검증한 것은 아니다.
+## 도구 지원
+
+2026-11-02에 **Codex 0.166.0, Claude Code 2.1.312, Pi 1.4.0, oh-my-pi 18.15.0**의 프로젝트 로컬 설치에서 제한된 한·영 호출·참조 파일 로딩 검사를 통과했다. 도구별 호출 없는 비교 요청 한 건에서는 이 스킬을 읽지 않았다. 임시 프로젝트에서 검사했으며, 위 사용자 전역 설치 경로를 별도로 시험한 것은 아니다.
+
+**OpenCode 2.2.1은 부분 검증 상태이며 실패가 있다.** 영어 네이티브 로딩 한 건은 성공했지만 CLI 멘션과 참조 파일 경로 처리가 일관되지 않았다. 추가 출력에서는 원문의 조건도 바뀌었다. Pi·oh-my-pi 사용법을 포함한 [검증 경로·명령·모델·제약](docs/tool-support.md)을 참고한다. 이 관찰은 일반적인 글쓰기 품질을 입증하지 않는다.
 
 ## 언어
 
@@ -81,6 +77,7 @@ $human-readable-writing 이 PR 설명을 유지보수자가 읽기 좋게 다듬
 
 | 기록 | 확인한 내용 |
 |---|---|
+| [네이티브 호출 검사, 2026-11-02](research/runtime-validation-20261102.json) | 네 도구는 제한된 검사를 통과했고 OpenCode는 성공·실패가 섞였다. 버전·명령·출력·파일 로딩 근거와 제약을 기록했다. |
 | [영어·한국어 작업 사례](docs/language-support.md#workflow-check) | 두 지침 버전 모두 에이전트의 원문 충실도·형식 점검을 통과했다. 개선 효과나 도구 호환성을 입증한 결과는 아니다. |
 | [한국어 문서 다섯 쌍 비교](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 한 사용자의 문단·표·정보 순서 선호를 기록했다. |
 | [문단 배치 생성 12회](research/layout-generation-pilot.md) | 근거 없는 검증 상태 추가와 불확실성 변경이 발견되어 채택을 보류했다. |

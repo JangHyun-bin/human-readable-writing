@@ -94,17 +94,9 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 | 运行环境 | 入口 | 调用规则 |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` 中包含 `allow_implicit_invocation: false`，禁止隐式调用。 |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | 将下面的 `skillOverrides` 设置合并到现有设置文件中，使技能仅可由用户显式调用。 |
+| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
 
-向 `~/.claude/settings.json` 添加以下内容时，保留其他已有设置：
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+共用的 `SKILL.md` 已包含 `disable-model-invocation: true`。已测试的 Claude Code 版本无需额外添加 `skillOverrides`；保留其他已有设置。
 
 无法读取本地技能目录的云端会话需要单独安装。请参阅 [Codex](https://learn.chatgpt.com/docs/build-skills) 和 [Claude Code](https://code.claude.com/docs/en/skills) 的个人技能指南。
 
@@ -136,7 +128,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 三种翻译指南的语言之间不设开发先后顺序。后续工作取决于实际需求及相应语言的审阅条件。提供翻译文档不等于已验证输出具有母语水平。
 
-详见[语言政策与验证记录](docs/language-support.md)。OpenCode 2、Pi 和 oh-my-pi 仍在评估中；[工具兼容性说明](docs/tool-support.md) 区分了文档核查与尚未开展的实际运行检查。
+详见[语言政策](docs/language-support.md)。Codex、Claude Code、Pi 和 oh-my-pi 通过了有限的英语及韩语运行检查。OpenCode 2 仅得到部分验证，仍有失败记录。[兼容性说明](docs/tool-support.md)列出了版本、测试路径和限制；这些结果并不验证中文输出质量。
 
 ## 证据与局限
 

@@ -94,17 +94,9 @@ Les deux outils lisent la même copie locale du dépôt. Si vous l’avez déjà
 | Outil | Point d’entrée | Règle d’invocation |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` contient `allow_implicit_invocation: false`. |
-| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | Intégrez le paramètre `skillOverrides` ci-dessous au fichier de paramètres existant. |
+| Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
 
-Conservez les autres paramètres de `~/.claude/settings.json` lors de l’ajout :
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+Le `SKILL.md` partagé contient `disable-model-invocation: true`. Aucun ajout de `skillOverrides` n’est nécessaire pour la version de Claude Code testée ; conservez les autres paramètres.
 
 Les sessions dans le cloud qui ne peuvent pas lire les répertoires locaux des skills nécessitent une installation distincte. Consultez les instructions relatives aux skills personnels pour [Codex](https://learn.chatgpt.com/docs/build-skills) et [Claude Code](https://code.claude.com/docs/en/skills).
 
@@ -136,7 +128,7 @@ Les instructions communes restent dans un seul manifeste en anglais. La langue d
 
 Aucun ordre de développement n’est fixé entre les langues des trois guides traduits. Les travaux suivants dépendent des usages réels et de la disponibilité de lecteurs compétents dans chaque langue. La traduction de la documentation ne démontre pas une qualité de rédaction équivalente à celle d’un locuteur natif.
 
-Voir la [politique linguistique et les résultats consignés](docs/language-support.md). OpenCode 2, Pi et oh-my-pi sont à l’étude ; les [notes de compatibilité](docs/tool-support.md) distinguent la documentation consultée des vérifications d’exécution encore à faire.
+Voir la [politique linguistique](docs/language-support.md). Des vérifications limitées en anglais et en coréen ont réussi avec Codex, Claude Code, Pi et oh-my-pi. OpenCode 2 présente des résultats partiels et des échecs. Les [notes de compatibilité](docs/tool-support.md) précisent les versions, chemins testés et limites ; ces résultats ne valident pas la qualité du français.
 
 ## Éléments probants et limites
 

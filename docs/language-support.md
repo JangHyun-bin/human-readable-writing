@@ -8,8 +8,8 @@ The requested output language always takes precedence. Editing without a languag
 
 | Maintenance scope | Language | Available material | Remaining work |
 |---|---|---|---|
-| Primary | Korean | [Korean README](../README.ko.md), scoped language guidance, workflow checks, and personal editing records | Fresh-session runtime checks and continued reader feedback on real work |
-| Primary | English | [English README](../README.md), shared instructions, original English workflow requests, and validation summary | Fresh-session runtime checks and further native-reader review of real work |
+| Primary | Korean | [Korean README](../README.ko.md), scoped language guidance, workflow checks, and personal editing records | Bounded runtime checks recorded; continued reader feedback on real work |
+| Primary | English | [English README](../README.md), shared instructions, original English workflow requests, and validation summary | Bounded runtime checks recorded; further native-reader review of real work |
 | Translation | French | [French README](../README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
 | Translation | Simplified Chinese | [Simplified Chinese README](../README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
 | Translation | Japanese | [Japanese README](../README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
@@ -77,4 +77,4 @@ The document adopts B’s three-paragraph structure with one fidelity correction
 
 Use real Korean and English PR descriptions, incident updates, and research notes under the shared manifest. Include mixed Korean–English terminology and requests that must preserve uncertainty or ask about a missing relationship. Retain the original requests and outputs, check meaning separately, and collect reader feedback on wording and flow in each language.
 
-Separately check normal discovery and explicit invocation in fresh runtime sessions using the [tool compatibility checklist](tool-support.md). Record runtime and model versions with each result. A successful load is not a writing-quality evaluation, and the dated writing checks above do not validate later instruction revisions. Further language evaluation remains unscheduled until there is a concrete use case and a reviewer for that language.
+The [2026-11-02 runtime checks](../research/runtime-validation-20261102.json) cover fresh-session invocation and reference loading for four runtimes, with mixed OpenCode results. See [tool compatibility](tool-support.md) for tested versions, models, paths, and remaining limitations. Repeat the checks when runtime behavior or skill instructions change. A successful load is not a writing-quality evaluation, and the dated writing checks above do not validate later instruction revisions. Further language evaluation remains unscheduled until there is a concrete use case and a reviewer for that language.

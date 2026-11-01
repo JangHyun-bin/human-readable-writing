@@ -1,0 +1,1795 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Seoul",
+  "source": {
+    "sourceCommit": "4fff5118d89789d3bafd52a040863ba79a0675c0",
+    "files": {
+      "SKILL.md": "5526f9492ec4fd1e0afc598c0bca8ac5a48f94a9e8ed0863dd6f0f59b02348e7",
+      "MANIFEST.md": "a321cb7490b3eeced44893ceebf0c1978f8819f0dab7795c9e510911fd22ad10",
+      "references/korean.md": "d7b4ac60b0fabec89e9afb5b6a272a9a5ddd776a57e903baa5f1504be8919f45",
+      "agents/openai.yaml": "532bc46f3277fdbc48273b6e3a31f1acecf6825f48d085ee8bae77c6d63a3e70"
+    }
+  },
+  "scope": "Bounded runtime compatibility and source-fidelity observations, not language quality, causal benefit, or performance evaluation. One English and one Korean source, one uninvoked English control per runtime; diagnostic OpenCode attempts retained.",
+  "redaction": "Only final prose, tool names/arguments and response excerpts are retained. Thinking, credentials, signatures and unrelated personal context are omitted. ${TEST_ROOT}, ${CHECKOUT}, ${HOME}, ${SESSION_ID} replace local paths/IDs. Raw logs remain local; their hashes identify the observed runs.",
+  "versions": {
+    "codex": "0.166.0",
+    "claude": "2.1.312",
+    "opencode": "2.2.1",
+    "pi": "@earendil-works/pi-coding-agent 1.4.0",
+    "omp": "@oh-my-pi/pi-coding-agent 18.15.0 on local Bun 1.4.4"
+  },
+  "installation": {
+    "codex": ".agents/skills/human-readable-writing symlink to checkout",
+    "claude": ".claude/skills/human-readable-writing symlink to checkout; project/local settings only, Read and Skill allowed, hooks disabled, empty MCP",
+    "pi": ".agents/skills/human-readable-writing symlink; npm installation under ${TEST_ROOT}/pi-cli",
+    "omp": ".omp/skills/human-readable-writing symlink; local Bun/npm package under ${TEST_ROOT}/omp-cli; print mode, read tool only",
+    "opencode": ".opencode/skills/human-readable-writing; first symlink, later physical copy. Explicit session location used for *-fixed and *-api. Local configured provider retained. Shell denied in those sessions."
+  },
+  "limits": [
+    "Project installations were exercised; documented user-level locations and interactive pickers were not independently exercised.",
+    "Codex Korean run also loaded the pre-existing korean-report-style skill and its lint helper. This is runtime evidence, not an isolated estimate of this skill’s writing effect.",
+    "OpenCode CLI @ mention did not reliably select the evaluated copy. Explicit location helped only one English case. Experimental native activation found the skill but did not reliably resolve supporting files. No unconditional OpenCode support claim.",
+    "One negative control per tool shows no observed target load, not a proof that implicit activation is impossible in every configuration.",
+    "Claude init listed the skill before and after the metadata change; that inventory is not evidence of model advertisement. Explicit slash invocation and an uninvoked control were observed after the change. Neither baseline nor post-change control loaded the target; no unwanted activation was demonstrated."
+  ],
+  "records": [
+    {
+      "runtime": "codex",
+      "case": "en",
+      "invocation": {
+        "runtime": "codex",
+        "case": "en",
+        "cwd": "${TEST_ROOT}/codex",
+        "argv": [
+          "codex",
+          "exec",
+          "--json",
+          "--ephemeral",
+          "--color",
+          "never",
+          "--sandbox",
+          "read-only",
+          "-c",
+          "project_doc_max_bytes=0",
+          "-c",
+          "plugins._default.enabled=false",
+          "-c",
+          "features.multi_agent=false",
+          "$human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "$human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:53:31Z",
+        "exitCode": 0,
+        "elapsedSeconds": 43.964
+      },
+      "model": "gpt-6-astra (configured default; JSON event stream does not name model)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc 'cat ${CHECKOUT}/MANIFEST.md'",
+          "success": true,
+          "response": {
+            "characters": 7249,
+            "head": "# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request ",
+            "tail": "CE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n"
+          }
+        }
+      ],
+      "assistantText": [
+        "I’ll apply the human-readable-writing skill and check that the revision preserves every fact and qualification.\n",
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart occurred before recovery, but causation has not been established. The p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but has not been approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart occurred before recovery, but causation has not been established. The p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but has not been approved or completed.",
+      "rawEventLogSha256": "f1a98d6cbc61f93ed789eaf7f17696c4fa1386c343f832590c1b6e526213c541",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "2d59a4e7a5ad779d44a93dfcf9e2a733c11453b7cca246ab56f20afb8040c290"
+    },
+    {
+      "runtime": "codex",
+      "case": "ko",
+      "invocation": {
+        "runtime": "codex",
+        "case": "ko",
+        "cwd": "${TEST_ROOT}/codex",
+        "argv": [
+          "codex",
+          "exec",
+          "--json",
+          "--ephemeral",
+          "--color",
+          "never",
+          "--sandbox",
+          "read-only",
+          "-c",
+          "project_doc_max_bytes=0",
+          "-c",
+          "plugins._default.enabled=false",
+          "-c",
+          "features.multi_agent=false",
+          "$human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "$human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:57:24Z",
+        "exitCode": 0,
+        "elapsedSeconds": 67.077
+      },
+      "model": "gpt-6-astra (configured default; JSON event stream does not name model)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"cat '${CHECKOUT}/SKILL.md'\"",
+          "success": true,
+          "response": {
+            "characters": 1401,
+            "head": "---\nname: human-readable-writing\ndescription: Use when explicitly asked to edit or review technical prose.\ndisable-model-invocation: true\n---\n\n# Human-readable writing\n\nWrite technical prose that lets readers connect a c",
+            "tail": "l authority to change technical behavior, files, or external systems. Human comprehension gains have not been measured.\n"
+          }
+        },
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"cat '${CHECKOUT}/MANIFEST.md'\"",
+          "success": true,
+          "response": {
+            "characters": 7249,
+            "head": "# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request ",
+            "tail": "CE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n"
+          }
+        },
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"cat '${CHECKOUT}/references/korean.md'\"",
+          "success": true,
+          "response": {
+            "characters": 1060,
+            "head": "# 한국어 적용\n\n한국어 또는 한국어·영어가 섞인 기술 문서를 작성할 때 [MANIFEST](../MANIFEST.md)의 공통 원칙과 함께 읽는다. 이 file은 언어별 보완이며 별도의 정본이 아니다.\n\n## 문장과 용어\n\n- 사용자가 지정한 언어·용어 규약을 따른다. 영어 technical term을 유지하는 문서에서는 term 주변의 조사·어미·동사로 주체·행동·조건의 관계를 분명히 쓴",
+            "tail": "다.\n>\n> timeout이 발생한 12 session의 error는 계산하지 않았다.\n\n전체·제외·집계 대상과 미계산 범위를 보존하였다. 이 표현에 대한 개인 선호를 사람의 이해도 개선 측정으로 해석하지 않는다.\n"
+          }
+        },
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"cat '${HOME}/.codex/skills/korean-report-style/SKILL.md'\"",
+          "success": true,
+          "response": {
+            "characters": 12183,
+            "head": "---\nname: korean-report-style\ndescription: Korean-language conventions for technical reports, progress updates, meeting agendas, software handoffs, architecture documents, runbooks, API references, model evaluations, and",
+            "tail": " 한 번 풀어 쓴다. 쉽게 바꾸다 계약 의미가 넓어지는 편이 더 위험하다.\n- **삭제의 연쇄** — 한 항목을 삭제하면 다른 항목이 중복되거나 무의미해지는 경우가 있다.\n  발견하면 알리고 함께 정리할지 묻는다.\n"
+          }
+        },
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"rg -n '\"'^(def |class )|read_text|suffix|argparse|stdin'\"' ${HOME}/.codex/skills/korean-report-style/assets/lint.py\"",
+          "success": true,
+          "response": {
+            "characters": 2101,
+            "head": "28:import argparse\n36:for _s in (sys.stdin, sys.stdout, sys.stderr):\n91:class Finding:\n122:def split_table_row(line: str) -> list[str]:\n151:def _clean_cell(cell: str) -> str:\n160:def _is_separator_row(line: str) -> bool:",
+            "tail": "667:            text = path.read_text(encoding=\"utf-8\")\n668:            html = path.suffix.lower() in (\".html\", \".htm\")\n"
+          }
+        },
+        {
+          "tool": "command_execution",
+          "input": "/bin/zsh -lc \"printf '%s\\\\n' '09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환하였고, 나머지 222 request는 성공하였다. 재시도 request는 이 집계에서 제외하였으며, 해당 request의 결과는 알려져 있지 않다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다.' '' 'gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구되었으나, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되지도 완료되지도 않았다.' | python3 -B ${HOME}/.codex/skills/korean-report-style/assets/lint.py -\"",
+          "success": true,
+          "response": {
+            "characters": 1168,
+            "head": "python3: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead\npython3: error: couldn't create cache file '/tmp/xcrun_db-OWjolhaO' (errno=Operation not permitted)\n2026-11-02",
+            "tail": "de=5 \"Input/output error\". Using NSCachesDirectory instead.\n형태소 검사를 건너뛰었다 — python -m pip install kiwipiepy\n문체 규약 위반 없음\n"
+          }
+        }
+      ],
+      "assistantText": [
+        "human-readable-writing 스킬과 한국어 문서 지침을 적용해 수치·조건·불확실성을 보존하며 다듬겠습니다.\n",
+        "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환하였고, 나머지 222 request는 성공하였다. 재시도 request는 이 집계에서 제외하였으며, 해당 request의 결과는 알려져 있지 않다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구되었으나, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되지도 완료되지도 않았다."
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환하였고, 나머지 222 request는 성공하였다. 재시도 request는 이 집계에서 제외하였으며, 해당 request의 결과는 알려져 있지 않다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구되었으나, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되지도 완료되지도 않았다.",
+      "rawEventLogSha256": "cc702eeae417137d6b0892091f9caa54eddc8ad14111939bf567fa0e54794280",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "dfb04959246d84ed88c841de1c59096d0ffbdd20a69c3b3e9b17d2768cfd424f"
+    },
+    {
+      "runtime": "codex",
+      "case": "control",
+      "invocation": {
+        "runtime": "codex",
+        "case": "control",
+        "cwd": "${TEST_ROOT}/codex",
+        "argv": [
+          "codex",
+          "exec",
+          "--json",
+          "--ephemeral",
+          "--color",
+          "never",
+          "--sandbox",
+          "read-only",
+          "-c",
+          "project_doc_max_bytes=0",
+          "-c",
+          "plugins._default.enabled=false",
+          "-c",
+          "features.multi_agent=false",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:57:45Z",
+        "exitCode": 0,
+        "elapsedSeconds": 16.078
+      },
+      "model": "gpt-6-astra (configured default; JSON event stream does not name model)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 responses for 18 of 240 requests. The other 222 requests succeeded. Retried requests were excluded from these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart preceded recovery, but causation has not been established. The p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but has not been approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 responses for 18 of 240 requests. The other 222 requests succeeded. Retried requests were excluded from these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart preceded recovery, but causation has not been established. The p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but has not been approved or completed.",
+      "rawEventLogSha256": "698db46a981bc8b0f5f87adef8af36a0aafe7880f98b622f372d8337f0861623",
+      "judgment": {
+        "status": "pass",
+        "scope": "one uninvoked control; no target skill tool load observed",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "b932c6317948a194454d8752da113b211bb721cef332a9efb43eef046851d586"
+    },
+    {
+      "runtime": "claude",
+      "case": "en",
+      "invocation": {
+        "runtime": "claude",
+        "case": "en",
+        "cwd": "${TEST_ROOT}/claude",
+        "argv": [
+          "claude",
+          "-p",
+          "--setting-sources",
+          "project,local",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--tools",
+          "Read,Skill",
+          "--allowedTools",
+          "Read,Skill",
+          "--output-format",
+          "stream-json",
+          "--verbose",
+          "--no-session-persistence",
+          "/human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "/human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:53:30Z",
+        "exitCode": 0,
+        "elapsedSeconds": 6.78
+      },
+      "model": "claude-sonnet-5-5",
+      "nativeDiscoveryEvidence": {
+        "listedInInitSkills": true,
+        "registeredSlashCommand": true
+      },
+      "toolCalls": [
+        {
+          "tool": "Read",
+          "input": {
+            "file_path": "${TEST_ROOT}/claude/.claude/skills/human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7489,
+            "head": "1\t# Human-readable technical writing\n2\t\n3\t## Purpose and scope\n4\t\n5\tHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pul",
+            "tail": "md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n83\t"
+          }
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart happened before recovery, but we have not established that it caused the recovery. The p95 latency for successful requests was 820 ms. We did not measure latency for failed requests. A separate replay has been proposed; it is neither approved nor completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart happened before recovery, but we have not established that it caused the recovery. The p95 latency for successful requests was 820 ms. We did not measure latency for failed requests. A separate replay has been proposed; it is neither approved nor completed.",
+      "rawEventLogSha256": "29cb8a54f9062263e7f3ddba1381eae21a99b1a47aa80835e762dc2e23819142",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "bc8ba18d9b47dce4ff8c0429b13527224833227cc694bf6b9e0e40280ea7e68c"
+    },
+    {
+      "runtime": "claude",
+      "case": "ko",
+      "invocation": {
+        "runtime": "claude",
+        "case": "ko",
+        "cwd": "${TEST_ROOT}/claude",
+        "argv": [
+          "claude",
+          "-p",
+          "--setting-sources",
+          "project,local",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--tools",
+          "Read,Skill",
+          "--allowedTools",
+          "Read,Skill",
+          "--output-format",
+          "stream-json",
+          "--verbose",
+          "--no-session-persistence",
+          "/human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "/human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:57:24Z",
+        "exitCode": 0,
+        "elapsedSeconds": 7.553
+      },
+      "model": "claude-sonnet-5-5",
+      "nativeDiscoveryEvidence": {
+        "listedInInitSkills": true,
+        "registeredSlashCommand": true
+      },
+      "toolCalls": [
+        {
+          "tool": "Read",
+          "input": {
+            "file_path": "${TEST_ROOT}/claude/.claude/skills/human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7489,
+            "head": "1\t# Human-readable technical writing\n2\t\n3\t## Purpose and scope\n4\t\n5\tHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pul",
+            "tail": "md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n83\t"
+          }
+        },
+        {
+          "tool": "Read",
+          "input": {
+            "file_path": "${TEST_ROOT}/claude/.claude/skills/human-readable-writing/references/korean.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 1132,
+            "head": "1\t# 한국어 적용\n2\t\n3\t한국어 또는 한국어·영어가 섞인 기술 문서를 작성할 때 [MANIFEST](../MANIFEST.md)의 공통 원칙과 함께 읽는다. 이 file은 언어별 보완이며 별도의 정본이 아니다.\n4\t\n5\t## 문장과 용어\n6\t\n7\t- 사용자가 지정한 언어·용어 규약을 따른다. 영어 technical term을 유지하는 문서에서는 term 주변의 조사·어미·동사로 주체·행동",
+            "tail": "meout이 발생한 12 session의 error는 계산하지 않았다.\n25\t\n26\t전체·제외·집계 대상과 미계산 범위를 보존하였다. 이 표현에 대한 개인 선호를 사람의 이해도 개선 측정으로 해석하지 않는다.\n27\t"
+          }
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며, 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. 성공한 request의 p95 latency는 820 ms이다. 실패한 request의 latency는 측정하지 않았다.\n\n장애는 cache restart 이후 복구되었지만, restart가 복구의 원인인지는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되거나 완료된 작업이 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며, 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. 성공한 request의 p95 latency는 820 ms이다. 실패한 request의 latency는 측정하지 않았다.\n\n장애는 cache restart 이후 복구되었지만, restart가 복구의 원인인지는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되거나 완료된 작업이 아니다.",
+      "rawEventLogSha256": "a079fb3b957ef5fc039ba2adc6525ba076ec935ef151a64b554d898c00032746",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "46a2d8641a330ca6de78a14ed555ad8c645153643b27ce3bc6815ac6b63f6c3c"
+    },
+    {
+      "runtime": "claude",
+      "case": "control",
+      "invocation": {
+        "runtime": "claude",
+        "case": "control",
+        "cwd": "${TEST_ROOT}/claude",
+        "argv": [
+          "claude",
+          "-p",
+          "--setting-sources",
+          "project,local",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--tools",
+          "Read,Skill",
+          "--allowedTools",
+          "Read,Skill",
+          "--output-format",
+          "stream-json",
+          "--verbose",
+          "--no-session-persistence",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:57:45Z",
+        "exitCode": 0,
+        "elapsedSeconds": 3.427
+      },
+      "model": "claude-sonnet-5-5",
+      "nativeDiscoveryEvidence": {
+        "listedInInitSkills": true,
+        "registeredSlashCommand": true
+      },
+      "toolCalls": [],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart occurred before recovery, but causation has not been established.\n\nThe p95 latency for successful requests was 820 ms. Latency for failed requests was not measured. A separate replay has been proposed, but it has not been approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart occurred before recovery, but causation has not been established.\n\nThe p95 latency for successful requests was 820 ms. Latency for failed requests was not measured. A separate replay has been proposed, but it has not been approved or completed.",
+      "rawEventLogSha256": "461db9637307eb6c5a86c43d21a428de69eacfd575c3ff2667f396bf3b6aea95",
+      "judgment": {
+        "status": "pass",
+        "scope": "one uninvoked control; no target skill tool load observed",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "f89a3471a2c176c522fbd3f6f12128e068c7a938c0e9aa26b23883f7b374dde9"
+    },
+    {
+      "runtime": "pi",
+      "case": "en",
+      "invocation": {
+        "runtime": "pi",
+        "case": "en",
+        "cwd": "${TEST_ROOT}/pi",
+        "argv": [
+          "${TEST_ROOT}/pi-cli/node_modules/.bin/pi",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-mcp",
+          "--no-context-files",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--approve",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:53:31Z",
+        "exitCode": 0,
+        "elapsedSeconds": 6.796
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {
+        "advertisedToModel": false,
+        "expandedUserCommand": "<skill name=\"human-readable-writing\" location=\"${TEST_ROOT}/pi/.agents/skills/human-readable-writing/SKILL.md\">\nReferences are relative to ${TEST_ROOT}/pi/.agents/skills/human-readable-writing.\n\n# H"
+      },
+      "toolCalls": [
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/pi/.agents/skills/human-readable-writing/MANIFEST.md",
+            "offset": 1,
+            "limit": 400
+          },
+          "success": true,
+          "response": {
+            "characters": 7249,
+            "head": "# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request ",
+            "tail": "CE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n"
+          }
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established.\n\nFor successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay is proposed, but it has not been approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established.\n\nFor successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay is proposed, but it has not been approved or completed.",
+      "rawEventLogSha256": "c53e7c71994f05aa9bb8d0d39e2f2a758ca6787b6fcd7ccb1c7e0a4a5e184ee3",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "f649086721026a76a9c79cb8394870896ef04161504e49f80273524aa17fda37"
+    },
+    {
+      "runtime": "pi",
+      "case": "ko",
+      "invocation": {
+        "runtime": "pi",
+        "case": "ko",
+        "cwd": "${TEST_ROOT}/pi",
+        "argv": [
+          "${TEST_ROOT}/pi-cli/node_modules/.bin/pi",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-mcp",
+          "--no-context-files",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--approve",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:57:24Z",
+        "exitCode": 0,
+        "elapsedSeconds": 7.772
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {
+        "advertisedToModel": false,
+        "expandedUserCommand": "<skill name=\"human-readable-writing\" location=\"${TEST_ROOT}/pi/.agents/skills/human-readable-writing/SKILL.md\">\nReferences are relative to ${TEST_ROOT}/pi/.agents/skills/human-readable-writing.\n\n# H"
+      },
+      "toolCalls": [
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/pi/.agents/skills/human-readable-writing/MANIFEST.md",
+            "offset": 1,
+            "limit": 400
+          },
+          "success": true,
+          "response": {
+            "characters": 7249,
+            "head": "# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request ",
+            "tail": "CE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill.\n"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/pi/.agents/skills/human-readable-writing/references/korean.md",
+            "offset": 1,
+            "limit": 400
+          },
+          "success": true,
+          "response": {
+            "characters": 1060,
+            "head": "# 한국어 적용\n\n한국어 또는 한국어·영어가 섞인 기술 문서를 작성할 때 [MANIFEST](../MANIFEST.md)의 공통 원칙과 함께 읽는다. 이 file은 언어별 보완이며 별도의 정본이 아니다.\n\n## 문장과 용어\n\n- 사용자가 지정한 언어·용어 규약을 따른다. 영어 technical term을 유지하는 문서에서는 term 주변의 조사·어미·동사로 주체·행동·조건의 관계를 분명히 쓴",
+            "tail": "다.\n>\n> timeout이 발생한 12 session의 error는 계산하지 않았다.\n\n전체·제외·집계 대상과 미계산 범위를 보존하였다. 이 표현에 대한 개인 선호를 사람의 이해도 개선 측정으로 해석하지 않는다.\n"
+          }
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC 동안 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 알 수 없다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐으나 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms였고, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐, 승인되거나 완료된 작업이 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC 동안 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 알 수 없다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐으나 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms였고, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐, 승인되거나 완료된 작업이 아니다.",
+      "rawEventLogSha256": "e680b20b706fd74f08dbb6fe03f915ddad0e6dec3d2390f8cb2416443afba4c5",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "1159943e19a8519eec488f7ae986d5ca38901b6b2b70a6a3905198d618bbb07e"
+    },
+    {
+      "runtime": "pi",
+      "case": "control",
+      "invocation": {
+        "runtime": "pi",
+        "case": "control",
+        "cwd": "${TEST_ROOT}/pi",
+        "argv": [
+          "${TEST_ROOT}/pi-cli/node_modules/.bin/pi",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-mcp",
+          "--no-context-files",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--approve",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:57:45Z",
+        "exitCode": 0,
+        "elapsedSeconds": 2.433
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {
+        "advertisedToModel": false
+      },
+      "toolCalls": [],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+      "rawEventLogSha256": "9c67e50fe1970355f7b5d0fbc29ea5b0fb541a5492abf1c7345b239d474696b8",
+      "judgment": {
+        "status": "pass",
+        "scope": "one uninvoked control; no target skill tool load observed",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "8122631d21ac70cdfdfc6d9af74e1b38d6707d2e3726d47ecf6b3c8e4d0c53c6"
+    },
+    {
+      "runtime": "omp",
+      "case": "en",
+      "invocation": {
+        "runtime": "omp",
+        "case": "en",
+        "cwd": "${TEST_ROOT}/omp",
+        "argv": [
+          "${TEST_ROOT}/omp-cli/node_modules/.bin/bun",
+          "${TEST_ROOT}/omp-cli/node_modules/@oh-my-pi/pi-coding-agent/src/cli.ts",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-context-files",
+          "--no-rules",
+          "--no-lsp",
+          "--no-title",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:57:46Z",
+        "exitCode": 0,
+        "elapsedSeconds": 8.411
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "read",
+          "input": {
+            "path": "skill://human-readable-writing"
+          },
+          "success": true,
+          "response": {
+            "characters": 1488,
+            "head": "[Skill file: ${TEST_ROOT}/omp/.omp/skills/human-readable-writing/SKILL.md]\n---\nname: human-readable-writing\ndescription: Use when explicitly asked to edit or review technical prose.\ndisable-model-invocation:",
+            "tail": "al authority to change technical behavior, files, or external systems. Human comprehension gains have not been measured."
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "skill://human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7339,
+            "head": "[Skill file: ${TEST_ROOT}/omp/.omp/skills/human-readable-writing/MANIFEST.md]\n# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and wh",
+            "tail": "ICE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill."
+          }
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown.\n\nIf the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, but it is not approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. Retried requests were not included in these counts, and their outcomes are unknown.\n\nIf the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, but it is not approved or completed.",
+      "rawEventLogSha256": "06ec04f51bf73245f5b12a0a66177f06172cd4c559acdfb79019371c0a9f01a6",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "10655ce35d0997509165f5c0c2af7d7fc95961a32694b44464b539d55f68b1f0"
+    },
+    {
+      "runtime": "omp",
+      "case": "ko",
+      "invocation": {
+        "runtime": "omp",
+        "case": "ko",
+        "cwd": "${TEST_ROOT}/omp",
+        "argv": [
+          "${TEST_ROOT}/omp-cli/node_modules/.bin/bun",
+          "${TEST_ROOT}/omp-cli/node_modules/@oh-my-pi/pi-coding-agent/src/cli.ts",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-context-files",
+          "--no-rules",
+          "--no-lsp",
+          "--no-title",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:58:38Z",
+        "exitCode": 0,
+        "elapsedSeconds": 8.204
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "read",
+          "input": {
+            "path": "skill://human-readable-writing"
+          },
+          "success": true,
+          "response": {
+            "characters": 1488,
+            "head": "[Skill file: ${TEST_ROOT}/omp/.omp/skills/human-readable-writing/SKILL.md]\n---\nname: human-readable-writing\ndescription: Use when explicitly asked to edit or review technical prose.\ndisable-model-invocation:",
+            "tail": "al authority to change technical behavior, files, or external systems. Human comprehension gains have not been measured."
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "skill://human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7339,
+            "head": "[Skill file: ${TEST_ROOT}/omp/.omp/skills/human-readable-writing/MANIFEST.md]\n# Human-readable technical writing\n\n## Purpose and scope\n\nHelp readers understand what happened, why a claim is warranted, and wh",
+            "tail": "ICE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill."
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "skill://human-readable-writing/references/korean.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 1159,
+            "head": "[Skill file: ${TEST_ROOT}/omp/.omp/skills/human-readable-writing/references/korean.md]\n# 한국어 적용\n\n한국어 또는 한국어·영어가 섞인 기술 문서를 작성할 때 [MANIFEST](../MANIFEST.md)의 공통 원칙과 함께 읽는다. 이 file은 언어별 보완이며 별도의 정본이 아니다.\n\n## 문장",
+            "tail": "했다.\n>\n> timeout이 발생한 12 session의 error는 계산하지 않았다.\n\n전체·제외·집계 대상과 미계산 범위를 보존하였다. 이 표현에 대한 개인 선호를 사람의 이해도 개선 측정으로 해석하지 않는다."
+          }
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 알 수 없다. 성공한 request의 p95 latency는 820 ms였고, 실패한 request의 latency는 측정하지 않았다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐으나, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐, 승인되거나 완료된 작업이 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 알 수 없다. 성공한 request의 p95 latency는 820 ms였고, 실패한 request의 latency는 측정하지 않았다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐으나, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐, 승인되거나 완료된 작업이 아니다.",
+      "rawEventLogSha256": "f1da5dbd8317c3ec1fe586320f620788dc635281ba21c62e1e280bbe56ba5375",
+      "judgment": {
+        "status": "pass",
+        "scope": "native explicit invocation, required file reads, and manual source-fidelity review",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "03b817e0de4dace3b24becf11b1fdb89a66a68ec53eeb940d3c98ff48ceed1d0"
+    },
+    {
+      "runtime": "omp",
+      "case": "control",
+      "invocation": {
+        "runtime": "omp",
+        "case": "control",
+        "cwd": "${TEST_ROOT}/omp",
+        "argv": [
+          "${TEST_ROOT}/omp-cli/node_modules/.bin/bun",
+          "${TEST_ROOT}/omp-cli/node_modules/@oh-my-pi/pi-coding-agent/src/cli.ts",
+          "--print",
+          "--mode",
+          "json",
+          "--no-session",
+          "--no-extensions",
+          "--no-context-files",
+          "--no-rules",
+          "--no-lsp",
+          "--no-title",
+          "--tools",
+          "read",
+          "--model",
+          "openai/gpt-5.4-mini",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:58:38Z",
+        "exitCode": 0,
+        "elapsedSeconds": 4.169
+      },
+      "model": "gpt-5.4-mini",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. p95 latency for successful requests was 820 ms; latency for failed requests was not measured.\n\nRetried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. A separate replay is proposed, not approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. p95 latency for successful requests was 820 ms; latency for failed requests was not measured.\n\nRetried requests were not included in these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. A separate replay is proposed, not approved or completed.",
+      "rawEventLogSha256": "75b68016f7164d351dfa8cc1023ddae87d873f84c5ba1caef28d5cc67b562784",
+      "judgment": {
+        "status": "pass",
+        "scope": "one uninvoked control; no target skill tool load observed",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "ffd8defce0e397c733dd234440c9279b9190cc072684670cdd69f483b216bcb1"
+    },
+    {
+      "runtime": "opencode",
+      "case": "en",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "en",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "@human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "@human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:53:31Z",
+        "exitCode": 0,
+        "elapsedSeconds": 11.408
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "shell",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "shell",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the remaining 222 requests succeeded. These counts exclude retried requests, so the outcomes of those retries are unknown. In addition, if the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart occurred before recovery, but causation has not been established. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed, but it has not been approved or completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the remaining 222 requests succeeded. These counts exclude retried requests, so the outcomes of those retries are unknown. In addition, if the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart occurred before recovery, but causation has not been established. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed, but it has not been approved or completed.",
+      "rawEventLogSha256": "93e4ccdecd0d3c80b6e48cfe933f1a77060a9fb871d337b25d3e9f66f17c90d7",
+      "judgment": {
+        "status": "fail",
+        "scope": "Wrong or stale skill copy loaded; cannot establish native invocation of the evaluated revision."
+      },
+      "sessionIdSha256": "f00cb011426110aadab1e67a56d18493e0b0218e991939c9c0c9fe3beb33e63f"
+    },
+    {
+      "runtime": "opencode",
+      "case": "ko",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "ko",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "@human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "@human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:57:24Z",
+        "exitCode": 0,
+        "elapsedSeconds": 10.544
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "shell",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "shell",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "shell",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다.\n\ncache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다.\n\ncache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+      "rawEventLogSha256": "1290f69ce63b7a04a4f89792af82fd2d6fb10aa98bc99c8c22d05798158b94e5",
+      "judgment": {
+        "status": "fail",
+        "scope": "Wrong or stale skill copy loaded; cannot establish native invocation of the evaluated revision."
+      },
+      "sessionIdSha256": "b6858990fc54b4ae629fa8408d7d2ea4bcd414d4cc4c3c8ed0dd510ac75850be"
+    },
+    {
+      "runtime": "opencode",
+      "case": "en-fixed",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "en-fixed",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "--session",
+          "${SESSION_ID}",
+          "@human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "@human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:59:08Z",
+        "exitCode": 0,
+        "elapsedSeconds": 4.87
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "skill",
+          "input": {
+            "id": "human-readable-writing"
+          },
+          "success": true,
+          "response": {
+            "characters": 1961,
+            "head": "<skill_content name=\"human-readable-writing\">\n# Skill: human-readable-writing\n\n# Human-readable writing\n\nWrite technical prose that lets readers connect a claim to its evidence, conditions, and practical consequences.\n\nW",
+            "tail": "me-20261102/opencode/.opencode/skills/human-readable-writing/references/korean.md</file>\n</skill_files>\n</skill_content>"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7684,
+            "head": "Read file ${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/MANIFEST.md, lines 1-82\n1: # Human-readable technical writing\n2: \n3: ## Purpose and scope\n4: \n5: Help readers understand what h",
+            "tail": "ICE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill."
+          }
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, clients do not retry automatically.\n\nA cache restart occurred before recovery, but it has not been established as the cause. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, clients do not retry automatically.\n\nA cache restart occurred before recovery, but it has not been established as the cause. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed.",
+      "rawEventLogSha256": "3ff43fc024b52da691a83cdce82aec03886ca735d113d3012d2a4847d34d03df",
+      "judgment": {
+        "status": "pass",
+        "scope": "English only, explicit session directory and copied skill; native skill tool and manifest read",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "61ba7f87fa739c11c1b9d2145086483f320ffec16a6ee63ad17d3d0b169b386e"
+    },
+    {
+      "runtime": "opencode",
+      "case": "ko-fixed",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "ko-fixed",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "--session",
+          "${SESSION_ID}",
+          "@human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "@human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T15:59:40Z",
+        "exitCode": 0,
+        "elapsedSeconds": 21.649
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "execute",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "glob",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "execute",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "glob",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "execute",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "glob",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "execute",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "glob",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "grep",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "glob",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        },
+        {
+          "tool": "read",
+          "success": true,
+          "note": "Read/search outside the selected skill revision; excluded from positive loading evidence."
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 그 결과는 알지 못한다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다.\n\ncache restart 이후 복구됐지만, 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐이며, 승인되거나 완료된 작업은 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 그 결과는 알지 못한다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다.\n\ncache restart 이후 복구됐지만, 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐이며, 승인되거나 완료된 작업은 아니다.",
+      "rawEventLogSha256": "438d39ca0402cdc3cc9a44de42685638839a0adad38004d3973b6bae6bec468f",
+      "judgment": {
+        "status": "fail",
+        "scope": "Wrong or stale skill copy loaded; cannot establish native invocation of the evaluated revision."
+      },
+      "sessionIdSha256": "ea9f821e63a864dfac58e5c78d1cc9bfc12b90883e5d135800c62ca41d2bdf8d"
+    },
+    {
+      "runtime": "opencode",
+      "case": "control-fixed",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "control-fixed",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "--session",
+          "${SESSION_ID}",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T15:59:40Z",
+        "exitCode": 0,
+        "elapsedSeconds": 3.063
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, while the remaining 222 succeeded. Retried requests were excluded from these counts, and their outcomes remain unknown. If the gateway retry limit is zero, the client will not retry automatically.\n\nA cache restart occurred before recovery, although causation has not been established. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, while the remaining 222 succeeded. Retried requests were excluded from these counts, and their outcomes remain unknown. If the gateway retry limit is zero, the client will not retry automatically.\n\nA cache restart occurred before recovery, although causation has not been established. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed.",
+      "rawEventLogSha256": "bdcb7ca416cff9c3ee76127d101b3844d2a031fe4b5b4178e6e341e8ad1724be",
+      "judgment": {
+        "status": "pass",
+        "scope": "one uninvoked control; no tools called",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "ededb4af0008203dd1cd7ddcf93e844dbd0f12de9425e1a9f3a7b64071448071"
+    },
+    {
+      "runtime": "opencode",
+      "case": "en-api",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "en-api",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "--session",
+          "${SESSION_ID}",
+          "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+        ],
+        "input": "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed.",
+        "startedAt": "2026-11-01T16:01:09Z",
+        "exitCode": 0,
+        "elapsedSeconds": 6.786
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "read",
+          "input": {
+            "path": "references/korean.md"
+          },
+          "success": false,
+          "response": {
+            "characters": 36,
+            "head": "File not found: references/korean.md",
+            "tail": "File not found: references/korean.md"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "MANIFEST.md"
+          },
+          "success": false,
+          "response": {
+            "characters": 27,
+            "head": "File not found: MANIFEST.md",
+            "tail": "File not found: MANIFEST.md"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/human*/**"
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/*.md",
+            "limit": 50
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        }
+      ],
+      "assistantText": [
+        "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the remaining 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. Automatic client retries occur only when the gateway retry limit is above zero.\n\nRecovery followed a cache restart, but the restart has not been established as the cause. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed."
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the remaining 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. Automatic client retries occur only when the gateway retry limit is above zero.\n\nRecovery followed a cache restart, but the restart has not been established as the cause. Among successful requests, p95 latency was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but is neither approved nor completed.",
+      "rawEventLogSha256": "adbb95c87e7fc7b4495bb5d4582719bc5cd798f1f9f3d524369730a601e81908",
+      "nativeSelectionSetup": [
+        {
+          "argv": [
+            "opencode",
+            "api",
+            "--standalone",
+            "session.create",
+            "--data",
+            "{\"title\": \"hrw validation en-api\", \"location\": {\"directory\": \"${TEST_ROOT}/opencode\"}, \"permissions\": [{\"action\": \"shell\", \"resource\": \"*\", \"effect\": \"deny\"}]}"
+          ],
+          "exitCode": 0
+        },
+        {
+          "argv": [
+            "opencode",
+            "api",
+            "--standalone",
+            "experimental.session.skill",
+            "--param",
+            "sessionID=${SESSION_ID}",
+            "--data",
+            "{\"id\":\"human-readable-writing\",\"resume\":false}"
+          ],
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "judgment": {
+        "status": "fail",
+        "scope": "Native activation succeeded but relative reads failed and manifest was not loaded. Output replaced the zero-limit condition with an unsupported above-zero requirement.",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "fail: unsupported restriction to positive limits",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "48e45f2314f5de1e036951dd4e70df35161ac28326229014641919b4d9c82c6a"
+    },
+    {
+      "runtime": "opencode",
+      "case": "ko-api",
+      "invocation": {
+        "runtime": "opencode",
+        "case": "ko-api",
+        "cwd": "${TEST_ROOT}/opencode",
+        "argv": [
+          "opencode",
+          "run",
+          "--standalone",
+          "--format",
+          "json",
+          "--session",
+          "${SESSION_ID}",
+          "다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+        ],
+        "input": "다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다.",
+        "startedAt": "2026-11-01T16:01:09Z",
+        "exitCode": 0,
+        "elapsedSeconds": 13.933
+      },
+      "model": "venice/deepseek-v4-1-flash-1017-uncensored (session message metadata)",
+      "nativeDiscoveryEvidence": {},
+      "toolCalls": [
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/references/korean.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode"
+          },
+          "success": true,
+          "response": {
+            "characters": 87,
+            "head": "Read directory ${TEST_ROOT}/opencode, entries 1-2\n.git/\n.opencode/",
+            "tail": "Read directory ${TEST_ROOT}/opencode, entries 1-2\n.git/\n.opencode/"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": "**/*.md",
+            "limit": 60
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "execute",
+          "input": {
+            "code": "const r = await tools.opencode.list_mcp_resources({});\nreturn r;"
+          },
+          "success": true,
+          "response": {
+            "characters": 40,
+            "head": "{\n  \"resources\": [],\n  \"templates\": []\n}",
+            "tail": "{\n  \"resources\": [],\n  \"templates\": []\n}"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode"
+          },
+          "success": true,
+          "response": {
+            "characters": 88,
+            "head": "Read directory ${TEST_ROOT}/opencode/.opencode, entries 1-1\nskills/",
+            "tail": "Read directory ${TEST_ROOT}/opencode/.opencode, entries 1-1\nskills/"
+          }
+        },
+        {
+          "tool": "glob",
+          "input": {
+            "pattern": ".opencode/skills/**"
+          },
+          "success": true,
+          "response": {
+            "characters": 14,
+            "head": "No files found",
+            "tail": "No files found"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode/skills"
+          },
+          "success": true,
+          "response": {
+            "characters": 111,
+            "head": "Read directory ${TEST_ROOT}/opencode/.opencode/skills, entries 1-1\nhuman-readable-writing/",
+            "tail": "Read directory ${TEST_ROOT}/opencode/.opencode/skills, entries 1-1\nhuman-readable-writing/"
+          }
+        },
+        {
+          "tool": "execute",
+          "input": {
+            "code": "const fs = await import('node:fs'); // may not be available\nreturn \"x\";"
+          },
+          "success": true,
+          "response": {
+            "characters": 425,
+            "head": "SyntaxError: Syntax 'ImportExpression' is not supported. This is a restricted JavaScript-like language. Supported: plain and async functions, data literals, destructuring, standard control flow, await and Promise, and bu",
+            "tail": "ed: classes, getters/setters, BigInt, and custom Symbols. Use plain functions and data objects instead. (line 1, col 18)"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing"
+          },
+          "success": true,
+          "response": {
+            "characters": 288,
+            "head": "Read directory ${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing, entries 1-16\nagents/\nassets/\ndocs/\nreferences/\nresearch/\n.gitignore\nANALYSIS.md\nMANIFEST.md\nNOTICE.md\nREADME.fr.md\nREADME",
+            "tail": "NALYSIS.md\nMANIFEST.md\nNOTICE.md\nREADME.fr.md\nREADME.ja.md\nREADME.ko.md\nREADME.md\nREADME.zh-CN.md\nSKILL.md\nVALIDATION.md"
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/MANIFEST.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 7684,
+            "head": "Read file ${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/MANIFEST.md, lines 1-82\n1: # Human-readable technical writing\n2: \n3: ## Purpose and scope\n4: \n5: Help readers understand what h",
+            "tail": "ICE.md) for archived evidence in Korean. The maintainer's separate 61-token global core remains unchanged by this skill."
+          }
+        },
+        {
+          "tool": "read",
+          "input": {
+            "path": "${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/references/korean.md"
+          },
+          "success": true,
+          "response": {
+            "characters": 1280,
+            "head": "Read file ${TEST_ROOT}/opencode/.opencode/skills/human-readable-writing/references/korean.md, lines 1-26\n1: # 한국어 적용\n2: \n3: 한국어 또는 한국어·영어가 섞인 기술 문서를 작성할 때 [MANIFEST](../MANIFEST.md)의 공통 원칙과 함께 읽는다. 이",
+            "tail": "timeout이 발생한 12 session의 error는 계산하지 않았다.\n25: \n26: 전체·제외·집계 대상과 미계산 범위를 보존하였다. 이 표현에 대한 개인 선호를 사람의 이해도 개선 측정으로 해석하지 않는다."
+          }
+        }
+      ],
+      "assistantText": [
+        "09:10~09:25 UTC 동안 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 이 집계에서는 재시도한 request를 제외했으며, 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다.\n\n성공한 request의 p95 latency는 820 ms다. 실패한 request의 latency는 측정하지 않았다. 별도의 replay는 제안일 뿐이며, 승인되거나 완료된 작업은 아니다."
+      ],
+      "finalOutput": "09:10~09:25 UTC 동안 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 이 집계에서는 재시도한 request를 제외했으며, 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다.\n\n성공한 request의 p95 latency는 820 ms다. 실패한 request의 latency는 측정하지 않았다. 별도의 replay는 제안일 뿐이며, 승인되거나 완료된 작업은 아니다.",
+      "rawEventLogSha256": "2fdcd691c07dc6f8405fdd40a16bbe030615da5e94c2d1adc4d0f2e4e99fd6e5",
+      "nativeSelectionSetup": [
+        {
+          "argv": [
+            "opencode",
+            "api",
+            "--standalone",
+            "session.create",
+            "--data",
+            "{\"title\": \"hrw validation ko-api\", \"location\": {\"directory\": \"${TEST_ROOT}/opencode\"}, \"permissions\": [{\"action\": \"shell\", \"resource\": \"*\", \"effect\": \"deny\"}]}"
+          ],
+          "exitCode": 0
+        },
+        {
+          "argv": [
+            "opencode",
+            "api",
+            "--standalone",
+            "experimental.session.skill",
+            "--param",
+            "sessionID=${SESSION_ID}",
+            "--data",
+            "{\"id\":\"human-readable-writing\",\"resume\":false}"
+          ],
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "judgment": {
+        "status": "pass",
+        "scope": "Korean only, experimental native activation API; supporting files found after directory search",
+        "sourceFidelity": {
+          "requested language and at most two output paragraphs": "pass",
+          "09:10–09:25 UTC": "pass",
+          "18 HTTP 503 out of 240; other 222 succeeded": "pass",
+          "retried requests excluded; outcomes unknown": "pass",
+          "retry limit zero implies no automatic client retry": "pass",
+          "cache restart precedes recovery; causation not established": "pass",
+          "successful-request p95 820 ms; failed latency unmeasured": "pass",
+          "separate replay proposed, neither approved nor completed": "pass"
+        }
+      },
+      "sessionIdSha256": "8877d185d47956e99161033746c4db848520c9520af90c5461b0c867466bb00d"
+    }
+  ],
+  "repositoryVerification": {
+    "static": {
+      "localLinksAndAnchorsChecked": 183,
+      "markdownFilesChecked": 8,
+      "yamlPolicies": "pass",
+      "evaluatedFileHashes": "match",
+      "approvedBanner": "byte-identical to fd5da1e",
+      "readmeStructureAndPolicies": "pass",
+      "runtimeRecordChecks": "pass",
+      "historicalResearch": "unchanged",
+      "privacyScan": "pass",
+      "shellInstallationBlocksSyntaxChecked": 6
+    },
+    "existingTests": {
+      "command": "python3.13 -m unittest discover -s research -p test_*.py",
+      "passed": 23,
+      "failed": 0
+    },
+    "visual": {
+      "method": "Local Markdown rendered by marked and fresh headless Chrome through Playwright; GitHub-like styling, not the hosted GitHub renderer. In-app browser fallback followed getForUrl and missing-documentation errors.",
+      "viewports": [
+        1200,
+        390
+      ],
+      "readmes": 5,
+      "renders": [
+        {
+          "file": "README.md",
+          "viewportWidth": 1200,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 932,
+          "height": 233,
+          "left": 134,
+          "right": 1066,
+          "viewport": 1200,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.md",
+          "viewportWidth": 390,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 342,
+          "height": 85.5,
+          "left": 24,
+          "right": 366,
+          "viewport": 390,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.ko.md",
+          "viewportWidth": 1200,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 932,
+          "height": 233,
+          "left": 134,
+          "right": 1066,
+          "viewport": 1200,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.ko.md",
+          "viewportWidth": 390,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 342,
+          "height": 85.5,
+          "left": 24,
+          "right": 366,
+          "viewport": 390,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.fr.md",
+          "viewportWidth": 1200,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 932,
+          "height": 233,
+          "left": 134,
+          "right": 1066,
+          "viewport": 1200,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.fr.md",
+          "viewportWidth": 390,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 342,
+          "height": 85.5,
+          "left": 24,
+          "right": 366,
+          "viewport": 390,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.ja.md",
+          "viewportWidth": 1200,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 932,
+          "height": 233,
+          "left": 134,
+          "right": 1066,
+          "viewport": 1200,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.ja.md",
+          "viewportWidth": 390,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 342,
+          "height": 85.5,
+          "left": 24,
+          "right": 366,
+          "viewport": 390,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.zh-CN.md",
+          "viewportWidth": 1200,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 932,
+          "height": 233,
+          "left": 134,
+          "right": 1066,
+          "viewport": 1200,
+          "alt": "Human-readable writing"
+        },
+        {
+          "file": "README.zh-CN.md",
+          "viewportWidth": 390,
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 300,
+          "width": 342,
+          "height": 85.5,
+          "left": 24,
+          "right": 366,
+          "viewport": 390,
+          "alt": "Human-readable writing"
+        }
+      ],
+      "manualInspection": "All ten banner captures inspected in a contact sheet. Yellow hyphen and tilted dots visible, text stays within banner bounds; narrow-screen captures remain proportionally scaled."
+    },
+    "review": {
+      "method": "Fresh-context read-only whole-change review",
+      "critical": 0,
+      "important": 0,
+      "minor": 0,
+      "declinedToJudge": [],
+      "checked": "All 19 raw-event hashes; all source file hashes; approved SVG; distinct sessions; all four-runtime source-fidelity outputs; documentation claims and privacy. Paid CLI trials were not repeated by reviewer."
+    }
+  },
+  "projectSettings": {
+    "claude": {
+      "path": "${TEST_ROOT}/claude/.claude/settings.local.json",
+      "content": {
+        "permissions": {
+          "allow": [
+            "Read",
+            "Skill"
+          ]
+        },
+        "disableAllHooks": true
+      }
+    }
+  }
+}

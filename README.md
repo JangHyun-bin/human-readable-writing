@@ -35,15 +35,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 Already cloned? Run only the `mkdir` and `ln` commands from that checkout. Keep the complete directory: `SKILL.md` reads `MANIFEST.md` and, for Korean writing, `references/korean.md`.
 
-Codex's explicit-invocation policy is included in `agents/openai.yaml`. For Claude Code, merge this entry into `~/.claude/settings.json`, preserving existing settings:
-
-```json
-{
-  "skillOverrides": {
-    "human-readable-writing": "user-invocable-only"
-  }
-}
-```
+Codex's explicit-invocation policy is included in `agents/openai.yaml`. The shared `SKILL.md` includes `disable-model-invocation: true` for compatible runtimes, including Claude Code; no additional `skillOverrides` entry is needed for the tested Claude Code version. Keep existing unrelated settings.
 
 These instructions cover local sessions. For environments that cannot read these directories, follow the personal-skill instructions for [Codex](https://learn.chatgpt.com/docs/build-skills) or [Claude Code](https://code.claude.com/docs/en/skills).
 
@@ -65,7 +57,11 @@ Preserve the technical terms, facts, conditions, and uncertainty.
 
 The skill follows your requested language and format. Without a translation request, it keeps the source language. It preserves identifiers, quantities, units, exclusions, negation, and uncertainty; it asks about missing relationships instead of inventing them. Paragraphs and tables serve the document's purpose, with no fixed sentence-per-paragraph rule.
 
-**OpenCode 2, Pi, and oh-my-pi are under review.** Their documentation describes compatible skill formats, but this project's discovery and invocation checks have not been run. See [tool compatibility and remaining checks](docs/tool-support.md). The earlier writing checks also did not verify normal discovery and invocation in fresh Codex or Claude Code sessions.
+## Runtime support
+
+On 2026-11-02, project-local installations passed the bounded English/Korean invocation and reference-loading checks in **Codex 0.166.0, Claude Code 2.1.312, Pi 1.4.0, and oh-my-pi 18.15.0**. One uninvoked control per tool did not load this skill. These checks used disposable projects; the user-level installation above was not independently exercised.
+
+**OpenCode 2.2.1 is partially verified, with failures.** An English native load succeeded, but CLI mentions and supporting-file resolution were inconsistent. An additional output changed a source condition. See [tested installation paths, commands, models, and limitations](docs/tool-support.md), including Pi and oh-my-pi usage. These observations do not establish general writing quality.
 
 ## Languages
 
@@ -81,6 +77,7 @@ This is a personal writing tool with limited evaluation. Improved human comprehe
 
 | Record | What was observed |
 |---|---|
+| [Native runtime checks, 2026-11-02](research/runtime-validation-20261102.json) | Four runtimes passed bounded checks; OpenCode had mixed results. Versions, commands, outputs, file-read evidence, and limits are recorded. |
 | [English and Korean workflow cases](docs/language-support.md#workflow-check) | Both instruction versions passed the agent's source-fidelity and format checks. No improvement or runtime-compatibility claim follows. |
 | [Five Korean document comparisons](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | One user's preferences for paragraphs, tables, and information order. |
 | [12 layout generations](research/layout-generation-pilot.md) | Unsupported verification claims and shifts in uncertainty led to deferring adoption. |

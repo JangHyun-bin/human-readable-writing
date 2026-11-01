@@ -1,0 +1,36 @@
+import hashlib,json,os,sys
+from datetime import datetime,timezone
+from pathlib import Path
+root=Path("/Users/janghyunbin/dev/human-readable-writing")
+sys.path.insert(0,str(root/"research"))
+import benchmark_layout
+benchmark_layout.TIMEOUT=600
+from benchmark_layout import RecordingClient,write_record
+p=json.loads((root/"research/essay-core-ab-20261101-protocol-v2.json").read_text())
+work=Path(p["preflight"]["work"])
+assert p["samples_per_condition"]==1 and sorted(p["schedule"])==["with_core","without_core"]
+assert p["cores"]["without_core"]==""
+assert p["cores"]["with_core"] not in (work/"prompt-input.json").read_text()
+assert hashlib.sha256((root/"research/benchmark_writing.py").read_bytes()).hexdigest()==p["common_runner_sha256"]
+assert hashlib.sha256((root/"research/benchmark_layout.py").read_bytes()).hexdigest()==p["recording_adapter_sha256"]
+os.environ["CODEX_HOME"]=p["preflight"]["profile"]
+state={"stage":"startup","order":None,"case_id":"ESSAY","arm":None}
+completed=0;client=None
+with (work/"events.jsonl").open("x") as journal,(work/"results.jsonl").open("x") as results,(work/"app-server.stderr").open("x") as stderr:
+ write_record(journal,{"kind":"start","recorded_at":datetime.now(timezone.utc).isoformat(),"protocol_sha256":hashlib.sha256((root/"research/essay-core-ab-20261101-protocol-v2.json").read_bytes()).hexdigest(),"experiment_profile":p["preflight"]["profile"]})
+ try:
+  client=RecordingClient(stderr,journal,state)
+  for i,arm in enumerate(p["schedule"],1):
+   state.update(order=i,arm=arm,stage="trial/start")
+   write_record(journal,{"kind":"trial_start",**state})
+   result=client.generate(p["prompt"],p["cores"][arm],p["model"],p["effort"],work)
+   result.update(order=i,arm=arm,recorded_at=datetime.now(timezone.utc).isoformat())
+   write_record(results,result);completed+=1
+   print(json.dumps({"completed":completed,"expected":2},ensure_ascii=False),flush=True)
+  write_record(journal,{"kind":"complete","completed":completed})
+ except BaseException as error:
+  write_record(journal,{"kind":"failure",**state,"completed":completed,"error_type":type(error).__name__});raise
+ finally:
+  if client is not None:client.close()
+assert hashlib.sha256((Path.home()/".agents/TERMINOLOGY.md").read_bytes()).hexdigest()==p["preflight"]["canonical_sha256"]
+print("TWO GENERATIONS COMPLETE; canonical instructions unchanged",flush=True)

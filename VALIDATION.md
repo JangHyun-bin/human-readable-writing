@@ -150,3 +150,21 @@ Two fresh-context agents independently wrote Korean essays on how model, context
 After reading the HTML without the condition names, the user said, “A가 훨씬 나아 진짜”. This is a strong preference for A, the existing-core-only essay. The user did not give a specific reason; none is inferred as their explanation. The lead's source comparison found no material factual issue in either essay.
 
 This pair does not support a claim that adding the detailed skill improved the user's reading preference. With one output per condition, it also does not establish why the preference occurred or a general advantage for either condition. Both arms already included the core and ordinary agent instructions. Comprehension, reading time, tokens, and latency were not measured. The core, manifest, and invocation policy remain unchanged.
+
+
+## 2026-11-01 Korean essay: core absent versus core added
+
+A new pair compares ordinary agent instructions without the target core against the same instructions plus the core. Both omit the detailed writing skill and use the same essay request, source packet, model, and high reasoning effort. The comparison uses two fresh ephemeral app-server threads rather than reusing either earlier essay. [Protocol](research/essay-core-ab-20261101-protocol-v2.json), [audit](research/essay-core-ab-20261101-audit.json), and [plain HTML](research/essay-core-ab-20261101.html) preserve the conditions and verbatim outputs. User feedback is pending. Display labels were assigned separately from condition names before generation.
+
+Preflight inspection found that setting project_doc_max_bytes to zero did not remove the global core. A private experiment profile therefore retained the ordinary global instructions with only the exact target core removed. Prompt inspection confirmed its absence, and the transmitted developer instructions add it only in the core condition. The canonical global instructions were not changed. The event journal matches both prompts, model/effort settings, final messages, deltas, and usage records.
+
+An initial xhigh attempt timed out at the existing 180-second limit with no completed essay. Its protocol and partial journal are retained separately. The displayed pair was generated anew with high effort and a 600-second limit; no output was selected from the failed attempt. Missing usage from that attempt remains unknown. Metrics for the completed pair do not represent total study cost.
+
+Both completed essays preserve the supplied facts and research limits under the lead's review. They exceed the requested 1,500–2,000-character range: displayed A has 2,027 characters and B has 2,270, including spaces but excluding citations. The original texts were retained without editing or regeneration to force the limit. Length can affect preference. The reference core count is 61 tokens; the observed input-usage difference in this pair is 60 tokens. One completed sample per condition cannot establish a general quality or latency effect, and runtime hook/settings payloads were not independently audited.
+
+
+## 2026-11-02 Core comparison feedback
+
+For the preceding Korean essay comparison, the user said, “B가 나은데 B가 뭐야?” Displayed B is the condition with the short core; displayed A omits it. Neither condition uses the detailed skill. The [audit](research/essay-core-ab-20261101-audit.json) records the exact response and mapping. This is a preference for the completed B essay, with no specific reason or comprehension score supplied. The unequal lengths, one sample per condition, and other recorded limits remain. No global instructions or skill policy were changed.
+
+The user subsequently reaffirmed “그래 B가 낫네” after the condition was disclosed. This is retained as follow-up feedback, not a second independent comparison.

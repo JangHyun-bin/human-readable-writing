@@ -95,4 +95,12 @@ $human-readable-writing 이 PR 설명을 유지보수자가 읽기 좋게 다듬
 - [언어 정책·검증 기준](docs/language-support.md)과 [도구별 호환성](docs/tool-support.md).
 - [검증 이력](VALIDATION.md), [관련 문헌 검토](research/related-literature.md), [호출 비용 비교](research/invocation-cost.md).
 
-Clark·Martin·Mahowald의 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) 분석에서 시작한 프로젝트입니다. 스킬의 작성 지침은 실무 제안이며, 원논문의 저자가 검증하거나 보증한 방법이 아닙니다. 원논문은 CC BY 4.0으로 제공되며 출처와 개별 라이선스는 [NOTICE.md](NOTICE.md)에 기록했습니다. **이 저장소 자체의 배포 라이선스는 별도로 지정하지 않았습니다.**
+Clark·Martin·Mahowald의 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) 분석에서 시작한 프로젝트입니다. 스킬의 작성 지침은 실무 제안이며, 원논문의 저자가 검증하거나 보증한 방법이 아닙니다. 원논문은 CC BY 4.0으로 제공되며 출처와 개별 라이선스는 [NOTICE.md](NOTICE.md)에 기록했습니다.
+
+## 라이선스
+
+프로젝트에서 별도로 작성한 코드·스킬 지침·문서는 기여자가 관련 권리를 보유한 범위에서 [MIT License](LICENSE)로 제공합니다. 제3자 인용문과 재사용 자료에는 각 자료의 기존 조건이 적용됩니다. [NOTICE.md](NOTICE.md)를 참고해 주세요. 이 MIT License는 참고 논문의 라이선스를 변경하지 않습니다.
+
+## 개발 계획
+
+[설계 제안](docs/superpowers/specs/2026-11-02-writing-stack-design.md)과 [구현 계획](docs/superpowers/plans/2026-11-02-writing-stack.md)에 Core, 작업별 지침, 언어·사용자 프로필, 검증 도구, 평가 실행기, 배포 검사를 정리했습니다. 향후 작업 계획이며, 현재 배포물의 기능이나 품질 검증 결과를 뜻하지 않습니다.

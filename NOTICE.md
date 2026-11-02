@@ -30,6 +30,8 @@
 
 ## Repository 자체의 license
 
-이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다. Repository 자체의 배포 license는 아직 별도로 지정하지 않았다.
+프로젝트에서 별도로 작성한 code·스킬 지침·문서는 기여자가 관련 권리를 보유한 범위에서 [MIT License](LICENSE)로 제공한다. MIT 본문은 repository root의 LICENSE에 있으며, 이 notice는 그 조건을 추가하거나 변경하지 않는다.
+
+제3자 인용문과 재사용 자료에는 각 자료의 기존 license 및 적용 가능한 이용 조건이 유지된다. 참고 논문을 MIT로 다시 허락하거나 repository 전체를 CC BY 4.0으로 선언하는 것은 아니다. 평가 기록의 모델 출력 역시 기여자가 보유한 권리의 범위에서 제공하며, 이 선언이 제3자 자료에 대한 권리를 새로 부여하지 않는다.
 
 원논문의 실제 license 조건은 [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)를 참조한다.

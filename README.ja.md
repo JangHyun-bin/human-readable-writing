@@ -161,4 +161,4 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 このプロジェクトは、Thomas Hikaru Clark、Matias B. Martin、Kyle Mahowald による [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) の分析から始まりました。ここで示す執筆指針と例は、独立した実践上の提案であり、論文の著者らが検証したり推奨したりした介入方法ではありません。
 
-元論文は CC BY 4.0 で公開されています。韓国語の[出典・権利表記](NOTICE.md)に、各出典とそれぞれのライセンスを記載しています。**このリポジトリ自体の配布ライセンスは、まだ定められていません。**
+元論文は CC BY 4.0 で公開されています。韓国語の[出典・権利表記](NOTICE.md)に、各出典とそれぞれのライセンスを記載しています。本プロジェクトで独自に作成したコード、スキルの指針、文書は、貢献者が関連する権利を有する範囲で [MIT License](LICENSE) により提供します。第三者の引用文や再利用した資料には、元の条件が引き続き適用されます。この MIT License は、参照論文のライセンスを変更しません。

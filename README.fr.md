@@ -161,4 +161,4 @@ Même lorsqu’elles n’exigent aucune lecture de fichier supplémentaire, les 
 
 Ce projet est né d’une analyse de l’article [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) de Thomas Hikaru Clark, Matias B. Martin et Kyle Mahowald. Ses consignes de rédaction et ses exemples sont des propositions pratiques distinctes, et non des interventions validées ou approuvées par les auteurs de l’article.
 
-L’article d’origine est disponible sous licence CC BY 4.0. Le [document d’attribution](NOTICE.md), en coréen, précise les sources et leurs licences respectives. **Ce dépôt ne dispose pas encore d’une licence de distribution propre.**
+L’article d’origine est disponible sous licence CC BY 4.0. Le [document d’attribution](NOTICE.md), en coréen, précise les sources et leurs licences respectives. Le code, les consignes du skill et la documentation créés pour ce projet sont proposés sous [licence MIT](LICENSE), dans la mesure des droits détenus par les contributeurs. Les citations et autres éléments réutilisés de tiers conservent leurs conditions d’origine. La licence MIT ne modifie pas les licences des articles cités.

@@ -161,4 +161,4 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 本项目始于对 Thomas Hikaru Clark、Matias B. Martin 和 Kyle Mahowald 的论文 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) 的分析。这里的写作指引和示例是独立的实践建议，并非经论文作者验证或认可的干预措施。
 
-原论文采用 CC BY 4.0 许可。[署名与来源记录](NOTICE.md)以韩语列出各项来源及其各自的许可证。**本仓库尚无单独的分发许可证。**
+原论文采用 CC BY 4.0 许可。[署名与来源记录](NOTICE.md)以韩语列出各项来源及其各自的许可证。本项目原创的代码、技能指引和文档，在贡献者持有相关权利的范围内，以 [MIT License](LICENSE) 提供。第三方引文及其他复用材料仍适用其原有条款；MIT License 不改变所引用论文的许可证。

@@ -95,4 +95,12 @@ These records concern the instruction versions they evaluated. Earlier token and
 - [Language policy and validation](docs/language-support.md) and [tool compatibility](docs/tool-support.md).
 - [Validation history](VALIDATION.md), [literature review](research/related-literature.md), and [cost study](research/invocation-cost.md), in Korean.
 
-This project began with an analysis of Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). The skill's guidance is a practical proposal, not an intervention validated or endorsed by the paper's authors. The paper is available under CC BY 4.0; [NOTICE.md](NOTICE.md) records attribution and separate source licenses. **This repository has no separate distribution license.**
+This project began with an analysis of Clark, Martin, and Mahowald's [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1). The skill's guidance is a practical proposal, not an intervention validated or endorsed by the paper's authors. The paper is available under CC BY 4.0; [NOTICE.md](NOTICE.md) records attribution and separate source licenses.
+
+## License
+
+Original project code, skill instructions, and documentation are provided under the [MIT License](LICENSE), to the extent the contributors hold the relevant rights. Third-party quotations and other reused material retain their original terms; see [NOTICE.md](NOTICE.md). The MIT License does not relicense the referenced papers.
+
+## Development plan
+
+The [proposed design](docs/superpowers/specs/2026-11-02-writing-stack-design.md) and [implementation plan](docs/superpowers/plans/2026-11-02-writing-stack.md) cover the core, task guidance, language and user profiles, validation, evaluation, and distribution checks. They describe future work, not features or quality claims in the current release.

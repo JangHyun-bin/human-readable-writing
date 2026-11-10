@@ -1,71 +1,73 @@
 # Tool compatibility
 
-Checked on 2026-11-02 against skill commit `4fff511`. [Commands, inputs, outputs, file-read evidence, hashes, and judgments](../research/runtime-validation-20261102.json) accompany these bounded observations. A pass means the stated cases worked in the recorded configuration, not that every model, installation scope, or writing task is supported.
+Keep the complete installable directory at `skills/human-readable-writing`. Required guidance and agent metadata ship together; research logs and repository documentation do not need to be installed. [Installation, updates, removal, and migration](install.md) describe the current layout.
 
-## Observed results
+## Current distribution checks
 
-| Runtime | Model | Tested project entry point | Result |
+The current native first-use path is verified with Claude Code 2.1.321 in project and user scopes. Pi 1.4.0 and oh-my-pi 18.18.6 also loaded the package in bounded project checks. Native Codex 0.167.0 was blocked by provider version/account errors with the test account. These are different outcomes, not four current passes. The verification record also notes a formatting failure and unsupported additions in some outputs.
+
+See the [current verification record](verification.md) for tests of this layout, installer lifecycle, exact runtime versions, and installation scopes. A previous successful load does not validate a later layout, runtime, model, or installation scope. Neither runtime compatibility nor a source-fidelity check establishes improved human comprehension or general writing quality.
+
+Claude Code, Codex, OpenCode, Pi, and oh-my-pi are all target runtimes. The latest test results describe observed coverage, not the project's full support goal. CLI instructions cover Codex, Claude Code, and Pi; oh-my-pi also has a manual path. OpenCode support remains partial. The installer supporting an agent is not evidence that this skill works reliably in that agent, and completing OpenCode compatibility remains part of the support goal.
+
+## Historical observations, 2026-11-02
+
+The following records apply to skill commit `4fff511` and its then-current root-level layout. [Commands, inputs, outputs, file-read evidence, hashes, and judgments](../research/runtime-validation-20261102.json) are preserved unchanged. These observations are not silently relabeled as tests of the new layout.
+
+| Runtime | Model | Tested project entry point | Recorded result |
 |---|---|---|---|
-| Codex 0.166.0 | Configured default `gpt-6-astra` | `.agents/skills/human-readable-writing` → `$human-readable-writing` | Pass: English/Korean invocation, manifest and Korean-reference reads; no target load in one uninvoked control. |
-| Claude Code 2.1.312 | `claude-sonnet-5-5` | `.claude/skills/human-readable-writing` → `/human-readable-writing` | Pass: same checks; registered slash command remained available; the uninvoked control made no tool calls. |
-| Pi 1.4.0 (`@earendil-works/pi-coding-agent`) | `openai/gpt-5.4-mini` | `.agents/skills/human-readable-writing` → `/skill:human-readable-writing` | Pass: same checks; native command expansion was present in the recorded user message. |
-| oh-my-pi 18.15.0 (`@oh-my-pi/pi-coding-agent`, Bun 1.4.4) | `openai/gpt-5.4-mini` | `.omp/skills/human-readable-writing` → `/skill:human-readable-writing` | Pass in print mode: registered `skill://` reads, manifest and Korean reference; no target load in one uninvoked control. Interactive completion was not tested. |
-| OpenCode 2.2.1 | `venice/deepseek-v4-1-flash-1017-uncensored` | `.opencode/skills/human-readable-writing` → `@human-readable-writing`; experimental native activation also checked | Partial, with failures: an English native load passed; CLI mentions did not reliably select the correct copy. Native activation loaded Korean references after searching but failed to resolve English references in another run, whose output also changed a condition. |
+| Codex 0.166.0 | Configured default `gpt-6-astra` | `.agents/skills/human-readable-writing` → `$human-readable-writing` | Pass in bounded English/Korean invocation and reference-loading checks; no target load in one uninvoked control. |
+| Claude Code 2.1.312 | `claude-sonnet-5-5` | `.claude/skills/human-readable-writing` → `/human-readable-writing` | Pass in the same bounded checks; explicit slash invocation remained available. |
+| Pi 1.4.0 | `openai/gpt-5.4-mini` | `.agents/skills/human-readable-writing` → `/skill:human-readable-writing` | Pass in the same bounded checks. |
+| oh-my-pi 18.15.0 | `openai/gpt-5.4-mini` | `.omp/skills/human-readable-writing` → `/skill:human-readable-writing` | Pass in print mode; interactive completion was not tested. |
+| OpenCode 2.2.1 | `venice/deepseek-v4-1-flash-1017-uncensored` | `.opencode/skills/human-readable-writing` with CLI mentions and experimental native activation | Partial, with failures selecting the intended copy, resolving references, and preserving a source condition. |
 
-The four passing runtimes retained the source language, quantities, units, exclusions, negation, conditions, and uncertainty in one English and one Korean incident update. No external authentication blocker remained. There were no human-reader evaluations or repeated statistical trials. Codex's Korean run also loaded the existing `korean-report-style` skill; this is compatibility evidence, not an isolated measurement of this skill's effect. Codex's model name comes from configuration, not its JSON event stream.
+The four passing runtimes retained language, quantities, units, exclusions, negation, conditions, and uncertainty in one English and one Korean incident update. There were no human-reader evaluations or repeated statistical trials. Codex's Korean run also loaded a pre-existing `korean-report-style` skill, so this was not an isolated estimate of this skill's effect. Codex's historical model name came from configuration, not its JSON event stream. Historical user-global installations were not independently tested.
 
-## Install and invoke
+## Current manual project paths
 
-Keep the **complete skill directory**, including `MANIFEST.md`, `references/`, and `agents/`. Keep its directory name `human-readable-writing`. Use one authoritative checkout; do not create runtime-specific writing rules.
-
-The README documents user-level links for Codex (`~/.agents/skills`) and Claude Code (`~/.claude/skills`). This check exercised the project-local equivalents in the table, not those global links. For a project-local installation, run the following from the project where you will use the skill, replacing the checkout path with your actual checkout:
+From the project where you will use the skill, set the actual checkout path and run only the block for your agent. Each destination must be unoccupied:
 
 ```sh
+skill="/absolute/path/to/human-readable-writing/skills/human-readable-writing"
+
 # Codex or Pi
 mkdir -p .agents/skills
-ln -s /absolute/path/to/human-readable-writing .agents/skills/human-readable-writing
+ln -s "$skill" .agents/skills/human-readable-writing
 
 # Claude Code
 mkdir -p .claude/skills
-ln -s /absolute/path/to/human-readable-writing .claude/skills/human-readable-writing
+ln -s "$skill" .claude/skills/human-readable-writing
 
 # oh-my-pi
 mkdir -p .omp/skills
-ln -s /absolute/path/to/human-readable-writing .omp/skills/human-readable-writing
+ln -s "$skill" .omp/skills/human-readable-writing
 ```
 
-Choose the block for your runtime. Each destination must be unoccupied; inspect existing entries rather than overwriting them. Start a fresh session in that project, then use the invocation in the table and append your text. Test sessions used symlinks for these four runtimes. Pi and oh-my-pi were installed into temporary directories; global packages and user configuration were not replaced.
-
-The executable forms used in the checks were `codex exec`, `claude -p`, `pi --print --mode json`, and `omp --print --mode json`. The evidence record retains the complete argument lists, restrictions, prompts, and outputs. Pi/oh-my-pi used the existing OpenAI API environment; Codex/Claude used existing authentication. Credentials are excluded from the record.
+Start a fresh session in that project and invoke the skill using the table's syntax. To test an independent copy instead, copy the complete installable directory, not the repository root or `SKILL.md` alone. Instructions for user-global Codex and Claude Code links, collision checks, and removal are in the [installation guide](install.md).
 
 ## Explicit invocation policy
 
-`agents/openai.yaml` keeps Codex's `allow_implicit_invocation: false`. Shared `SKILL.md` now includes `disable-model-invocation: true`, which the other runtimes document as hiding a skill from automatic selection while retaining explicit use. No additional Claude Code `skillOverrides` entry was used in the passing checks. Existing user overrides can still affect behavior; preserve unrelated settings.
+Packaged `agents/openai.yaml` keeps Codex's `allow_implicit_invocation: false`. Packaged `SKILL.md` keeps `disable-model-invocation: true` for runtimes that support it. Do not remove these fields merely to make a generic Agent Skills validator accept its narrower frontmatter schema. No user-level `skillOverrides` change is required by this project's instructions.
 
-Claude’s initialization inventory listed the skill both before and after the metadata change. That inventory does not establish whether the model was shown its description. Neither the baseline nor post-change uninvoked control loaded the skill, and explicit slash invocation loaded the manifest after the change. No unwanted automatic invocation was demonstrated.
+The 2026-11-02 record observed no target skill tool load in one uninvoked control per runtime. That is not proof that every host configuration prevents implicit use. Claude's initialization inventory listed the skill both before and after the metadata change, which did not establish whether the model was shown its description. Explicit slash invocation loaded the manifest after the change. Existing user overrides and other skills can still affect behavior.
 
-One uninvoked control per runtime produced no target skill tool load. This is a limited observation, not a proof that every host configuration prevents implicit use. A model can follow similar writing advice without loading this skill.
+## OpenCode limitation
 
-## OpenCode limitation and follow-up
+In the historical checks, CLI `@human-readable-writing` requests found older copies or did not select the intended project skill consistently. Explicit session location and a physical copy helped one English case, not the equivalent Korean request. Experimental native activation loaded Korean references after searching but failed English reference resolution in another run. That output also replaced “if the retry limit is zero, the client does not retry” with an unsupported restriction to positive limits.
 
-The first `opencode run --standalone --format json '@human-readable-writing …'` sessions did not use the intended project skill and found older copies elsewhere. They do not count as validation of this revision. Setting a session's `location.directory` explicitly and using a physical copy allowed one English request to call the native `skill` tool and read the correct manifest, but the equivalent Korean request again found another checkout.
-
-The documented experimental `session.skill` API successfully activated the installed skill by ID. In the subsequent English request, relative reads failed and the manifest was not read. Its output also replaced “if the retry limit is zero, the client does not retry” with an unsupported restriction to limits above zero. The Korean API case eventually read both intended files and preserved the source. These mixed results do not justify advertising reliable `@` invocation or a generally working API workaround. The directory changes were diagnostic attempts, not proof that symlinks caused the failure.
-
-For now, use one of the four checked runtimes. Before relying on OpenCode, verify the active project and selected skill copy in a fresh session, then repeat both language cases and the uninvoked control. A different model or interactive skill selector needs its own evidence; neither was tested here. OpenCode 1 is outside this review.
+These results do not justify advertising a generally reliable CLI mention or API workaround. Moving files or using a CLI installer is not a demonstrated fix. Before relying on OpenCode, verify the selected copy and repeat both language cases and an uninvoked control in a fresh session. OpenCode 1 is outside these records.
 
 ## Official references
 
-- [Codex skills](https://learn.chatgpt.com/docs/build-skills): discovery, explicit invocation, and `allow_implicit_invocation`.
-- [Claude Code skills](https://code.claude.com/docs/en/skills): slash commands and `disable-model-invocation`.
-- [OpenCode 2 skills](https://opencode.ai/v2/docs/skills/), [CLI](https://opencode.ai/v2/docs/cli/), and [API](https://opencode.ai/v2/docs/api): project paths, mentions, session location, and native activation.
-- [Pi skills](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/skills.md): `.agents/skills`, `/skill:name`, and explicit-only metadata.
-- [oh-my-pi skills](https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md): native `.omp/skills`, `skill://` resources, and interactive `skills.enableSkillCommands`. Foreign user-level providers are opt-in; a shared user link alone is not sufficient evidence of discovery.
+- [Codex skills](https://learn.chatgpt.com/docs/build-skills).
+- [Claude Code skills](https://code.claude.com/docs/en/skills).
+- [Pi skills](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/skills.md).
+- [oh-my-pi skills](https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md).
+- [OpenCode 2 skills](https://opencode.ai/v2/docs/skills/), [CLI](https://opencode.ai/v2/docs/cli/), and [API](https://opencode.ai/v2/docs/api).
 
 ## 한국어 요약
 
-Codex·Claude Code·Pi·oh-my-pi는 기록된 버전·모델·프로젝트 설치에서 한·영 호출, 필요한 참조 파일 읽기, 원문 충실도 검사를 통과했다. 도구별 호출 없는 비교 요청 한 건에서는 대상 스킬을 읽지 않았다. 사용자 전역 설치와 대화형 선택기는 별도로 검증하지 않았다.
+현재 설치물은 `skills/human-readable-writing`이며, [설치 안내](install.md)의 새 경로를 사용합니다. 이번 구조·설치 범위의 검증은 [현재 검증 기록](verification.md)에서 확인합니다. 이전 프로젝트 로컬 검증을 새 구조나 사용자 전역 설치의 검증으로 간주하지 않습니다.
 
-OpenCode 2는 일부 네이티브 호출이 성공했지만 잘못된 사본 선택, 참조 경로 처리 실패, 조건 의미 변경이 관찰되어 부분 검증으로 남긴다. 네 도구 중 하나를 사용하거나 OpenCode의 프로젝트·스킬 선택을 확인한 뒤 같은 검사를 다시 수행해야 한다. 현재 결과만으로 안정적인 우회 방법을 보장하지 않는다.
-
-공통 `disable-model-invocation: true`를 적용했고 Codex의 기존 정책도 유지했다. 검증한 Claude Code에는 추가 `skillOverrides` 설정이 필요하지 않다. 설치·명령·입출력과 로딩 근거는 위 기록에 있으며, 인증정보는 포함하지 않는다. 실행 호환성과 제한된 원문 보존 검사는 사람의 이해도나 글쓰기 품질 향상 검증과 구분한다.
+과거 Codex·Claude Code·Pi·oh-my-pi 검증은 제한된 사례의 호출·참조 로딩과 원문 보존 관찰입니다. 사람의 이해도나 일반적인 글쓰기 품질 향상을 입증하지 않습니다. OpenCode의 사본 선택·참조 로딩·조건 변경 문제는 이번 문서·배포 정리에서 해결했다고 주장하지 않습니다.

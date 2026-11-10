@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>明確で正確な技術文書を書くためのスキル。</strong><br>
-  Codex と Claude Code に対応。
+  Claude Code、Codex、OpenCode、Pi、oh-my-pi を対応対象としています。検証範囲はツールごとに異なります。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="#クイックスタート">クイックスタート</a> ·
-  <a href="MANIFEST.md">執筆の原則</a> ·
+  <a href="skills/human-readable-writing/MANIFEST.md">執筆の原則</a> ·
   <a href="#インストール">インストール</a> ·
   <a href="#対応言語">対応言語</a> ·
   <a href="#根拠と限界">根拠</a>
@@ -57,7 +57,7 @@ $human-readable-writing このプルリクエストの説明を、メンテナ�
 観測された事実、考えられる原因、未検証の主張を明確に区別してください。
 ```
 
-このスキルは呼び出された際に [MANIFEST.md](MANIFEST.md) を読み、すでにコンテキストにある指針は再利用します。出力には指定された言語を使います。文章の編集では、翻訳を依頼されない限り原文の言語を保ちます。
+このスキルは呼び出された際に [MANIFEST.md](skills/human-readable-writing/MANIFEST.md) を読み、すでにコンテキストにある指針は再利用します。出力には指定された言語を使います。文章の編集では、翻訳を依頼されない限り原文の言語を保ちます。
 
 ## どこを改善するか
 
@@ -75,23 +75,32 @@ $human-readable-writing このプルリクエストの説明を、メンテナ�
 
 ## インストール
 
-このリポジトリにアクセスできるアカウントでクローンしてください。リンク先となる2つのスキルパスがどちらも存在しないことを確認し、**リポジトリのルートディレクトリで**リンク作成コマンドを実行します。
+`skills` CLI には Node.js 22.20 以降と `npx` が必要です。現在のプロジェクトにインストールするには、そのプロジェクトのディレクトリで次のコマンドを実行します。
+
+```sh
+npx skills add JangHyun-bin/human-readable-writing --skill human-readable-writing -a codex -a claude-code
+```
+
+使わない実行環境の `-a` オプションは削除してください。ユーザー単位でインストールし、すべてのプロジェクトで使えるようにするには、`-g` を追加します。この CLI はインストール時のテレメトリを収集します。無効にするには、コマンドの前に `DISABLE_TELEMETRY=1` を付けてください。
+
+手動でインストールする場合は、このリポジトリにアクセスできるアカウントでクローンしてください。リンク先となる2つのスキルパスがどちらも存在しないことを確認し、**リポジトリのルートディレクトリで**リンク作成コマンドを実行します。
 
 ```sh
 git clone https://github.com/JangHyun-bin/human-readable-writing.git
 cd human-readable-writing
 
+skill="$PWD/skills/human-readable-writing"
 mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
-ln -s "$PWD" "$HOME/.agents/skills/human-readable-writing"
-ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.agents/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.claude/skills/human-readable-writing"
 ```
 
-両方の実行環境が同じチェックアウトを読み込みます。すでにクローン済みの場合は、そのディレクトリで `mkdir` と `ln` のコマンドだけを実行してください。
+両方の実行環境が、チェックアウト内の同じ `skills/human-readable-writing` ディレクトリを読み込みます。このディレクトリは丸ごと残してください。すでにクローン済みの場合は、そのディレクトリで `skill=` の行から実行してください。以前の手順で作成したリンクはリポジトリのルートを指していますが、ルートはもうスキルではありません。このリンクの移行、更新、削除の手順は[インストールガイド](docs/install.md)（英語）を参照してください。
 
 <details>
 <summary><strong>実行環境の設定と明示的な呼び出し</strong></summary>
 
-| 実行環境 | 読み込み先 | 呼び出し方針 |
+| 実行環境 | 手動インストール時の読み込み先 | 呼び出し方針 |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` に `allow_implicit_invocation: false` を設定済み。 |
 | Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
@@ -105,7 +114,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 <details>
 <summary><strong>メンテナーが別途試行しているグローバルコア</strong></summary>
 
-メンテナー個人の環境では、以前に作成した短い韓国語のコア指示も、グローバルな指示に含めています。上記のシンボリックリンクを作成しても、このコアはインストールされません。
+メンテナー個人の環境では、以前に作成した短い韓国語のコア指示も、グローバルな指示に含めています。上記の方法でインストールしても、このコアはインストールされません。
 
 このコアは2026-10-29に `~/.agents/TERMINOLOGY.md` で有効化され、既存の Codex と Claude Code の指示読み込み経路を通じて適用されています。内容は変更していません。61トークンというサイズは `o200k_base` で数えた参考値であり、リクエスト全体のトークン消費量を保証するものではありません。
 
@@ -128,7 +137,9 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 三つの翻訳ガイドの言語間に開発順位は設けません。今後の作業は実際の需要と各言語のレビュー体制に応じて決めます。文書の翻訳は、母語話者に相当する出力品質の検証を意味しません。
 
-詳細は[言語方針](docs/language-support.md)を参照してください。Codex、Claude Code、Pi、oh-my-pi は限定的な英語・韓国語の動作確認を通過しました。OpenCode 2 は一部のみ確認でき、失敗もあります。[互換性の記録](docs/tool-support.md)にバージョン、検証したパス、制約を記載しています。日本語の出力品質を検証した結果ではありません。
+詳細は[言語方針](skills/human-readable-writing/references/language-support.md)を参照してください。2026-11-02に、リポジトリのルートをスキルとして使う以前の構成で、Codex、Claude Code、Pi、oh-my-pi は限定的な英語・韓国語の動作確認を通過しました。OpenCode 2 は一部のみ確認でき、失敗もあります。[互換性の記録](docs/tool-support.md)にバージョン、検証したパス、制約を記載しています。日本語の出力品質を検証した結果ではありません。新しい構成の確認については、[現在の検証記録](docs/verification.md)を参照してください。
+
+現在のテスト環境では、Claude Code のネイティブな初回利用手順を確認しました。Codex 0.167.0 のネイティブ呼び出しは提供元のバージョンまたはアカウントのエラーで停止しており、現在の検証記録では成功として扱いません。
 
 ## 根拠と限界
 
@@ -136,7 +147,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 | 根拠 | そこから言えること |
 |---|---|
-| [英語を主軸とするワークフローの確認](docs/language-support.md#workflow-check)（英語） | 言語の選択、指定された形式、原文への忠実さに関する限定的な確認。母語話者に相当する品質の証明ではない。 |
+| [英語を主軸とするワークフローの確認](skills/human-readable-writing/references/language-support.md#workflow-check)（英語） | 言語の選択、指定された形式、原文への忠実さに関する限定的な確認。母語話者に相当する品質の証明ではない。 |
 | [韓国語文書5件の比較](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 段落、表、情報の順序に関する、1人の利用者の好み。 |
 | [12件のレイアウト生成](research/layout-generation-pilot.md) | 裏づけがないのに検証済みとする主張や、不確実性の変化が見つかったため、採用を見送った。 |
 | [原文への忠実さの検証（計4回の生成）](research/source-fidelity-pilot.md) | 両条件とも基準を満たしたが、改訂版の優位性は確認されなかった。 |
@@ -148,8 +159,8 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 | 目的 | 資料 |
 |---|---|
-| 共通の執筆指針 | [執筆方針](MANIFEST.md) · [スキルの読み込み先](SKILL.md) |
-| 言語固有の指針 | [韓国語](references/korean.md) · [対応範囲と検証](docs/language-support.md)（英語） |
+| 共通の執筆指針 | [執筆方針](skills/human-readable-writing/MANIFEST.md) · [スキルの読み込み先](skills/human-readable-writing/SKILL.md) |
+| 言語固有の指針 | [韓国語](skills/human-readable-writing/references/korean.md) · [対応範囲と検証](skills/human-readable-writing/references/language-support.md)（英語） |
 | 元論文の分析（韓国語） | [分析](ANALYSIS.md) · [根拠の検討](research/evidence-review.md) |
 | 関連文献と応用（韓国語） | [文献ノート](research/related-literature.md) · [2本の論文の応用](research/two-paper-application.md) |
 | 以前のコスト・所要時間の調査（韓国語） | [呼び出しコスト](research/invocation-cost.md) · [固定予算での比較](research/core-refinement.md) · [条件を伏せた出力](research/core-refinement-blind.md) |
@@ -161,4 +172,4 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 このプロジェクトは、Thomas Hikaru Clark、Matias B. Martin、Kyle Mahowald による [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) の分析から始まりました。ここで示す執筆指針と例は、独立した実践上の提案であり、論文の著者らが検証したり推奨したりした介入方法ではありません。
 
-元論文は CC BY 4.0 で公開されています。韓国語の[出典・権利表記](NOTICE.md)に、各出典とそれぞれのライセンスを記載しています。**このリポジトリ自体の配布ライセンスは、まだ定められていません。**
+元論文は CC BY 4.0 で公開されています。このプロジェクトのために作成した内容は [MIT ライセンス](LICENSE)で提供します。このライセンスは、第三者の著作物からの引用にも、引用元の論文にも適用されません。英語と韓国語の[出典・権利表記](NOTICE.md)に、各出典とそれぞれのライセンス、記録したモデル出力へのライセンスの適用範囲を記載しています。

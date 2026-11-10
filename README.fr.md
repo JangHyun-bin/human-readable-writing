@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>Un skill pour rédiger des textes techniques clairs et précis.</strong><br>
-  Conçu pour Codex et Claude Code.
+  Cible Claude Code, Codex, OpenCode, Pi et oh-my-pi ; le périmètre vérifié varie selon l’outil.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="#démarrage-rapide">Démarrage rapide</a> ·
-  <a href="MANIFEST.md">Principes de rédaction</a> ·
+  <a href="skills/human-readable-writing/MANIFEST.md">Principes de rédaction</a> ·
   <a href="#installation">Installation</a> ·
   <a href="#langues">Langues</a> ·
   <a href="#éléments-probants-et-limites">Éléments probants</a>
@@ -57,7 +57,7 @@ Préserve les termes techniques, les faits, les conditions et l’incertitude.
 Distingue les observations, les causes possibles et les affirmations non vérifiées.
 ```
 
-Lors de son invocation, le skill lit [MANIFEST.md](MANIFEST.md) et réutilise les consignes déjà présentes dans le contexte. Il produit le texte dans la langue demandée ; lors d’une révision, il conserve la langue de la source, sauf si vous demandez une traduction.
+Lors de son invocation, le skill lit [MANIFEST.md](skills/human-readable-writing/MANIFEST.md) et réutilise les consignes déjà présentes dans le contexte. Il produit le texte dans la langue demandée ; lors d’une révision, il conserve la langue de la source, sauf si vous demandez une traduction.
 
 ## Ce que le skill améliore
 
@@ -75,23 +75,32 @@ Les paragraphes suivent le raisonnement et le format demandé. Aucune règle d�
 
 ## Installation
 
-Clonez le dépôt avec un compte qui y a accès. Exécutez les commandes de création des liens **depuis la racine du dépôt**, en vous assurant que les deux chemins de destination du skill sont libres.
+La CLI `skills` nécessite Node.js 22.20 ou une version ultérieure, ainsi que `npx`. Pour installer le skill dans le projet courant, exécutez cette commande depuis le répertoire de ce projet :
+
+```sh
+npx skills add JangHyun-bin/human-readable-writing --skill human-readable-writing -a codex -a claude-code
+```
+
+Retirez l’option `-a` d’un outil que vous n’utilisez pas. Pour installer le skill au niveau de l’utilisateur, dans tous vos projets, ajoutez `-g`. La CLI collecte des données de télémétrie lors de l’installation ; pour les désactiver, faites précéder la commande de `DISABLE_TELEMETRY=1`.
+
+Pour une installation manuelle, clonez le dépôt avec un compte qui y a accès. Exécutez les commandes de création des liens **depuis la racine du dépôt**, en vous assurant que les deux chemins de destination du skill sont libres.
 
 ```sh
 git clone https://github.com/JangHyun-bin/human-readable-writing.git
 cd human-readable-writing
 
+skill="$PWD/skills/human-readable-writing"
 mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
-ln -s "$PWD" "$HOME/.agents/skills/human-readable-writing"
-ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.agents/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.claude/skills/human-readable-writing"
 ```
 
-Les deux outils lisent la même copie locale du dépôt. Si vous l’avez déjà cloné, exécutez uniquement les commandes `mkdir` et `ln` depuis ce répertoire.
+Les deux outils lisent le même répertoire `skills/human-readable-writing` de la copie locale ; conservez-le en entier. Si vous avez déjà cloné le dépôt, exécutez les commandes à partir de la ligne `skill=` depuis ce répertoire. Un lien créé avec les anciennes instructions pointe vers la racine du dépôt, qui n’est plus un skill. Le [guide d’installation](docs/install.md), en anglais, explique comment déplacer ce lien, mettre à jour et supprimer le skill.
 
 <details>
 <summary><strong>Paramètres des outils et invocation explicite</strong></summary>
 
-| Outil | Point d’entrée | Règle d’invocation |
+| Outil | Point d’entrée après l’installation manuelle | Règle d’invocation |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` contient `allow_implicit_invocation: false`. |
 | Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
@@ -105,7 +114,7 @@ Les sessions dans le cloud qui ne peuvent pas lire les répertoires locaux des s
 <details>
 <summary><strong>L’essai personnel et distinct d’un noyau de consignes globales</strong></summary>
 
-L’environnement personnel du responsable du projet comprend aussi un noyau de consignes plus ancien et compact, rédigé en coréen et intégré aux instructions globales. La création des liens symboliques ci-dessus n’installe pas ce noyau.
+L’environnement personnel du responsable du projet comprend aussi un noyau de consignes plus ancien et compact, rédigé en coréen et intégré aux instructions globales. L’installation ci-dessus n’installe pas ce noyau.
 
 Ce noyau a été activé le 2026-10-29 dans `~/.agents/TERMINOLOGY.md`, via les chemins d’instructions existants de Codex et de Claude Code. Il n’a pas été modifié. Sa taille de 61 tokens est un décompte de référence obtenu avec `o200k_base`, pas une garantie sur la consommation totale d’une requête.
 
@@ -128,7 +137,9 @@ Les instructions communes restent dans un seul manifeste en anglais. La langue d
 
 Aucun ordre de développement n’est fixé entre les langues des trois guides traduits. Les travaux suivants dépendent des usages réels et de la disponibilité de lecteurs compétents dans chaque langue. La traduction de la documentation ne démontre pas une qualité de rédaction équivalente à celle d’un locuteur natif.
 
-Voir la [politique linguistique](docs/language-support.md). Des vérifications limitées en anglais et en coréen ont réussi avec Codex, Claude Code, Pi et oh-my-pi. OpenCode 2 présente des résultats partiels et des échecs. Les [notes de compatibilité](docs/tool-support.md) précisent les versions, chemins testés et limites ; ces résultats ne valident pas la qualité du français.
+Voir la [politique linguistique](skills/human-readable-writing/references/language-support.md). Le 2026-11-02, avec l’ancienne disposition où la racine du dépôt servait de skill, des vérifications limitées en anglais et en coréen ont réussi avec Codex, Claude Code, Pi et oh-my-pi. OpenCode 2 présente des résultats partiels et des échecs. Les [notes de compatibilité](docs/tool-support.md) précisent les versions, chemins testés et limites ; ces résultats ne valident pas la qualité du français. Pour la nouvelle disposition, consultez le [registre de vérification actuel](docs/verification.md).
+
+Dans l’environnement de test actuel, Claude Code fournit un parcours natif vérifié. L’appel natif avec Codex 0.167.0 a été bloqué par des erreurs de version ou de compte du fournisseur ; il n’est pas présenté comme une réussite dans le registre actuel.
 
 ## Éléments probants et limites
 
@@ -136,7 +147,7 @@ Voir la [politique linguistique](docs/language-support.md). Des vérifications l
 
 | Éléments disponibles | Ce qu’ils permettent d’affirmer |
 |---|---|
-| [Vérification du fonctionnement de la version conçue d’abord en anglais](docs/language-support.md#workflow-check) (en anglais) | Vérifications limitées du choix de la langue, du format demandé et de la fidélité à la source ; elles ne prouvent pas une qualité équivalente à celle d’un locuteur natif. |
+| [Vérification du fonctionnement de la version conçue d’abord en anglais](skills/human-readable-writing/references/language-support.md#workflow-check) (en anglais) | Vérifications limitées du choix de la langue, du format demandé et de la fidélité à la source ; elles ne prouvent pas une qualité équivalente à celle d’un locuteur natif. |
 | [Cinq comparaisons de documents en coréen](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | Préférences d’un seul utilisateur concernant les paragraphes, les tableaux et l’ordre des informations. |
 | [12 générations de mises en page](research/layout-generation-pilot.md) | L’adoption a été reportée après la découverte d’affirmations de vérification sans fondement et d’altérations de l’incertitude. |
 | [Quatre générations évaluées pour leur fidélité à la source](research/source-fidelity-pilot.md) | Les deux variantes ont satisfait aux critères ; la supériorité de la version révisée n’a pas été établie. |
@@ -148,8 +159,8 @@ Les études de génération antérieures portaient sur des textes techniques en 
 
 | Objectif | Documents |
 |---|---|
-| Consignes de rédaction communes | [Manifeste](MANIFEST.md) · [Point d’entrée du skill](SKILL.md) |
-| Consignes propres à chaque langue | [Coréen](references/korean.md) · [Périmètre et validation, en anglais](docs/language-support.md) |
+| Consignes de rédaction communes | [Manifeste](skills/human-readable-writing/MANIFEST.md) · [Point d’entrée du skill](skills/human-readable-writing/SKILL.md) |
+| Consignes propres à chaque langue | [Coréen](skills/human-readable-writing/references/korean.md) · [Périmètre et validation, en anglais](skills/human-readable-writing/references/language-support.md) |
 | Analyse de l’article d’origine, en coréen | [Analyse](ANALYSIS.md) · [Examen des éléments probants](research/evidence-review.md) |
 | Littérature connexe et applications, en coréen | [Notes de lecture](research/related-literature.md) · [Application à deux articles](research/two-paper-application.md) |
 | Études antérieures sur les coûts et les durées, en coréen | [Coût d’invocation](research/invocation-cost.md) · [Comparaison à budget fixe](research/core-refinement.md) · [Textes anonymisés pour l’évaluation à l’aveugle](research/core-refinement-blind.md) |
@@ -161,4 +172,4 @@ Même lorsqu’elles n’exigent aucune lecture de fichier supplémentaire, les 
 
 Ce projet est né d’une analyse de l’article [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) de Thomas Hikaru Clark, Matias B. Martin et Kyle Mahowald. Ses consignes de rédaction et ses exemples sont des propositions pratiques distinctes, et non des interventions validées ou approuvées par les auteurs de l’article.
 
-L’article d’origine est disponible sous licence CC BY 4.0. Le [document d’attribution](NOTICE.md), en coréen, précise les sources et leurs licences respectives. **Ce dépôt ne dispose pas encore d’une licence de distribution propre.**
+L’article d’origine est disponible sous licence CC BY 4.0. Le contenu rédigé pour ce projet est distribué sous [licence MIT](LICENSE). Cette licence ne s’applique ni aux citations d’œuvres tierces ni aux articles cités. Le [document d’attribution](NOTICE.md), en anglais et en coréen, précise les sources, leurs licences respectives et la portée de la licence pour les réponses de modèles conservées.

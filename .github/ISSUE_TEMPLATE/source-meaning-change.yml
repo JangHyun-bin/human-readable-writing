@@ -1,0 +1,81 @@
+name: Changed source meaning (원문 의미 변경)
+description: An edit changed a fact, number, condition, negation, or uncertainty, or added a relationship the source did not state.
+title: "[Meaning]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are public. Do not paste confidential, customer, or personal text. Write a short made-up source that shows the same change, and replace names, hosts, and internal identifiers with placeholders. You can write in English or Korean.
+
+        Issue는 공개됩니다. 기밀 문서, 고객 정보, 개인정보가 담긴 글을 붙여 넣지 마세요. 같은 변경이 나타나는 짧은 가상 원문을 만들고, 이름, 호스트, 내부 식별자는 자리표시자로 바꿔 주세요. 영어나 한국어로 작성하실 수 있습니다.
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: What changed
+      multiple: true
+      options:
+        - A number, unit, or count
+        - A condition or exception
+        - A negation
+        - An exclusion or scope limit
+        - The strength of a claim or its uncertainty
+        - A relationship the source did not state
+        - A technical term, identifier, or code
+        - The requested language or format
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime, version, and model
+      placeholder: "Claude Code 2.1.312, claude-sonnet-5-5"
+    validations:
+      required: true
+  - type: dropdown
+    id: skill-loaded
+    attributes:
+      label: Did the runtime load the skill?
+      description: "For example, the session shows that the runtime read `SKILL.md` or `MANIFEST.md`."
+      options:
+        - "Yes"
+        - "No"
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: Request
+      description: The full request, including the skill command.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source text
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: difference
+    attributes:
+      label: The change in meaning
+      description: Quote the source phrase and the output phrase, and explain how the meaning differs. If you ran the request more than once, say how many outputs changed the meaning.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Before you submit
+      options:
+        - label: "The text contains no confidential or personal information. (기밀 정보나 개인정보가 없습니다.)"
+          required: true

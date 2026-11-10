@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>让技术文字清晰、准确的写作技能。</strong><br>
-  适用于 Codex 和 Claude Code。
+  以 Claude Code、Codex、OpenCode、Pi 和 oh-my-pi 为支持目标，各工具的验证范围不同。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="#快速上手">快速上手</a> ·
-  <a href="MANIFEST.md">写作原则</a> ·
+  <a href="skills/human-readable-writing/MANIFEST.md">写作原则</a> ·
   <a href="#安装">安装</a> ·
   <a href="#语言支持">语言支持</a> ·
   <a href="#证据与局限">证据</a>
@@ -57,7 +57,7 @@ $human-readable-writing 请面向项目维护者改写这段拉取请求说明�
 区分已观察到的情况、可能的原因和未经验证的说法。
 ```
 
-调用时，技能会读取 [MANIFEST.md](MANIFEST.md)，并复用上下文中已有的指引。输出使用你要求的语言；编辑时保留原文语言，除非你要求翻译。
+调用时，技能会读取 [MANIFEST.md](skills/human-readable-writing/MANIFEST.md)，并复用上下文中已有的指引。输出使用你要求的语言；编辑时保留原文语言，除非你要求翻译。
 
 ## 它会改进什么
 
@@ -75,23 +75,32 @@ $human-readable-writing 请面向项目维护者改写这段拉取请求说明�
 
 ## 安装
 
-使用有权访问此仓库的账号克隆。**在仓库根目录下**运行链接命令，并确保两个目标技能路径均未被占用。
+`skills` CLI 需要 Node.js 22.20 或更高版本以及 `npx`。如需安装到当前项目，请在该项目目录下运行：
+
+```sh
+npx skills add JangHyun-bin/human-readable-writing --skill human-readable-writing -a codex -a claude-code
+```
+
+删除你不使用的运行环境对应的 `-a` 选项。如需为当前用户安装、在所有项目中使用，请添加 `-g`。该 CLI 会收集安装遥测数据；如需关闭，请在命令前加上 `DISABLE_TELEMETRY=1`。
+
+手动安装时，使用有权访问此仓库的账号克隆。**在仓库根目录下**运行链接命令，并确保两个目标技能路径均未被占用。
 
 ```sh
 git clone https://github.com/JangHyun-bin/human-readable-writing.git
 cd human-readable-writing
 
+skill="$PWD/skills/human-readable-writing"
 mkdir -p "$HOME/.agents/skills" "$HOME/.claude/skills"
-ln -s "$PWD" "$HOME/.agents/skills/human-readable-writing"
-ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.agents/skills/human-readable-writing"
+ln -s "$skill" "$HOME/.claude/skills/human-readable-writing"
 ```
 
-两个运行环境会读取同一份仓库工作副本。如果已经克隆，只需在该目录下运行 `mkdir` 和 `ln` 命令。
+两个运行环境会读取工作副本中的同一个 `skills/human-readable-writing` 目录，请完整保留该目录。如果已经克隆，只需在该目录下从 `skill=` 这一行开始运行。按旧版说明创建的链接指向仓库根目录，而根目录已不再是技能。[安装指南](docs/install.md)（英语）说明了如何迁移该链接，以及如何更新和删除技能。
 
 <details>
 <summary><strong>运行环境设置与显式调用</strong></summary>
 
-| 运行环境 | 入口 | 调用规则 |
+| 运行环境 | 手动安装后的入口 | 调用规则 |
 |---|---|---|
 | Codex | `~/.agents/skills/human-readable-writing/SKILL.md` | `agents/openai.yaml` 中包含 `allow_implicit_invocation: false`，禁止隐式调用。 |
 | Claude Code | `~/.claude/skills/human-readable-writing/SKILL.md` | `SKILL.md`: `disable-model-invocation: true`. |
@@ -105,7 +114,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 <details>
 <summary><strong>维护者单独开展的全局核心规则试用</strong></summary>
 
-维护者的个人环境还在全局指令中使用了一份早期的精简韩语核心规则。安装上述符号链接不会安装这份核心规则。
+维护者的个人环境还在全局指令中使用了一份早期的精简韩语核心规则。上述安装不会安装这份核心规则。
 
 这份核心规则于 2026-10-29 在 `~/.agents/TERMINOLOGY.md` 中启用，通过 Codex 和 Claude Code 已有的指令路径生效，至今保持不变。其 61 个 token 的大小是使用 `o200k_base` 得到的参考计数，并不代表请求总用量。
 
@@ -128,7 +137,9 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 三种翻译指南的语言之间不设开发先后顺序。后续工作取决于实际需求及相应语言的审阅条件。提供翻译文档不等于已验证输出具有母语水平。
 
-详见[语言政策](docs/language-support.md)。Codex、Claude Code、Pi 和 oh-my-pi 通过了有限的英语及韩语运行检查。OpenCode 2 仅得到部分验证，仍有失败记录。[兼容性说明](docs/tool-support.md)列出了版本、测试路径和限制；这些结果并不验证中文输出质量。
+详见[语言政策](skills/human-readable-writing/references/language-support.md)。2026-11-02，在以仓库根目录作为技能的旧版目录结构下，Codex、Claude Code、Pi 和 oh-my-pi 通过了有限的英语及韩语运行检查。OpenCode 2 仅得到部分验证，仍有失败记录。[兼容性说明](docs/tool-support.md)列出了版本、测试路径和限制；这些结果并不验证中文输出质量。新目录结构的检查情况请参阅[当前验证记录](docs/verification.md)。
+
+在当前测试环境中，Claude Code 的原生首次使用流程已得到验证。Codex 0.167.0 的原生调用被提供商的版本或账号错误阻止，当前验证记录不会将其标为通过。
 
 ## 证据与局限
 
@@ -136,7 +147,7 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 | 证据 | 能支持的结论 |
 |---|---|
-| [以英语为主的工作流程检查](docs/language-support.md#workflow-check)（英语） | 对语言选择、要求的格式和原文忠实度进行了有限检查，不能证明质量达到母语水平。 |
+| [以英语为主的工作流程检查](skills/human-readable-writing/references/language-support.md#workflow-check)（英语） | 对语言选择、要求的格式和原文忠实度进行了有限检查，不能证明质量达到母语水平。 |
 | [五篇韩语文档的改写比较](research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계) | 一位用户对段落、表格和信息顺序的偏好。 |
 | [12 次版式生成](research/layout-generation-pilot.md)（韩语） | 发现没有依据的验证声明和不确定性表达的变化后，暂缓采用。 |
 | [四次生成结果的原文忠实度检查](research/source-fidelity-pilot.md)（韩语） | 两个实验组均通过检查，未能证明修订版更优。 |
@@ -148,8 +159,8 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 | 用途 | 文档 |
 |---|---|
-| 共用写作指引 | [写作原则](MANIFEST.md) · [技能入口](SKILL.md) |
-| 各语言的专用指引 | [韩语](references/korean.md) · [覆盖范围与验证（英语）](docs/language-support.md) |
+| 共用写作指引 | [写作原则](skills/human-readable-writing/MANIFEST.md) · [技能入口](skills/human-readable-writing/SKILL.md) |
+| 各语言的专用指引 | [韩语](skills/human-readable-writing/references/korean.md) · [覆盖范围与验证（英语）](skills/human-readable-writing/references/language-support.md) |
 | 原论文分析，韩语 | [分析](ANALYSIS.md) · [证据评述](research/evidence-review.md) |
 | 相关文献与应用，韩语 | [文献笔记](research/related-literature.md) · [两篇论文的应用](research/two-paper-application.md) |
 | 早期成本与耗时研究，韩语 | [调用成本](research/invocation-cost.md) · [固定预算比较](research/core-refinement.md) · [隐去实验组别的输出](research/core-refinement-blind.md) |
@@ -161,4 +172,4 @@ ln -s "$PWD" "$HOME/.claude/skills/human-readable-writing"
 
 本项目始于对 Thomas Hikaru Clark、Matias B. Martin 和 Kyle Mahowald 的论文 [Why is AI-generated language so hard to understand?](https://arxiv.org/abs/2610.29162v1) 的分析。这里的写作指引和示例是独立的实践建议，并非经论文作者验证或认可的干预措施。
 
-原论文采用 CC BY 4.0 许可。[署名与来源记录](NOTICE.md)以韩语列出各项来源及其各自的许可证。**本仓库尚无单独的分发许可证。**
+原论文采用 CC BY 4.0 许可。本项目自行编写的内容采用 [MIT 许可证](LICENSE)。该许可证不适用于第三方作品的引文，也不适用于所引用的论文。[署名与来源记录](NOTICE.md)以英语和韩语列出各项来源、各自的许可证，以及该许可证对所保存模型输出的适用范围。

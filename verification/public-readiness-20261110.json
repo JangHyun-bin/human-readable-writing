@@ -1,0 +1,1663 @@
+{
+  "date": "2026-11-10",
+  "scope": "Local public-readiness checks before publishing the PR; no landing, outreach or release validation",
+  "versions": {
+    "node": "24.4.1",
+    "skills": "1.7.6",
+    "codex": "0.167.0",
+    "claude": "2.1.321",
+    "pi": "1.4.0",
+    "omp": "18.18.6"
+  },
+  "sourceBoundary": "Real CLI installation/update/removal used disposable Git sources, including a per-process SSH URL rewrite to loopback. Unpublished default-branch installation from public GitHub was not claimed.",
+  "upstreamCodexReleaseChecks": {
+    "npm": "0.167.0",
+    "githubLatest": "rust-v0.167.0"
+  },
+  "lifecycle": [
+    {
+      "label": "project CLI install",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "add",
+        "http://127.0.0.1:18973/snapshot.git",
+        "--skill",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-project",
+      "home": "${TEST_ROOT}/home-project",
+      "exitCode": 1,
+      "stdout": "\n│\n●   claude  Agent detected — installing non-interactively\n│\n◇  Source: http://127.0.0.1:18973/snapshot.git\n│\n◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◑  Cloning repository…..◒  Cloning repository…..│\n■  Failed to clone repository\n│\n│  Failed to clone http://127.0.0.1:18973/snapshot.git: Cloning into '${TEMP_PATH}'...\n│\n│  fatal: dumb http transport does not support shallow capabilities\n│\n│\n│\n│  Tip: use the --yes (-y) and --global (-g) flags to install without prompts.\n│\n└  Installation failed\n\n■  Canceled\n",
+      "stderr": ""
+    },
+    {
+      "label": "project CLI install",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "add",
+        "git://127.0.0.1:18974/snapshot.git",
+        "--skill",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-project",
+      "home": "${TEST_ROOT}/home-project",
+      "exitCode": 0,
+      "stdout": "\n│\n●   claude  Agent detected — installing non-interactively\n│\n◇  Source: git://127.0.0.1:18974/snapshot.git\n│\n◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◇  Repository cloned\n│\n◇  Found 1 skill\n│\n●  Selected 1 skill: human-readable-writing\n\n│\n◇  Installation Summary ────────────────────╮\n│                                           │\n│  ./.agents/skills/human-readable-writing  │\n│    universal: Codex                       │\n│    symlink → Claude Code                  │\n│                                           │\n├───────────────────────────────────────────╯\n│\n◇  Installation complete\n\n│\n◇  Installed 1 skill ─────────────────────────╮\n│                                             │\n│  ✓ ./.agents/skills/human-readable-writing  │\n│    universal: Codex                         │\n│    symlinked: Claude Code                   │\n│                                             │\n├─────────────────────────────────────────────╯\n\n│\n└  Done!  Review skills before use; they run with full agent permissions.\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "project installed package",
+      "files": {
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "MANIFEST.md": "77dbea1813b0584ca161810a9bcffba6c30b4631f536c28cbf820088ff3990e4",
+        "SKILL.md": "2cfba52e2465299f007c7440e48395f42b2bd620cda7d1329373708df2cff49e",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "references/korean.md": "0cdaa15ed02b416da13572284143c21fae898aafddb73dc193bda44452ce2f38",
+        "references/language-support.md": "93b7536064cd91b566cacdb45676090bf17ca00e2427b04fd3b6d576ea881e60",
+        "agents/openai.yaml": "532bc46f3277fdbc48273b6e3a31f1acecf6825f48d085ee8bae77c6d63a3e70"
+      },
+      "independentOfSourceCheckout": true
+    },
+    {
+      "label": "global CLI install",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "add",
+        "git://127.0.0.1:18974/snapshot.git",
+        "--skill",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-y",
+        "-g"
+      ],
+      "cwd": "${TEST_ROOT}/cli-global",
+      "home": "${TEST_ROOT}/home-global",
+      "exitCode": 0,
+      "stdout": "\n│\n●   claude  Agent detected — installing non-interactively\n│\n◇  Source: git://127.0.0.1:18974/snapshot.git\n│\n◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository…◐  Cloning repository…◓  Cloning repository…◑  Cloning repository…◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository….◐  Cloning repository….◓  Cloning repository….◑  Cloning repository….◒  Cloning repository…..◐  Cloning repository…..◓  Cloning repository…..◇  Repository cloned\n│\n◇  Found 1 skill\n│\n●  Selected 1 skill: human-readable-writing\n\n│\n◇  Installation Summary ────────────────────╮\n│                                           │\n│  ~/.agents/skills/human-readable-writing  │\n│    universal: Codex                       │\n│    symlink → Claude Code                  │\n│                                           │\n├───────────────────────────────────────────╯\n│\n◇  Installation complete\n\n│\n◇  Installed 1 skill ─────────────────────────╮\n│                                             │\n│  ✓ ~/.agents/skills/human-readable-writing  │\n│    universal: Codex                         │\n│    symlinked: Claude Code                   │\n│                                             │\n├─────────────────────────────────────────────╯\n\n│\n└  Done!  Review skills before use; they run with full agent permissions.\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "global installed package",
+      "files": {
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "MANIFEST.md": "77dbea1813b0584ca161810a9bcffba6c30b4631f536c28cbf820088ff3990e4",
+        "SKILL.md": "2cfba52e2465299f007c7440e48395f42b2bd620cda7d1329373708df2cff49e",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "references/korean.md": "0cdaa15ed02b416da13572284143c21fae898aafddb73dc193bda44452ce2f38",
+        "references/language-support.md": "93b7536064cd91b566cacdb45676090bf17ca00e2427b04fd3b6d576ea881e60",
+        "agents/openai.yaml": "532bc46f3277fdbc48273b6e3a31f1acecf6825f48d085ee8bae77c6d63a3e70"
+      },
+      "independentOfSourceCheckout": true
+    },
+    {
+      "label": "project CLI update",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "update",
+        "human-readable-writing",
+        "-p",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-project",
+      "home": "${TEST_ROOT}/home-project",
+      "exitCode": 0,
+      "stdout": "Updating human-readable-writing…\n\nUpdating for: Universal, Claude Code\nChecking 1 skill(s)…\n\nFetching 1 source…\nUpdating human-readable-writing…\n  ✓ Updated human-readable-writing\n\n✓ Updated 1 skill(s)\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "project update material effect",
+      "newNoticeInstalled": true,
+      "obsoleteFileRemoved": true
+    },
+    {
+      "label": "global CLI update",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "update",
+        "human-readable-writing",
+        "-g",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-global",
+      "home": "${TEST_ROOT}/home-global",
+      "exitCode": 0,
+      "stdout": "Updating human-readable-writing…\n\nNo installed skills found matching: human-readable-writing\n\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "global update material effect",
+      "newNoticeInstalled": false,
+      "obsoleteFileRemoved": false
+    },
+    {
+      "label": "global install with tracked SSH-shaped fixture source",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "add",
+        "ssh://fixture@localhost/fixture/snapshot.git",
+        "--skill",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-g",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-global",
+      "home": "${TEST_ROOT}/home-global",
+      "exitCode": 0,
+      "stdout": "\n███████╗██╗  ██╗██╗██╗     ██╗     ███████╗\n██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝\n███████╗█████╔╝ ██║██║     ██║     ███████╗\n╚════██║██╔═██╗ ██║██║     ██║     ╚════██║\n███████║██║  ██╗██║███████╗███████╗███████║\n╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝\n\n┌   skills \n│\n│  Tip: use the --yes (-y) and --global (-g) flags to install without prompts.\n│\n◇  Source: ssh://fixture@localhost/fixture/snapshot.git\n│\n◒  Cloning repository…◐  Cloning repository…◇  Repository cloned\n│\n◇  Found 1 skill\n│\n●  Selected 1 skill: human-readable-writing\n\n│\n◇  Installation Summary ────────────────────╮\n│                                           │\n│  ~/.agents/skills/human-readable-writing  │\n│    universal: Codex                       │\n│    symlink → Claude Code                  │\n│    overwrites: Codex, Claude Code         │\n│                                           │\n├───────────────────────────────────────────╯\n│\n◇  Installation complete\n\n│\n◇  Installed 1 skill ─────────────────────────╮\n│                                             │\n│  ✓ ~/.agents/skills/human-readable-writing  │\n│    universal: Codex                         │\n│    symlinked: Claude Code                   │\n│                                             │\n├─────────────────────────────────────────────╯\n\n│\n└  Done!  Review skills before use; they run with full agent permissions.\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "project CLI update to final package",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "update",
+        "human-readable-writing",
+        "-p",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-project",
+      "home": "${TEST_ROOT}/home-project",
+      "exitCode": 0,
+      "stdout": "Updating human-readable-writing…\n\nUpdating for: Universal, Claude Code\nChecking 1 skill(s)…\n\nFetching 1 source…\nUpdating human-readable-writing…\n  ✓ Updated human-readable-writing\n\n✓ Updated 1 skill(s)\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "project final update predicates",
+      "allFinalPackageBytesMatch": true,
+      "obsoleteFixtureRemoved": true,
+      "transport": "real Git daemon with per-process SSH URL rewrite; no external repository changed"
+    },
+    {
+      "label": "global CLI update to final package",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "update",
+        "human-readable-writing",
+        "-g",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-global",
+      "home": "${TEST_ROOT}/home-global",
+      "exitCode": 0,
+      "stdout": "Updating human-readable-writing…\n\nFetching 1 source…\n\nChecking skills from source: ssh://fixture@localhost/fixture/snapshot.git\n\nFound 1 global update(s)\n\n│\n◒  Downloading 1 source…◐  Downloading 1 source…◇  Downloaded 1 source\nUpdating human-readable-writing…\n  ✓ Updated human-readable-writing\n\n✓ Updated 1 skill(s)\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "global final update predicates",
+      "allFinalPackageBytesMatch": true,
+      "obsoleteFixtureRemoved": true,
+      "transport": "real Git daemon with per-process SSH URL rewrite; no external repository changed"
+    },
+    {
+      "label": "project CLI remove",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "remove",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-y"
+      ],
+      "cwd": "${TEST_ROOT}/cli-project",
+      "home": "${TEST_ROOT}/home-project",
+      "exitCode": 0,
+      "stdout": "│\n●   claude  Agent detected — removing non-interactively\n│\n◇  Found 1 unique installed skill(s)\n│\n◇  Removal process complete\n│\n◆  Successfully removed 1 skill(s)\n\n│\n└  Done!\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "project removal preservation",
+      "targetRemoved": true,
+      "fourUnrelatedSkillsPreserved": true
+    },
+    {
+      "label": "global CLI remove",
+      "argv": [
+        "npx",
+        "--yes",
+        "skills@1.7.6",
+        "remove",
+        "human-readable-writing",
+        "-a",
+        "codex",
+        "-a",
+        "claude-code",
+        "-y",
+        "-g"
+      ],
+      "cwd": "${TEST_ROOT}/cli-global",
+      "home": "${TEST_ROOT}/home-global",
+      "exitCode": 0,
+      "stdout": "│\n●   claude  Agent detected — removing non-interactively\n│\n◇  Found 1 unique installed skill(s)\n│\n◇  Removal process complete\n│\n◆  Successfully removed 1 skill(s)\n\n│\n└  Done!\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "global removal preservation",
+      "targetRemoved": true,
+      "fourUnrelatedSkillsPreserved": true
+    }
+  ],
+  "manual": [
+    {
+      "label": "manual installation artifacts from first execution",
+      "source": "docs/install.md",
+      "shell": "skill=\"$PWD/skills/human-readable-writing\"\nmkdir -p \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"\nln -s \"$skill\" \"$HOME/.agents/skills/human-readable-writing\"\nln -s \"$skill\" \"$HOME/.claude/skills/human-readable-writing\"",
+      "predicateCorrection": "Compare canonical paths because macOS resolves /tmp to /private/tmp",
+      "targets": {
+        ".agents": "${TEST_ROOT}/manual-checkout/skills/human-readable-writing",
+        ".claude": "${TEST_ROOT}/manual-checkout/skills/human-readable-writing"
+      }
+    },
+    {
+      "label": "documented manual remove",
+      "source": "docs/install.md",
+      "shell": "skill=\"$PWD/skills/human-readable-writing\"\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$skill\" ]; then\n    unlink \"$link\"\n    printf 'Removed %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Removed ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nRemoved ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "documented root-link migration",
+      "source": "docs/install.md",
+      "shell": "checkout=\"$PWD\"\nskill=\"$checkout/skills/human-readable-writing\"\nif [ ! -f \"$skill/SKILL.md\" ]; then\n  printf '%s\\n' 'Run this from the updated checkout root.' >&2\n  exit 1\nfi\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$checkout\" ]; then\n    unlink \"$link\"\n    ln -s \"$skill\" \"$link\" || exit 1\n    printf 'Updated %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Updated ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nUpdated ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "migration safe rerun",
+      "source": "docs/install.md",
+      "shell": "checkout=\"$PWD\"\nskill=\"$checkout/skills/human-readable-writing\"\nif [ ! -f \"$skill/SKILL.md\" ]; then\n  printf '%s\\n' 'Run this from the updated checkout root.' >&2\n  exit 1\nfi\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$checkout\" ]; then\n    unlink \"$link\"\n    ln -s \"$skill\" \"$link\" || exit 1\n    printf 'Updated %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Unchanged; inspect if needed: ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nUnchanged; inspect if needed: ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "remove migrated links",
+      "source": "docs/install.md",
+      "shell": "skill=\"$PWD/skills/human-readable-writing\"\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$skill\" ]; then\n    unlink \"$link\"\n    printf 'Removed %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Removed ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nRemoved ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "migration refuses foreign symlink and regular directory",
+      "source": "docs/install.md",
+      "shell": "checkout=\"$PWD\"\nskill=\"$checkout/skills/human-readable-writing\"\nif [ ! -f \"$skill/SKILL.md\" ]; then\n  printf '%s\\n' 'Run this from the updated checkout root.' >&2\n  exit 1\nfi\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$checkout\" ]; then\n    unlink \"$link\"\n    ln -s \"$skill\" \"$link\" || exit 1\n    printf 'Updated %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Unchanged; inspect if needed: ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nUnchanged; inspect if needed: ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "manual remove refuses foreign symlink and regular directory",
+      "source": "docs/install.md",
+      "shell": "skill=\"$PWD/skills/human-readable-writing\"\nfor base in \"$HOME/.agents/skills\" \"$HOME/.claude/skills\"; do\n  link=\"$base/human-readable-writing\"\n  if [ -L \"$link\" ] && [ \"$(readlink \"$link\")\" = \"$skill\" ]; then\n    unlink \"$link\"\n    printf 'Removed %s\\n' \"$link\"\n  else\n    printf 'Unchanged; inspect if needed: %s\\n' \"$link\"\n  fi\ndone",
+      "cwd": "${TEST_ROOT}/manual-checkout",
+      "home": "${TEST_ROOT}/manual-home",
+      "exitCode": 0,
+      "stdout": "Unchanged; inspect if needed: ${TEST_ROOT}/manual-home/.agents/skills/human-readable-writing\nUnchanged; inspect if needed: ${TEST_ROOT}/manual-home/.claude/skills/human-readable-writing\n",
+      "stderr": ""
+    },
+    {
+      "label": "manual preservation predicates",
+      "allTargetChecksPassed": true,
+      "foreignSymlinkPreserved": true,
+      "regularDirectoryPreserved": true,
+      "unrelatedSkillsPreserved": true
+    }
+  ],
+  "static": {
+    "historicalFilesByteIdentical": 61,
+    "guidanceFilesUnchangedExceptLinkDestinations": [
+      "SKILL.md",
+      "MANIFEST.md",
+      "references/korean.md",
+      "references/language-support.md",
+      "agents/openai.yaml"
+    ],
+    "oldRuntimePathsRemoved": true,
+    "legalCopiesIdenticalAndRegular": true,
+    "activeMarkdownFilesChecked": 19,
+    "localLinksAndAnchorsChecked": 262,
+    "packageFiles": {
+      "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+      "MANIFEST.md": "77dbea1813b0584ca161810a9bcffba6c30b4631f536c28cbf820088ff3990e4",
+      "SKILL.md": "2cfba52e2465299f007c7440e48395f42b2bd620cda7d1329373708df2cff49e",
+      "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+      "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+      "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51",
+      "agents/openai.yaml": "532bc46f3277fdbc48273b6e3a31f1acecf6825f48d085ee8bae77c6d63a3e70"
+    },
+    "englishKoreanShellBlocksEquivalent": true,
+    "shellBlocksSyntaxChecked": 20
+  },
+  "existingTests": {
+    "command": "python3.13 -m unittest discover -s research -p 'test_*.py'",
+    "passed": 23
+  },
+  "nativeAttempts": [
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "en",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "",
+      "rawEventLogSha256": "fd94a24f256ee886884687f97654da07b51592cf7dbb5270679b016d48e35a5f",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Third-party apps now draw from your extra usage, not your plan limits. Add more at claude.ai/settings/usage and keep going.\"},\"request_id\":\"${REQUEST_ID}\"}"
+      ]
+    },
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "ko",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "",
+      "rawEventLogSha256": "8f106b2f80276e89c71c19313d96ebd227117d08a41b820649961cc563c854af",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Third-party apps now draw from your extra usage, not your plan limits. Add more at claude.ai/settings/usage and keep going.\"},\"request_id\":\"${REQUEST_ID}\"}"
+      ]
+    },
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "control",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "",
+      "rawEventLogSha256": "aaa4b420299c37bd185b619a550f82819a6437ff83051db35e2d7a264ae03d0f",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Third-party apps now draw from your extra usage, not your plan limits. Add more at claude.ai/settings/usage and keep going.\"},\"request_id\":\"${REQUEST_ID}\"}"
+      ]
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "en",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. p95 latency for successful requests was 820 ms. Latency for failed requests was not measured.\n\nA cache restart happened before recovery, but we have not established that it caused the recovery. A separate replay is proposed; it has not been approved or completed.",
+      "stderr": "",
+      "rawEventLogSha256": "868e266056606f3eb225ecd98500217fb8a5b5b057b1d982ec1bb4a87b9cb4ba",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "ko",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "`/human-readable-writing`은 이 세션에 없어서 실행되지 않았습니다. 일반 요청으로 보고 직접 다듬었습니다.\n\n09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했습니다. 재시도 request는 이 집계에 포함하지 않았으며, 그 결과는 알 수 없습니다. gateway retry limit이 0이라면 client는 자동으로 재시도하지 않습니다.\n\ncache restart 이후 서비스가 복구되었지만, 둘 사이의 인과관계는 확인되지 않았습니다. 성공한 request의 p95 latency는 820 ms이고, 실패한 request의 latency는 측정하지 않았습니다. 별도 replay는 제안 단계일 뿐이며, 승인되었거나 완료된 작업이 아닙니다.",
+      "stderr": "",
+      "rawEventLogSha256": "a583f4918d680f0ff147c818098bc9ca0fd9a77de3583629e10efd781aef016d",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "control",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. The p95 latency for successful requests was 820 ms. Latency for failed requests was not measured.\n\nA cache restart occurred before recovery, but causation has not been established. A separate replay has been proposed; it is neither approved nor completed.",
+      "stderr": "",
+      "rawEventLogSha256": "bf7d164464219b2fcc2a6bd3b37a61834af8e672a079cc04a03f66f51a09e92c",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false
+    },
+    {
+      "runtime": "omp",
+      "scope": "project",
+      "case": "en",
+      "argv": [
+        "omp",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-rules",
+        "--no-lsp",
+        "--no-title",
+        "--no-prewalk",
+        "--no-pty",
+        "--max-time",
+        "180",
+        "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "read",
+          "arguments": {
+            "path": "skill://human-readable-writing",
+            "i": "Reading writing skill"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "skill://human-readable-writing"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/MANIFEST.md",
+            "i": "Reading manifest guidance"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/MANIFEST.md"
+          }
+        }
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. For successful requests, p95 latency was 820 ms. Latency for failed requests was not measured.\n\nA cache restart happened before recovery, but we have not established that it caused the recovery. A separate replay is proposed; it has not been approved or completed.",
+      "stderr": "",
+      "rawEventLogSha256": "4293d588e0f20d93380c741ac87aba48c6337776dd93051949561ccd7d069983",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": true
+    },
+    {
+      "runtime": "omp",
+      "scope": "project",
+      "case": "ko",
+      "argv": [
+        "omp",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-rules",
+        "--no-lsp",
+        "--no-title",
+        "--no-prewalk",
+        "--no-pty",
+        "--max-time",
+        "180",
+        "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "read",
+          "arguments": {
+            "path": "skill://human-readable-writing",
+            "i": "Loading writing skill"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "skill://human-readable-writing"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/MANIFEST.md",
+            "i": "Reading manifest"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/references/korean.md",
+            "i": "Reading Korean guide"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/MANIFEST.md"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": "${TEST_ROOT}/manual-omp/.omp/skills/human-readable-writing/references/korean.md"
+          }
+        }
+      ],
+      "finalOutput": "Facts to preserve:\n\n-   Window 09:10~09:25 UTC; 240 requests in total, 18 returned HTTP 503, 222 succeeded.\n-   Retry requests are excluded from the tally, and their outcome is unknown.\n-   With gateway retry limit 0, the client does not retry automatically.\n-   Recovery came after the cache restart, but causation is not confirmed.\n-   Successful requests have p95 latency 820 ms; failed-request latency was not measured.\n-   A separate replay is only a proposal, neither approved nor completed.\n\n**개정문**\n\n09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 이 집계에는 재시도 request가 포함되지 않았으며, 그 결과는 알지 못한다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. 성공한 request의 p95 latency는 820 ms이고, 실패한 request의 latency는 측정하지 않았다.\n\ncache restart 이후 서비스가 복구되었으나, restart가 복구의 원인인지는 확인되지 않았다. 별도 replay는 제안 단계이며, 승인되거나 완료된 작업이 아니다.",
+      "stderr": "",
+      "rawEventLogSha256": "0b193175478a6930247f76010e1759e30639937b287119081056bf7f0caa34ae",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": true,
+      "observedTargetToolLoad": true
+    },
+    {
+      "runtime": "omp",
+      "scope": "project",
+      "case": "control",
+      "argv": [
+        "omp",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "anthropic/claude-sonnet-5-5",
+        "--thinking",
+        "off",
+        "--no-rules",
+        "--no-lsp",
+        "--no-title",
+        "--no-prewalk",
+        "--no-pty",
+        "--max-time",
+        "180",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, but it has been neither approved nor completed.",
+      "stderr": "",
+      "rawEventLogSha256": "0d050ecedd67c90df3fbbca9cf8d4501f69a4451e8c49eeeb457ae0fece15420",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "project",
+      "case": "en",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        }
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. For successful requests, p95 latency was 820 ms. Latency for failed requests was not measured.\n\nA cache restart happened before recovery, but we have not established that it caused the recovery. A separate replay is proposed. It has not been approved or completed.",
+      "stderr": "",
+      "rawEventLogSha256": "c18d338f873fc0f6c760861dcd9d554e0e644e551a9004f78754a9d92b127bd6",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": true
+    },
+    {
+      "runtime": "claude",
+      "scope": "project",
+      "case": "ko",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        },
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/references/korean.md"
+          }
+        }
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 그 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. 성공한 request의 p95 latency는 820 ms이고, 실패한 request의 latency는 측정하지 않았다.\n\ncache restart 이후 서비스가 복구됐으나, restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐이며, 승인되거나 완료된 작업이 아니다.",
+      "stderr": "",
+      "rawEventLogSha256": "81dfef30b4c4ad71a6b17267a1e6df92eec1ab688c31737d22aebce85447dab7",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": true,
+      "observedTargetToolLoad": true
+    },
+    {
+      "runtime": "claude",
+      "scope": "project",
+      "case": "control",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 requests succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. p95 latency for successful requests was 820 ms; latency for failed requests was not measured.\n\nA cache restart happened before recovery, but causation has not been established. A separate replay is proposed; it has not been approved or completed.",
+      "stderr": "",
+      "rawEventLogSha256": "bc71ba3ec182da014e345be234bc63a2f19435385725b3f5be5b8ee318b3d142",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "project",
+      "case": "readme-first-use",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing 이 PR 설명을 유지보수자가 읽기 좋게 다듬어 주세요.\n기술 용어와 사실·조건·불확실성은 보존해 주세요.\n\n로그아웃 후 도착한 프로필 응답으로 인한 이전 사용자 정보 재표시를 막기 위해, 요청 시작 시 저장한 `sessionVersion`과 응답 수신 시 현재 값의 일치 여부에 따라 화면 갱신을 결정하도록 변경하고 로그아웃 시에는 이 값을 증가시키도록 했습니다. 이미 전송된 요청은 취소하지 않으며 브라우저 환경에서만 동작을 확인했습니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        },
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/references/korean.md"
+          }
+        }
+      ],
+      "finalOutput": "로그아웃 뒤에 프로필 응답이 도착하면 이전 사용자의 정보가 화면에 다시 표시될 수 있었습니다. 이를 막기 위해 다음과 같이 변경했습니다.\n\n- 프로필 요청을 시작할 때 `sessionVersion`을 저장합니다.\n- 응답을 받으면 저장해 둔 값과 현재 `sessionVersion`이 일치하는지 비교하고, 그 결과에 따라 화면 갱신 여부를 결정합니다.\n- 로그아웃할 때 `sessionVersion`을 증가시킵니다.\n\n이미 전송된 요청은 취소하지 않습니다. 따라서 로그아웃 후에도 응답은 도착하며, 화면 갱신 여부만 위 비교로 결정됩니다.\n\n동작은 브라우저 환경에서만 확인했습니다. 그 외 환경에서는 확인하지 않았습니다.\n\n원문에는 불일치 시 동작이 \"화면 갱신을 결정한다\"로만 적혀 있어 그대로 옮겼습니다. 값이 다르면 갱신하지 않는다는 점을 명시하려면 해당 문장에 이를 직접 적는 편이 유지보수자에게 더 분명합니다.",
+      "stderr": "",
+      "rawEventLogSha256": "65621e4aeda9194fc25c2ae594d38b73bb4bd897e0f10935a62973f6982141d4",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": true,
+      "observedTargetToolLoad": true
+    },
+    {
+      "runtime": "codex",
+      "scope": "project",
+      "case": "en",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "55c4302d0ffba1344b7aab948667fe3a9b3d355ebf8dde4792b8b59f4bb2ee72",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "project",
+      "case": "ko",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "fe246bd25afce1bad32ef900a7f4ac46651642cc585e2a4fa1751f832c25cfaa",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "project",
+      "case": "control",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "ff2af22fa55f1f6e3d02adbd1ee9394fd6bf6fbb246f025b660790063a4dee37",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "project",
+      "case": "readme-first-use",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing Revise this PR description for a maintainer.\nPreserve the technical terms, facts, conditions, and uncertainty.\n\nTo prevent previous-user data from reappearing when a profile response arrives after logout, this change gates screen updates on a match between the `sessionVersion` captured when the request starts and its current value when the response arrives, with the value incremented on logout. In-flight requests are not cancelled, and the behavior has been checked only in a browser."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "2217026d1aafd064ed97d8718e64eff0aec64efacb183f84e56a5aa46bcc28e1",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "global",
+      "case": "en",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "bc96bff394c98e97070711f660ed39a5fc0235b3ddd22ca681212e91a8d676be",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "global",
+      "case": "ko",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "14e2a7831012b5db10d44b72aca6d627ce772fa55c2bd79af7ae7736cdf79c19",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "codex",
+      "scope": "global",
+      "case": "control",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6-astra",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "rawEventLogSha256": "147d6387b246b8afaa0abf6df9e3a3372bb3a71e6b76fc47753bf19e52887f65",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "observedTargetToolLoad": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"
+      ]
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "en",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "user,project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/home-global/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        }
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. The p95 latency for successful requests was 820 ms. Latency for failed requests was not measured.\n\nA cache restart happened before recovery, but its role in the recovery or the errors has not been established. A separate replay has been proposed. It has not been approved or completed.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "41fc8f88080f0395e7c1276ccd33dc08a718e60623177644d420ba3f081aaf61",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": false
+    },
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "en",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "openai-codex/gpt-6-astra",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "/skill:human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "gpt-6-astra"
+      ],
+      "toolCalls": [
+        {
+          "name": "read",
+          "arguments": {
+            "path": ".agents/skills/human-readable-writing/MANIFEST.md",
+            "offset": null,
+            "limit": null
+          }
+        }
+      ],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. For successful requests, p95 latency was 820 ms; latency for failed requests was not measured.\n\nA cache restart occurred before recovery, but causation has not been established. A separate replay has been proposed but has not been approved or completed.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "50ff90b452ed63d451d2bf3d744c05958127a244ba5be5e827494f264da3b7f3",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "ko",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "user,project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/home-global/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        },
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/home-global/.claude/skills/human-readable-writing/references/korean.md"
+          }
+        }
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 이 집계에서는 재시도 request를 제외했으며, 재시도 request의 결과는 알 수 없다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. 성공한 222 request의 p95 latency는 820 ms이다. 실패한 18 request의 latency는 측정하지 않았다.\n\n장애는 cache restart 이후 복구되었으나, 두 사건 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안된 단계일 뿐 승인되거나 완료된 작업이 아니다.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "eaf483932e0b5f8bb62757eae7368fc93e9341dbfe58db6d5b59eb4ccdf0281d",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": true
+    },
+    {
+      "runtime": "claude",
+      "scope": "global",
+      "case": "control",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "user,project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests, and the other 222 requests succeeded. These counts exclude retried requests, whose outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. p95 latency for successful requests was 820 ms; latency for failed requests was not measured.\n\nA cache restart happened before recovery, but causation has not been established. A separate replay is proposed; it has not been approved or completed.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "247cbee35c1c1543394eb3b3977ddf0211e32f574f8ce3773ebcfbe0b7296f93",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false
+    },
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "ko",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "openai-codex/gpt-6-astra",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "/skill:human-readable-writing 다음 장애 안내를 한국어로 다듬어줘. 기술 용어와 식별자는 유지하고, 개정문만 두 문단 이내로 작성해줘. 수치·단위·부정·조건·불확실성을 모두 보존해줘.\n\n09:10~09:25 UTC에 gateway가 전체 240 request 중 18 request에 HTTP 503을 반환했다. 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며 결과는 모른다. gateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만 인과관계는 확인되지 않았다. 성공한 request의 p95 latency는 820 ms이며 실패한 request의 latency는 측정하지 않았다. 별도 replay는 제안일 뿐 승인되거나 완료된 작업이 아니다."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "gpt-6-astra"
+      ],
+      "toolCalls": [
+        {
+          "name": "read",
+          "arguments": {
+            "path": ".agents/skills/human-readable-writing/MANIFEST.md",
+            "offset": null,
+            "limit": null
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "path": ".agents/skills/human-readable-writing/references/korean.md",
+            "offset": null,
+            "limit": null
+          }
+        }
+      ],
+      "finalOutput": "09:10~09:25 UTC에 gateway는 전체 240 request 중 18 request에 HTTP 503을 반환했고, 나머지 222 request는 성공했다. 재시도 request는 이 집계에서 제외했으며, 그 결과는 알 수 없다. 성공한 request의 p95 latency는 820 ms이며, 실패한 request의 latency는 측정하지 않았다.\n\ngateway retry limit이 0이면 client는 자동으로 재시도하지 않는다. cache restart 이후 복구됐지만, cache restart와 복구 사이의 인과관계는 확인되지 않았다. 별도 replay는 제안일 뿐, 승인되거나 완료된 작업이 아니다.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "601a0770b7c5c366304366cb566e5c192c1b4cb55e2c0ac0d807d7b960a9995c",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": true
+    },
+    {
+      "runtime": "pi",
+      "scope": "project",
+      "case": "control",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "${HOME}/.npm/_npx/10d5f58764d7605f/node_modules/.bin/pi",
+        "--print",
+        "--mode",
+        "json",
+        "--no-session",
+        "--no-extensions",
+        "--no-context-files",
+        "--tools",
+        "read",
+        "--model",
+        "openai-codex/gpt-6-astra",
+        "--thinking",
+        "off",
+        "--no-mcp",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--approve",
+        "Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "gpt-6-astra"
+      ],
+      "toolCalls": [],
+      "finalOutput": "Between 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests; the other 222 requests succeeded. Retried requests were excluded from these counts, and their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically.\n\nA cache restart occurred before recovery, but causation has not been established. The p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay has been proposed but has not been approved or completed.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "88f30a743524d9aea5fbb0a397643ce598b8c4a276de494ee57db82c1be249e0",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false
+    },
+    {
+      "runtime": "claude",
+      "scope": "project",
+      "case": "readme-first-use",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "claude",
+        "-p",
+        "--model",
+        "claude-sonnet-5-5",
+        "--setting-sources",
+        "user,project,local",
+        "--settings",
+        "{\"disableAllHooks\":true}",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--tools",
+        "Read,Skill",
+        "--allowedTools",
+        "Read,Skill",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose",
+        "--no-session-persistence",
+        "/human-readable-writing Revise this PR description for a maintainer.\nPreserve the technical terms, facts, conditions, and uncertainty.\n\nTo prevent previous-user data from reappearing when a profile response arrives after logout, this change gates screen updates on a match between the `sessionVersion` captured when the request starts and its current value when the response arrives, with the value incremented on logout. In-flight requests are not cancelled, and the behavior has been checked only in a browser."
+      ],
+      "exitCode": 0,
+      "modelsInEvents": [
+        "claude-sonnet-5-5"
+      ],
+      "toolCalls": [
+        {
+          "name": "Read",
+          "arguments": {
+            "file_path": "${TEST_ROOT}/cli-project/.claude/skills/human-readable-writing/MANIFEST.md"
+          }
+        }
+      ],
+      "finalOutput": "A late profile response can show the previous user's data after logout. This change prevents that.\n\n- When a profile request starts, it captures the current `sessionVersion`.\n- Logout increments `sessionVersion`.\n- When the response arrives, the screen updates only if the captured value still equals the current `sessionVersion`. Otherwise the response is ignored.\n\nIn-flight requests are not cancelled. They still complete, and their responses are discarded.\n\nI have tested this only in a browser.",
+      "stderr": "",
+      "providerErrors": [],
+      "rawEventLogSha256": "c56b5ea19f39846a8745d8378eec264f471082046a40001fbdfda6162955c5a1",
+      "observedManifestRead": true,
+      "observedKoreanReferenceRead": false,
+      "sourceDocumentation": "README.md"
+    },
+    {
+      "runtime": "codex",
+      "scope": "project",
+      "case": "en",
+      "attempt": "corrected verification configuration",
+      "argv": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--sandbox",
+        "read-only",
+        "--ignore-user-config",
+        "--ignore-rules",
+        "--skip-git-repo-check",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "project_doc_max_bytes=0",
+        "-c",
+        "plugins._default.enabled=false",
+        "-c",
+        "features.multi_agent=false",
+        "$human-readable-writing Edit the following incident update in English for an engineering team. Return only the revised prose, in at most two paragraphs. Preserve all facts, numbers, units, negation, conditions, and uncertainty.\n\nBetween 09:10 and 09:25 UTC, the gateway returned HTTP 503 for 18 of 240 requests. The other 222 requests succeeded. Retried requests were not included in these counts; their outcomes are unknown. If the gateway retry limit is zero, the client does not retry automatically. A cache restart happened before recovery, but causation has not been established. p95 latency for successful requests was 820 ms; latency for failed requests was not measured. A separate replay is proposed, not approved or completed."
+      ],
+      "exitCode": 1,
+      "modelsInEvents": [],
+      "toolCalls": [],
+      "finalOutput": "",
+      "stderr": "Reading additional input from stdin...\n",
+      "providerErrors": [],
+      "rawEventLogSha256": "55b841048ac2478f52e6a55eeff8a6e221ff89afe4a22cc1df326a6311ec3165",
+      "observedManifestRead": false,
+      "observedKoreanReferenceRead": false,
+      "recordedProviderErrors": [
+        "{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\",\"code\":\"model_not_found\"}}"
+      ]
+    }
+  ],
+  "currentRuntimeJudgments": {
+    "claude": "Project/global EN/KO invocation and reference reads succeeded; controls did not load target. Both README first-use requests executed. Some first-use wording exceeded source facts.",
+    "pi": "Project EN/KO and control succeeded with openai-codex/gpt-6-astra after an Anthropic billing rejection; failed attempt retained.",
+    "omp": "Project EN/KO invocation and reference reads succeeded; control did not load target. Korean output format failed due to an unsolicited fact checklist.",
+    "codex": "Native model execution blocked by provider version/account restrictions; not verified in native Codex. Pi provider success is not a native Codex pass.",
+    "opencode": "Not rerun; historical partial failures retained."
+  },
+  "preservation": {
+    "historicalFilesByteIdentical": 61,
+    "otherFixtureSkillsPreserved": true
+  },
+  "limits": [
+    "No human-reader or statistically repeated quality study.",
+    "No performance result claimed.",
+    "Native Codex provider errors block a current native verification claim.",
+    "First-use output may add unsupported statements; compare with source.",
+    "OMP Korean formatting failure retained.",
+    "No public installation of unpublished changes claimed."
+  ],
+  "finalReadmeInputsMatchActualInvocations": true,
+  "redaction": "Published excerpts omit personal configuration/link snapshots, internal review transcripts, provider request IDs and platform-specific temporary paths. Raw-event hashes identify the captured local logs before publication redaction. Runtime outcomes and failed attempts are retained."
+}

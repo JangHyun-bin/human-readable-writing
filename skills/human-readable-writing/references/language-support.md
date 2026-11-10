@@ -8,11 +8,11 @@ The requested output language always takes precedence. Editing without a languag
 
 | Maintenance scope | Language | Available material | Remaining work |
 |---|---|---|---|
-| Primary | Korean | [Korean README](../README.ko.md), scoped language guidance, workflow checks, and personal editing records | Bounded runtime checks recorded; continued reader feedback on real work |
-| Primary | English | [English README](../README.md), shared instructions, original English workflow requests, and validation summary | Bounded runtime checks recorded; further native-reader review of real work |
-| Translation | French | [French README](../README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
-| Translation | Simplified Chinese | [Simplified Chinese README](../README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
-| Translation | Japanese | [Japanese README](../README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
+| Primary | Korean | [Korean README](https://github.com/JangHyun-bin/human-readable-writing/blob/main/README.ko.md), scoped language guidance, workflow checks, and personal editing records | Bounded runtime checks recorded; continued reader feedback on real work |
+| Primary | English | [English README](https://github.com/JangHyun-bin/human-readable-writing/blob/main/README.md), shared instructions, original English workflow requests, and validation summary | Bounded runtime checks recorded; further native-reader review of real work |
+| Translation | French | [French README](https://github.com/JangHyun-bin/human-readable-writing/blob/main/README.fr.md) | Output validation and language-specific guidance where needed; no scheduled priority |
+| Translation | Simplified Chinese | [Simplified Chinese README](https://github.com/JangHyun-bin/human-readable-writing/blob/main/README.zh-CN.md) | Output validation and language-specific guidance where needed; no scheduled priority. Traditional Chinese documentation is not provided |
+| Translation | Japanese | [Japanese README](https://github.com/JangHyun-bin/human-readable-writing/blob/main/README.ja.md) | Output validation and language-specific guidance where needed; no scheduled priority |
 | Unscheduled | Other languages | No maintained documentation or language-specific evaluation | Establish a use case and review capacity before adding maintained guidance or language-specific evaluation |
 
 French, Chinese, and Japanese are not labeled as validated language releases. A model's ability to produce those languages does not establish that this skill has been evaluated for them.
@@ -28,7 +28,7 @@ The shared skill instructions remain in one English manifest. Add language-speci
 - **Source fidelity.** Quantities, exclusions, conditions, negation, and uncertainty survive the edit. Missing relationships remain unresolved until the source supplies them.
 - **Separate quality evidence.** Check instruction compliance and source fidelity, then obtain native-reader judgments on clarity and naturalness. Record personal preference separately from comprehension or reading-time measurements.
 
-Keep shared semantic rules in [MANIFEST.md](../MANIFEST.md). Add language-specific references only where they change a concrete writing decision. English tasks do not load the [Korean guidance](../references/korean.md). The maintainer's earlier short-paragraph preference is scoped to that user's Korean work rather than treated as a universal language rule.
+Keep shared semantic rules in [MANIFEST.md](../MANIFEST.md). Add language-specific references only where they change a concrete writing decision. English tasks do not load the [Korean guidance](korean.md). The maintainer's earlier short-paragraph preference is scoped to that user's Korean work rather than treated as a universal language rule.
 
 ## Workflow check
 
@@ -44,7 +44,7 @@ One fresh agent context used the previous skill from commit `88ec41b0cda9c48fa78
 | English ambiguous requirement: request the missing relationship without inventing a release condition | Pass | Pass |
 | Korean notice: correct output language, existing results, failure before app-server startup, no extra generation | Pass | Pass |
 
-[Requests, verbatim outputs, source checks, and file hashes](../research/english-first-checks.json) are retained. Both instruction versions passed these checks. No improvement claim follows from this result.
+[Requests, verbatim outputs, source checks, and file hashes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/english-first-checks.json) are retained. Both instruction versions passed these checks. No improvement claim follows from this result.
 
 A subsequent document review clarified that copying the complete skill directory preserves the Korean reference path. The outputs were not regenerated for that reuse-instruction edit; the evidence file records the evaluated and published instruction hashes separately.
 
@@ -56,7 +56,7 @@ For this revision, native-level English quality, human comprehension, reading ti
 
 ## Earlier evidence
 
-The earlier [validation history](../VALIDATION.md), [literature notes](../research/related-literature.md), and [personal preference record](../research/native-pilot.md) remain in their original Korean form. They are historical evidence, not new English-language trials.
+The earlier [validation history](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md), [literature notes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md), and [personal preference record](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/native-pilot.md) remain in their original Korean form. They are historical evidence, not new English-language trials.
 
 - The five document comparisons recorded one user's layout preferences.
 - The 12-generation layout pilot exposed unsupported verification claims and changes to uncertainty; adoption was deferred.
@@ -69,7 +69,7 @@ The work draws on Clark, Martin, and Mahowald's [AI-language analysis](https://a
 
 ## Real-document reading preference
 
-On 2026-11-01, the maintainer compared the original limitations paragraph above with an edited version in the existing conversation and a side-by-side HTML page, then selected B (the edit). [The preference record](../research/english-document-preference-20261101.json) retains both presented texts and the exact response. No reason was given. Wording, information order, and paragraph breaks changed together, so this is a preference for the whole passage.
+On 2026-11-01, the maintainer compared the original limitations paragraph above with an edited version in the existing conversation and a side-by-side HTML page, then selected B (the edit). [The preference record](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/english-document-preference-20261101.json) retains both presented texts and the exact response. No reason was given. Wording, information order, and paragraph breaks changed together, so this is a preference for the whole passage.
 
 The document adopts B’s three-paragraph structure with one fidelity correction: the middle paragraph removes an unsupported causal link and keeps the three untested runtime items explicit. That corrected wording was not separately rated. This single comparison does not establish a general English writing rule, an isolated skill effect, or completed native-reader validation.
 
@@ -77,4 +77,4 @@ The document adopts B’s three-paragraph structure with one fidelity correction
 
 Use real Korean and English PR descriptions, incident updates, and research notes under the shared manifest. Include mixed Korean–English terminology and requests that must preserve uncertainty or ask about a missing relationship. Retain the original requests and outputs, check meaning separately, and collect reader feedback on wording and flow in each language.
 
-The [2026-11-02 runtime checks](../research/runtime-validation-20261102.json) cover fresh-session invocation and reference loading for four runtimes, with mixed OpenCode results. See [tool compatibility](tool-support.md) for tested versions, models, paths, and remaining limitations. Repeat the checks when runtime behavior or skill instructions change. A successful load is not a writing-quality evaluation, and the dated writing checks above do not validate later instruction revisions. Further language evaluation remains unscheduled until there is a concrete use case and a reviewer for that language.
+The [2026-11-02 runtime checks](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/runtime-validation-20261102.json) cover fresh-session invocation and reference loading for four runtimes, with mixed OpenCode results. See [tool compatibility](https://github.com/JangHyun-bin/human-readable-writing/blob/main/docs/tool-support.md) for tested versions, models, paths, and remaining limitations. Repeat the checks when runtime behavior or skill instructions change. A successful load is not a writing-quality evaluation, and the dated writing checks above do not validate later instruction revisions. Further language evaluation remains unscheduled until there is a concrete use case and a reviewer for that language.

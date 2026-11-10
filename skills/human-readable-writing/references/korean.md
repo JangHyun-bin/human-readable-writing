@@ -11,13 +11,13 @@
 
 ## 기존 개인 선호의 범위
 
-2026-10-30의 [다섯 문서 비교](../research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계)에서 사용자는 짧은 기술 안내의 문단 구분, 여러 조건의 수치 비교 표, 목적에 따른 정보 순서를 선호하였다.
+2026-10-30의 [다섯 문서 비교](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/native-pilot.md#2026-10-30-다섯-편집-비교의-최종-집계)에서 사용자는 짧은 기술 안내의 문단 구분, 여러 조건의 수치 비교 표, 목적에 따른 정보 순서를 선호하였다.
 
 이 사용자의 선호가 적용되는 작업에서는 짧은 안내의 문장별 문단을 활용하되, 밀접한 동작·조건은 함께 둔다. 모든 한국어 사용자나 모든 길이의 글에 적용하는 규칙으로 확대하지 않는다. 사용자가 지정한 형식이 우선한다.
 
 ## 예시
 
-아래는 [보존된 가상 사례](../research/structure-layout-responses.json)의 개정문이다.
+아래는 [보존된 가상 사례](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/structure-layout-responses.json)의 개정문이다.
 
 > evaluator는 전체 80 session 중 timeout이 발생한 12 session을 제외하고, 나머지 68 session의 median error를 0.8 m로 보고했다.
 >

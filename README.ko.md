@@ -4,6 +4,8 @@
 
 <p align="center"><a href="README.md">English</a> · <strong>한국어</strong></p>
 
+<p align="center"><a href="https://human-readable-writing.vercel.app/ko/"><strong>웹사이트</strong></a> · <a href="https://human-readable-writing.vercel.app/">English website</a></p>
+
 Human-readable writing은 전문 분야의 글과 실무 문서를 다듬는 에이전트 스킬입니다. Claude Code, Codex, OpenCode, Pi, oh-my-pi를 모두 지원 대상으로 삼으며, 도구마다 검증 범위는 다릅니다. 연구 해석·재무 분석·투자 검토·정책 평가·설계 결정 기록과 PR 설명·장애 안내에 사용할 수 있습니다. 독자가 주장과 근거, 조건과 실제 영향의 관계를 따라갈 수 있게 하는 것이 목적입니다.
 
 스킬의 지침은 Markdown 파일로 배포되며, 설치 패키지는 스크립트를 포함하지 않습니다. 지침은 모델에게 여러 용어로 압축된 표현을 주체와 동작이 드러나는 문장으로 풀고, 조건과 불확실성을 해당 주장 곁에 두고, 독자의 작업에 맞게 정보 순서를 정하도록 요청합니다. 기술 용어와 원문의 사실은 유지하고, 원문에 없는 관계는 지어내지 말고 질문하도록 합니다.

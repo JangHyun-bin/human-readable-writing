@@ -11,6 +11,8 @@
   <a href="README.md">English</a> · <a href="README.ko.md">한국어</a> · <a href="README.fr.md">Français</a> · <strong>中文（简体）</strong> · <a href="README.ja.md">日本語</a>
 </p>
 
+<p align="center"><a href="https://human-readable-writing.vercel.app/"><strong>介绍网站（英语）</strong></a> · <a href="https://human-readable-writing.vercel.app/ko/">한국어 소개</a></p>
+
 <p align="center">
   <a href="#快速上手">快速上手</a> ·
   <a href="skills/human-readable-writing/MANIFEST.md">写作原则</a> ·

@@ -4,6 +4,8 @@
 
 <p align="center"><strong>English</strong> · <a href="README.ko.md">한국어</a></p>
 
+<p align="center"><a href="https://human-readable-writing.vercel.app/"><strong>Website</strong></a> · <a href="https://human-readable-writing.vercel.app/ko/">한국어 소개</a></p>
+
 Human-readable writing is a portable agent skill for professional prose. The project targets Claude Code, Codex, OpenCode, Pi, and oh-my-pi; verification coverage differs by runtime. Its writing guidance covers research notes, financial analyses, investment reviews, policy memos, design records, PR descriptions, and incident updates. The aim is to help readers connect claims to evidence, conditions, and practical consequences.
 
 The skill's instructions are distributed as Markdown files. The installed package contains no scripts. The instructions ask the model to rewrite compressed noun phrases as sentences that say who does what. They also ask it to keep technical terms and source facts, to place each condition and uncertainty next to the claim it limits, and to order information for the reader's task. When the source leaves a relationship unclear, the instructions tell the model to ask about it instead of inventing one.

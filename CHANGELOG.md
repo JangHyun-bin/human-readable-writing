@@ -6,6 +6,7 @@ This file lists changes that affect people who install or maintain the skill. No
 
 ### Added
 
+- Links to the English and Korean website at the top of every README and in the GitHub repository's About panel.
 - The material written for this project is available under the [MIT License](LICENSE). [NOTICE.md](NOTICE.md) lists third-party sources and their licenses, and explains how the license applies to model outputs kept in the research records. The installed package includes copies of both files.
 - Installation with the [`skills` CLI](https://github.com/vercel-labs/skills), for the current project by default or for the user account with `-g`.
 - An [installation guide](docs/install.md) and a [Korean installation guide](docs/install.ko.md) for manual installation, updates, removal, and migration.

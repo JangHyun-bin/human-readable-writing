@@ -1,0 +1,128 @@
+{
+  "id": "research",
+  "genre": {
+    "en": "Research-interpretation memo",
+    "ko": "연구 해석 메모"
+  },
+  "topic": {
+    "en": "What Trip.com's hybrid-work assignment and quit rates support in a comparable employer's policy review",
+    "ko": "Trip.com의 하이브리드 근무 배정과 퇴사율이 유사 기업의 정책 검토에 제공하는 근거"
+  },
+  "audience": {
+    "en": "An HR director considering an optional hybrid-work policy for comparable graduate office roles",
+    "ko": "유사한 대졸 사무직을 대상으로 선택형 하이브리드 근무 정책을 검토하는 인사 책임자"
+  },
+  "source_mode": "source_based",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://www.nature.com/articles/s41586-024-07500-2",
+      "locator": "Bloom, Han and Liang (2024), Main; Effects on employee retention; Fig. 2 caption; Methods, Location and set-up, Randomization, Employee characteristics and balancing tests, Inclusion and ethics statement; Extended Data Fig. 3 caption",
+      "rights": "Article CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Attribute Nicholas Bloom, Ruobing Han and James Liang, the article title, Nature 630, 920–925 (2024), and DOI 10.1038/s41586-024-07500-2. These independently authored English and Korean memos select and paraphrase findings and add an explicitly identified policy judgment. No figures, photographs, tables or replication data are reproduced. Third-party material can have separate credit-line restrictions. The article's rights are not replaced by the repository's MIT license."
+    }
+  ],
+  "facts": [
+    {
+      "id": "R01",
+      "kind": "reported_fact",
+      "en": "The trial covered 1,612 university-graduate engineering, marketing and finance employees in the Airfare and IT divisions of Trip.com in Shanghai, one employer. Interns and new employees on probation were excluded.",
+      "ko": "실험 대상은 단일 기업인 상하이 Trip.com의 항공권·IT 부문에서 엔지니어링·마케팅·재무 업무를 맡은 대졸 직원 1,612명이었다. 인턴과 수습기간 중인 신입 직원은 제외했다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R02",
+      "kind": "reported_fact",
+      "en": "Random assignment used odd versus even days of the month of employees' birthdays. The odd-birthday treatment group of 792 could work from home on Wednesday and Friday and attended the office on the other three days. The even-birthday control group of 820 attended the office all five days. The two home days were optional, not mandatory.",
+      "ko": "생일의 날짜가 홀수인지 짝수인지에 따라 무작위 배정했다. 홀수일 출생자 792명의 처치집단은 수요일과 금요일에 재택근무를 선택할 수 있었고 나머지 사흘은 출근했다. 짝수일 출생자 820명의 대조집단은 주 5일 출근했다. 이틀의 재택근무는 의무가 아니라 선택이었다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R03",
+      "kind": "reported_fact",
+      "en": "The 518 initial volunteers entered the experiment in the week of 9 August 2021. The remaining 1,094 non-volunteers entered in the week of 13 September 2021.",
+      "ko": "처음 자원한 518명은 2021년 8월 9일이 속한 주에 실험에 참여했다. 자원하지 않았던 나머지 1,094명은 2021년 9월 13일이 속한 주에 참여했다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R04",
+      "kind": "reported_fact",
+      "en": "Among those assigned eligibility, actual WFH take-up was about 55% for volunteers and 40% for non-volunteers across Wednesday and Friday opportunities, excluding public holidays, personal holidays and excused absences. Typical use was about one day per week. These are not percentages of all employees or all weekdays.",
+      "ko": "재택근무 허용 대상으로 배정된 직원의 실제 이용률은 수요일·금요일의 이용 기회 기준으로 자원자 약 55%, 비자원자 약 40%였다. 공휴일·개인 휴가·인정된 결근은 계산에서 제외했다. 전형적인 이용은 주 1일 정도였다. 전체 직원이나 주중 모든 날을 분모로 한 비율이 아니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R05",
+      "kind": "reported_fact",
+      "en": "The nominal six-month experiment effectively ended on 21 January 2022, when a COVID case led Trip.com to allow everyone to work from home. The attrition figure caption reports follow-up through 23 January 2022. Neither group had two years of randomized policy exposure.",
+      "ko": "명목상 6개월 실험은 코로나19 확진자 발생으로 전 직원에게 재택근무가 허용된 2022년 1월 21일에 사실상 종료됐다. 퇴사율 그림 설명은 2022년 1월 23일까지 추적한 자료라고 명시한다. 두 집단이 무작위 배정된 정책에 2년간 노출된 것은 아니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R06",
+      "kind": "reported_fact",
+      "en": "During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. They are experiment-period rates, not annual rates.",
+      "ko": "실험기간의 배정집단별 퇴사율은 대조집단 7.20%, 처치집단 4.80%였고 차이의 P값은 0.043이었다. 연간 퇴사율이 아니라 실험기간의 퇴사율이다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R07",
+      "kind": "reported_fact",
+      "en": "The reported quit rates differ by 2.40 percentage points, about 33% relative to the control rate. The comparison estimates the effect of assignment to the optional policy, not the effect of actually using two WFH days every week.",
+      "ko": "보고된 퇴사율 차이는 2.40퍼센트포인트이며, 대조집단 퇴사율 대비 상대 감소율은 약 33%다. 이 비교가 추정하는 것은 선택형 정책에 배정된 효과이지, 매주 이틀씩 실제로 재택근무한 효과가 아니다.",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "R08",
+      "kind": "author_judgment",
+      "en": "The memo author's judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking similarity of work and commuting conditions. It does not establish the same quit-rate reduction for another employer or equivalence with fully remote work.",
+      "ko": "메모 작성자는 업무와 통근 조건의 유사성을 검토한다는 전제 아래, 대졸 사무직을 대상으로 비슷한 선택형 정책의 시범 운영을 검토할 근거가 된다고 판단한다. 다른 기업에서 같은 퇴사율 감소가 발생하거나 완전 원격근무가 동등하다는 결론은 아니다.",
+      "source_ids": []
+    }
+  ],
+  "review_checks": [
+    {
+      "id": "RC01",
+      "en": "Both drafts retain all R01–R08 claims, exclusions, dates and judgment strength without requiring the ledger to make the memo intelligible.",
+      "ko": "두 초안 모두 R01부터 R08까지의 주장·제외 사항·날짜·판단 강도를 유지하며, 사실 목록 없이도 메모 자체를 이해할 수 있다."
+    },
+    {
+      "id": "RC02",
+      "en": "Odd and even birthday assignments, 792 and 820 group denominators, optional Wednesday and Friday eligibility, and three versus five office days remain distinct from actual use.",
+      "ko": "홀수·짝수 생일 배정, 집단별 분모 792명·820명, 수요일·금요일 재택 선택권, 주 3일·5일 출근을 실제 이용과 구분한다."
+    },
+    {
+      "id": "RC03",
+      "en": "Take-up retains approximate 55% and 40%, the volunteer distinction, Wednesday and Friday opportunity denominator, exclusions and about-one-day interpretation.",
+      "ko": "실제 이용률 약 55%·40%와 자원 여부의 구분, 수요일·금요일의 이용 기회라는 분모, 제외 사항, 주 1일 정도라는 해석을 유지한다."
+    },
+    {
+      "id": "RC04",
+      "en": "The staggered 2021 starts, effective 21 January 2022 end, and caption's 23 January follow-up date remain qualified. There is no annualization or two-year randomized-exposure claim.",
+      "ko": "2021년의 서로 다른 시작 시점, 사실상 종료일인 2022년 1월 21일, 그림 설명의 추적 종료일 1월 23일을 각각 구분한다. 연율 환산이나 2년간 무작위 정책 노출이라는 주장을 하지 않는다."
+    },
+    {
+      "id": "RC05",
+      "en": "The 7.20% and 4.80% quit rates, P = 0.043, 2.40-percentage-point difference and approximately 33% relative reduction retain their assigned-group and experiment-period meaning.",
+      "ko": "퇴사율 7.20%·4.80%, P값 0.043, 2.40퍼센트포인트 차이, 약 33% 상대 감소율을 배정집단과 실험기간에 한정한 의미로 유지한다."
+    },
+    {
+      "id": "RC06",
+      "en": "The comparable-policy trial remains the memo author's conditional judgment, not a paper finding, approved program, prediction of equal effects, mandatory-two-day policy or fully remote recommendation. Promotion, code-output and productivity-belief claims are not added.",
+      "ko": "유사 정책의 시범 운영 검토는 메모 작성자의 조건부 판단으로 남는다. 논문의 연구 결과나 승인된 계획, 동일 효과 예측, 주 2일 의무 재택 정책, 완전 원격근무 권고로 바꾸지 않는다. 승진·코드량·생산성 인식 관련 주장을 추가하지 않는다."
+    }
+  ]
+}

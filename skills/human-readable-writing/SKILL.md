@@ -1,12 +1,12 @@
 ---
 name: human-readable-writing
-description: Use when explicitly asked to edit or review technical prose.
+description: Use when explicitly asked to edit or review professional prose.
 disable-model-invocation: true
 ---
 
 # Human-readable writing
 
-Write technical prose that lets readers connect a claim to its evidence, conditions, and practical consequences.
+Write professional prose that lets readers connect a claim to its evidence, conditions, and practical consequences.
 
 When explicitly invoked, read [MANIFEST.md](MANIFEST.md) in this directory and apply the relevant guidance. Reuse material already in context. Before returning the text, check it against the manifest's meaning-preservation questions.
 

@@ -1,0 +1,121 @@
+{
+  "id": "finance",
+  "genre": {
+    "en": "Financial-analysis brief",
+    "ko": "재무 분석 브리프"
+  },
+  "topic": {
+    "en": "Rising net income and falling operating cash flow at a fictional manufacturer",
+    "ko": "가상 제조기업의 당기순이익 증가와 영업활동현금흐름 감소"
+  },
+  "audience": {
+    "en": "Finance or business lead reviewing the quarterly reconciliation and its interpretation limits",
+    "ko": "분기 현금흐름 조정과 해석의 한계를 검토하는 재무·사업 책임자"
+  },
+  "source_mode": "fictional",
+  "sources": [],
+  "facts": [
+    {
+      "id": "F01",
+      "kind": "scenario_assumption",
+      "en": "This is a fictional manufacturer with unchanged reporting scope. The comparison covers standalone April 1 through June 30 quarters in 2025 and 2026, not year-to-date figures. All amounts are exact KRW million.",
+      "ko": "보고 범위가 동일한 가상 제조기업의 사례다. 2025년과 2026년 각각 4월 1일부터 6월 30일까지의 2분기 단독 실적을 비교하며 누적 실적이 아니다. 모든 금액은 백만원 단위의 정확한 값이다.",
+      "source_ids": []
+    },
+    {
+      "id": "F02",
+      "kind": "scenario_assumption",
+      "en": "Net income is 1,000 in Q2 2025 and 1,200 in Q2 2026. These are supplied bottom-line inputs, not a reconstructed income statement.",
+      "ko": "당기순이익은 2025년 2분기 1,000, 2026년 2분기 1,200이다. 손익계산서를 재구성해 산출한 값이 아니라 주어진 최종 이익 수치다.",
+      "source_ids": []
+    },
+    {
+      "id": "F03",
+      "kind": "scenario_assumption",
+      "en": "Depreciation expense included in net income is 200 in Q2 2025 and 240 in Q2 2026. The corresponding +200 and +240 adjustments are noncash add-backs, not cash receipts.",
+      "ko": "당기순이익에 반영된 감가상각비는 2025년 2분기 200, 2026년 2분기 240이다. 이에 따른 +200과 +240 조정은 비현금 비용의 가산이며 현금 유입이 아니다.",
+      "source_ids": []
+    },
+    {
+      "id": "F04",
+      "kind": "scenario_assumption",
+      "en": "Trade receivables open at 800 and close at 900 in Q2 2025, then open at 900 and close at 1,300 in Q2 2026. The within-quarter increases are 100 and 400, giving operating cash flow adjustments of -100 and -400.",
+      "ko": "매출채권은 2025년 2분기 기초 800에서 기말 900으로, 2026년 2분기 기초 900에서 기말 1,300으로 증가한다. 각 분기 증가액은 100과 400이며 영업활동현금흐름 조정액은 -100과 -400이다.",
+      "source_ids": []
+    },
+    {
+      "id": "F05",
+      "kind": "scenario_assumption",
+      "en": "Inventory opens at 1,000 and closes at 1,250 in Q2 2025, then opens at 1,200 and closes at 1,800 in Q2 2026. The within-quarter increases are 250 and 600, giving operating cash flow adjustments of -250 and -600.",
+      "ko": "재고자산은 2025년 2분기 기초 1,000에서 기말 1,250으로, 2026년 2분기 기초 1,200에서 기말 1,800으로 증가한다. 각 분기 증가액은 250과 600이며 영업활동현금흐름 조정액은 -250과 -600이다.",
+      "source_ids": []
+    },
+    {
+      "id": "F06",
+      "kind": "scenario_assumption",
+      "en": "Trade payables open at 500 and close at 550 in Q2 2025, then open at 600 and close at 760 in Q2 2026. The within-quarter increases are 50 and 160, giving operating cash flow adjustments of +50 and +160.",
+      "ko": "매입채무는 2025년 2분기 기초 500에서 기말 550으로, 2026년 2분기 기초 600에서 기말 760으로 증가한다. 각 분기 증가액은 50과 160이며 영업활동현금흐름 조정액은 +50과 +160이다.",
+      "source_ids": []
+    },
+    {
+      "id": "F07",
+      "kind": "scenario_assumption",
+      "en": "Other reconciliation adjustments total zero by design. No acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect the receivable, inventory, and payable balance changes.",
+      "ko": "그 밖의 조정 합계는 설계상 0이다. 인수, 환산, 제각, 재분류 또는 그 밖의 비현금 변동은 매출채권·재고자산·매입채무 잔액 증감에 영향을 주지 않는다고 가정한다.",
+      "source_ids": []
+    },
+    {
+      "id": "F08",
+      "kind": "scenario_assumption",
+      "en": "The reconciliation gives Q2 2025 operating cash flow of 900 from 1,000 + 200 - 100 - 250 + 50, and Q2 2026 operating cash flow of 600 from 1,200 + 240 - 400 - 600 + 160. Operating cash flow remains positive in both quarters.",
+      "ko": "조정 결과 2025년 2분기 영업활동현금흐름은 1,000 + 200 - 100 - 250 + 50 = 900이고, 2026년 2분기는 1,200 + 240 - 400 - 600 + 160 = 600이다. 두 분기 모두 영업활동현금흐름은 양수다.",
+      "source_ids": []
+    },
+    {
+      "id": "F09",
+      "kind": "scenario_assumption",
+      "en": "Net income rises 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow falls 300. The combined working-capital adjustment changes from -300 to -840. Its additional -540 outweighs the +200 net income change and +40 depreciation adjustment change. The change bridge is +200 + 40 - 300 - 350 + 110 = -300.",
+      "ko": "당기순이익은 200 증가하며, 이는 2025년 2분기 1,000 대비 20%다. 영업활동현금흐름은 300 감소한다. 운전자본 관련 조정 합계는 -300에서 -840으로 바뀐다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돈다. 현금흐름 증감 조정은 +200 + 40 - 300 - 350 + 110 = -300이다.",
+      "source_ids": []
+    },
+    {
+      "id": "F10",
+      "kind": "scenario_assumption",
+      "en": "Cash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and causes of profit growth are not supplied. Unknown values are not zero. The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a cash-balance change or a complete liquidity assessment.",
+      "ko": "현금잔액, 투자·재무활동 현금흐름, 회수 조건, 매출채권 연령 분석, 재고 계획, 이익 증가 원인은 제공되지 않았다. 미상인 값을 0으로 보지 않는다. 이 조정만으로 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 영업활동현금흐름만으로 현금잔액 증감을 알거나 유동성을 종합 평가할 수 없다.",
+      "source_ids": []
+    }
+  ],
+  "review_checks": [
+    {
+      "id": "fictional_scope",
+      "en": "Retain the fictional label, unchanged reporting scope, exact KRW-million units, and standalone April 1 through June 30 comparison for 2025 and 2026.",
+      "ko": "가상 사례 표시, 동일 보고 범위, 정확한 백만원 단위와 2025년·2026년 각각 4월 1일부터 6월 30일까지의 분기 단독 비교를 유지한다."
+    },
+    {
+      "id": "earnings_and_addback",
+      "en": "Keep net income distinct from operating profit. Keep depreciation as a noncash expense add-back, not a cash receipt.",
+      "ko": "당기순이익을 영업이익으로 바꾸지 않는다. 감가상각비 가산은 비현금 비용의 조정으로 유지하며 현금 유입으로 표현하지 않는다."
+    },
+    {
+      "id": "balance_changes",
+      "en": "Compute each balance change against that quarter's own opening balance. Preserve all openings, closings, increases, and adjustment signs. Do not compare the two June balances to derive a quarterly adjustment.",
+      "ko": "각 분기 증감은 해당 분기 기초잔액과 비교한다. 모든 기초·기말잔액, 증가액과 조정 부호를 유지한다. 두 해의 6월 말 잔액 차이로 분기 조정액을 계산하지 않는다."
+    },
+    {
+      "id": "reconciliation",
+      "en": "Retain both equations yielding positive operating cash flow of 900 and 600, the zero-other-adjustments assumption, and all exclusions that permit the balance-change reconciliation.",
+      "ko": "양수의 영업활동현금흐름 900과 600을 산출하는 두 식, 그 밖의 조정 합계 0 가정과 잔액 증감 조정을 가능하게 하는 모든 제외 조건을 유지한다."
+    },
+    {
+      "id": "change_bridge",
+      "en": "Retain the 200 net income increase, 20% with denominator 1,000, the -300 operating cash flow change, the -300 to -840 working-capital adjustment, and the +200 + 40 - 300 - 350 + 110 = -300 bridge.",
+      "ko": "당기순이익 증가 200, 분모 1,000인 증가율 20%, 영업활동현금흐름 증감 -300, 운전자본 관련 조정 -300에서 -840으로의 변화와 +200 + 40 - 300 - 350 + 110 = -300을 유지한다."
+    },
+    {
+      "id": "limits_and_unknowns",
+      "en": "Do not turn unknown inputs into zero or add overdue customers, unsold inventory, distress, cash-balance movements, tax claims, or profit-growth causes. Keep the distinction between reconciliation contributors and established business causes.",
+      "ko": "미상인 입력을 0으로 바꾸거나 고객 연체, 재고 미판매, 재무적 곤경, 현금잔액 증감, 세금 관련 주장 또는 이익 증가 원인을 추가하지 않는다. 조정에 기여하는 항목과 확인된 사업상 원인을 구분한다."
+    }
+  ]
+}

@@ -1,0 +1,727 @@
+{
+  "schema_version": 1,
+  "case_id": "finance",
+  "date": "2026-11-11",
+  "scope": "Textual source-fidelity review, not a readability benchmark or cross-runtime compatibility test",
+  "path_base": "repository_root",
+  "fact_ledger": {
+    "id": "finance",
+    "genre": {
+      "en": "Financial-analysis brief",
+      "ko": "재무 분석 브리프"
+    },
+    "topic": {
+      "en": "Rising net income and falling operating cash flow at a fictional manufacturer",
+      "ko": "가상 제조기업의 당기순이익 증가와 영업활동현금흐름 감소"
+    },
+    "audience": {
+      "en": "Finance or business lead reviewing the quarterly reconciliation and its interpretation limits",
+      "ko": "분기 현금흐름 조정과 해석의 한계를 검토하는 재무·사업 책임자"
+    },
+    "source_mode": "fictional",
+    "sources": [],
+    "facts": [
+      {
+        "id": "F01",
+        "kind": "scenario_assumption",
+        "en": "This is a fictional manufacturer with unchanged reporting scope. The comparison covers standalone April 1 through June 30 quarters in 2025 and 2026, not year-to-date figures. All amounts are exact KRW million.",
+        "ko": "보고 범위가 동일한 가상 제조기업의 사례다. 2025년과 2026년 각각 4월 1일부터 6월 30일까지의 2분기 단독 실적을 비교하며 누적 실적이 아니다. 모든 금액은 백만원 단위의 정확한 값이다.",
+        "source_ids": []
+      },
+      {
+        "id": "F02",
+        "kind": "scenario_assumption",
+        "en": "Net income is 1,000 in Q2 2025 and 1,200 in Q2 2026. These are supplied bottom-line inputs, not a reconstructed income statement.",
+        "ko": "당기순이익은 2025년 2분기 1,000, 2026년 2분기 1,200이다. 손익계산서를 재구성해 산출한 값이 아니라 주어진 최종 이익 수치다.",
+        "source_ids": []
+      },
+      {
+        "id": "F03",
+        "kind": "scenario_assumption",
+        "en": "Depreciation expense included in net income is 200 in Q2 2025 and 240 in Q2 2026. The corresponding +200 and +240 adjustments are noncash add-backs, not cash receipts.",
+        "ko": "당기순이익에 반영된 감가상각비는 2025년 2분기 200, 2026년 2분기 240이다. 이에 따른 +200과 +240 조정은 비현금 비용의 가산이며 현금 유입이 아니다.",
+        "source_ids": []
+      },
+      {
+        "id": "F04",
+        "kind": "scenario_assumption",
+        "en": "Trade receivables open at 800 and close at 900 in Q2 2025, then open at 900 and close at 1,300 in Q2 2026. The within-quarter increases are 100 and 400, giving operating cash flow adjustments of -100 and -400.",
+        "ko": "매출채권은 2025년 2분기 기초 800에서 기말 900으로, 2026년 2분기 기초 900에서 기말 1,300으로 증가한다. 각 분기 증가액은 100과 400이며 영업활동현금흐름 조정액은 -100과 -400이다.",
+        "source_ids": []
+      },
+      {
+        "id": "F05",
+        "kind": "scenario_assumption",
+        "en": "Inventory opens at 1,000 and closes at 1,250 in Q2 2025, then opens at 1,200 and closes at 1,800 in Q2 2026. The within-quarter increases are 250 and 600, giving operating cash flow adjustments of -250 and -600.",
+        "ko": "재고자산은 2025년 2분기 기초 1,000에서 기말 1,250으로, 2026년 2분기 기초 1,200에서 기말 1,800으로 증가한다. 각 분기 증가액은 250과 600이며 영업활동현금흐름 조정액은 -250과 -600이다.",
+        "source_ids": []
+      },
+      {
+        "id": "F06",
+        "kind": "scenario_assumption",
+        "en": "Trade payables open at 500 and close at 550 in Q2 2025, then open at 600 and close at 760 in Q2 2026. The within-quarter increases are 50 and 160, giving operating cash flow adjustments of +50 and +160.",
+        "ko": "매입채무는 2025년 2분기 기초 500에서 기말 550으로, 2026년 2분기 기초 600에서 기말 760으로 증가한다. 각 분기 증가액은 50과 160이며 영업활동현금흐름 조정액은 +50과 +160이다.",
+        "source_ids": []
+      },
+      {
+        "id": "F07",
+        "kind": "scenario_assumption",
+        "en": "Other reconciliation adjustments total zero by design. No acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect the receivable, inventory, and payable balance changes.",
+        "ko": "그 밖의 조정 합계는 설계상 0이다. 인수, 환산, 제각, 재분류 또는 그 밖의 비현금 변동은 매출채권·재고자산·매입채무 잔액 증감에 영향을 주지 않는다고 가정한다.",
+        "source_ids": []
+      },
+      {
+        "id": "F08",
+        "kind": "scenario_assumption",
+        "en": "The reconciliation gives Q2 2025 operating cash flow of 900 from 1,000 + 200 - 100 - 250 + 50, and Q2 2026 operating cash flow of 600 from 1,200 + 240 - 400 - 600 + 160. Operating cash flow remains positive in both quarters.",
+        "ko": "조정 결과 2025년 2분기 영업활동현금흐름은 1,000 + 200 - 100 - 250 + 50 = 900이고, 2026년 2분기는 1,200 + 240 - 400 - 600 + 160 = 600이다. 두 분기 모두 영업활동현금흐름은 양수다.",
+        "source_ids": []
+      },
+      {
+        "id": "F09",
+        "kind": "scenario_assumption",
+        "en": "Net income rises 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow falls 300. The combined working-capital adjustment changes from -300 to -840. Its additional -540 outweighs the +200 net income change and +40 depreciation adjustment change. The change bridge is +200 + 40 - 300 - 350 + 110 = -300.",
+        "ko": "당기순이익은 200 증가하며, 이는 2025년 2분기 1,000 대비 20%다. 영업활동현금흐름은 300 감소한다. 운전자본 관련 조정 합계는 -300에서 -840으로 바뀐다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돈다. 현금흐름 증감 조정은 +200 + 40 - 300 - 350 + 110 = -300이다.",
+        "source_ids": []
+      },
+      {
+        "id": "F10",
+        "kind": "scenario_assumption",
+        "en": "Cash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and causes of profit growth are not supplied. Unknown values are not zero. The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a cash-balance change or a complete liquidity assessment.",
+        "ko": "현금잔액, 투자·재무활동 현금흐름, 회수 조건, 매출채권 연령 분석, 재고 계획, 이익 증가 원인은 제공되지 않았다. 미상인 값을 0으로 보지 않는다. 이 조정만으로 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 영업활동현금흐름만으로 현금잔액 증감을 알거나 유동성을 종합 평가할 수 없다.",
+        "source_ids": []
+      }
+    ],
+    "review_checks": [
+      {
+        "id": "fictional_scope",
+        "en": "Retain the fictional label, unchanged reporting scope, exact KRW-million units, and standalone April 1 through June 30 comparison for 2025 and 2026.",
+        "ko": "가상 사례 표시, 동일 보고 범위, 정확한 백만원 단위와 2025년·2026년 각각 4월 1일부터 6월 30일까지의 분기 단독 비교를 유지한다."
+      },
+      {
+        "id": "earnings_and_addback",
+        "en": "Keep net income distinct from operating profit. Keep depreciation as a noncash expense add-back, not a cash receipt.",
+        "ko": "당기순이익을 영업이익으로 바꾸지 않는다. 감가상각비 가산은 비현금 비용의 조정으로 유지하며 현금 유입으로 표현하지 않는다."
+      },
+      {
+        "id": "balance_changes",
+        "en": "Compute each balance change against that quarter's own opening balance. Preserve all openings, closings, increases, and adjustment signs. Do not compare the two June balances to derive a quarterly adjustment.",
+        "ko": "각 분기 증감은 해당 분기 기초잔액과 비교한다. 모든 기초·기말잔액, 증가액과 조정 부호를 유지한다. 두 해의 6월 말 잔액 차이로 분기 조정액을 계산하지 않는다."
+      },
+      {
+        "id": "reconciliation",
+        "en": "Retain both equations yielding positive operating cash flow of 900 and 600, the zero-other-adjustments assumption, and all exclusions that permit the balance-change reconciliation.",
+        "ko": "양수의 영업활동현금흐름 900과 600을 산출하는 두 식, 그 밖의 조정 합계 0 가정과 잔액 증감 조정을 가능하게 하는 모든 제외 조건을 유지한다."
+      },
+      {
+        "id": "change_bridge",
+        "en": "Retain the 200 net income increase, 20% with denominator 1,000, the -300 operating cash flow change, the -300 to -840 working-capital adjustment, and the +200 + 40 - 300 - 350 + 110 = -300 bridge.",
+        "ko": "당기순이익 증가 200, 분모 1,000인 증가율 20%, 영업활동현금흐름 증감 -300, 운전자본 관련 조정 -300에서 -840으로의 변화와 +200 + 40 - 300 - 350 + 110 = -300을 유지한다."
+      },
+      {
+        "id": "limits_and_unknowns",
+        "en": "Do not turn unknown inputs into zero or add overdue customers, unsold inventory, distress, cash-balance movements, tax claims, or profit-growth causes. Keep the distinction between reconciliation contributors and established business causes.",
+        "ko": "미상인 입력을 0으로 바꾸거나 고객 연체, 재고 미판매, 재무적 곤경, 현금잔액 증감, 세금 관련 주장 또는 이익 증가 원인을 추가하지 않는다. 조정에 기여하는 항목과 확인된 사업상 원인을 구분한다."
+      }
+    ]
+  },
+  "source_notes": {
+    "path": "examples/professional/finance/sources.md",
+    "sha256": "ea8da4a65c7a4260e04f49b0d7940eff0dcab37e64dab0a7306ebf98b966f8a5",
+    "text": "# Finance source packet\n\n## Topic, reader, and purpose\n\nCase `finance` is a financial-analysis brief for a finance or business lead. It explains how a fictional manufacturer's net income can rise while operating cash flow falls, using a bounded indirect reconciliation for standalone Q2 2025 and Q2 2026. It does not explain profit growth or diagnose liquidity distress.\n\n`facts.json` freezes ten selected records, F01 through F10. Both original drafts contain all ten. The company, amounts, balance changes, and exclusion assumptions are original fictional scenario design, not observed results. No real issuer or confidential data is involved. The `fictional` source mode and empty `sources` and `source_ids` arrays identify that provenance. The SEC publication below is a conceptual reference, not the origin of the scenario's figures.\n\n## Conceptual reference and source snapshot\n\n- Author and publisher is the U.S. Securities and Exchange Commission.\n- Title is [Beginners' Guide to Financial Statement](https://www.sec.gov/investor/pubs/begfinstmtguide.htm).\n- The page is dated February 4, 2007, with a displayed last-reviewed-or-updated date of February 5, 2007.\n- Access date is November 11, 2026. The live page was read while authoring this packet.\n- Relevant sections are “Balance Sheets,” “Income Statements,” “Cash Flow Statements,” “Operating Activities,” “Investing Activities,” “Financing Activities,” and “Bringing It All Together.”\n\nThe following original paraphrases retain the relevant conceptual snapshot without copying the source's prose or tables. Balance sheets report balances at a point in time, while income and cash flow statements cover a period. Net income is a bottom-line earnings measure, not operating profit. The operating section can reconcile net income to operating cash flow by adjusting for noncash expenses, including depreciation, and operating asset and liability changes. Investing and financing flows are separate parts of the cash flow statement. Net income and cash flows are related but not equivalent, and one statement alone does not provide the complete picture.\n\nThis educational publication is not an issuer filing or a determination that the fictional reconciliation complies with any particular accounting standard. It does not supply the company's tax position, income statement, cash balances, or reasons for changes in profits or working capital.\n\n## Rights and attribution boundaries\n\nThe scenario, fact ledger, professional drafts, table, and arithmetic explanations are project-authored material under the repository's MIT license. Citation does not relicense third-party material. No SEC graphics, original table, long quotation, or third-party company disclosure is reproduced. The conceptual snapshot above is an attributed original paraphrase. Permissions for copying the SEC page's graphics or other embedded material have not been checked, and the packet makes no blanket rights claim for them.\n\n## Arithmetic and condition relationships\n\nAll amounts are exact KRW million, expressed as 백만원 in Korean. Each quarter runs from April 1 through June 30 in its own year. The reporting scope is unchanged. The two quarters are not consecutive quarters, and neither table column is a year-to-date column. No intervening-quarter balances or movements are supplied.\n\n| Account | Q2 2025 opening | Q2 2025 closing | Q2 2025 increase | Q2 2025 adjustment | Q2 2026 opening | Q2 2026 closing | Q2 2026 increase | Q2 2026 adjustment |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| Trade receivables | 800 | 900 | 100 | -100 | 900 | 1,300 | 400 | -400 |\n| Inventory | 1,000 | 1,250 | 250 | -250 | 1,200 | 1,800 | 600 | -600 |\n| Trade payables | 500 | 550 | 50 | +50 | 600 | 760 | 160 | +160 |\n\nEach change is closing balance minus that same quarter's opening balance. Comparing the two June closing balances would not yield a quarterly operating cash flow adjustment. Receivable and inventory increases are deducted. Payable increases are added. These signs relate the supplied net income to operating cash flow under the explicit scenario exclusions, not to an assertion that the customers are overdue, inventory is unsold, or supplier payments are late.\n\nThe balance changes exclude acquisitions, currency translation, write-offs, reclassifications, and other noncash movements. Other reconciliation adjustments total zero by design, not because missing data can be presumed zero. Net income is supplied rather than reconstructed. The zero-other-adjustments assumption does not assert a zero tax rate, zero tax payment, or any specific tax treatment. Depreciation of 200 and 240 is already included as an expense in net income and is added back as a noncash adjustment, not as a receipt.\n\nThe quarterly reconciliation relationships are:\n\n```text\nQ2 2025: 1,000 + 200 - 100 - 250 + 50 + 0 = 900\nQ2 2026: 1,200 + 240 - 400 - 600 + 160 + 0 = 600\n```\n\nThe combined working-capital adjustments are:\n\n```text\nQ2 2025: -100 - 250 + 50 = -300\nQ2 2026: -400 - 600 + 160 = -840\nChange: -840 - (-300) = -540\n```\n\nThe year-over-year operating cash flow change bridge is:\n\n| Component | Change in reconciliation contribution |\n| --- | --- |\n| Net income | +200 |\n| Depreciation add-back | +40 |\n| Trade receivable adjustment | -300 |\n| Inventory adjustment | -350 |\n| Trade payable adjustment | +110 |\n| Other adjustments | 0 |\n| Operating cash flow | -300 |\n\n`+200 + 40 - 300 - 350 + 110 = -300`, matching `600 - 900 = -300`. The extra working-capital deduction of 540 outweighs the 240 combined increase in net income and depreciation add-back. Net income growth is `200 / 1,000 = 20%`, using Q2 2025 net income as denominator. No operating cash flow percentage or cash conversion ratio is selected. Both net income inputs and both operating cash flow results remain positive.\n\nThese are arithmetic relationships of fictional inputs, not measured corporate performance, a benchmark, or native-model verification results.\n\n## Specialized terminology\n\n| English | Korean | Meaning constraint |\n| --- | --- | --- |\n| Net income | 당기순이익 | Supplied bottom-line earnings. Do not replace with operating profit or 영업이익. |\n| Operating cash flow | 영업활동현금흐름 | Period flow from operating activities. Do not substitute cash balance. |\n| Cash balance | 현금잔액 | Point-in-time amount, not supplied here. Do not substitute 현금성자산. |\n| Depreciation expense | 감가상각비 | Noncash expense added back, not a receipt. |\n| Trade receivables | 매출채권 | Balance increase is a deduction here, not evidence of overdue customers. |\n| Inventory | 재고자산 | Balance increase is a deduction here, not evidence of unsold stock. |\n| Trade payables | 매입채무 | Balance increase is an addition here, not evidence of late payment. |\n| Noncash adjustment | 비현금 조정 | Adjustment for an item that is not itself a cash receipt or payment. |\n| Working-capital adjustment | 운전자본 관련 조정 | Here, the combined receivable, inventory, and payable adjustments, not all current assets minus all current liabilities. |\n| KRW million | 백만원 | Fixed unit for every amount. No conversion to 억원. |\n\n## Editorial rationale and bilingual parity\n\nThe drafts are original professional first drafts, not adapted passages presented as defects in SEC writing. Each uses a short opening, a compact reconciliation table, connected analysis, and an interpretation-limits section. The opening reports the headline change before the reader reaches the adjustment assumptions and the full change bridge. Table cells compress balances and signed adjustments. This leaves a realistic opportunity to improve how the reader connects the bases, adjustments, and limits without introducing bad grammar or unsupported business explanations.\n\nThe drafts were authored in each language rather than forced into identical sentence structures. F01 and F02 appear in the opening and table. F03 through F06 appear in the table and the accompanying explanation. F07 appears immediately after the table. F08 and F09 appear in the opening, equations, and change-bridge discussion. F10 appears in the final section. The English and Korean drafts preserve the same quantities, date ranges, signs, percentage denominator, exclusions, unknowns, and strength of conclusion.\n\n## Excluded claims and unresolved information\n\nCash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and profit-growth causes are not supplied. None is zero by implication. Operating cash flow alone does not establish a cash-balance change or support a complete liquidity assessment. The packet makes no claim of overdue customers, unsold inventory, financial distress, tax outcomes, accounting-standard compliance, or a real issuer's performance.\n\nNo unresolved numeric source value blocks this fictional packet. No copied graphics are used.\n\n## Recorded outputs\n\nThe [English attempt](../../../verification/professional-examples-20261111/remaining-run/finance/en/attempt.json) passed the [initial fidelity review](review.md). The first [Korean attempt](../../../verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json) failed F07 by adding an unsupported causal explanation. It remains unchanged in the record.\n\nA [separate Korean correction](../../../verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json) used the same original source, package and model with explicit review feedback. Its [review](../../../verification/professional-examples-20261111/finance-correction/review.json) accepted all ten source facts. This is a feedback-corrected example, not a first-pass success.\n"
+  },
+  "initial_review": {
+    "path": "examples/professional/finance/review.json",
+    "json": {
+      "case_id": "finance",
+      "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+      "source_parity": {
+        "status": "pass",
+        "issues": []
+      },
+      "languages": {
+        "en": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/remaining-run/finance/en/attempt.json",
+          "output_sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc",
+          "facts": [
+            {
+              "id": "F01",
+              "status": "pass",
+              "note": "Output lines 3-5 retain the fictional manufacturer, unchanged scope, standalone April 1 through June 30 quarters in 2025 and 2026, exclusion of year-to-date periods, and exact KRW-million units."
+            },
+            {
+              "id": "F02",
+              "status": "pass",
+              "note": "The table retains Q2 2025 net income of 1,000 and Q2 2026 net income of 1,200. Line 5 retains supplied bottom-line input status rather than a reconstructed income statement. Net income is not changed to operating profit."
+            },
+            {
+              "id": "F03",
+              "status": "pass",
+              "note": "The depreciation row retains +200 and +240 and states that the expense is included in net income. Line 21 explicitly retains a noncash add-back, not a cash receipt."
+            },
+            {
+              "id": "F04",
+              "status": "pass",
+              "note": "The table retains receivable openings and closings of 800 to 900 and 900 to 1,300, with same-quarter deductions of -100 and -400. The opening/closing explanation prevents treating the two June balances as the quarterly adjustment base."
+            },
+            {
+              "id": "F05",
+              "status": "pass",
+              "note": "The table retains inventory openings and closings of 1,000 to 1,250 and 1,200 to 1,800, preserving same-quarter increases of 250 and 600 through deductions of -250 and -600."
+            },
+            {
+              "id": "F06",
+              "status": "pass",
+              "note": "The table retains payable openings and closings of 500 to 550 and 600 to 760, preserving same-quarter increases of 50 and 160 through additions of +50 and +160. No late-payment conclusion is added."
+            },
+            {
+              "id": "F07",
+              "status": "pass",
+              "note": "Line 21 preserves other adjustments totaling zero by design and all exclusions from balance changes: acquisitions, currency translation, write-offs, reclassifications, and other noncash movements. The two conditions remain separate assertions."
+            },
+            {
+              "id": "F08",
+              "status": "pass",
+              "note": "Lines 23-24 retain 1,000 + 200 - 100 - 250 + 50 = 900 and 1,200 + 240 - 400 - 600 + 160 = 600, attached to the correct quarters. Line 5 explicitly retains positive operating cash flow in both quarters."
+            },
+            {
+              "id": "F09",
+              "status": "pass",
+              "note": "Lines 5 and 26-28 retain net income growth of 200 and 20% on the Q2 2025 denominator of 1,000, the 300 operating cash flow decrease, working-capital adjustments of -300 and -840, the additional -540 against +200 and +40, and the signed bridge +200 + 40 - 300 - 350 + 110 = -300. The three account contributions remain correctly identified."
+            },
+            {
+              "id": "F10",
+              "status": "pass",
+              "note": "Lines 32-34 retain all seven unavailable information categories, unknown-not-zero status, and the limits on overdue-customer, unsold-inventory, distress, cash-balance-change, and complete-liquidity conclusions. The complete output adds no collection failure, profit-growth cause, tax outcome, or accounting-compliance claim."
+            }
+          ],
+          "issues": []
+        },
+        "ko": {
+          "status": "fail",
+          "attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json",
+          "output_sha256": "7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756",
+          "facts": [
+            {
+              "id": "F01",
+              "status": "pass",
+              "note": "Line 3 retains the fictional manufacturer, unchanged reporting scope, standalone April 1 through June 30 quarters in 2025 and 2026 rather than cumulative periods, and exact 백만원 units without conversion."
+            },
+            {
+              "id": "F02",
+              "status": "pass",
+              "note": "Line 5 and the table retain 당기순이익 of 1,000 and 1,200 for the correct quarters. The supplied final-profit-input qualification remains, and 당기순이익 is not replaced by 영업이익."
+            },
+            {
+              "id": "F03",
+              "status": "pass",
+              "note": "The table retains depreciation included in net income and add-backs of +200 and +240. Line 21 describes reversing a noncash expense and explicitly says it is not a cash inflow."
+            },
+            {
+              "id": "F04",
+              "status": "pass",
+              "note": "The table and its opening/closing explanation retain receivable balances of 800 to 900 and 900 to 1,300, with same-quarter increases of 100 and 400 reflected in deductions of -100 and -400."
+            },
+            {
+              "id": "F05",
+              "status": "pass",
+              "note": "The table retains inventory balances of 1,000 to 1,250 and 1,200 to 1,800, with same-quarter increases of 250 and 600 reflected in deductions of -250 and -600. The 2026 opening is not substituted with the 2025 closing."
+            },
+            {
+              "id": "F06",
+              "status": "pass",
+              "note": "The table retains payable balances of 500 to 550 and 600 to 760, with same-quarter increases of 50 and 160 reflected in additions of +50 and +160. No late-payment assertion is added."
+            },
+            {
+              "id": "F07",
+              "status": "fail",
+              "note": "Line 21 preserves the zero total and exclusion list but adds a causal connection through '가정했기 때문이다'. The source supplies zero other adjustments by design and absence of noncash balance movements as distinct conditions. Excluding those movements does not establish that all other reconciliation adjustments total zero."
+            },
+            {
+              "id": "F08",
+              "status": "pass",
+              "note": "Lines 23-24 retain both complete signed equations yielding 900 in Q2 2025 and 600 in Q2 2026. Line 5 explicitly retains positive operating cash flow in both quarters. This numerical preservation does not resolve the separate F07 rationale error."
+            },
+            {
+              "id": "F09",
+              "status": "pass",
+              "note": "Lines 5 and 26 retain the 200 increase to 1,200, 20% on the prior-year 1,000 denominator, the 300 operating cash flow decrease, -300 to -840 working-capital adjustments, the additional 540 deduction exceeding the combined 200 and 40 increases, and +200 + 40 - 300 - 350 + 110 = -300. The last three terms retain receivable, inventory, and payable attribution in that order."
+            },
+            {
+              "id": "F10",
+              "status": "pass",
+              "note": "Lines 30-39 retain all unavailable information, unknown-not-zero status, and the limits on customer arrears, unsold inventory, distress, cash-balance changes, and complete liquidity assessment. Outside the F07 rationale issue, the complete output adds no collection failure, profit-growth cause, tax outcome, or accounting-compliance claim."
+            }
+          ],
+          "issues": [
+            {
+              "fact_id": "F07",
+              "source_quote": "그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다.",
+              "output_quote": "그 밖의 조정 합계는 설계상 0이다. 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했기 때문이다.",
+              "consequence": "The revision turns two supplied scenario conditions into an accounting explanation: other adjustments total zero because noncash movements do not affect the three working-capital balances. Those exclusions permit using the balance changes but do not determine every other reconciliation adjustment. A finance reader is given an unsupported reason for the zero total even though the amounts and exclusion list remain unchanged. This is an output-introduced causal claim, not an input-parity defect.",
+              "certainty": "definite"
+            }
+          ]
+        }
+      }
+    },
+    "markdown": {
+      "path": "examples/professional/finance/review.md",
+      "sha256": "763e03c56d92cedabd39c236a612225b228ed1fd786608941b4bff104cd55f21",
+      "text": "# Finance fidelity review\n\nThe review checks whether both native revisions preserve the fictional financial-analysis packet for a finance or business lead. Input parity passes. English passes. Korean fails F07 because it adds an unsupported causal explanation. The raw outputs remain unchanged.\n\n## Evidence examined\n\nThe review covered both original drafts, `sources.md`, current `facts.json`, the frozen run ledger, and each language's complete `request.md`, `output.md`, and `attempt.json` under `verification/professional-examples-20261111/remaining-run/finance/`.\n\nBoth attempts record Claude Code `2.1.322`, requested and observed model `claude-sonnet-5-5`, `capture_status` of `captured`, exit code 0, and no provider errors. Their derived tool-read records show a successful `MANIFEST.md` read. The Korean attempt additionally records a successful `references/korean.md` read. English records `korean_reference_read` as false. These records support capture and read evidence, not fidelity. Their historical `fidelity_status` remains `not_reviewed`; the verdicts here are independent.\n\nSHA-256 checks of the actual files match both attempts' recorded input, request, and output hashes. Current and frozen ledgers have identical SHA-256 `d3599240113b87359c1a4cead8478748dd51df5ce9b70265af983cd444a3d91e`. The request source bodies match the inspected original drafts.\n\n| Language | Checked output SHA-256 | Verdict |\n| --- | --- | --- |\n| English | `44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc` | Pass |\n| Korean | `7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756` | Fail |\n\n## Fact coverage and input parity\n\nThe original English and Korean drafts express equivalent F01 through F10 facts, including the same fictional scope, periods, units, balances, signs, denominator, assumptions, and interpretation limits. No source-parity issue was found. `review.json` records a separate finding for every fact in each output.\n\nBoth revisions retain standalone April 1 through June 30 quarters in 2025 and 2026, exact KRW-million units, net income rather than operating profit, and depreciation as a noncash add-back rather than a receipt. All quarter-specific receivable, inventory, and payable opening/closing balances and adjustment signs remain intact. Both equations still yield positive operating cash flow of 900 and 600. The 20% denominator of 1,000, additional working-capital deduction of 540, and signed change bridge ending in -300 remain intact.\n\nBoth revisions retain every unknown category and the prohibitions on inferring customer arrears, unsold inventory, financial distress, cash-balance movements, or complete liquidity. Neither adds a tax outcome, accounting-compliance assertion, or explanation of profit growth. Table and paragraph restructuring are not failures.\n\n## Material Korean issue\n\nF07 fails at Korean output line 21. The source says:\n\n> 그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다.\n\nThe output says:\n\n> 그 밖의 조정 합계는 설계상 0이다. 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했기 때문이다.\n\nThe added \"때문이다\" makes the excluded balance movements the reason other adjustments total zero. The source instead supplies two distinct conditions. Absence of noncash movements in the three working-capital balances does not establish a zero total for every other reconciliation adjustment. The wording therefore introduces a definite unsupported accounting rationale for the finance reader. It does not change the arithmetic or assert a particular tax treatment. The English revision preserves these as separate conditions.\n\nOnly text and recorded-evidence review, including file-hash checks, was performed. No native rerun, build, lint, test, formatter, or reader study was performed. No comprehension or readability improvement is claimed.\n"
+    }
+  },
+  "initial_run": {
+    "manifest_path": "verification/professional-examples-20261111/remaining-run/manifest.json",
+    "metadata": {
+      "scope": "Native professional writing examples, not a readability benchmark",
+      "source": "Working-tree package snapshot; not a claim of GitHub default-branch availability",
+      "base_commit": "a0d872b26fe32942e4e5be6080735352b771bddd",
+      "runtime": "2.1.322 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "package_sha256": {
+        "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+        "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+        "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+        "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+      },
+      "fidelity_status": "not_reviewed"
+    },
+    "records": [
+      {
+        "case_id": "finance",
+        "language": "en",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/finance/en"
+      },
+      {
+        "case_id": "finance",
+        "language": "ko",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/finance/ko"
+      }
+    ],
+    "runner_sha256": "78170a67fac79639b483f183b9d80a49e6a92fc9413e8fa3abcb72c65a26ab0e"
+  },
+  "project_terms": {
+    "license": {
+      "path": "LICENSE",
+      "sha256": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+      "text": "MIT License\n\nCopyright (c) 2026 Hyunbin Jang\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    },
+    "notice": {
+      "path": "NOTICE.md",
+      "sha256": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+      "text": "# Notice\n\nCopyright (c) 2026 Hyunbin Jang\n\n[English](#english) · [한국어](#한국어)\n\n## English\n\nThis notice covers the human-readable-writing repository at <https://github.com/JangHyun-bin/human-readable-writing>. It also covers the installable skill directory, `skills/human-readable-writing/`, including copies installed from it. The repository root and that directory contain the same notice and [LICENSE](LICENSE). This notice is provided in English and Korean.\n\n### License for this project\n\nThe material written for this project is licensed under the MIT License in [LICENSE](LICENSE). This material includes the skill instructions, writing guidance, documentation, hypothetical examples, scripts, and evaluation tasks. The writing guidance is the project's own work, based on ideas from the research cited below.\n\nThe MIT License covers only the project's own material. It does not apply to the following, and this project does not relicense them:\n\n- Quotations from third-party works, including the papers listed below. Each quotation keeps the terms that apply to its source.\n- The cited works themselves, including their text, figures, data, and code. They keep the licenses recorded below or the terms set by their rights holders.\n\nThis notice also records the sources and use of the original paper. It does not apply the paper's CC BY 4.0 license to all of the separately written code, guidance, and evaluation material.\n\n### Model outputs in research records\n\nSome files in this project contain or adapt text generated by AI models and coding-agent tools. The research records in [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research) and [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md) keep such outputs as evidence. The MIT License applies to these outputs only to the extent that the copyright holder has rights in them. This notice does not claim unrestricted rights to every recorded or adapted output. Terms set by the model and tool providers may also apply.\n\n### Original paper\n\n- Title: *Why is AI-generated language so hard to understand?*\n- Authors: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, submitted on 2026-10-21\n- Source: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- License of the original paper: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- Checked: 2026-10-27. The `view license` link for that arXiv version pointed to CC BY 4.0.\n\nFor the license terms of the original paper, see the [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en).\n\n### Use of and changes to the paper\n\nThis project summarizes and interprets the paper's findings in Korean. It builds separate writing guidance, hypothetical examples, and evaluation tasks from those findings. The quotations and research findings that the repository's analysis documents take from the paper are attributed to the paper. These interpretations and the writing guidance do not mean that the paper's authors reviewed them or validated their effects.\n\nThe repository's tracked files do not include the paper's PDF, figures, TeX source, research code, or original corpus. The benchmark scripts, hypothetical tasks, and recorded model responses were written or collected separately for this project.\n\nExpressions reused from the paper, and the changes made to them, follow the paper's license terms. This attribution does not mean that the paper's authors approve, sponsor, or endorse this repository.\n\n### Follow-up references, 2026-10-29\n\nThe detailed sources for the follow-up research notes are recorded in the [related literature notes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md), in Korean. The following two key works are available under a different license from the original Clark paper.\n\n| Work | Source and license checked |\n|---|---|\n| Martínez, Mollica & Gibson (2022), a study of reading legal text | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), a comparison of LLM writing styles | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\nEach license above applies to its own source. The CC BY 4.0 license of the original Clark paper does not extend to the other references. The follow-up notes summarize and interpret research findings and add separately written hypothetical examples. This repository does not include the original PDFs, figures, research code, or original corpora of these works. The notes do not mean that the papers' authors reviewed, approved, or validated them.\n\n## 한국어\n\n이 notice는 <https://github.com/JangHyun-bin/human-readable-writing> repository에 적용된다. 설치용 skill directory인 `skills/human-readable-writing/`과 이 directory에서 설치한 사본에도 적용된다. Repository root와 이 directory에는 같은 notice와 [LICENSE](LICENSE)가 있다. 이 notice는 영어와 한국어로 제공된다.\n\n### 이 project의 license\n\n이 project를 위해 작성한 자료에는 [LICENSE](LICENSE)의 MIT License를 적용한다. 이 자료에는 skill 지침, 작성 지침, 문서, 가상 예시, script, 평가 과제가 포함된다. 작성 지침은 아래 연구의 착안을 바탕으로 이 project에서 직접 작성한 것이다.\n\nMIT License는 이 project의 자료에만 적용된다. 다음 자료에는 적용되지 않으며, 이 project가 다시 license하지 않는다.\n\n- 아래 논문을 포함한 제3자 저작물의 인용문. 각 인용문은 해당 출처에 적용되는 조건을 따른다.\n- 인용한 저작물 자체와 그 본문·figure·data·code. 아래에 기록한 license 또는 권리자가 정한 조건을 따른다.\n\n이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다.\n\n### 연구 기록의 model 출력\n\n이 project의 일부 file은 AI model과 coding agent 도구가 생성한 text를 포함하거나 각색해 사용한다. [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research)와 [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md)의 연구 기록은 이러한 출력을 근거 자료로 보존한다. MIT License는 저작권자가 권리를 가진 범위에서만 이 출력에 적용된다. 이 notice는 기록하거나 각색한 모든 출력에 대해 제한 없는 권리를 주장하지 않는다. Model과 도구 제공자의 이용 조건도 적용될 수 있다.\n\n### 원논문\n\n- 제목: *Why is AI-generated language so hard to understand?*\n- 저자: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, 2026-10-21 제출\n- 원문: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- 원논문의 license: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- 확인일: 2026-10-27. 해당 arXiv version의 `view license` link가 CC BY 4.0을 가리킴을 확인하였다.\n\n원논문의 실제 license 조건은 [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)를 참조한다.\n\n### 이 repository의 이용과 변경\n\n원논문의 연구 결과를 한국어로 요약·해석하고, 별도의 작성 지침·가상 예시·평가 과제로 구성하였다. 분석 문서의 원문 인용과 연구 결과는 위 논문에 귀속된다. 이러한 해석과 작성 지침은 논문 저자들이 검토하거나 효과를 검증한 결과라는 의미가 아니다.\n\n현재 tracked file에는 원논문의 PDF·figure·TeX source·연구용 code·원본 corpus를 포함하지 않는다. Benchmark script와 가상 과제·실측 model 답변은 이 작업에서 별도로 작성·수집한 자료이다.\n\n원논문에서 재사용한 표현과 변경한 내용에는 원논문의 license 조건을 따른다. 위 출처 표시는 논문 저자들의 이 repository에 대한 승인·후원·보증을 의미하지 않는다.\n\n### 후속 참고문헌 — 2026-10-29\n\n후속 연구 노트의 상세 출처는 [관련 문헌](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md)에 기록하였다. 다음 두 핵심 문헌은 최초 Clark 논문과 다른 license로 제공된다.\n\n| 문헌 | 원문과 확인한 license |\n|---|---|\n| Martínez, Mollica & Gibson (2022), 법률 문장 독해 연구 | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), LLM 문체 비교 연구 | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\n위 license는 해당 원문에 관한 것이며, 최초 Clark 논문의 CC BY 4.0을 다른 참고문헌에 일괄 적용하지 않는다. 후속 노트는 연구 결과의 요약·해석과 별도로 작성한 가상 예시이며, 원문 PDF·figure·연구 code·원본 corpus를 이 repository에 포함하지 않았다. 논문 저자들의 검토·승인·효과 검증을 의미하지 않는다.\n"
+    }
+  },
+  "languages": {
+    "en": {
+      "original": {
+        "path": "examples/professional/finance/before.en.md",
+        "sha256": "a08fa2a03c3f4aae6f57e4f7a6a6deba3b6d269ad3668589101e2fd466f55950",
+        "text": "# Quarterly profit and operating cash flow review\n\nThis fictional manufacturer reports on an unchanged scope for the standalone April 1 through June 30 quarters of 2025 and 2026, not year-to-date periods. All amounts are exact KRW million. Net income increased by 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow fell by 300 but remained positive in both quarters. Net income is a supplied bottom-line input rather than a reconstructed income statement.\n\n## Reconciliation\n\nFor the balance rows, the table gives each quarter's opening and closing balances followed by the cash flow adjustment.\n\n| Item | Q2 2025 | Q2 2026 |\n| --- | --- | --- |\n| Net income | 1,000 | 1,200 |\n| Depreciation expense included in net income, added back | +200 | +240 |\n| Trade receivables | 800 to 900, adjustment -100 | 900 to 1,300, adjustment -400 |\n| Inventory | 1,000 to 1,250, adjustment -250 | 1,200 to 1,800, adjustment -600 |\n| Trade payables | 500 to 550, adjustment +50 | 600 to 760, adjustment +160 |\n| Other adjustments | 0 | 0 |\n| Operating cash flow | 900 | 600 |\n\nOther adjustments total zero by design, and no acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect these balance changes. Depreciation is a noncash add-back, not a cash receipt. Accordingly, the reconciliations are `1,000 + 200 - 100 - 250 + 50 = 900` and `1,200 + 240 - 400 - 600 + 160 = 600`.\n\nThe combined working-capital adjustment moved from -300 to -840. Its additional -540 outweighed the +200 net income change and +40 depreciation adjustment change. The operating cash flow change bridge is `+200 + 40 - 300 - 350 + 110 = -300`, with the last three components reflecting the larger receivable increase, larger inventory increase, and larger payable increase, respectively.\n\n## Interpretation limits\n\nCash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and profit-growth causes are not supplied. Unknown is not zero. The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a cash-balance change or support a complete liquidity assessment.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "finance",
+          "language": "en",
+          "attempt": "verification/professional-examples-20261111/remaining-run/finance/en/attempt.json",
+          "review": "examples/professional/finance/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/finance/en/output.md",
+          "status": "pass",
+          "output_sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": false,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "finance",
+          "language": "en",
+          "started_at": "2026-11-11T08:38:56.816172+00:00",
+          "finished_at": "2026-11-11T08:39:05.543355+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "a08fa2a03c3f4aae6f57e4f7a6a6deba3b6d269ad3668589101e2fd466f55950",
+          "request_sha256": "2c2cd52caa91ecebac9a45cd33edd8f23fdb451f53d0a8b22ce7b2948d212feb",
+          "output_sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc",
+          "raw_event_stream_sha256": "b45fb41bb6ad3b03fe3af122e513f8fe1fe37fea3627735f546c93808c4609fb",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/finance/en/request.md",
+          "sha256": "2c2cd52caa91ecebac9a45cd33edd8f23fdb451f53d0a8b22ce7b2948d212feb",
+          "text": "/human-readable-writing Edit this Financial-analysis brief in English for Finance or business lead reviewing the quarterly reconciliation and its interpretation limits. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# Quarterly profit and operating cash flow review\n\nThis fictional manufacturer reports on an unchanged scope for the standalone April 1 through June 30 quarters of 2025 and 2026, not year-to-date periods. All amounts are exact KRW million. Net income increased by 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow fell by 300 but remained positive in both quarters. Net income is a supplied bottom-line input rather than a reconstructed income statement.\n\n## Reconciliation\n\nFor the balance rows, the table gives each quarter's opening and closing balances followed by the cash flow adjustment.\n\n| Item | Q2 2025 | Q2 2026 |\n| --- | --- | --- |\n| Net income | 1,000 | 1,200 |\n| Depreciation expense included in net income, added back | +200 | +240 |\n| Trade receivables | 800 to 900, adjustment -100 | 900 to 1,300, adjustment -400 |\n| Inventory | 1,000 to 1,250, adjustment -250 | 1,200 to 1,800, adjustment -600 |\n| Trade payables | 500 to 550, adjustment +50 | 600 to 760, adjustment +160 |\n| Other adjustments | 0 | 0 |\n| Operating cash flow | 900 | 600 |\n\nOther adjustments total zero by design, and no acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect these balance changes. Depreciation is a noncash add-back, not a cash receipt. Accordingly, the reconciliations are `1,000 + 200 - 100 - 250 + 50 = 900` and `1,200 + 240 - 400 - 600 + 160 = 600`.\n\nThe combined working-capital adjustment moved from -300 to -840. Its additional -540 outweighed the +200 net income change and +40 depreciation adjustment change. The operating cash flow change bridge is `+200 + 40 - 300 - 350 + 110 = -300`, with the last three components reflecting the larger receivable increase, larger inventory increase, and larger payable increase, respectively.\n\n## Interpretation limits\n\nCash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and profit-growth causes are not supplied. Unknown is not zero. The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a cash-balance change or support a complete liquidity assessment.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/finance/en/output.md",
+          "sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc",
+          "text": "# Quarterly profit and operating cash flow review\n\nThis review covers a fictional manufacturer on an unchanged scope. It compares the standalone quarters of April 1 through June 30, 2025 and 2026, not year-to-date periods. All amounts are exact KRW million.\n\nNet income rose by 200, which is 20% of the Q2 2025 base of 1,000. Operating cash flow fell by 300 but stayed positive in both quarters. Net income is a supplied bottom-line input, not a reconstructed income statement.\n\n## Reconciliation\n\nFor the balance rows, the table gives each quarter's opening and closing balances, followed by the cash flow adjustment.\n\n| Item | Q2 2025 | Q2 2026 |\n| --- | --- | --- |\n| Net income | 1,000 | 1,200 |\n| Depreciation expense included in net income, added back | +200 | +240 |\n| Trade receivables | 800 to 900, adjustment -100 | 900 to 1,300, adjustment -400 |\n| Inventory | 1,000 to 1,250, adjustment -250 | 1,200 to 1,800, adjustment -600 |\n| Trade payables | 500 to 550, adjustment +50 | 600 to 760, adjustment +160 |\n| Other adjustments | 0 | 0 |\n| Operating cash flow | 900 | 600 |\n\nOther adjustments total zero by design. No acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect these balance changes. Depreciation is a noncash add-back, not a cash receipt. The reconciliations are therefore:\n\n- Q2 2025: `1,000 + 200 - 100 - 250 + 50 = 900`\n- Q2 2026: `1,200 + 240 - 400 - 600 + 160 = 600`\n\nThe combined working-capital adjustment moved from -300 to -840. That additional -540 outweighed the +200 change in net income and the +40 change in the depreciation add-back.\n\nThe bridge for the change in operating cash flow is `+200 + 40 - 300 - 350 + 110 = -300`. The first two terms are the changes in net income and the depreciation add-back. The last three reflect the larger receivable increase (-300), the larger inventory increase (-350), and the larger payable increase (+110), respectively.\n\n## Interpretation limits\n\nThe source does not supply cash balances, investing and financing flows, collection terms, receivable aging, inventory plans, or the causes of profit growth. Unknown is not zero.\n\nThe reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a change in the cash balance or support a complete liquidity assessment."
+        }
+      },
+      "selected": {
+        "case_id": "finance",
+        "language": "en",
+        "attempt": "verification/professional-examples-20261111/remaining-run/finance/en/attempt.json",
+        "review": "examples/professional/finance/review.json",
+        "revision": "verification/professional-examples-20261111/remaining-run/finance/en/output.md",
+        "status": "pass",
+        "output_sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc",
+        "kind": "first_attempt"
+      }
+    },
+    "ko": {
+      "original": {
+        "path": "examples/professional/finance/before.ko.md",
+        "sha256": "6748010106b9e17d21981bf65af839ad40f034c3c72ee282d15e6feab0c45c05",
+        "text": "# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년과 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다. 당기순이익은 전년 동기 1,000 대비 200, 즉 20% 증가했으나 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다. 감가상각비 가산은 비현금 비용의 조정이며 현금 유입이 아니다. 이 조건에서 조정식은 각각 `1,000 + 200 - 100 - 250 + 50 = 900`, `1,200 + 240 - 400 - 600 + 160 = 600`이다.\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돌았다. 영업활동현금흐름의 증감 조정은 `+200 + 40 - 300 - 350 + 110 = -300`이다. 마지막 세 항은 각각 매출채권 증가폭 확대, 재고자산 증가폭 확대, 매입채무 증가폭 확대의 영향을 나타낸다.\n\n## 해석의 한계\n\n현금잔액, 투자·재무활동 현금흐름, 회수 조건, 매출채권 연령 분석, 재고 계획과 이익 증가 원인은 제공되지 않았다. 미상인 값을 0으로 볼 수 없다. 이 조정만으로 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 영업활동현금흐름만으로 현금잔액 증감을 알거나 유동성을 종합 평가할 수 없다.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "finance",
+          "language": "ko",
+          "attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json",
+          "review": "examples/professional/finance/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/finance/ko/output.md",
+          "status": "fail",
+          "output_sha256": "7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": true,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            },
+            {
+              "path": ".claude/skills/human-readable-writing/references/korean.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "finance",
+          "language": "ko",
+          "started_at": "2026-11-11T08:38:56.828088+00:00",
+          "finished_at": "2026-11-11T08:39:08.214596+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "6748010106b9e17d21981bf65af839ad40f034c3c72ee282d15e6feab0c45c05",
+          "request_sha256": "bddd0a3bbbdac53389b870fd97035d46f8c86f4a15d0f3c8e7120e86f9a59a46",
+          "output_sha256": "7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756",
+          "raw_event_stream_sha256": "64f1396bfcb4ec4cf26724b06e29a606ce84890c831cf0e3d564563407cbc37d",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/finance/ko/request.md",
+          "sha256": "bddd0a3bbbdac53389b870fd97035d46f8c86f4a15d0f3c8e7120e86f9a59a46",
+          "text": "/human-readable-writing Edit this Financial-analysis brief in Korean for Finance or business lead reviewing the quarterly reconciliation and its interpretation limits. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년과 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다. 당기순이익은 전년 동기 1,000 대비 200, 즉 20% 증가했으나 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다. 감가상각비 가산은 비현금 비용의 조정이며 현금 유입이 아니다. 이 조건에서 조정식은 각각 `1,000 + 200 - 100 - 250 + 50 = 900`, `1,200 + 240 - 400 - 600 + 160 = 600`이다.\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돌았다. 영업활동현금흐름의 증감 조정은 `+200 + 40 - 300 - 350 + 110 = -300`이다. 마지막 세 항은 각각 매출채권 증가폭 확대, 재고자산 증가폭 확대, 매입채무 증가폭 확대의 영향을 나타낸다.\n\n## 해석의 한계\n\n현금잔액, 투자·재무활동 현금흐름, 회수 조건, 매출채권 연령 분석, 재고 계획과 이익 증가 원인은 제공되지 않았다. 미상인 값을 0으로 볼 수 없다. 이 조정만으로 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 영업활동현금흐름만으로 현금잔액 증감을 알거나 유동성을 종합 평가할 수 없다.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/finance/ko/output.md",
+          "sha256": "7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756",
+          "text": "# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년 2분기와 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며, 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다.\n\n당기순이익은 전년 동기 1,000에서 200 늘어난 1,200으로, 20% 증가했다. 반면 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이다. 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했기 때문이다. 감가상각비 가산은 비현금 비용을 되돌리는 조정이며 현금 유입이 아니다. 이 조건에서 각 분기의 조정식은 다음과 같다.\n\n- 2025년 2분기: `1,000 + 200 - 100 - 250 + 50 = 900`\n- 2026년 2분기: `1,200 + 240 - 400 - 600 + 160 = 600`\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 합한 금액보다 컸다. 그 결과 영업활동현금흐름은 `+200 + 40 - 300 - 350 + 110 = -300`만큼 변했다. 이 식의 마지막 세 항은 순서대로 매출채권, 재고자산, 매입채무 조정액의 전년 동기 대비 변동이다. 매출채권과 재고자산은 증가폭이 커진 영향을, 매입채무는 증가폭이 커진 영향을 나타낸다.\n\n## 해석의 한계\n\n다음 정보는 제공되지 않았다.\n\n- 현금잔액\n- 투자활동 현금흐름과 재무활동 현금흐름\n- 회수 조건\n- 매출채권 연령 분석\n- 재고 계획\n- 이익 증가 원인\n\n미상인 값을 0으로 볼 수 없다. 이 조정만으로는 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 또한 영업활동현금흐름만으로는 현금잔액의 증감을 알 수 없고, 유동성을 종합적으로 평가할 수도 없다."
+        }
+      },
+      "correction": {
+        "capture": {
+          "selection": {
+            "case_id": "finance",
+            "language": "ko",
+            "attempt": "verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json",
+            "review": "verification/professional-examples-20261111/finance-correction/review.json",
+            "revision": "verification/professional-examples-20261111/finance-correction/finance/ko/output.md",
+            "status": "pass",
+            "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+            "kind": "review_feedback_correction",
+            "previous_attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json"
+          },
+          "attempt": {
+            "capture_status": "captured",
+            "exit_code": 0,
+            "observed_models": [
+              "claude-sonnet-5-5"
+            ],
+            "manifest_read": true,
+            "korean_reference_read": true,
+            "tool_reads": [
+              {
+                "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+                "succeeded": true
+              },
+              {
+                "path": ".claude/skills/human-readable-writing/references/korean.md",
+                "succeeded": true
+              }
+            ],
+            "provider_errors": [],
+            "fidelity_status": "not_reviewed",
+            "case_id": "finance",
+            "language": "ko",
+            "request_kind": "review_feedback_correction",
+            "started_at": "2026-11-11T08:50:39.506668+00:00",
+            "finished_at": "2026-11-11T08:50:52.766772+00:00",
+            "runtime": "2.1.322 (Claude Code)",
+            "requested_model": "claude-sonnet-5-5",
+            "argv": [
+              "${HOME}/.local/share/claude/versions/2.1.322",
+              "-p",
+              "--model",
+              "claude-sonnet-5-5",
+              "--setting-sources",
+              "project,local",
+              "--settings",
+              "{\"disableAllHooks\":true}",
+              "--strict-mcp-config",
+              "--mcp-config",
+              "{\"mcpServers\":{}}",
+              "--tools",
+              "Read,Skill",
+              "--allowedTools",
+              "Read,Skill",
+              "--permission-mode",
+              "dontAsk",
+              "--output-format",
+              "stream-json",
+              "--verbose",
+              "--no-session-persistence",
+              "${REQUEST}"
+            ],
+            "request_file": "request.md",
+            "output_file": "output.md",
+            "input_sha256": "6748010106b9e17d21981bf65af839ad40f034c3c72ee282d15e6feab0c45c05",
+            "request_sha256": "f3e229e9db875d8fccdd8cd3df41be48fed509c530034c0eec474734dfe0e300",
+            "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+            "raw_event_stream_sha256": "4aedb091b7462c75fbf2750b79291de02ad8147ee484a2e14ae61b4d27f7f296",
+            "package_sha256": {
+              "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+              "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+              "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+              "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+              "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+              "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+              "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+            },
+            "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+          },
+          "request": {
+            "path": "verification/professional-examples-20261111/finance-correction/finance/ko/request.md",
+            "sha256": "f3e229e9db875d8fccdd8cd3df41be48fed509c530034c0eec474734dfe0e300",
+            "text": "/human-readable-writing 다음 재무 분석 브리프의 이전 수정본에서 원문 대조로 확인된 오류를 바로잡아 한국어 개정문만 반환해 주세요. 원문에 없는 인과관계나 설명은 추가하지 마세요.\n\n원문 대조 의견:\nF07 원문은 그 밖의 조정 합계가 설계상 0이라는 가정과, 나열한 비현금 변동이 세 운전자본 잔액의 증감에 영향을 주지 않는다는 가정을 함께 제시합니다. 후자가 전자의 이유라는 관계는 제시하지 않았습니다. 이전 수정본의 '가정했기 때문이다'는 이 관계를 추가합니다. 두 가정을 원문처럼 별도로 제시하고, 그 밖의 사실·수치·단위·조건·제외 사항·불확실성과 문서 장르도 보존하는 재수정이 필요합니다.\n\n원문:\n\n# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년과 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다. 당기순이익은 전년 동기 1,000 대비 200, 즉 20% 증가했으나 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다. 감가상각비 가산은 비현금 비용의 조정이며 현금 유입이 아니다. 이 조건에서 조정식은 각각 `1,000 + 200 - 100 - 250 + 50 = 900`, `1,200 + 240 - 400 - 600 + 160 = 600`이다.\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돌았다. 영업활동현금흐름의 증감 조정은 `+200 + 40 - 300 - 350 + 110 = -300`이다. 마지막 세 항은 각각 매출채권 증가폭 확대, 재고자산 증가폭 확대, 매입채무 증가폭 확대의 영향을 나타낸다.\n\n## 해석의 한계\n\n현금잔액, 투자·재무활동 현금흐름, 회수 조건, 매출채권 연령 분석, 재고 계획과 이익 증가 원인은 제공되지 않았다. 미상인 값을 0으로 볼 수 없다. 이 조정만으로 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 영업활동현금흐름만으로 현금잔액 증감을 알거나 유동성을 종합 평가할 수 없다.\n\n\n이전 수정본. 아래 내용도 틀릴 수 있으므로 원문을 기준으로 재검토합니다:\n\n# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년 2분기와 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며, 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다.\n\n당기순이익은 전년 동기 1,000에서 200 늘어난 1,200으로, 20% 증가했다. 반면 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이다. 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했기 때문이다. 감가상각비 가산은 비현금 비용을 되돌리는 조정이며 현금 유입이 아니다. 이 조건에서 각 분기의 조정식은 다음과 같다.\n\n- 2025년 2분기: `1,000 + 200 - 100 - 250 + 50 = 900`\n- 2026년 2분기: `1,200 + 240 - 400 - 600 + 160 = 600`\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 합한 금액보다 컸다. 그 결과 영업활동현금흐름은 `+200 + 40 - 300 - 350 + 110 = -300`만큼 변했다. 이 식의 마지막 세 항은 순서대로 매출채권, 재고자산, 매입채무 조정액의 전년 동기 대비 변동이다. 매출채권과 재고자산은 증가폭이 커진 영향을, 매입채무는 증가폭이 커진 영향을 나타낸다.\n\n## 해석의 한계\n\n다음 정보는 제공되지 않았다.\n\n- 현금잔액\n- 투자활동 현금흐름과 재무활동 현금흐름\n- 회수 조건\n- 매출채권 연령 분석\n- 재고 계획\n- 이익 증가 원인\n\n미상인 값을 0으로 볼 수 없다. 이 조정만으로는 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 또한 영업활동현금흐름만으로는 현금잔액의 증감을 알 수 없고, 유동성을 종합적으로 평가할 수도 없다."
+          },
+          "output": {
+            "path": "verification/professional-examples-20261111/finance-correction/finance/ko/output.md",
+            "sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+            "text": "# 분기 이익 및 영업활동현금흐름 검토\n\n이 문서는 보고 범위가 동일한 가상 제조기업의 2025년 2분기와 2026년 2분기를 비교한다. 비교 기간은 각 연도 4월 1일부터 6월 30일까지이며, 누적 실적이 아닌 분기 단독 실적이다. 모든 금액은 백만원 단위의 정확한 값이다.\n\n당기순이익은 전년 동기 1,000 대비 200, 즉 20% 증가한 1,200이다. 반면 영업활동현금흐름은 300 감소했다. 두 분기 모두 영업활동현금흐름은 양수다. 당기순이익은 손익계산서를 재구성한 결과가 아니라 주어진 최종 이익 수치다.\n\n## 현금흐름 조정\n\n잔액 항목은 각 분기의 기초잔액, 기말잔액, 현금흐름 조정액 순으로 기재했다.\n\n| 항목 | 2025년 2분기 | 2026년 2분기 |\n| --- | --- | --- |\n| 당기순이익 | 1,000 | 1,200 |\n| 당기순이익에 반영된 감가상각비 가산 | +200 | +240 |\n| 매출채권 | 800에서 900, 조정 -100 | 900에서 1,300, 조정 -400 |\n| 재고자산 | 1,000에서 1,250, 조정 -250 | 1,200에서 1,800, 조정 -600 |\n| 매입채무 | 500에서 550, 조정 +50 | 600에서 760, 조정 +160 |\n| 그 밖의 조정 | 0 | 0 |\n| 영업활동현금흐름 | 900 | 600 |\n\n그 밖의 조정 합계는 설계상 0이다. 또한 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다. 감가상각비 가산은 비현금 비용의 조정이며 현금 유입이 아니다. 이 조건에서 각 분기의 조정식은 다음과 같다.\n\n- 2025년 2분기: `1,000 + 200 - 100 - 250 + 50 = 900`\n- 2026년 2분기: `1,200 + 240 - 400 - 600 + 160 = 600`\n\n운전자본 관련 조정 합계는 -300에서 -840으로 바뀌었다. 추가 차감 540이 당기순이익 증가 200과 감가상각비 조정 증가 40을 웃돌았다. 영업활동현금흐름의 증감 조정은 `+200 + 40 - 300 - 350 + 110 = -300`이다. 마지막 세 항은 각각 매출채권 증가폭 확대, 재고자산 증가폭 확대, 매입채무 증가폭 확대의 영향을 나타낸다.\n\n## 해석의 한계\n\n다음 정보는 제공되지 않았다.\n\n- 현금잔액\n- 투자활동 현금흐름과 재무활동 현금흐름\n- 회수 조건\n- 매출채권 연령 분석\n- 재고 계획\n- 이익 증가 원인\n\n미상인 값을 0으로 볼 수 없다. 이 조정만으로는 고객의 연체, 재고 미판매 또는 재무적 곤경을 판단할 수 없다. 또한 영업활동현금흐름만으로는 현금잔액의 증감을 알 수 없고, 유동성을 종합적으로 평가할 수도 없다."
+          }
+        },
+        "review": {
+          "path": "verification/professional-examples-20261111/finance-correction/review.json",
+          "json": {
+            "case_id": "finance",
+            "scope": "Integration-owner review of a separately requested native correction; not an independent reader study",
+            "reviewer": "integration_owner",
+            "original_source_unchanged": true,
+            "initial_failure_retained": "examples/professional/finance/review.json",
+            "languages": {
+              "ko": {
+                "status": "pass",
+                "attempt": "verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json",
+                "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+                "facts": [
+                  {
+                    "id": "F01",
+                    "status": "pass",
+                    "note": "Fictional unchanged-scope manufacturer, standalone April–June 2025/2026 and exact KRW-million units remain explicit."
+                  },
+                  {
+                    "id": "F02",
+                    "status": "pass",
+                    "note": "Net income remains 1,000 and 1,200, supplied rather than reconstructed."
+                  },
+                  {
+                    "id": "F03",
+                    "status": "pass",
+                    "note": "Depreciation add-backs remain +200/+240 and are not cash receipts."
+                  },
+                  {
+                    "id": "F04",
+                    "status": "pass",
+                    "note": "Receivable opening/closing balances and -100/-400 adjustments are unchanged."
+                  },
+                  {
+                    "id": "F05",
+                    "status": "pass",
+                    "note": "Inventory opening/closing balances and -250/-600 adjustments are unchanged."
+                  },
+                  {
+                    "id": "F06",
+                    "status": "pass",
+                    "note": "Payable opening/closing balances and +50/+160 adjustments are unchanged."
+                  },
+                  {
+                    "id": "F07",
+                    "status": "pass",
+                    "note": "The corrected assumption paragraph gives zero other adjustments and excluded noncash balance movements as separate assumptions joined by 또한. The failed version's unsupported 가정했기 때문이다 causal explanation is absent."
+                  },
+                  {
+                    "id": "F08",
+                    "status": "pass",
+                    "note": "Both reconciliation equations and positive operating cash flows of 900/600 remain."
+                  },
+                  {
+                    "id": "F09",
+                    "status": "pass",
+                    "note": "Net income +200/+20%, OCF -300, working-capital adjustments -300/-840 and all change-bridge terms remain."
+                  },
+                  {
+                    "id": "F10",
+                    "status": "pass",
+                    "note": "All unavailable information, unknown-not-zero distinction and limits on distress/liquidity/cash-balance conclusions remain."
+                  }
+                ],
+                "issues": []
+              }
+            },
+            "limits": [
+              "The first Korean revision failed F07 and is not relabeled as passing.",
+              "This accepted version followed explicit review feedback in a fresh native session.",
+              "This review checks textual source fidelity, not improved readability, financial validity in general, or a general success rate."
+            ]
+          },
+          "markdown": {
+            "path": "verification/professional-examples-20261111/finance-correction/review.md",
+            "sha256": "0f6f8e9d1b13705d90a537dc798e47d1080f51a44afb7683ce03895463133e44",
+            "text": "# Korean finance correction review\n\nStatus: accepted after explicit review feedback. Reviewer: integration owner, not the separate agent that reviewed the first attempt.\n\n- [Unchanged original](../../../examples/professional/finance/before.ko.md)\n- [First failed review](../../../examples/professional/finance/review.md)\n- [Feedback](feedback.md), [actual correction request](finance/ko/request.md), [raw corrected output](finance/ko/output.md), and [capture metadata](finance/ko/attempt.json)\n- [Fact-by-fact correction review](review.json)\n\nThe first revision joined two independent assumptions with “가정했기 때문이다”, adding a causal explanation absent from the original. The separate correction states them independently:\n\n> 그 밖의 조정 합계는 설계상 0이다. 또한 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다.\n\nThe full corrected document was compared with F01–F10 and the original Korean text. Periods, units, balances, adjustment signs, both cash-flow reconciliations, the change bridge, and unknown-versus-zero boundaries remain intact. F07 no longer introduces the unsupported cause.\n\nThe correction ran in a fresh native session with the same source, package hashes, Claude Code 2.1.322 and `claude-sonnet-5-5`. It was not an automatic retry or a manual edit of the model output. The original failed output and review remain unchanged. This acceptance is a textual source-fidelity review, not a measure of readability or general model reliability.\n"
+          }
+        },
+        "provenance": {
+          "kind": "Explicit review-feedback correction in a fresh native session",
+          "previous_attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json",
+          "previous_verdict": "fail",
+          "fact_id": "F07",
+          "original_source_unchanged": true,
+          "previous_output_unchanged": true,
+          "automatic_retry": false,
+          "record": {
+            "case_id": "finance",
+            "language": "ko",
+            "capture_status": "captured",
+            "fidelity_status": "not_reviewed",
+            "path": "verification/professional-examples-20261111/finance-correction/finance/ko"
+          }
+        },
+        "feedback": {
+          "path": "verification/professional-examples-20261111/finance-correction/feedback.md",
+          "sha256": "d5054c496dda14aff4c033563be593500ee2e5ecd093e53bc99c757a23b2564a",
+          "text": "F07 원문은 그 밖의 조정 합계가 설계상 0이라는 가정과, 나열한 비현금 변동이 세 운전자본 잔액의 증감에 영향을 주지 않는다는 가정을 함께 제시합니다. 후자가 전자의 이유라는 관계는 제시하지 않았습니다. 이전 수정본의 '가정했기 때문이다'는 이 관계를 추가합니다. 두 가정을 원문처럼 별도로 제시하고, 그 밖의 사실·수치·단위·조건·제외 사항·불확실성과 문서 장르도 보존하는 재수정이 필요합니다.\n"
+        }
+      },
+      "selected": {
+        "case_id": "finance",
+        "language": "ko",
+        "attempt": "verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json",
+        "review": "verification/professional-examples-20261111/finance-correction/review.json",
+        "revision": "verification/professional-examples-20261111/finance-correction/finance/ko/output.md",
+        "status": "pass",
+        "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+        "kind": "review_feedback_correction",
+        "previous_attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "case_id": "research",
+  "date": "2026-11-11",
+  "scope": "Textual source-fidelity review, not a readability benchmark or cross-runtime compatibility test",
+  "path_base": "repository_root",
+  "fact_ledger": {
+    "id": "research",
+    "genre": {
+      "en": "Research-interpretation memo",
+      "ko": "연구 해석 메모"
+    },
+    "topic": {
+      "en": "What Trip.com's hybrid-work assignment and quit rates support in a comparable employer's policy review",
+      "ko": "Trip.com의 하이브리드 근무 배정과 퇴사율이 유사 기업의 정책 검토에 제공하는 근거"
+    },
+    "audience": {
+      "en": "An HR director considering an optional hybrid-work policy for comparable graduate office roles",
+      "ko": "유사한 대졸 사무직을 대상으로 선택형 하이브리드 근무 정책을 검토하는 인사 책임자"
+    },
+    "source_mode": "source_based",
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://www.nature.com/articles/s41586-024-07500-2",
+        "locator": "Bloom, Han and Liang (2024), Main; Effects on employee retention; Fig. 2 caption; Methods, Location and set-up, Randomization, Employee characteristics and balancing tests, Inclusion and ethics statement; Extended Data Fig. 3 caption",
+        "rights": "Article CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Attribute Nicholas Bloom, Ruobing Han and James Liang, the article title, Nature 630, 920–925 (2024), and DOI 10.1038/s41586-024-07500-2. These independently authored English and Korean memos select and paraphrase findings and add an explicitly identified policy judgment. No figures, photographs, tables or replication data are reproduced. Third-party material can have separate credit-line restrictions. The article's rights are not replaced by the repository's MIT license."
+      }
+    ],
+    "facts": [
+      {
+        "id": "R01",
+        "kind": "reported_fact",
+        "en": "The trial covered 1,612 university-graduate engineering, marketing and finance employees in the Airfare and IT divisions of Trip.com in Shanghai, one employer. Interns and new employees on probation were excluded.",
+        "ko": "실험 대상은 단일 기업인 상하이 Trip.com의 항공권·IT 부문에서 엔지니어링·마케팅·재무 업무를 맡은 대졸 직원 1,612명이었다. 인턴과 수습기간 중인 신입 직원은 제외했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R02",
+        "kind": "reported_fact",
+        "en": "Random assignment used odd versus even days of the month of employees' birthdays. The odd-birthday treatment group of 792 could work from home on Wednesday and Friday and attended the office on the other three days. The even-birthday control group of 820 attended the office all five days. The two home days were optional, not mandatory.",
+        "ko": "생일의 날짜가 홀수인지 짝수인지에 따라 무작위 배정했다. 홀수일 출생자 792명의 처치집단은 수요일과 금요일에 재택근무를 선택할 수 있었고 나머지 사흘은 출근했다. 짝수일 출생자 820명의 대조집단은 주 5일 출근했다. 이틀의 재택근무는 의무가 아니라 선택이었다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R03",
+        "kind": "reported_fact",
+        "en": "The 518 initial volunteers entered the experiment in the week of 9 August 2021. The remaining 1,094 non-volunteers entered in the week of 13 September 2021.",
+        "ko": "처음 자원한 518명은 2021년 8월 9일이 속한 주에 실험에 참여했다. 자원하지 않았던 나머지 1,094명은 2021년 9월 13일이 속한 주에 참여했다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R04",
+        "kind": "reported_fact",
+        "en": "Among those assigned eligibility, actual WFH take-up was about 55% for volunteers and 40% for non-volunteers across Wednesday and Friday opportunities, excluding public holidays, personal holidays and excused absences. Typical use was about one day per week. These are not percentages of all employees or all weekdays.",
+        "ko": "재택근무 허용 대상으로 배정된 직원의 실제 이용률은 수요일·금요일의 이용 기회 기준으로 자원자 약 55%, 비자원자 약 40%였다. 공휴일·개인 휴가·인정된 결근은 계산에서 제외했다. 전형적인 이용은 주 1일 정도였다. 전체 직원이나 주중 모든 날을 분모로 한 비율이 아니다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R05",
+        "kind": "reported_fact",
+        "en": "The nominal six-month experiment effectively ended on 21 January 2022, when a COVID case led Trip.com to allow everyone to work from home. The attrition figure caption reports follow-up through 23 January 2022. Neither group had two years of randomized policy exposure.",
+        "ko": "명목상 6개월 실험은 코로나19 확진자 발생으로 전 직원에게 재택근무가 허용된 2022년 1월 21일에 사실상 종료됐다. 퇴사율 그림 설명은 2022년 1월 23일까지 추적한 자료라고 명시한다. 두 집단이 무작위 배정된 정책에 2년간 노출된 것은 아니다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R06",
+        "kind": "reported_fact",
+        "en": "During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. They are experiment-period rates, not annual rates.",
+        "ko": "실험기간의 배정집단별 퇴사율은 대조집단 7.20%, 처치집단 4.80%였고 차이의 P값은 0.043이었다. 연간 퇴사율이 아니라 실험기간의 퇴사율이다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R07",
+        "kind": "reported_fact",
+        "en": "The reported quit rates differ by 2.40 percentage points, about 33% relative to the control rate. The comparison estimates the effect of assignment to the optional policy, not the effect of actually using two WFH days every week.",
+        "ko": "보고된 퇴사율 차이는 2.40퍼센트포인트이며, 대조집단 퇴사율 대비 상대 감소율은 약 33%다. 이 비교가 추정하는 것은 선택형 정책에 배정된 효과이지, 매주 이틀씩 실제로 재택근무한 효과가 아니다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "R08",
+        "kind": "author_judgment",
+        "en": "The memo author's judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking similarity of work and commuting conditions. It does not establish the same quit-rate reduction for another employer or equivalence with fully remote work.",
+        "ko": "메모 작성자는 업무와 통근 조건의 유사성을 검토한다는 전제 아래, 대졸 사무직을 대상으로 비슷한 선택형 정책의 시범 운영을 검토할 근거가 된다고 판단한다. 다른 기업에서 같은 퇴사율 감소가 발생하거나 완전 원격근무가 동등하다는 결론은 아니다.",
+        "source_ids": []
+      }
+    ],
+    "review_checks": [
+      {
+        "id": "RC01",
+        "en": "Both drafts retain all R01–R08 claims, exclusions, dates and judgment strength without requiring the ledger to make the memo intelligible.",
+        "ko": "두 초안 모두 R01부터 R08까지의 주장·제외 사항·날짜·판단 강도를 유지하며, 사실 목록 없이도 메모 자체를 이해할 수 있다."
+      },
+      {
+        "id": "RC02",
+        "en": "Odd and even birthday assignments, 792 and 820 group denominators, optional Wednesday and Friday eligibility, and three versus five office days remain distinct from actual use.",
+        "ko": "홀수·짝수 생일 배정, 집단별 분모 792명·820명, 수요일·금요일 재택 선택권, 주 3일·5일 출근을 실제 이용과 구분한다."
+      },
+      {
+        "id": "RC03",
+        "en": "Take-up retains approximate 55% and 40%, the volunteer distinction, Wednesday and Friday opportunity denominator, exclusions and about-one-day interpretation.",
+        "ko": "실제 이용률 약 55%·40%와 자원 여부의 구분, 수요일·금요일의 이용 기회라는 분모, 제외 사항, 주 1일 정도라는 해석을 유지한다."
+      },
+      {
+        "id": "RC04",
+        "en": "The staggered 2021 starts, effective 21 January 2022 end, and caption's 23 January follow-up date remain qualified. There is no annualization or two-year randomized-exposure claim.",
+        "ko": "2021년의 서로 다른 시작 시점, 사실상 종료일인 2022년 1월 21일, 그림 설명의 추적 종료일 1월 23일을 각각 구분한다. 연율 환산이나 2년간 무작위 정책 노출이라는 주장을 하지 않는다."
+      },
+      {
+        "id": "RC05",
+        "en": "The 7.20% and 4.80% quit rates, P = 0.043, 2.40-percentage-point difference and approximately 33% relative reduction retain their assigned-group and experiment-period meaning.",
+        "ko": "퇴사율 7.20%·4.80%, P값 0.043, 2.40퍼센트포인트 차이, 약 33% 상대 감소율을 배정집단과 실험기간에 한정한 의미로 유지한다."
+      },
+      {
+        "id": "RC06",
+        "en": "The comparable-policy trial remains the memo author's conditional judgment, not a paper finding, approved program, prediction of equal effects, mandatory-two-day policy or fully remote recommendation. Promotion, code-output and productivity-belief claims are not added.",
+        "ko": "유사 정책의 시범 운영 검토는 메모 작성자의 조건부 판단으로 남는다. 논문의 연구 결과나 승인된 계획, 동일 효과 예측, 주 2일 의무 재택 정책, 완전 원격근무 권고로 바꾸지 않는다. 승진·코드량·생산성 인식 관련 주장을 추가하지 않는다."
+      }
+    ]
+  },
+  "source_notes": {
+    "path": "examples/professional/research/sources.md",
+    "sha256": "dacb22d3d34b9e2b1fdd5428bd53f52202b56b574b69011120133fcd9664d7fd",
+    "text": "# Research packet sources and editorial boundaries\n\n## Purpose and provenance\n\nThis packet is an independently authored research-interpretation memo for an HR director considering an optional hybrid-work policy for comparable graduate office roles. Its question is how far Trip.com's randomized assignment and quit-rate result support policy consideration at another employer. It is not a recommendation for fully remote work, an implementation plan, or a review of every outcome in the paper.\n\n`facts.json` selects eight bilingual records, R01 through R08. R01 through R07 are source-based descriptions and direct interpretations of the reported design and rates. R08 is the memo author's bounded policy judgment. It has no external source ID because the paper's authors did not make that company-specific judgment for us. The hypothetical reader's company has no invented staff count, quit rate, savings estimate or approved trial. `source_mode` is `source_based`, not a fictional-data case.\n\n`before.en.md` and `before.ko.md` are original professional drafts, not passages copied from the published paper or deliberately damaged versions of it. They contain the same selected facts and decision strength. The dense first section places enrolment, assignment, outcomes and actual use in successive paragraphs. An editor can improve that ordering and the proximity of qualifications without deleting the distinction between assignment and use. The final section states an attributed judgment rather than disguising it as a research result.\n\n## Primary source\n\nS1 is Nicholas Bloom, Ruobing Han and James Liang, [Hybrid working from home improves retention without damaging performance](https://www.nature.com/articles/s41586-024-07500-2), Nature 630, 920–925, published 12 June 2024. DOI [10.1038/s41586-024-07500-2](https://doi.org/10.1038/s41586-024-07500-2). The article's main text, Methods, figure captions and rights notice were inspected directly for this packet. The selected descriptions do not rely on secondary press accounts.\n\nThe relevant source locations are as follows.\n\n| Selected record | Source location | Boundary to retain |\n| --- | --- | --- |\n| R01 | Main; The experiment; Methods, Location and set-up; Methods, Employee characteristics and balancing tests | One employer in Shanghai, the Airfare and IT divisions, 1,612 graduate employees, the stated roles, and the exclusion of interns and probationary new employees. The source calls the divisions representative of the firm, not of every employer or workforce. |\n| R02 | Main; Methods, Randomization; Methods, Inclusion and ethics statement; Fig. 2 caption | Odd versus even day-of-month birthdays, not odd versus even birth years. Treatment n = 792 and control n = 820. Wednesday and Friday were optional home days, with the other three days in the office. Control attended all five days. |\n| R03 | Methods, Randomization | Initial volunteers n = 518 started in the week of 9 August 2021. Remaining non-volunteers n = 1,094 started in the week of 13 September 2021. These are enrolment cohorts, not the treatment and control denominators. |\n| R04 | Methods, Employee characteristics and balancing tests; Extended Data Fig. 3 caption | Approximate take-up of 55% and 40% among eligible volunteers and non-volunteers uses Wednesday and Friday opportunities. The caption excludes public holidays, personal holidays and excused absence. The Methods also discusses sick leave, extreme weather and the company COVID outbreak as exclusions from daily take-up. Typical use was about one day per week. |\n| R05 | Main; Methods, Employee characteristics and balancing tests; Fig. 2 caption; Discussion | The nominal six-month trial had staggered starts. The Methods says it effectively ended on Friday 21 January 2022 after a COVID case prompted access for everyone. Fig. 2's attrition follow-up is through 23 January. Those dates are reported separately, not silently reconciled. |\n| R06 | Main; Effects on employee retention; Fig. 2 caption | Assigned-group quit rates during the experiment were control 7.20% and treatment 4.80%, P = 0.043 for the difference. These are not annual rates. |\n| R07 | Effects on employee retention; Methods, Randomization; Methods, Inclusion and ethics statement | The rate difference is 2.40 percentage points and about 33% relative to control. Randomization assigned access, not actual use of two home days. |\n| R08 | Original memo-author judgment | A comparable optional-policy trial is worth considering only subject to checking the similarity of work and commuting conditions. It is not an approved trial or a forecast of an equal effect. |\n\n## Arithmetic and condition review\n\nThese relationships define the fact review.\n\n- The assignment totals reconcile. 792 + 820 = 1,612. The enrolment totals also reconcile. 518 + 1,094 = 1,612. The two partitions describe different things and must not be substituted for each other.\n- The absolute quit-rate difference from the published rounded rates is 7.20% minus 4.80% = 2.40 percentage points. The relative reduction is 2.40 divided by 7.20 = one-third, approximately 33%. A 33-percentage-point decrease would be a different and incorrect claim. The article's retention section uses percent notation for the 2.4 difference, but the memo makes the absolute unit explicit.\n- The 55% and 40% take-up measures are approximate shares of eligible Wednesday and Friday opportunities, after exclusions. They are not the proportions of the full workforce that ever worked from home. Two available days with these approximate take-up rates are consistent with about one day of weekly use, not two required days.\n- The reported quit-rate comparison follows original assignment. It must not become a comparison of employees who chose to use WFH against employees who did not, or an estimate of using exactly two home days every week.\n- The trial's nominal six-month description does not give each cohort identical exposure. The start weeks differed and the policy contrast ended early. The 21 January effective end and the 23 January caption follow-up must retain their different meanings.\n- The paper later followed performance reviews and promotions, but it did not maintain the randomized policy contrast for two years. The Discussion says that company-wide policy rollout was announced on 14 February 2022. That rollout date is background, not a ninth selected fact.\n- R08 must remain an explicitly attributed, conditional judgment. Neither statistical significance nor a similar office role guarantees the same effect at the reader's company. The trial does not establish equivalence with fully remote work.\n\n## Investigation notes outside the selected ledger\n\nThese notes preserve relevant source limits. They are not required draft content and must not be added to the native editing input as extra outcomes.\n\n- Promotion equivalence is excluded. In Methods, Null results, the article describes rejecting the promotion equivalence null for July to December 2022 while giving P = 0.092, despite stating a default alpha of 0.05. That wording and value appear inconsistent. This packet does not resolve the inconsistency, claim a correction, or use a promotion-equivalence conclusion. The main text's no-evidence-of-a-difference formulation is also not a selected draft claim.\n- Code output and its transformations are excluded. Extended Data Fig. 1 describes 653 coding employees and 95,494 employee-days. Its caption gives P = 0.750 for log2 of code lines after zero-value observations are dropped, but P = 0.0103 for log2 of one plus code lines, with higher treatment values. The separate equivalence analysis uses a margin of 29 daily lines. These are not interchangeable tests or evidence that code quantity equals code quality. No code-output claim appears in the ledger or drafts.\n- Surveyed productivity beliefs are excluded. Fig. 5 and its surrounding discussion concern beliefs, not measured productivity gains. Baseline and endline survey sample sizes differ, so this packet does not treat the responses as a confirmed matched panel. The reported shift in managers' beliefs is not an outcome in either draft.\n- Performance-review equivalence and subgroup findings are also outside the selected scope. The packet does not claim that all aspects of performance, promotion, innovation or productivity were exactly unchanged or safe in every setting.\n- The Methods, Inclusion and ethics statement, says Trip.com designed, initiated and ran the experiment. The Competing interests section says James Liang is Trip.com's co-founder, former CEO and chairman, with equity holdings. It also says no funding was received from Trip.com and no other co-author had a financial relationship with it. These provenance disclosures are not a ninth selected claim and should accompany any broader research assessment rather than be inferred away.\n- The linked [replication repository](https://doi.org/10.7910/DVN/6X4ZZL) was not inspected or downloaded. Its licensing and contents are not represented as verified. No reanalysis was performed.\n\nThe selected facts are supported by the inspected article. The unresolved promotion wording concerns excluded material, not the quit-rate comparison. No additional population-level representativeness, mechanism for quitting, savings estimate, confidence interval or future-employer effect is inferred into the drafts.\n\n## Rights, attribution and changes\n\nThe article's Rights and permissions section specifies [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). It permits use, sharing, adaptation, distribution and reproduction with appropriate author and source credit, a license link, and an indication of changes. It warns that separately credited third-party material can fall outside that license and require permission if no other legal basis applies.\n\nAttribution for any display of this source-based example should name Nicholas Bloom, Ruobing Han and James Liang, link the article and CC BY 4.0, and retain the publication information above. Change identification should say that the project selected and paraphrased findings into independently authored English and Korean policy-review memos, with the memo author's policy judgment added. The Korean text is our own memo, not an authorized translation of the paper. Published-paper prose is not being labelled a poor draft.\n\nNo article figure, photograph, table, long passage, supplementary file or replication dataset is reproduced in this packet. Original packet prose is project-authored material under the repository's terms. Citation does not relicense the article or any third-party material under MIT.\n\n## Bilingual term choices\n\n| English | Korean | Meaning to preserve |\n| --- | --- | --- |\n| Hybrid work | 하이브리드 근무 | A mix of office and home working, not full remote work. |\n| Assignment to eligibility | 재택근무 허용 대상으로 배정 | Receiving the option, not necessarily using it. |\n| Treatment group | 처치집단 | Employees assigned the optional policy. |\n| Control group | 대조집단 | Employees assigned the five-office-day policy. |\n| Volunteer and non-volunteer | 자원자·비자원자 | Enrolment cohorts, not treatment and control. |\n| Take-up | 실제 이용률 | Use across the specified Wednesday and Friday opportunities. |\n| Quit rate | 퇴사율 | Experiment-period rate, not an annualized rate. |\n| Percentage points | 퍼센트포인트 | Absolute difference between percentage rates. |\n| Relative reduction | 상대 감소율 | Difference divided by the control rate. |\n| Memo-author judgment | 메모 작성자의 판단 | Conditional policy interpretation, not an empirical result. |\n\n## Recorded outputs\n\nThe [English attempt](../../../verification/professional-examples-20261111/research-run/research/en/attempt.json) and [Korean attempt](../../../verification/professional-examples-20261111/research-run/research/ko/attempt.json) record the actual requests, model, package hashes and observed reference reads. Their raw outputs are unchanged. The [fidelity review](review.md) covers R01–R08 in both languages.\n\n"
+  },
+  "initial_review": {
+    "path": "examples/professional/research/review.json",
+    "json": {
+      "case_id": "research",
+      "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+      "source_parity": {
+        "status": "pass",
+        "issues": []
+      },
+      "languages": {
+        "en": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/research-run/research/en/attempt.json",
+          "output_sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa",
+          "facts": [
+            {
+              "id": "R01",
+              "status": "pass",
+              "note": "Output paragraph under Study design retains Bloom, Han and Liang's linked 2024 study, 1,612 graduate employees, engineering/marketing/finance roles, Airfare/IT divisions, Shanghai, one employer, and exclusions of interns and probationary new employees."
+            },
+            {
+              "id": "R02",
+              "status": "pass",
+              "note": "Assignment paragraph and bullets retain random odd/even birthday-date assignment, 792 odd-birthday employees with optional Wednesday/Friday home days and three office days, and 820 even-birthday controls with five office days. Eligibility is not recast as mandatory actual use."
+            },
+            {
+              "id": "R03",
+              "status": "pass",
+              "note": "The enrolment paragraph retains 518 initial volunteers starting in the week of 9 August 2021 and the remaining 1,094 non-volunteers starting in the week of 13 September. These remain enrolment cohorts, distinct from assignment groups."
+            },
+            {
+              "id": "R04",
+              "status": "pass",
+              "note": "Take-up paragraph retains approximately 55% for eligible volunteers and 40% for eligible non-volunteers, Wednesday/Friday opportunities, public-holiday/personal-holiday/excused-absence exclusions, neither all employees nor all weekdays as denominator, and typical use of about one day weekly."
+            },
+            {
+              "id": "R05",
+              "status": "pass",
+              "note": "Timing paragraph preserves the nominal six months, effective 21 January 2022 end caused by a COVID case and company-wide home-working access, separate caption follow-up through 23 January, and explicit rejection of two years of randomized policy exposure."
+            },
+            {
+              "id": "R06",
+              "status": "pass",
+              "note": "Quit rates paragraph retains assigned-group control 7.20% versus treatment 4.80%, P = 0.043 for the difference, and experiment-period rather than annual rates."
+            },
+            {
+              "id": "R07",
+              "status": "pass",
+              "note": "The absolute difference remains 2.40 percentage points and the relative reduction about 33% against control. The separate interpretation paragraph identifies assignment to the optional policy, explicitly not actual home working twice every week, as the estimated effect."
+            },
+            {
+              "id": "R08",
+              "status": "pass",
+              "note": "Final paragraph retains 'My judgment', consideration of a comparable optional-policy trial for graduate office roles conditional on checking work/commuting similarity, and the distinction from research findings. It promises neither the same reduction elsewhere nor fully remote equivalence and adds no approval or recommendation."
+            }
+          ],
+          "issues": []
+        },
+        "ko": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/research-run/research/ko/attempt.json",
+          "output_sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412",
+          "facts": [
+            {
+              "id": "R01",
+              "status": "pass",
+              "note": "연구 대상과 배정 방식 retains the linked Bloom/Han/Liang 2024 study, 1,612 graduate employees, Shanghai Trip.com as a single employer, Airfare/IT divisions, engineering/marketing/finance roles, and exclusion of interns and probationary new employees."
+            },
+            {
+              "id": "R02",
+              "status": "pass",
+              "note": "The assignment paragraph and bullets retain birthday day-of-month odd/even randomization, odd-birthday treatment n = 792, even-birthday control n = 820, optional Wednesday/Friday home working, three versus five office days, and explicit non-mandatory use."
+            },
+            {
+              "id": "R03",
+              "status": "pass",
+              "note": "The enrolment sentence retains 518 initial volunteers in the week containing 9 August 2021 and the remaining 1,094 non-volunteers in the week containing 13 September. It does not relabel these cohorts as treatment/control counts."
+            },
+            {
+              "id": "R04",
+              "status": "pass",
+              "note": "실제 재택근무 이용률과 해석의 범위 retains assigned eligibility, approximate volunteer/non-volunteer take-up of 55%/40%, Wednesday/Friday opportunity denominator, all three exclusions, rejection of whole-workforce/all-weekday denominators, and typical use of about one day weekly."
+            },
+            {
+              "id": "R05",
+              "status": "pass",
+              "note": "The timing paragraph distinguishes the nominal six-month experiment's effective 21 January 2022 end following a COVID case and home-working access for everyone from caption follow-up through 23 January. It explicitly rejects two years of randomized policy exposure."
+            },
+            {
+              "id": "R06",
+              "status": "pass",
+              "note": "퇴사율 결과 retains assigned-group experiment-period rates of control 7.20% and treatment 4.80%, P = 0.043 for the difference, and the explicit statement that these are not annual rates."
+            },
+            {
+              "id": "R07",
+              "status": "pass",
+              "note": "The quit-rate difference remains 2.40퍼센트포인트 and approximately 33% relative to control. The interpretation states an effect of assignment to the optional policy and explicitly denies estimating actual home working twice every week."
+            },
+            {
+              "id": "R08",
+              "status": "pass",
+              "note": "Final paragraph explicitly attributes the judgment to 작성자, retains the work/commuting-similarity condition and consideration of a comparable optional-policy trial for graduate office roles, and rejects equal effects elsewhere and fully remote equivalence as research findings. No trial approval or stronger recommendation is added."
+            }
+          ],
+          "issues": []
+        }
+      }
+    },
+    "markdown": {
+      "path": "examples/professional/research/review.md",
+      "sha256": "a5b23553ae03d63837d320193d8953b48c920e559431af7e9dd2f455a708fb6f",
+      "text": "# Research source-fidelity review\n\nInput parity passes. English and Korean outputs both pass textual source-fidelity review for R01 through R08. No material omission, unsupported claim or change in interpretation strength was found in either complete output.\n\nThe review examined both original drafts, `sources.md`, the current and frozen `facts.json`, both native requests, complete outputs and attempt records. The current and frozen ledgers contain the same selected facts. Both requests contain the corresponding original draft, and the draft SHA-256 values match the attempts' recorded input hashes. The bilingual inputs preserve the same facts, exclusions and conditional author judgment.\n\nBoth outputs retain these boundaries:\n\n- Optional assignment differs from actual use. Treatment/control counts of 792/820 differ from volunteer/non-volunteer enrolment counts of 518/1,094.\n- Approximate 55%/40% take-up uses eligible Wednesday/Friday opportunities, with the stated exclusions, not all employees or all weekdays. Typical use remains about one day weekly.\n- The nominal six-month experiment effectively ended on 21 January 2022. Caption follow-up through 23 January remains separate, without two-year randomized exposure.\n- Assigned-group quit rates remain 7.20%/4.80% during the experiment, not annually, with P = 0.043. The 2.40-percentage-point difference remains about 33% relative to control.\n- The trial consideration remains the memo author's conditional judgment, not an approved program, guaranteed effect or fully remote equivalence finding. Neither output adds excluded promotion, code-output, performance or productivity claims.\n\nBoth attempt records report `captured`, observed model `claude-sonnet-5-5`, Claude Code runtime `2.1.322`, exit code 0 and no provider errors. Derived tool-read records report successful manifest reads in both runs and a successful Korean-reference read in Korean. English records no Korean-reference read. Both attempts still label fidelity `not_reviewed`; capture metadata alone does not establish fidelity.\n\nDirect SHA-256 calculation matched each attempt's recorded output hash:\n\n- English `8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa`.\n- Korean `8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412`.\n\nThis was text and recorded-evidence review only, not a native rerun, independent paper reanalysis or reader study. Raw outputs and historical evidence were not changed. Fact-level findings and exact attempt paths are in `review.json`.\n"
+    }
+  },
+  "initial_run": {
+    "manifest_path": "verification/professional-examples-20261111/research-run/manifest.json",
+    "metadata": {
+      "scope": "Native professional writing examples, not a readability benchmark",
+      "source": "Working-tree package snapshot; not a claim of GitHub default-branch availability",
+      "base_commit": "a0d872b26fe32942e4e5be6080735352b771bddd",
+      "runtime": "2.1.322 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "package_sha256": {
+        "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+        "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+        "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+        "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+      },
+      "fidelity_status": "not_reviewed"
+    },
+    "records": [
+      {
+        "case_id": "research",
+        "language": "en",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/research-run/research/en"
+      },
+      {
+        "case_id": "research",
+        "language": "ko",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/research-run/research/ko"
+      }
+    ],
+    "runner_sha256": "78170a67fac79639b483f183b9d80a49e6a92fc9413e8fa3abcb72c65a26ab0e"
+  },
+  "project_terms": {
+    "license": {
+      "path": "LICENSE",
+      "sha256": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+      "text": "MIT License\n\nCopyright (c) 2026 Hyunbin Jang\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    },
+    "notice": {
+      "path": "NOTICE.md",
+      "sha256": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+      "text": "# Notice\n\nCopyright (c) 2026 Hyunbin Jang\n\n[English](#english) · [한국어](#한국어)\n\n## English\n\nThis notice covers the human-readable-writing repository at <https://github.com/JangHyun-bin/human-readable-writing>. It also covers the installable skill directory, `skills/human-readable-writing/`, including copies installed from it. The repository root and that directory contain the same notice and [LICENSE](LICENSE). This notice is provided in English and Korean.\n\n### License for this project\n\nThe material written for this project is licensed under the MIT License in [LICENSE](LICENSE). This material includes the skill instructions, writing guidance, documentation, hypothetical examples, scripts, and evaluation tasks. The writing guidance is the project's own work, based on ideas from the research cited below.\n\nThe MIT License covers only the project's own material. It does not apply to the following, and this project does not relicense them:\n\n- Quotations from third-party works, including the papers listed below. Each quotation keeps the terms that apply to its source.\n- The cited works themselves, including their text, figures, data, and code. They keep the licenses recorded below or the terms set by their rights holders.\n\nThis notice also records the sources and use of the original paper. It does not apply the paper's CC BY 4.0 license to all of the separately written code, guidance, and evaluation material.\n\n### Model outputs in research records\n\nSome files in this project contain or adapt text generated by AI models and coding-agent tools. The research records in [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research) and [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md) keep such outputs as evidence. The MIT License applies to these outputs only to the extent that the copyright holder has rights in them. This notice does not claim unrestricted rights to every recorded or adapted output. Terms set by the model and tool providers may also apply.\n\n### Original paper\n\n- Title: *Why is AI-generated language so hard to understand?*\n- Authors: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, submitted on 2026-10-21\n- Source: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- License of the original paper: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- Checked: 2026-10-27. The `view license` link for that arXiv version pointed to CC BY 4.0.\n\nFor the license terms of the original paper, see the [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en).\n\n### Use of and changes to the paper\n\nThis project summarizes and interprets the paper's findings in Korean. It builds separate writing guidance, hypothetical examples, and evaluation tasks from those findings. The quotations and research findings that the repository's analysis documents take from the paper are attributed to the paper. These interpretations and the writing guidance do not mean that the paper's authors reviewed them or validated their effects.\n\nThe repository's tracked files do not include the paper's PDF, figures, TeX source, research code, or original corpus. The benchmark scripts, hypothetical tasks, and recorded model responses were written or collected separately for this project.\n\nExpressions reused from the paper, and the changes made to them, follow the paper's license terms. This attribution does not mean that the paper's authors approve, sponsor, or endorse this repository.\n\n### Follow-up references, 2026-10-29\n\nThe detailed sources for the follow-up research notes are recorded in the [related literature notes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md), in Korean. The following two key works are available under a different license from the original Clark paper.\n\n| Work | Source and license checked |\n|---|---|\n| Martínez, Mollica & Gibson (2022), a study of reading legal text | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), a comparison of LLM writing styles | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\nEach license above applies to its own source. The CC BY 4.0 license of the original Clark paper does not extend to the other references. The follow-up notes summarize and interpret research findings and add separately written hypothetical examples. This repository does not include the original PDFs, figures, research code, or original corpora of these works. The notes do not mean that the papers' authors reviewed, approved, or validated them.\n\n## 한국어\n\n이 notice는 <https://github.com/JangHyun-bin/human-readable-writing> repository에 적용된다. 설치용 skill directory인 `skills/human-readable-writing/`과 이 directory에서 설치한 사본에도 적용된다. Repository root와 이 directory에는 같은 notice와 [LICENSE](LICENSE)가 있다. 이 notice는 영어와 한국어로 제공된다.\n\n### 이 project의 license\n\n이 project를 위해 작성한 자료에는 [LICENSE](LICENSE)의 MIT License를 적용한다. 이 자료에는 skill 지침, 작성 지침, 문서, 가상 예시, script, 평가 과제가 포함된다. 작성 지침은 아래 연구의 착안을 바탕으로 이 project에서 직접 작성한 것이다.\n\nMIT License는 이 project의 자료에만 적용된다. 다음 자료에는 적용되지 않으며, 이 project가 다시 license하지 않는다.\n\n- 아래 논문을 포함한 제3자 저작물의 인용문. 각 인용문은 해당 출처에 적용되는 조건을 따른다.\n- 인용한 저작물 자체와 그 본문·figure·data·code. 아래에 기록한 license 또는 권리자가 정한 조건을 따른다.\n\n이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다.\n\n### 연구 기록의 model 출력\n\n이 project의 일부 file은 AI model과 coding agent 도구가 생성한 text를 포함하거나 각색해 사용한다. [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research)와 [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md)의 연구 기록은 이러한 출력을 근거 자료로 보존한다. MIT License는 저작권자가 권리를 가진 범위에서만 이 출력에 적용된다. 이 notice는 기록하거나 각색한 모든 출력에 대해 제한 없는 권리를 주장하지 않는다. Model과 도구 제공자의 이용 조건도 적용될 수 있다.\n\n### 원논문\n\n- 제목: *Why is AI-generated language so hard to understand?*\n- 저자: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, 2026-10-21 제출\n- 원문: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- 원논문의 license: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- 확인일: 2026-10-27. 해당 arXiv version의 `view license` link가 CC BY 4.0을 가리킴을 확인하였다.\n\n원논문의 실제 license 조건은 [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)를 참조한다.\n\n### 이 repository의 이용과 변경\n\n원논문의 연구 결과를 한국어로 요약·해석하고, 별도의 작성 지침·가상 예시·평가 과제로 구성하였다. 분석 문서의 원문 인용과 연구 결과는 위 논문에 귀속된다. 이러한 해석과 작성 지침은 논문 저자들이 검토하거나 효과를 검증한 결과라는 의미가 아니다.\n\n현재 tracked file에는 원논문의 PDF·figure·TeX source·연구용 code·원본 corpus를 포함하지 않는다. Benchmark script와 가상 과제·실측 model 답변은 이 작업에서 별도로 작성·수집한 자료이다.\n\n원논문에서 재사용한 표현과 변경한 내용에는 원논문의 license 조건을 따른다. 위 출처 표시는 논문 저자들의 이 repository에 대한 승인·후원·보증을 의미하지 않는다.\n\n### 후속 참고문헌 — 2026-10-29\n\n후속 연구 노트의 상세 출처는 [관련 문헌](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md)에 기록하였다. 다음 두 핵심 문헌은 최초 Clark 논문과 다른 license로 제공된다.\n\n| 문헌 | 원문과 확인한 license |\n|---|---|\n| Martínez, Mollica & Gibson (2022), 법률 문장 독해 연구 | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), LLM 문체 비교 연구 | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\n위 license는 해당 원문에 관한 것이며, 최초 Clark 논문의 CC BY 4.0을 다른 참고문헌에 일괄 적용하지 않는다. 후속 노트는 연구 결과의 요약·해석과 별도로 작성한 가상 예시이며, 원문 PDF·figure·연구 code·원본 corpus를 이 repository에 포함하지 않았다. 논문 저자들의 검토·승인·효과 검증을 의미하지 않는다.\n"
+    }
+  },
+  "languages": {
+    "en": {
+      "original": {
+        "path": "examples/professional/research/before.en.md",
+        "sha256": "9a5ae11e250b96fc554eae3e6d979ffae7a9eff4519bb0fbe6619f037b350c67",
+        "text": "# Trip.com retention evidence for hybrid-policy review\n\n## Evidence for the HR director\n\nBloom, Han and Liang's [2024 Nature study](https://www.nature.com/articles/s41586-024-07500-2) covered 1,612 university-graduate engineering, marketing and finance employees in Trip.com's Airfare and IT divisions in Shanghai. Interns and new employees on probation were excluded. At this single employer, random assignment by odd or even birthday dates put 792 odd-birthday employees in a group allowed to work from home on Wednesday and Friday, with three office days, and 820 even-birthday employees in a five-office-day control group. The two home days were optional. The 518 initial volunteers started in the week of 9 August 2021, and the remaining 1,094 non-volunteers in the week of 13 September.\n\nDuring the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control. The nominal six-month experiment effectively ended on 21 January 2022 when a COVID case led the company to allow everyone to work from home, although the attrition figure caption reports follow-up through 23 January. This was not two years of randomized policy exposure.\n\nAmong employees assigned eligibility, actual take-up was about 55% for volunteers and 40% for non-volunteers across Wednesday and Friday opportunities, excluding public holidays, personal holidays and excused absences. These percentages use neither all employees nor all weekdays as their denominator. Typical use was about one day weekly. The quit-rate comparison therefore estimates assignment to the optional policy, not the effect of actually working from home twice every week.\n\n## Implication for our review\n\nMy judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking how similar our work and commuting conditions are. That is a policy judgment, not a research finding that another employer will achieve the same quit-rate reduction or that fully remote work is equivalent.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "research",
+          "language": "en",
+          "attempt": "verification/professional-examples-20261111/research-run/research/en/attempt.json",
+          "review": "examples/professional/research/review.json",
+          "revision": "verification/professional-examples-20261111/research-run/research/en/output.md",
+          "status": "pass",
+          "output_sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": false,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "research",
+          "language": "en",
+          "started_at": "2026-11-11T08:37:09.090343+00:00",
+          "finished_at": "2026-11-11T08:37:16.974250+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "9a5ae11e250b96fc554eae3e6d979ffae7a9eff4519bb0fbe6619f037b350c67",
+          "request_sha256": "2a2070ef0384f3591435ae4bf04336ae8d5b3a11d99b5056bf8330d14cb74076",
+          "output_sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa",
+          "raw_event_stream_sha256": "8e5d5c6a2c5105113b2a968ba4ffaeb6b101ed79b044baf5ccc23ba6888f52bb",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/research-run/research/en/request.md",
+          "sha256": "2a2070ef0384f3591435ae4bf04336ae8d5b3a11d99b5056bf8330d14cb74076",
+          "text": "/human-readable-writing Edit this Research-interpretation memo in English for An HR director considering an optional hybrid-work policy for comparable graduate office roles. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# Trip.com retention evidence for hybrid-policy review\n\n## Evidence for the HR director\n\nBloom, Han and Liang's [2024 Nature study](https://www.nature.com/articles/s41586-024-07500-2) covered 1,612 university-graduate engineering, marketing and finance employees in Trip.com's Airfare and IT divisions in Shanghai. Interns and new employees on probation were excluded. At this single employer, random assignment by odd or even birthday dates put 792 odd-birthday employees in a group allowed to work from home on Wednesday and Friday, with three office days, and 820 even-birthday employees in a five-office-day control group. The two home days were optional. The 518 initial volunteers started in the week of 9 August 2021, and the remaining 1,094 non-volunteers in the week of 13 September.\n\nDuring the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control. The nominal six-month experiment effectively ended on 21 January 2022 when a COVID case led the company to allow everyone to work from home, although the attrition figure caption reports follow-up through 23 January. This was not two years of randomized policy exposure.\n\nAmong employees assigned eligibility, actual take-up was about 55% for volunteers and 40% for non-volunteers across Wednesday and Friday opportunities, excluding public holidays, personal holidays and excused absences. These percentages use neither all employees nor all weekdays as their denominator. Typical use was about one day weekly. The quit-rate comparison therefore estimates assignment to the optional policy, not the effect of actually working from home twice every week.\n\n## Implication for our review\n\nMy judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking how similar our work and commuting conditions are. That is a policy judgment, not a research finding that another employer will achieve the same quit-rate reduction or that fully remote work is equivalent.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/research-run/research/en/output.md",
+          "sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa",
+          "text": "# Trip.com retention evidence for hybrid-policy review\n\n## Evidence for the HR director\n\n**Study design.** Bloom, Han and Liang's [2024 Nature study](https://www.nature.com/articles/s41586-024-07500-2) covered 1,612 university-graduate engineering, marketing and finance employees in Trip.com's Airfare and IT divisions in Shanghai. Interns and new employees on probation were excluded. The study took place at a single employer.\n\nAssignment was random, based on whether an employee's birthday date was odd or even:\n\n- 792 odd-birthday employees were allowed to work from home on Wednesday and Friday, leaving three office days. The two home days were optional.\n- 820 even-birthday employees formed a control group with five office days.\n\nThe 518 initial volunteers started in the week of 9 August 2021. The remaining 1,094 non-volunteers started in the week of 13 September.\n\n**Quit rates.** During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control.\n\nThe experiment was nominally six months long. It effectively ended on 21 January 2022, when a COVID case led the company to allow everyone to work from home. The attrition figure caption reports follow-up through 23 January. The study did not involve two years of randomized policy exposure.\n\n**Take-up.** Among employees assigned eligibility, actual take-up was about 55% for volunteers and 40% for non-volunteers. These figures count Wednesday and Friday opportunities and exclude public holidays, personal holidays and excused absences. The denominator is therefore neither all employees nor all weekdays. Typical use was about one day weekly.\n\nThe quit-rate comparison therefore estimates the effect of being assigned to the optional policy. It does not estimate the effect of actually working from home twice every week.\n\n## Implication for our review\n\nMy judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking how similar our work and commuting conditions are. This is a policy judgment. The research does not show that another employer will achieve the same quit-rate reduction, or that fully remote work is equivalent."
+        }
+      },
+      "selected": {
+        "case_id": "research",
+        "language": "en",
+        "attempt": "verification/professional-examples-20261111/research-run/research/en/attempt.json",
+        "review": "examples/professional/research/review.json",
+        "revision": "verification/professional-examples-20261111/research-run/research/en/output.md",
+        "status": "pass",
+        "output_sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa",
+        "kind": "first_attempt"
+      }
+    },
+    "ko": {
+      "original": {
+        "path": "examples/professional/research/before.ko.md",
+        "sha256": "6988ed53f384aad97a054772d2868a5b873b7b54733d5a6fa9f3695064c0b1f7",
+        "text": "# 하이브리드 근무 정책 검토를 위한 Trip.com 퇴사율 근거\n\n## 인사 책임자가 검토할 연구 결과\n\nBloom·Han·Liang의 [2024년 Nature 연구](https://www.nature.com/articles/s41586-024-07500-2)는 상하이 Trip.com의 항공권·IT 부문에서 엔지니어링·마케팅·재무 업무를 맡은 대졸 직원 1,612명을 대상으로 했다. 인턴과 수습기간 중인 신입 직원은 제외했다. 이 단일 기업에서 생일의 날짜가 홀수인지 짝수인지에 따라 무작위 배정한 결과, 홀수일 출생자 792명은 수요일·금요일에 재택근무를 선택할 수 있고 나머지 사흘은 출근하는 처치집단에, 짝수일 출생자 820명은 주 5일 출근하는 대조집단에 속했다. 이틀의 재택근무는 의무가 아니었다. 처음 자원한 518명은 2021년 8월 9일이 속한 주에, 자원하지 않았던 나머지 1,094명은 9월 13일이 속한 주에 실험에 참여했다.\n\n실험기간의 배정집단별 퇴사율은 대조집단 7.20%, 처치집단 4.80%였고 차이의 P값은 0.043이었다. 연간 퇴사율이 아니라 실험기간의 퇴사율이다. 2.40퍼센트포인트 차이를 대조집단 퇴사율에 대한 상대 감소율로 나타내면 약 33%다. 명목상 6개월 실험은 코로나19 확진자 발생으로 전 직원에게 재택근무가 허용된 2022년 1월 21일에 사실상 종료됐다. 다만 퇴사율 그림 설명에는 1월 23일까지 추적한 자료라고 적혀 있다. 무작위 배정된 정책에 2년간 노출된 실험은 아니다.\n\n재택근무 허용 대상으로 배정된 직원의 실제 이용률은 수요일·금요일의 이용 기회 기준으로 자원자 약 55%, 비자원자 약 40%였다. 공휴일·개인 휴가·인정된 결근을 제외한 비율로, 전체 직원이나 주중 모든 날을 분모로 삼은 수치가 아니다. 전형적인 이용은 주 1일 정도였다. 따라서 퇴사율 비교가 추정하는 것은 선택형 정책에 배정된 효과이지 매주 이틀씩 실제 재택근무한 효과가 아니다.\n\n## 자사 정책 검토에 대한 판단\n\n작성자는 업무와 통근 조건이 얼마나 유사한지 검토한다는 전제 아래, 대졸 사무직을 대상으로 비슷한 선택형 정책의 시범 운영을 검토할 근거가 된다고 판단한다. 이는 정책 판단이지, 다른 기업에서도 같은 퇴사율 감소가 발생하거나 완전 원격근무가 동등하다는 연구 결과가 아니다.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "research",
+          "language": "ko",
+          "attempt": "verification/professional-examples-20261111/research-run/research/ko/attempt.json",
+          "review": "examples/professional/research/review.json",
+          "revision": "verification/professional-examples-20261111/research-run/research/ko/output.md",
+          "status": "pass",
+          "output_sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": true,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            },
+            {
+              "path": ".claude/skills/human-readable-writing/references/korean.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "research",
+          "language": "ko",
+          "started_at": "2026-11-11T08:37:09.088702+00:00",
+          "finished_at": "2026-11-11T08:37:19.913345+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "6988ed53f384aad97a054772d2868a5b873b7b54733d5a6fa9f3695064c0b1f7",
+          "request_sha256": "ca8900f655b1d369482182b48c55b28d4267ec63e0b10684f3e7f303cb3a0f26",
+          "output_sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412",
+          "raw_event_stream_sha256": "38e8c57335c45120e8b1d05a186d469e607e1af9f7ad7c3f11ce63d18cbe9bcd",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/research-run/research/ko/request.md",
+          "sha256": "ca8900f655b1d369482182b48c55b28d4267ec63e0b10684f3e7f303cb3a0f26",
+          "text": "/human-readable-writing Edit this Research-interpretation memo in Korean for An HR director considering an optional hybrid-work policy for comparable graduate office roles. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# 하이브리드 근무 정책 검토를 위한 Trip.com 퇴사율 근거\n\n## 인사 책임자가 검토할 연구 결과\n\nBloom·Han·Liang의 [2024년 Nature 연구](https://www.nature.com/articles/s41586-024-07500-2)는 상하이 Trip.com의 항공권·IT 부문에서 엔지니어링·마케팅·재무 업무를 맡은 대졸 직원 1,612명을 대상으로 했다. 인턴과 수습기간 중인 신입 직원은 제외했다. 이 단일 기업에서 생일의 날짜가 홀수인지 짝수인지에 따라 무작위 배정한 결과, 홀수일 출생자 792명은 수요일·금요일에 재택근무를 선택할 수 있고 나머지 사흘은 출근하는 처치집단에, 짝수일 출생자 820명은 주 5일 출근하는 대조집단에 속했다. 이틀의 재택근무는 의무가 아니었다. 처음 자원한 518명은 2021년 8월 9일이 속한 주에, 자원하지 않았던 나머지 1,094명은 9월 13일이 속한 주에 실험에 참여했다.\n\n실험기간의 배정집단별 퇴사율은 대조집단 7.20%, 처치집단 4.80%였고 차이의 P값은 0.043이었다. 연간 퇴사율이 아니라 실험기간의 퇴사율이다. 2.40퍼센트포인트 차이를 대조집단 퇴사율에 대한 상대 감소율로 나타내면 약 33%다. 명목상 6개월 실험은 코로나19 확진자 발생으로 전 직원에게 재택근무가 허용된 2022년 1월 21일에 사실상 종료됐다. 다만 퇴사율 그림 설명에는 1월 23일까지 추적한 자료라고 적혀 있다. 무작위 배정된 정책에 2년간 노출된 실험은 아니다.\n\n재택근무 허용 대상으로 배정된 직원의 실제 이용률은 수요일·금요일의 이용 기회 기준으로 자원자 약 55%, 비자원자 약 40%였다. 공휴일·개인 휴가·인정된 결근을 제외한 비율로, 전체 직원이나 주중 모든 날을 분모로 삼은 수치가 아니다. 전형적인 이용은 주 1일 정도였다. 따라서 퇴사율 비교가 추정하는 것은 선택형 정책에 배정된 효과이지 매주 이틀씩 실제 재택근무한 효과가 아니다.\n\n## 자사 정책 검토에 대한 판단\n\n작성자는 업무와 통근 조건이 얼마나 유사한지 검토한다는 전제 아래, 대졸 사무직을 대상으로 비슷한 선택형 정책의 시범 운영을 검토할 근거가 된다고 판단한다. 이는 정책 판단이지, 다른 기업에서도 같은 퇴사율 감소가 발생하거나 완전 원격근무가 동등하다는 연구 결과가 아니다.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/research-run/research/ko/output.md",
+          "sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412",
+          "text": "# 하이브리드 근무 정책 검토를 위한 Trip.com 퇴사율 근거\n\n## 인사 책임자가 검토할 연구 결과\n\n### 연구 대상과 배정 방식\n\nBloom·Han·Liang의 [2024년 Nature 연구](https://www.nature.com/articles/s41586-024-07500-2)는 상하이 Trip.com의 항공권·IT 부문에서 엔지니어링·마케팅·재무 업무를 맡은 대졸 직원 1,612명을 대상으로 했다. 인턴과 수습기간 중인 신입 직원은 제외했다.\n\n이 단일 기업에서 생일의 날짜가 홀수인지 짝수인지에 따라 직원을 무작위로 배정했다.\n\n- 홀수일 출생자 792명은 처치집단에 속했다. 이들은 수요일·금요일에 재택근무를 선택할 수 있었고, 나머지 사흘은 출근했다.\n- 짝수일 출생자 820명은 대조집단에 속했다. 이들은 주 5일 출근했다.\n\n처치집단의 이틀 재택근무는 의무가 아니었다. 처음 자원한 518명은 2021년 8월 9일이 속한 주에, 자원하지 않았던 나머지 1,094명은 9월 13일이 속한 주에 실험에 참여했다.\n\n### 퇴사율 결과\n\n실험기간의 배정집단별 퇴사율은 대조집단 7.20%, 처치집단 4.80%였고, 차이의 P값은 0.043이었다. 이 수치는 연간 퇴사율이 아니라 실험기간의 퇴사율이다. 2.40퍼센트포인트 차이를 대조집단 퇴사율에 대한 상대 감소율로 나타내면 약 33%다.\n\n명목상 6개월 실험은 코로나19 확진자 발생으로 전 직원에게 재택근무가 허용된 2022년 1월 21일에 사실상 종료됐다. 다만 퇴사율 그림 설명에는 1월 23일까지 추적한 자료라고 적혀 있다. 따라서 이 실험은 무작위 배정된 정책에 2년간 노출된 실험이 아니다.\n\n### 실제 재택근무 이용률과 해석의 범위\n\n재택근무 허용 대상으로 배정된 직원의 실제 이용률은 수요일·금요일의 이용 기회를 기준으로 자원자 약 55%, 비자원자 약 40%였다. 이 비율은 공휴일·개인 휴가·인정된 결근을 제외하고 계산했으며, 전체 직원이나 주중 모든 날을 분모로 삼은 수치가 아니다. 전형적인 이용은 주 1일 정도였다.\n\n따라서 퇴사율 비교가 추정하는 것은 선택형 정책에 배정된 효과다. 매주 이틀씩 실제로 재택근무한 효과를 추정한 것이 아니다.\n\n## 자사 정책 검토에 대한 판단\n\n작성자는 업무와 통근 조건이 얼마나 유사한지 검토한다는 전제 아래, 대졸 사무직을 대상으로 비슷한 선택형 정책의 시범 운영을 검토할 근거가 된다고 판단한다. 이는 정책 판단이다. 다른 기업에서도 같은 퇴사율 감소가 발생한다거나 완전 원격근무가 동등하다는 점은 이 연구의 결과가 아니다."
+        }
+      },
+      "selected": {
+        "case_id": "research",
+        "language": "ko",
+        "attempt": "verification/professional-examples-20261111/research-run/research/ko/attempt.json",
+        "review": "examples/professional/research/review.json",
+        "revision": "verification/professional-examples-20261111/research-run/research/ko/output.md",
+        "status": "pass",
+        "output_sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412",
+        "kind": "first_attempt"
+      }
+    }
+  }
+}

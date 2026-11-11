@@ -1,0 +1,135 @@
+{
+  "id": "policy",
+  "genre": {
+    "en": "Transport-policy evaluation memo",
+    "ko": "교통정책 평가 메모"
+  },
+  "topic": {
+    "en": "What MTA's December 17, 2025 board presentation supports about congestion pricing, and what evidence remains necessary",
+    "ko": "MTA의 2025년 12월 17일 이사회 발표 자료로 확인할 수 있는 혼잡통행료 관련 주장과 추가로 필요한 근거"
+  },
+  "audience": {
+    "en": "A transport-policy reviewer deciding what further evidence to request",
+    "ko": "추가로 요청할 근거를 판단하는 교통정책 검토자"
+  },
+  "source_mode": "source_based",
+  "sources": [
+    {
+      "id": "MTA2025",
+      "url": "https://www.mta.info/document/194491",
+      "locator": "2025 in Data, title page identifying the December 17, 2025 board update, and page 13",
+      "rights": "MTA reserves rights. Only attributed facts inform these original drafts. No slides, figures, tables, slogans, or substantial wording are reproduced. Citation is not a reuse license."
+    },
+    {
+      "id": "MTATERMS",
+      "url": "https://www.mta.info/terms-and-conditions",
+      "locator": "Website license restrictions, reservation of rights, and Copyrights and permissions",
+      "rights": "The website terms limit the stated license to non-commercial personal use and prohibit commercial use. They do not grant this project a general reproduction license."
+    },
+    {
+      "id": "MTACOPYRIGHT",
+      "url": "https://www.mta.info/copyright-notice",
+      "locator": "Copyright notice, updated January 1, 2020, reservation of rights and document-specific proprietary notices",
+      "rights": "All rights reserved. Third-party materials do not become MIT-licensed through attribution or inclusion in the project's source notes."
+    }
+  ],
+  "facts": [
+    {
+      "id": "P01",
+      "kind": "reported_fact",
+      "en": "The memo addresses page 13 of MTA's 2025 in Data presentation to its board on December 17, 2025. The selected traffic and PM2.5 figures are MTA's reported claims, not measurements made by the memo author.",
+      "ko": "메모의 검토 대상은 MTA가 2025년 12월 17일 이사회에 발표한 2025 in Data의 13쪽이다. 선택한 교통 및 PM2.5 수치는 메모 작성자가 측정한 결과가 아니라 MTA가 보고한 주장이다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P02",
+      "kind": "reported_fact",
+      "en": "MTA reports 11% fewer vehicle entries into the central business district, or CBD, and 71,000 fewer per day. Entry counts must not be restated as unique cars or vehicle-miles. The rounded figures do not establish an exact baseline count.",
+      "ko": "MTA는 중심업무지구인 CBD의 차량 진입 건수가 11%, 하루 71,000건 줄었다고 보고한다. 진입 건수를 고유 차량 수나 차량 주행거리로 바꿔 표현해서는 안 된다. 반올림된 수치로 정확한 기준 진입 건수를 확정할 수 없다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P03",
+      "kind": "reported_fact",
+      "en": "Page 13 does not specify the vehicle-entry observation and comparison periods or how the baseline was constructed. These remain unknown in the memo.",
+      "ko": "13쪽에는 차량 진입 건수의 관측기간과 비교기간, 기준치 산정 방식이 명시되어 있지 않다. 메모에서도 이를 미상으로 남긴다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P04",
+      "kind": "reported_fact",
+      "en": "MTA reports a 4.3% increase in car speeds within the CBD, not a 4.3% reduction in travel time. Page 13 does not specify absolute speeds, weighting, hours covered, measurement provider, baseline, or observation and comparison periods.",
+      "ko": "MTA는 CBD 내 승용차 통행속도가 4.3% 증가했다고 보고한다. 이는 통행시간이 4.3% 줄었다는 뜻이 아니다. 13쪽에는 절대 속도, 가중 방식, 포함 시간대, 측정기관, 기준치, 관측기간과 비교기간이 명시되어 있지 않다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P05",
+      "kind": "reported_fact",
+      "en": "MTA reports a 22% PM2.5 reduction in the first six months and credits Cornell University, 2025. This concentration claim does not establish a 22% reduction in emissions, all pollutants, or individual exposure.",
+      "ko": "MTA는 첫 6개월간 PM2.5가 22% 감소했다고 보고하며 Cornell University, 2025를 출처로 제시한다. 이 농도 관련 주장만으로 배출량, 모든 오염물질 또는 개인별 노출이 22% 감소했다고 볼 수 없다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P06",
+      "kind": "reported_fact",
+      "en": "The slide places its air-quality claim under a Congestion Relief Zone heading but does not specify exact study dates, the concentration statistic, the percentage denominator, or detailed geographic coverage. The memo does not generalize 22% citywide or infer a common full-year comparison for all metrics from the presentation title.",
+      "ko": "슬라이드는 혼잡통행료 적용 구역인 Congestion Relief Zone을 다루는 제목 아래 대기질 주장을 제시하지만, 정확한 연구 날짜, 농도 통계량, 백분율의 분모, 상세한 지리적 범위는 명시하지 않는다. 메모는 22%를 뉴욕시 전체에 일반화하거나 발표 제목만으로 모든 지표가 동일한 연간 비교에 해당한다고 추정하지 않는다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P07",
+      "kind": "author_judgment",
+      "en": "The memo author treats this implementing agency's summary as a record of attributed claims, not independent causal proof of the policy's effects.",
+      "ko": "메모 작성자는 시행기관의 요약을 출처가 명시된 주장에 대한 기록으로 다루며, 정책 효과에 대한 독립적인 인과적 입증으로 보지 않는다.",
+      "source_ids": [
+        "MTA2025"
+      ]
+    },
+    {
+      "id": "P08",
+      "kind": "author_judgment",
+      "en": "The memo author requests the traffic series and calculation methods, missing periods and baselines, and the underlying air-quality study's geography, statistic, counterfactual method, and uncertainty, for independent review. This is the memo author's evidence request, not MTA's recommendation or a recommendation to repeal or expand congestion pricing.",
+      "ko": "메모 작성자는 독립적인 검토를 위해 교통 시계열과 계산 방식, 누락된 기간과 기준치, 대기질 원연구의 지역 범위·통계량·정책 미시행 시의 추정 방식·불확실성을 요청한다. 이는 메모 작성자의 근거 요청이며, MTA의 권고도 혼잡통행료 폐지나 확대 권고도 아니다.",
+      "source_ids": []
+    }
+  ],
+  "review_checks": [
+    {
+      "id": "policy-attribution",
+      "en": "Both drafts retain MTA, the board-update date, page 13, and the Cornell attribution beside the PM2.5 claim. Neither presents the figures as the memo author's measurements.",
+      "ko": "두 초안 모두 MTA, 이사회 발표 날짜, 13쪽을 유지하며 PM2.5 주장에 Cornell 출처를 붙인다. 수치를 메모 작성자의 측정값으로 제시하지 않는다."
+    },
+    {
+      "id": "policy-entries",
+      "en": "Both drafts preserve 11% and 71,000 fewer entries per day into the CBD, unknown entry periods and baseline construction, and the prohibition on inferring unique cars, vehicle-miles, or an exact baseline from rounded figures.",
+      "ko": "두 초안 모두 CBD 차량 진입 건수 11% 및 하루 71,000건 감소, 미상인 기간과 기준치 산정 방식, 고유 차량 수·주행거리·정확한 기준 진입 건수로의 변환 불가를 유지한다."
+    },
+    {
+      "id": "policy-speed",
+      "en": "Both drafts preserve the 4.3% CBD car-speed increase, all listed measurement unknowns, and the distinction from a same-percentage travel-time reduction.",
+      "ko": "두 초안 모두 CBD 승용차 통행속도 4.3% 증가, 열거된 측정 관련 미상 항목, 같은 비율의 통행시간 감소와의 구분을 유지한다."
+    },
+    {
+      "id": "policy-pm-scope",
+      "en": "Both drafts preserve 22%, the attributed first-six-month wording, the slide's zone context, and unknown exact dates, statistic, denominator, and detailed geography. Neither substitutes emissions, all pollution, individual exposure, or a citywide result.",
+      "ko": "두 초안 모두 22%, 출처가 명시된 첫 6개월 표현, 슬라이드의 구역 맥락, 미상인 정확한 날짜·통계량·분모·상세 지역을 유지한다. 배출량·모든 오염·개인별 노출·뉴욕시 전체 결과로 바꾸지 않는다."
+    },
+    {
+      "id": "policy-evidence-not-decision",
+      "en": "Both drafts reject a shared full-year inference and independent causal proof from the slide alone. The evidence request remains the memo author's proposal, not an MTA request, a completed review, or a repeal or expansion decision. No unselected study findings or correction details are added.",
+      "ko": "두 초안 모두 슬라이드만으로 공통 연간 비교나 독립적인 인과적 입증을 도출하지 않는다. 근거 요청은 메모 작성자의 제안으로 남고 MTA의 요청, 완료된 검토, 폐지·확대 결정으로 바뀌지 않는다. 선택하지 않은 원연구 결과나 정정 세부사항을 추가하지 않는다."
+    }
+  ]
+}

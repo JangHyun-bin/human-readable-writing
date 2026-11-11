@@ -1,0 +1,16 @@
+{
+  "kind": "Explicit review-feedback correction in a fresh native session",
+  "previous_attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json",
+  "previous_verdict": "fail",
+  "fact_id": "F07",
+  "original_source_unchanged": true,
+  "previous_output_unchanged": true,
+  "automatic_retry": false,
+  "record": {
+    "case_id": "finance",
+    "language": "ko",
+    "capture_status": "captured",
+    "fidelity_status": "not_reviewed",
+    "path": "verification/professional-examples-20261111/finance-correction/finance/ko"
+  }
+}

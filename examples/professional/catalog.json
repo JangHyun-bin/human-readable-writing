@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-11",
+  "path_base": "repository_root",
+  "initial_runs": [
+    "verification/professional-examples-20261111/research-run/manifest.json",
+    "verification/professional-examples-20261111/remaining-run/manifest.json"
+  ],
+  "cases": [
+    {"id": "research", "run": "verification/professional-examples-20261111/research-run/research", "review": "examples/professional/research/review.json"},
+    {"id": "finance", "run": "verification/professional-examples-20261111/remaining-run/finance", "review": "examples/professional/finance/review.json", "corrections": {"ko": {"attempt": "verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json", "review": "verification/professional-examples-20261111/finance-correction/review.json", "previous_attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json"}}},
+    {"id": "capex", "run": "verification/professional-examples-20261111/remaining-run/capex", "review": "examples/professional/capex/review.json"},
+    {"id": "policy", "run": "verification/professional-examples-20261111/remaining-run/policy", "review": "examples/professional/policy/review.json"},
+    {"id": "architecture", "run": "verification/professional-examples-20261111/remaining-run/architecture", "review": "examples/professional/architecture/review.json"}
+  ]
+}

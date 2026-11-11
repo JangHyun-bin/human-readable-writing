@@ -4,9 +4,9 @@
 
 <p align="center"><strong>English</strong> · <a href="README.ko.md">한국어</a></p>
 
-Human-readable writing is a portable agent skill for technical prose. The project targets Claude Code, Codex, OpenCode, Pi, and oh-my-pi; verification coverage differs by runtime. Call it with a PR description, incident update, research note, or operational guide. Your agent then edits the text so that a reader can follow what happened, why a claim holds, and what to do next.
+Human-readable writing is a portable agent skill for professional prose. The project targets Claude Code, Codex, OpenCode, Pi, and oh-my-pi; verification coverage differs by runtime. Its writing guidance covers research notes, financial analyses, investment reviews, policy memos, design records, PR descriptions, and incident updates. The aim is to help readers connect claims to evidence, conditions, and practical consequences.
 
-The skill is a set of Markdown instructions for the agent's model and contains no scripts. The instructions ask the model to rewrite compressed noun phrases as sentences that say who does what. They also ask it to keep technical terms and source facts, to place each condition and uncertainty next to the claim it limits, and to order information for the reader's task. When the source leaves a relationship unclear, the instructions tell the model to ask about it instead of inventing one.
+The skill's instructions are distributed as Markdown files. The installed package contains no scripts. The instructions ask the model to rewrite compressed noun phrases as sentences that say who does what. They also ask it to keep technical terms and source facts, to place each condition and uncertainty next to the claim it limits, and to order information for the reader's task. When the source leaves a relationship unclear, the instructions tell the model to ask about it instead of inventing one.
 
 The skill started as a personal writing tool, and its evaluation is limited. Recorded checks show that it loads in specific runtime versions and that a few outputs kept their source facts. Gains in human comprehension, reading time, or general writing quality have not been established.
 
@@ -27,6 +27,8 @@ This PR description is an illustration, written to show the intended edit. It is
 The revision states the problem and the fix first. It then explains when the app saves, changes, and compares the version. The version-match condition, the uncancelled in-flight requests, and the browser-only check remain explicit.
 
 The [examples page](examples/README.md) adds the request to type and the facts each revision kept. It also shows an incident update recorded in a dated runtime check, together with the limits of that check.
+
+Research interpretation, financial analysis, capital investment, policy evaluation, and architecture decisions have [English and Korean professional examples](examples/professional/README.md), with original drafts, recorded revisions, sources, and fidelity reviews.
 
 ## Install
 
@@ -82,13 +84,15 @@ There are no runtime-specific copies of the writing rules. [Tool support](docs/t
 
 ## Runtime support
 
-The current package was exercised with Claude Code 2.1.321 in project and user scopes, Pi 1.4.0, and oh-my-pi 18.18.6. Native Codex 0.167.0 could not be verified with the test account because its provider rejected the selected models. The [current verification record](docs/verification.md) records those errors, the checked models, and output limitations rather than treating them as passes.
+The 2026-11-10 distribution snapshot was exercised with Claude Code 2.1.321 in project and user scopes, Pi 1.4.0, and oh-my-pi 18.18.6. Native Codex 0.167.0 could not be verified with the test account because its provider rejected the selected models. The [distribution verification record](docs/verification.md) preserves those outcomes.
+
+The [2026-11-11 professional examples](verification/professional-examples-20261111/README.md) use Claude Code 2.1.322 with `claude-sonnet-5-5` and isolated project copies of the package. They do not add coverage for other runtimes or installation scopes.
 
 On 2026-11-02, project installations of Codex 0.166.0, Claude Code 2.1.312, Pi 1.4.0, and oh-my-pi 18.15.0 passed bounded checks. In each runtime, the skill loaded for one English and one Korean request, the model read the required instruction files, and both outputs kept the checked source facts. In one control request per runtime that did not name the skill, the runtime did not load it. These checks linked the repository root at commit `4fff511` into disposable projects, before the skill moved to `skills/human-readable-writing/`. They did not test the current layout, the `skills` CLI, or user-level installs.
 
 **OpenCode 2.2.1 is partially verified, with failures.** One English native load succeeded. CLI mentions did not reliably select the intended copy of the skill, supporting files did not always resolve, and one output changed a source condition.
 
-[Tool support](docs/tool-support.md) lists the tested versions, models, paths, and limits. [Verification](docs/verification.md) records the checks of the current package and install commands. Neither record establishes general writing quality.
+[Tool support](docs/tool-support.md) distinguishes the dated package snapshots and their tested versions, models, paths, and limits. [Distribution verification](docs/verification.md) records the installation checks. These records do not establish general writing quality.
 
 ## Languages
 

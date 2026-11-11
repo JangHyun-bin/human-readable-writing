@@ -1,0 +1,134 @@
+{
+  "case_id": "finance",
+  "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+  "source_parity": {
+    "status": "pass",
+    "issues": []
+  },
+  "languages": {
+    "en": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/finance/en/attempt.json",
+      "output_sha256": "44f632baa6594a54706a30f452f03373b0e102598f270a6c319288c06941fafc",
+      "facts": [
+        {
+          "id": "F01",
+          "status": "pass",
+          "note": "Output lines 3-5 retain the fictional manufacturer, unchanged scope, standalone April 1 through June 30 quarters in 2025 and 2026, exclusion of year-to-date periods, and exact KRW-million units."
+        },
+        {
+          "id": "F02",
+          "status": "pass",
+          "note": "The table retains Q2 2025 net income of 1,000 and Q2 2026 net income of 1,200. Line 5 retains supplied bottom-line input status rather than a reconstructed income statement. Net income is not changed to operating profit."
+        },
+        {
+          "id": "F03",
+          "status": "pass",
+          "note": "The depreciation row retains +200 and +240 and states that the expense is included in net income. Line 21 explicitly retains a noncash add-back, not a cash receipt."
+        },
+        {
+          "id": "F04",
+          "status": "pass",
+          "note": "The table retains receivable openings and closings of 800 to 900 and 900 to 1,300, with same-quarter deductions of -100 and -400. The opening/closing explanation prevents treating the two June balances as the quarterly adjustment base."
+        },
+        {
+          "id": "F05",
+          "status": "pass",
+          "note": "The table retains inventory openings and closings of 1,000 to 1,250 and 1,200 to 1,800, preserving same-quarter increases of 250 and 600 through deductions of -250 and -600."
+        },
+        {
+          "id": "F06",
+          "status": "pass",
+          "note": "The table retains payable openings and closings of 500 to 550 and 600 to 760, preserving same-quarter increases of 50 and 160 through additions of +50 and +160. No late-payment conclusion is added."
+        },
+        {
+          "id": "F07",
+          "status": "pass",
+          "note": "Line 21 preserves other adjustments totaling zero by design and all exclusions from balance changes: acquisitions, currency translation, write-offs, reclassifications, and other noncash movements. The two conditions remain separate assertions."
+        },
+        {
+          "id": "F08",
+          "status": "pass",
+          "note": "Lines 23-24 retain 1,000 + 200 - 100 - 250 + 50 = 900 and 1,200 + 240 - 400 - 600 + 160 = 600, attached to the correct quarters. Line 5 explicitly retains positive operating cash flow in both quarters."
+        },
+        {
+          "id": "F09",
+          "status": "pass",
+          "note": "Lines 5 and 26-28 retain net income growth of 200 and 20% on the Q2 2025 denominator of 1,000, the 300 operating cash flow decrease, working-capital adjustments of -300 and -840, the additional -540 against +200 and +40, and the signed bridge +200 + 40 - 300 - 350 + 110 = -300. The three account contributions remain correctly identified."
+        },
+        {
+          "id": "F10",
+          "status": "pass",
+          "note": "Lines 32-34 retain all seven unavailable information categories, unknown-not-zero status, and the limits on overdue-customer, unsold-inventory, distress, cash-balance-change, and complete-liquidity conclusions. The complete output adds no collection failure, profit-growth cause, tax outcome, or accounting-compliance claim."
+        }
+      ],
+      "issues": []
+    },
+    "ko": {
+      "status": "fail",
+      "attempt": "verification/professional-examples-20261111/remaining-run/finance/ko/attempt.json",
+      "output_sha256": "7e6627881cc315e1710d77e97829abbb7178e82a6714a991c20fd95e23eb8756",
+      "facts": [
+        {
+          "id": "F01",
+          "status": "pass",
+          "note": "Line 3 retains the fictional manufacturer, unchanged reporting scope, standalone April 1 through June 30 quarters in 2025 and 2026 rather than cumulative periods, and exact 백만원 units without conversion."
+        },
+        {
+          "id": "F02",
+          "status": "pass",
+          "note": "Line 5 and the table retain 당기순이익 of 1,000 and 1,200 for the correct quarters. The supplied final-profit-input qualification remains, and 당기순이익 is not replaced by 영업이익."
+        },
+        {
+          "id": "F03",
+          "status": "pass",
+          "note": "The table retains depreciation included in net income and add-backs of +200 and +240. Line 21 describes reversing a noncash expense and explicitly says it is not a cash inflow."
+        },
+        {
+          "id": "F04",
+          "status": "pass",
+          "note": "The table and its opening/closing explanation retain receivable balances of 800 to 900 and 900 to 1,300, with same-quarter increases of 100 and 400 reflected in deductions of -100 and -400."
+        },
+        {
+          "id": "F05",
+          "status": "pass",
+          "note": "The table retains inventory balances of 1,000 to 1,250 and 1,200 to 1,800, with same-quarter increases of 250 and 600 reflected in deductions of -250 and -600. The 2026 opening is not substituted with the 2025 closing."
+        },
+        {
+          "id": "F06",
+          "status": "pass",
+          "note": "The table retains payable balances of 500 to 550 and 600 to 760, with same-quarter increases of 50 and 160 reflected in additions of +50 and +160. No late-payment assertion is added."
+        },
+        {
+          "id": "F07",
+          "status": "fail",
+          "note": "Line 21 preserves the zero total and exclusion list but adds a causal connection through '가정했기 때문이다'. The source supplies zero other adjustments by design and absence of noncash balance movements as distinct conditions. Excluding those movements does not establish that all other reconciliation adjustments total zero."
+        },
+        {
+          "id": "F08",
+          "status": "pass",
+          "note": "Lines 23-24 retain both complete signed equations yielding 900 in Q2 2025 and 600 in Q2 2026. Line 5 explicitly retains positive operating cash flow in both quarters. This numerical preservation does not resolve the separate F07 rationale error."
+        },
+        {
+          "id": "F09",
+          "status": "pass",
+          "note": "Lines 5 and 26 retain the 200 increase to 1,200, 20% on the prior-year 1,000 denominator, the 300 operating cash flow decrease, -300 to -840 working-capital adjustments, the additional 540 deduction exceeding the combined 200 and 40 increases, and +200 + 40 - 300 - 350 + 110 = -300. The last three terms retain receivable, inventory, and payable attribution in that order."
+        },
+        {
+          "id": "F10",
+          "status": "pass",
+          "note": "Lines 30-39 retain all unavailable information, unknown-not-zero status, and the limits on customer arrears, unsold inventory, distress, cash-balance changes, and complete liquidity assessment. Outside the F07 rationale issue, the complete output adds no collection failure, profit-growth cause, tax outcome, or accounting-compliance claim."
+        }
+      ],
+      "issues": [
+        {
+          "fact_id": "F07",
+          "source_quote": "그 밖의 조정 합계는 설계상 0이며, 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했다.",
+          "output_quote": "그 밖의 조정 합계는 설계상 0이다. 인수·환산·제각·재분류 또는 그 밖의 비현금 변동이 위 잔액 증감에 영향을 주지 않는다고 가정했기 때문이다.",
+          "consequence": "The revision turns two supplied scenario conditions into an accounting explanation: other adjustments total zero because noncash movements do not affect the three working-capital balances. Those exclusions permit using the balance changes but do not determine every other reconciliation adjustment. A finance reader is given an unsupported reason for the zero total even though the amounts and exclusion list remain unchanged. This is an output-introduced causal claim, not an input-parity defect.",
+          "certainty": "definite"
+        }
+      ]
+    }
+  }
+}

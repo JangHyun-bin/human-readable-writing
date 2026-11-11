@@ -1,0 +1,68 @@
+{
+  "capture_status": "captured",
+  "exit_code": 0,
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "manifest_read": true,
+  "korean_reference_read": true,
+  "tool_reads": [
+    {
+      "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+      "succeeded": true
+    },
+    {
+      "path": ".claude/skills/human-readable-writing/references/korean.md",
+      "succeeded": true
+    }
+  ],
+  "provider_errors": [],
+  "fidelity_status": "not_reviewed",
+  "case_id": "finance",
+  "language": "ko",
+  "request_kind": "review_feedback_correction",
+  "started_at": "2026-11-11T08:50:39.506668+00:00",
+  "finished_at": "2026-11-11T08:50:52.766772+00:00",
+  "runtime": "2.1.322 (Claude Code)",
+  "requested_model": "claude-sonnet-5-5",
+  "argv": [
+    "${HOME}/.local/share/claude/versions/2.1.322",
+    "-p",
+    "--model",
+    "claude-sonnet-5-5",
+    "--setting-sources",
+    "project,local",
+    "--settings",
+    "{\"disableAllHooks\":true}",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--tools",
+    "Read,Skill",
+    "--allowedTools",
+    "Read,Skill",
+    "--permission-mode",
+    "dontAsk",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--no-session-persistence",
+    "${REQUEST}"
+  ],
+  "request_file": "request.md",
+  "output_file": "output.md",
+  "input_sha256": "6748010106b9e17d21981bf65af839ad40f034c3c72ee282d15e6feab0c45c05",
+  "request_sha256": "f3e229e9db875d8fccdd8cd3df41be48fed509c530034c0eec474734dfe0e300",
+  "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+  "raw_event_stream_sha256": "4aedb091b7462c75fbf2750b79291de02ad8147ee484a2e14ae61b4d27f7f296",
+  "package_sha256": {
+    "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+    "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+    "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+    "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+    "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+    "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+    "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+  },
+  "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+}

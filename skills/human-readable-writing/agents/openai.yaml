@@ -1,6 +1,6 @@
 interface:
   display_name: "Human-readable writing"
-  short_description: "Clear technical writing that preserves meaning"
-  default_prompt: "Use $human-readable-writing to clarify this text while preserving its technical terms, facts, conditions, and uncertainty."
+  short_description: "Writing guidance for professional prose"
+  default_prompt: "Use $human-readable-writing to clarify this text while preserving its specialized terms, facts, conditions, and uncertainty."
 policy:
   allow_implicit_invocation: false

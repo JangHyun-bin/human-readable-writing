@@ -1,0 +1,156 @@
+{
+  "id": "architecture",
+  "genre": {
+    "en": "Architecture decision record",
+    "ko": "설계 결정 기록"
+  },
+  "topic": {
+    "en": "Durable receipt and one local entitlement grant for duplicate, out-of-order invoice events",
+    "ko": "중복·순서 역전 송장 이벤트의 영속 수신과 로컬 이용 권한 1회 부여"
+  },
+  "audience": {
+    "en": "Backend implementers and architecture reviewers",
+    "ko": "백엔드 구현자와 설계 검토자"
+  },
+  "source_mode": "source_based_with_fictional_design",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://docs.stripe.com/webhooks",
+      "locator": "Event ordering; Handle duplicate events; Create a handler; Handle events asynchronously; Quickly return a 2xx response; snapshot event-destination registration example",
+      "rights": "Facts paraphrased with attribution. Stripe redistribution permission is unverified. No third-party figures, tables or code are reproduced."
+    },
+    {
+      "id": "S2",
+      "url": "https://docs.stripe.com/api/events/object",
+      "locator": "Event attributes id, type, data, created, account and api_version",
+      "rights": "Field names and facts paraphrased with attribution. No license grant for Stripe documentation is asserted."
+    },
+    {
+      "id": "S3",
+      "url": "https://docs.stripe.com/api/events/types",
+      "locator": "Snapshot event types invoice.created and invoice.paid",
+      "rights": "Event names and facts paraphrased with attribution. No third-party event payload is reproduced."
+    },
+    {
+      "id": "S4",
+      "url": "https://docs.stripe.com/api/invoices/object",
+      "locator": "Invoice attributes id and status",
+      "rights": "Field names and facts paraphrased with attribution. No license grant for Stripe documentation is asserted."
+    }
+  ],
+  "facts": [
+    {
+      "id": "A01",
+      "kind": "reported_fact",
+      "en": "Stripe does not guarantee generation-order delivery. Snapshot Event created timestamps are measured in seconds, so distinct Events can share a timestamp. created establishes neither delivery order nor uniqueness.",
+      "ko": "Stripe는 이벤트 생성 순서대로 전달된다고 보장하지 않는다. 스냅샷 Event의 created는 초 단위이므로 서로 다른 Event가 같은 타임스탬프를 가질 수 있다. created로 전달 순서나 고유성을 판정할 수 없다.",
+      "source_ids": ["S1", "S2"]
+    },
+    {
+      "id": "A02",
+      "kind": "reported_fact",
+      "en": "The same Event can arrive repeatedly, and separate Event objects can describe a duplicate operation. Distinct Event IDs therefore do not establish distinct business operations.",
+      "ko": "같은 Event가 반복 전달될 수 있으며, 별개의 Event 객체가 중복 연산을 나타낼 수도 있다. 따라서 이벤트 ID가 다르다고 업무 연산도 다르다고 볼 수 없다.",
+      "source_ids": ["S1"]
+    },
+    {
+      "id": "A03",
+      "kind": "reported_fact",
+      "en": "Stripe recommends identifying separate duplicate Event objects with data.object.id and event.type. This duplicate-identification guidance is not a rule to suppress every future update for an object.",
+      "ko": "Stripe는 별개의 중복 Event 객체를 식별할 때 data.object.id와 event.type을 함께 사용하도록 권고한다. 이 중복 식별 지침을 객체의 모든 후속 갱신을 무시하는 규칙으로 확대할 수는 없다.",
+      "source_ids": ["S1"]
+    },
+    {
+      "id": "A04",
+      "kind": "reported_fact",
+      "en": "Signature verification requires the unmodified raw request body. A prompt 2xx response acknowledges delivery, not completion of the application's business operation.",
+      "ko": "서명 검증에는 변경하지 않은 요청 본문 원문이 필요하다. 신속한 2xx 응답은 전달에 대한 수신 확인이지 애플리케이션의 업무 처리 완료를 뜻하지 않는다.",
+      "source_ids": ["S1", "S2"]
+    },
+    {
+      "id": "A05",
+      "kind": "scenario_assumption",
+      "en": "The fictional application handles one Stripe account, one environment, and snapshot invoice.created and invoice.paid events with the assumed version 2026-10-28.preview. Existing invoice_id-to-order_id mappings support one non-revocable local entitlement per invoice. account_id comes from configured account context, event_id from Event.id, event_type from Event.type, and invoice_id from data.object.id. The unique business-operation key is account_id plus invoice_id plus operation_kind=grant_entitlement, not event_id.",
+      "ko": "가상 애플리케이션은 Stripe 계정 하나와 환경 하나에서 스냅샷 invoice.created 및 invoice.paid 이벤트를 다루며, 버전은 2026-10-28.preview로 가정한다. invoice_id와 order_id의 매핑은 이미 존재하며 송장마다 철회하지 않는 로컬 이용 권한 하나를 부여한다. account_id는 설정된 계정 문맥에서, event_id는 Event.id에서, event_type은 Event.type에서, invoice_id는 data.object.id에서 얻는다. 고유한 업무 연산 키는 event_id가 아니라 account_id, invoice_id, operation_kind=grant_entitlement의 조합이다.",
+      "source_ids": []
+    },
+    {
+      "id": "A06",
+      "kind": "scenario_assumption",
+      "en": "Four fictional deliveries arrive as invoice.paid E2, repeated E2, late invoice.created E1, and a distinct duplicate invoice.paid E3. They concern one invoice and one order, with three Event IDs and two event types. E1 was generated before E2, although their created timestamps may share a second. The repeated E2 creates no new work; E3 remains a separate Event but must not cause a second grant.",
+      "ko": "가상 전달 순서는 invoice.paid E2, E2 재전송, 늦게 도착한 invoice.created E1, 별개의 중복 invoice.paid E3이다. 네 번의 전달은 송장 하나와 주문 하나에 관한 것이며 이벤트 ID는 세 개, 이벤트 유형은 두 개다. E1은 E2보다 먼저 생성되었지만 created는 같은 초를 나타낼 수 있다. E2 재전송은 새 작업을 만들지 않으며, E3는 별개의 Event로 남되 두 번째 권한 부여를 일으켜서는 안 된다.",
+      "source_ids": []
+    },
+    {
+      "id": "A07",
+      "kind": "scenario_assumption",
+      "en": "The durable inbox is the work queue, with no external queue-publication step. It stores payload, receipt time, and pending or completed state, with a unique account_id-plus-event_id key. Receipt alone is not completion. Pending rows remain retryable, and neither inbox nor operation records are pruned within this example.",
+      "ko": "영속 inbox가 작업 큐이며 외부 큐에 발행하는 단계는 없다. inbox는 페이로드, 수신 시각, pending 또는 completed 상태를 저장하고 account_id와 event_id의 조합에 고유 제약을 둔다. 수신만으로 처리가 완료되지는 않는다. pending 행은 재시도할 수 있으며 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다.",
+      "source_ids": []
+    },
+    {
+      "id": "A08",
+      "kind": "scenario_assumption",
+      "en": "After signature verification, the endpoint commits the inbox row or confirms the existing durable row before returning 2xx. Persistence failure receives no successful acknowledgment. An existing pending row is acknowledged without being discarded or relabeled completed. A crash after receipt commit but before acknowledgment leaves committed work available on redelivery.",
+      "ko": "엔드포인트는 서명 검증 후 inbox 행을 커밋하거나 기존 행이 영속 저장되어 있음을 확인한 뒤 2xx를 반환한다. 저장에 실패하면 성공 응답을 보내지 않는다. 기존 pending 행에는 수신 확인을 응답하되 작업을 버리거나 completed로 바꾸지 않는다. 수신 기록을 커밋한 뒤 응답 전에 장애가 나도 재전송 시 커밋된 작업이 남아 있다.",
+      "source_ids": []
+    },
+    {
+      "id": "A09",
+      "kind": "scenario_assumption",
+      "en": "One ACID database contains the inbox, operation ledger, and entitlement. Locks and unique constraints arbitrate concurrent workers. For a new grant, ledger insertion, entitlement mutation, and inbox completion commit atomically. An existing operation permits inbox completion without another grant. A business-transaction crash cannot commit only the completion marker.",
+      "ko": "단일 ACID 데이터베이스가 inbox, 연산 원장, 이용 권한을 보관한다. 잠금과 고유 제약으로 동시 작업자를 조정한다. 새 권한을 부여할 때 원장 삽입, 권한 변경, inbox의 완료 처리를 하나의 트랜잭션으로 커밋한다. 연산이 이미 기록되어 있으면 다시 부여하지 않고 해당 inbox 처리를 완료한다. 업무 트랜잭션 도중 장애가 나도 완료 표시만 따로 커밋될 수는 없다.",
+      "source_ids": []
+    },
+    {
+      "id": "A10",
+      "kind": "author_judgment",
+      "en": "Paid processing retrieves the invoice and requires confirmed status=paid and a matching existing order. Retrieval failure or an unmet condition leaves work pending. Created processing completes its receipt without resetting a grant, so late E1 cannot undo it. Under the stated database and retention assumptions, eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching yield one local grant for this trace, not global exactly-once execution. Event-ID-only deduplication misses E3, acknowledgment before persistence risks lost work, and timestamp sorting cannot establish order. Database contention and pending-work recovery are costs. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded. This ADR proposes no real Stripe, API, or production changes.",
+      "ko": "paid 처리 시 송장을 조회하여 status=paid와 기존 주문의 일치를 확인해야 한다. 조회에 실패하거나 조건을 충족하지 못하면 작업은 pending으로 남는다. created 처리는 수신 건을 완료하되 부여된 권한을 초기화하지 않으므로 늦은 E1이 권한을 되돌리지 못한다. 명시한 데이터베이스·기록 보존 가정 아래 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 이벤트 ID만으로 중복을 제거하면 E3를 놓치고, 저장 전 응답은 작업 유실 위험이 있으며, 타임스탬프 정렬로는 순서를 확정할 수 없다. 데이터베이스 경합과 pending 작업 복구가 비용이다. 환불, 분쟁, 구독 변경, 외부 이행, 외부 결제 API의 멱등성은 제외한다. 이 ADR은 실제 Stripe·API·운영 환경 변경을 제안하지 않는다.",
+      "source_ids": []
+    }
+  ],
+  "review_checks": [
+    {
+      "id": "AC01",
+      "en": "Both drafts retain genuine ADR context, decision, alternatives, and consequences, and identify the application, version, and trace as fictional assumptions.",
+      "ko": "두 초안 모두 ADR의 배경·결정·대안·결과를 유지하고 애플리케이션·버전·전달 사례를 가상 가정으로 표시한다."
+    },
+    {
+      "id": "AC02",
+      "en": "Four deliveries remain E2, repeated E2, late E1, and distinct duplicate paid E3, with three Event IDs, two types, one invoice, one order, and one business operation.",
+      "ko": "네 전달은 E2, E2 재전송, 늦은 E1, 별개의 중복 paid E3로 유지되며 이벤트 ID 세 개·유형 두 개·송장 하나·주문 하나·업무 연산 하나를 구분한다."
+    },
+    {
+      "id": "AC03",
+      "en": "Account/event receipt uniqueness remains distinct from account/invoice/grant_entitlement operation uniqueness. E2 creates no new work, and E3 causes no second grant without being erased as an Event.",
+      "ko": "계정·이벤트 기준의 수신 고유성과 계정·송장·grant_entitlement 기준의 연산 고유성을 구분한다. E2는 새 작업을 만들지 않고 E3는 Event로 남되 두 번째 권한을 부여하지 않는다."
+    },
+    {
+      "id": "AC04",
+      "en": "Raw-body signature verification precedes durable receipt, and durable receipt precedes 2xx. Pending is neither completed nor discarded. Both crash boundaries retain their meaning.",
+      "ko": "본문 원문 서명 검증, 영속 수신 기록, 2xx의 순서를 유지한다. pending을 completed나 폐기 상태로 바꾸지 않으며 두 장애 경계의 의미를 보존한다."
+    },
+    {
+      "id": "AC05",
+      "en": "Atomic local ledger insertion, entitlement mutation, and inbox completion retain the one-ACID-database boundary and concurrent-worker constraints.",
+      "ko": "로컬 원장 삽입·권한 변경·inbox 완료의 원자성에 단일 ACID 데이터베이스와 동시 작업자 제약이라는 경계를 유지한다."
+    },
+    {
+      "id": "AC06",
+      "en": "Invoice retrieval, confirmed paid status, matching order, pending on failure, and eventual-processing conditions remain explicit. Late created E1 cannot undo the grant.",
+      "ko": "송장 조회·결제 완료 확인·주문 일치·실패 시 pending 유지·최종 처리 조건을 명시한다. 늦은 created E1이 권한 부여를 되돌릴 수 없다."
+    },
+    {
+      "id": "AC07",
+      "en": "Neither timestamps nor deduplication become an ordering guarantee. No blanket future-update suppression, universal exactly-once claim, external-effect guarantee, or real production change is introduced.",
+      "ko": "타임스탬프나 중복 제거를 순서 보장으로 바꾸지 않는다. 모든 후속 갱신의 일괄 무시·전역 exactly-once·외부 효과 보장·실제 운영 변경을 추가하지 않는다."
+    },
+    {
+      "id": "AC08",
+      "en": "No external queue-publication gap, retained records, non-revocation, database contention, recovery costs, and all named exclusions remain attached to the bounded conclusion.",
+      "ko": "외부 큐 발행 간극이 없다는 점·기록 보존·권한 비철회·데이터베이스 경합·복구 비용·명시된 제외 범위를 한정된 결론과 함께 유지한다."
+    }
+  ]
+}

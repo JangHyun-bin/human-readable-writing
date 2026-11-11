@@ -1,0 +1,29 @@
+/human-readable-writing Edit this Architecture decision record in Korean for Backend implementers and architecture reviewers. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.
+
+Source text:
+
+# ADR 01. 송장 이벤트의 영속 수신과 로컬 이용 권한 부여
+
+## 배경
+
+이 ADR은 가상 애플리케이션을 위한 설계 제안이며 실제 Stripe·API·운영 환경을 변경하는 작업이 아니다. 계정 하나와 환경 하나에서 버전 `2026-10-28.preview`의 스냅샷 `invoice.created` 및 `invoice.paid` 이벤트를 받는다고 가정한다. 송장과 주문의 매핑은 이미 존재하며 송장마다 철회하지 않는 로컬 이용 권한 하나를 부여한다.
+
+Stripe는 [생성 순서대로의 전달을 보장하지 않으며](https://docs.stripe.com/webhooks#event-ordering) [중복 이벤트가 발생할 수 있다고 설명한다](https://docs.stripe.com/webhooks#handle-duplicate-events). 스냅샷의 `created`는 초 단위이므로 순서나 고유성의 근거가 되지 못한다. 같은 Event의 재전송과 별개의 중복 Event 객체는 구분해야 한다. 후자의 식별에는 `data.object.id`와 `event.type`을 함께 사용하라는 권고가 있지만, 객체의 모든 후속 갱신을 무시하라는 뜻은 아니다.
+
+가상 전달 사례에서는 `invoice.paid` E2, E2 재전송, 늦게 도착한 `invoice.created` E1, 별개의 중복 `invoice.paid` E3 순으로 수신한다. 네 번의 전달은 송장 하나와 주문 하나에 관한 것으로 이벤트 ID는 세 개, 유형은 두 개다. E1은 E2보다 먼저 생성되었으며 `created`가 같은 초를 나타낼 수도 있다.
+
+## 결정
+
+영속 inbox를 작업 큐로 사용하고 외부 큐에 발행하는 단계는 두지 않는다. 페이로드·수신 시각·`pending` 또는 `completed` 상태를 저장하며 `(account_id, event_id)`에 고유 제약을 둔다. `account_id`는 페이로드에 있다고 가정하지 않고 설정된 계정 문맥에서 얻는다. `event_id`·`event_type`·`invoice_id`는 각각 `Event.id`·`Event.type`·`data.object.id`에서 얻는다. 업무 연산 키는 이벤트 ID가 아니라 `(account_id, invoice_id, operation_kind=grant_entitlement)`이다.
+
+Stripe의 [핸들러 지침](https://docs.stripe.com/webhooks#create-a-handler)에 따라 변경하지 않은 요청 본문 원문으로 서명을 검증한다. inbox 행을 커밋하거나 기존 행의 영속 저장을 확인한 뒤 신속히 `2xx`를 반환한다. 저장 실패에는 성공 응답을 보내지 않는다. 수신 확인은 전달을 받았다는 뜻이지 업무 처리 완료가 아니다. E2 재전송은 기존 행이 pending이어도 새 작업을 만들지 않으며, 그 행을 폐기하거나 completed로 바꾸지도 않는다. 수신 기록 커밋 후 응답 전에 장애가 나더라도 재전송 시 커밋된 작업이 남는다.
+
+inbox·연산 원장·이용 권한은 단일 ACID 데이터베이스에 두고 잠금과 고유 제약으로 동시 작업자를 조정한다. paid 처리 시 송장을 조회하여 `status=paid`와 기존 `order_id`의 일치를 확인한다. 조회 실패나 조건 미충족 시 작업은 pending으로 남는다. 새 연산의 원장 삽입·권한 변경·inbox 완료는 하나의 트랜잭션으로 커밋하며, 이미 기록된 연산이면 E3도 권한을 다시 부여하지 않고 처리를 완료한다. 트랜잭션 장애로 완료 표시만 따로 커밋될 수는 없다. created 처리는 해당 수신 건을 완료하되 권한을 초기화하지 않으므로 늦은 E1이 권한 부여를 되돌리지 못한다.
+
+## 대안
+
+이벤트 ID만으로 중복을 제거하면 E3를 놓친다. 영속 저장 전 응답은 작업 유실 위험이 있고 타임스탬프 정렬로는 순서를 확정할 수 없다. 어느 대안도 업무 연산의 고유성을 대신하지 못한다.
+
+## 결과와 한계
+
+데이터베이스 경합과 pending 작업 복구가 비용이다. pending 행은 재시도할 수 있으며 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다. 이 데이터베이스·기록 보존 가정 아래 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 환불·분쟁·구독 변경·외부 이행·외부 결제 API의 멱등성은 제외한다.

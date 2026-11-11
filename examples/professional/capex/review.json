@@ -1,0 +1,116 @@
+{
+  "case_id": "capex",
+  "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+  "source_parity": {
+    "status": "pass",
+    "issues": []
+  },
+  "languages": {
+    "en": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/capex/en/attempt.json",
+      "output_sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7",
+      "facts": [
+        {
+          "id": "C01",
+          "status": "pass",
+          "note": "Output lines 3 and 13-15 retain fictional pre-investment assumptions rather than measured performance, four comparable zones, 1,200 eligible cases per zone daily, 300 operating days annually, fixed demand, no sales uplift, and six occupied hours out of eight scheduled hours at 75%."
+        },
+        {
+          "id": "C02",
+          "status": "pass",
+          "note": "Output lines 15-17 retain the two-worker team, 200 manual cases per occupied team-hour, unvalidated 300 target with unchanged staffing and case mix, six-to-four team-hours, and four released worker-hours daily per zone. Annual release stays 1,200 per zone and 4,800 sitewide. Scheduled, occupied team and worker hours remain distinct. The release follows an explicit target condition, not an observed performance claim."
+        },
+        {
+          "id": "C03",
+          "status": "pass",
+          "note": "Output lines 21-23 retain the unvalidated assumption of canceling 600 agency hours per zone annually at KRW 30,000 per invoiced hour, yielding 18 per zone. Only 2,400 sitewide hours are canceled, not all 4,800 released hours. Permanent payroll stays unchanged and redeployment creates no cash savings."
+        },
+        {
+          "id": "C04",
+          "status": "pass",
+          "note": "Output lines 3, 33 and 41-45 retain constant KRW million, 240 upfront for immediate four-zone deployment, 75 upfront for a one-zone pilot lasting one operating year, equipment reuse, an additional conditional expansion outlay of 190 and staged capital of 265."
+        },
+        {
+          "id": "C05",
+          "status": "pass",
+          "note": "Output lines 25-29 preserve annual gross cash savings of 18 and 72, incremental maintenance, software and energy costs of 4 and 12, and net cash savings of 14 and 60 for the pilot and all four zones respectively. No extra pilot savings are added to the sitewide total."
+        },
+        {
+          "id": "C06",
+          "status": "pass",
+          "note": "Output lines 33-39 preserve the one-operating-year pilot, coincident spending and go-live, no ramp, constant savings, uniform cash accrual, expansion immediately after year one, and all six exclusions: tax, depreciation, financing, discounting, working capital and salvage. These remain model assumptions."
+        },
+        {
+          "id": "C07",
+          "status": "pass",
+          "note": "Output lines 41-47 distinguish immediate simple payback of 240 / 60 = 4.00 years, continued pilot-only operation without expansion at 75 / 14 or about 5.36 years, and conditional staging at 1 + (75 - 14 + 190) / 60 or about 5.18 years from initial outlay. The staged first year earns only 14."
+        },
+        {
+          "id": "C08",
+          "status": "pass",
+          "note": "Output lines 49-57 retain proposed rather than achieved expansion conditions: target throughput on comparable case mix, case-error rate at most 0.5%, no unresolved critical safety findings, and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics before separate expansion approval."
+        },
+        {
+          "id": "C09",
+          "status": "pass",
+          "note": "Output lines 7-9 retain management's recommendation to authorize only the 75 pilot tranche because throughput and cash realization remain unvalidated. Neither tranche is approved or completed. The pilot commits 165 less initially, staging adds 25 and delays modeled payback, and immediate deployment has better assumed economics but greater capital exposure before cash realization is proven."
+        }
+      ],
+      "issues": []
+    },
+    "ko": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/capex/ko/attempt.json",
+      "output_sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2",
+      "facts": [
+        {
+          "id": "C01",
+          "status": "pass",
+          "note": "Output lines 3 and 23-25 retain the fictional, pre-investment rather than measured status, four comparable zones, 1,200 eligible cases per zone daily, 300 operating days annually, fixed demand, no sales uplift, and six occupied hours out of eight scheduled hours at 75%."
+        },
+        {
+          "id": "C02",
+          "status": "pass",
+          "note": "Output lines 25-33 retain the two-worker team's 200 manual cases per actual team-hour, unvalidated 300 target at the same staffing and case mix, and the conditional six-to-four team-hour change. Release remains four worker-hours daily per zone, 1,200 annually per zone and 4,800 annually sitewide. Scheduled time, actual team time and worker-hours remain distinct."
+        },
+        {
+          "id": "C03",
+          "status": "pass",
+          "note": "Output lines 37-41 preserve the unvalidated assumption of canceling 600 agency hours per zone annually at KRW 30,000 per invoiced hour, yielding 18 per zone. Only 2,400 sitewide hours are canceled, not all released time. Permanent payroll is unchanged and the remaining time supports redeployment without cash savings."
+        },
+        {
+          "id": "C04",
+          "status": "pass",
+          "note": "Output lines 3, 13-17 and 50-52 retain constant-price million-won units, 240 upfront for four zones, 75 upfront for a one-zone pilot lasting one operating year, reuse of pilot equipment, another 190 for conditional expansion and total staged capital of 265."
+        },
+        {
+          "id": "C05",
+          "status": "pass",
+          "note": "Output lines 43-46 preserve annual gross cash savings of 18 and 72, incremental maintenance, software and energy costs of 4 and 12, and annual net cash savings of 14 and 60 for the pilot and all four zones respectively. The summary correctly uses 14 in year one and 60 after expansion."
+        },
+        {
+          "id": "C06",
+          "status": "pass",
+          "note": "Output lines 51 and 54-61 preserve a one-operating-year pilot, coincident spending and go-live, no ramp, constant savings, uniform cash accrual and expansion immediately after the first operating year. Tax, depreciation, financing, discounting, working capital and salvage all remain excluded from the calculation rather than asserted to be zero real costs."
+        },
+        {
+          "id": "C07",
+          "status": "pass",
+          "note": "Output lines 13-17 and 63 preserve 4.00 years for immediate deployment, about 5.36 years only if the pilot continues without expansion, and about 5.18 years for conditional staging from the first outlay. The staged formula remains 1 + (75 - 14 + 190) / 60 and year one earns only the pilot's 14, not 60."
+        },
+        {
+          "id": "C08",
+          "status": "pass",
+          "note": "Output lines 65-74 explicitly propose all four expansion gates, without claiming their achievement: target throughput at comparable case mix, case-error rate at most 0.5%, no unresolved critical safety findings, and proof of 600 canceled agency hours during the pilot year. Finance and operations retain responsibility for the remaining zones' economics, and expansion still needs separate approval."
+        },
+        {
+          "id": "C09",
+          "status": "pass",
+          "note": "Output lines 9-11 and 19 preserve management's pilot-only 75 authorization recommendation, the unvalidated throughput and agency-spend cancellation rationale, and the fact that neither pilot nor expansion is approved or completed. Initial commitment is 165 lower, staged capital is 25 higher and modeled recovery is slower. Immediate deployment's advantage remains limited to the assumed economics and comes with more capital committed before cash realization is proven."
+        }
+      ],
+      "issues": []
+    }
+  }
+}

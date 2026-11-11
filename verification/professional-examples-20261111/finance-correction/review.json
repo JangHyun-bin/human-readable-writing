@@ -1,0 +1,32 @@
+{
+  "case_id": "finance",
+  "scope": "Integration-owner review of a separately requested native correction; not an independent reader study",
+  "reviewer": "integration_owner",
+  "original_source_unchanged": true,
+  "initial_failure_retained": "examples/professional/finance/review.json",
+  "languages": {
+    "ko": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/finance-correction/finance/ko/attempt.json",
+      "output_sha256": "9192001249740dd6be8fb37533820cef5272bb3787fb4bd1516d875fed194394",
+      "facts": [
+        {"id": "F01", "status": "pass", "note": "Fictional unchanged-scope manufacturer, standalone April–June 2025/2026 and exact KRW-million units remain explicit."},
+        {"id": "F02", "status": "pass", "note": "Net income remains 1,000 and 1,200, supplied rather than reconstructed."},
+        {"id": "F03", "status": "pass", "note": "Depreciation add-backs remain +200/+240 and are not cash receipts."},
+        {"id": "F04", "status": "pass", "note": "Receivable opening/closing balances and -100/-400 adjustments are unchanged."},
+        {"id": "F05", "status": "pass", "note": "Inventory opening/closing balances and -250/-600 adjustments are unchanged."},
+        {"id": "F06", "status": "pass", "note": "Payable opening/closing balances and +50/+160 adjustments are unchanged."},
+        {"id": "F07", "status": "pass", "note": "The corrected assumption paragraph gives zero other adjustments and excluded noncash balance movements as separate assumptions joined by 또한. The failed version's unsupported 가정했기 때문이다 causal explanation is absent."},
+        {"id": "F08", "status": "pass", "note": "Both reconciliation equations and positive operating cash flows of 900/600 remain."},
+        {"id": "F09", "status": "pass", "note": "Net income +200/+20%, OCF -300, working-capital adjustments -300/-840 and all change-bridge terms remain."},
+        {"id": "F10", "status": "pass", "note": "All unavailable information, unknown-not-zero distinction and limits on distress/liquidity/cash-balance conclusions remain."}
+      ],
+      "issues": []
+    }
+  },
+  "limits": [
+    "The first Korean revision failed F07 and is not relabeled as passing.",
+    "This accepted version followed explicit review feedback in a fresh native session.",
+    "This review checks textual source fidelity, not improved readability, financial validity in general, or a general success rate."
+  ]
+}

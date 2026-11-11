@@ -15,6 +15,8 @@ This file lists changes that affect people who install or maintain the skill. No
 - English and Korean static [landing pages](site/README.md), with illustrative edits, installation instructions, and dated runtime coverage. The site includes a shared design catalog and token check. GitHub Pages deployment requires a manual request on `main`.
 - The Korean landing uses locally served SUIT Variable and Paperlogy Bold. The official font files retain their original OFL 1.1 licenses and copyright notices separately from the site's MIT license.
 - The [English landing](https://human-readable-writing.vercel.app/) and [Korean landing](https://human-readable-writing.vercel.app/ko/) are hosted on Vercel. CLI deployment is manual and excludes research records, the installable skill, and repository tooling.
+- Five [professional example packets](examples/professional/README.md) in English and Korean: research interpretation, financial analysis, capital investment, policy evaluation, and architecture decisions. Originals, fact ledgers, sources and rights are separate from unchanged native outputs.
+- A [2026-11-11 execution and source-fidelity record](verification/professional-examples-20261111/README.md): ten initial native calls, nine accepted first revisions, one retained failure, and a separately requested Korean finance correction. Accepted examples and review provenance are indexed without rewriting failed records.
 
 ### Changed
 
@@ -24,6 +26,7 @@ This file lists changes that affect people who install or maintain the skill. No
 - Product descriptions and runtime guidance name Claude Code, Codex, OpenCode, Pi, and oh-my-pi as support targets, separately from their current verification status. OpenCode's partial-support limitations remain explicit.
 - The English and Korean landing pages use shorter example captions and support summaries, and go directly from the example to installation. Writing principles remain linked in the footer. Detailed checks and limitations remain in the linked documentation.
 - Both landing pages use descriptive language, including setup instructions and clipboard error messages. The headings are "A writing skill for your agent." and "글쓰기를 위한 에이전트 스킬". Introductions and search descriptions do not restrict writing to technical documents or Markdown output.
+- README and installed-skill introductions describe professional prose rather than only software-engineering documents. The writing-principles body, Korean guidance, license/notice files and explicit-invocation policy remain unchanged.
 
 ### Removed
 

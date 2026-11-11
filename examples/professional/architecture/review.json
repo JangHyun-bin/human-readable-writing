@@ -1,0 +1,126 @@
+{
+  "case_id": "architecture",
+  "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+  "source_parity": {
+    "status": "pass",
+    "issues": []
+  },
+  "languages": {
+    "en": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/architecture/en/attempt.json",
+      "output_sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f",
+      "facts": [
+        {
+          "id": "A01",
+          "status": "pass",
+          "note": "Retains Stripe attribution, unordered delivery, second-level created precision, and neither order nor uniqueness. E1 may share E2's timestamp second despite earlier generation."
+        },
+        {
+          "id": "A02",
+          "status": "pass",
+          "note": "Separates repeat delivery of one Event from separate duplicate Event objects; distinct E3 does not imply another grant operation."
+        },
+        {
+          "id": "A03",
+          "status": "pass",
+          "note": "Preserves Stripe's data.object.id plus event.type recommendation for separate duplicate Events and explicitly rejects blanket suppression of future updates."
+        },
+        {
+          "id": "A04",
+          "status": "pass",
+          "note": "Requires signature verification against the unmodified raw body; prompt 2xx acknowledges delivery rather than business completion."
+        },
+        {
+          "id": "A05",
+          "status": "pass",
+          "note": "Keeps the proposed fictional design, one account and environment, assumed snapshot version 2026-10-28.preview, existing invoice/order mappings, and one non-revocable local entitlement per invoice. Preserves all identifier origins and the account/invoice/grant_entitlement operation key, distinct from Event ID."
+        },
+        {
+          "id": "A06",
+          "status": "pass",
+          "note": "The ordered list retains E2, repeated E2, late created E1, distinct duplicate paid E3, four deliveries, three Event IDs, two types, and one invoice/order. E2 adds no work; E3 may complete its separate inbox receipt without a second grant."
+        },
+        {
+          "id": "A07",
+          "status": "pass",
+          "note": "Inbox remains the durable work queue without external queue publication. Payload, receipt time, pending/completed states, unique account/event key, pending retries, and retention of inbox and operation records remain explicit."
+        },
+        {
+          "id": "A08",
+          "status": "pass",
+          "note": "Signature verification precedes commit or confirmation of a durable predecessor and then 2xx. Persistence failure receives no success. Repeat E2 neither discards nor completes pending work; a post-receipt-commit, pre-acknowledgment crash leaves it available on redelivery."
+        },
+        {
+          "id": "A09",
+          "status": "pass",
+          "note": "Keeps one ACID database, locks and unique constraints, atomic ledger insertion/entitlement mutation/inbox completion, existing-operation completion without another grant, and no completion-only commit on a transaction crash."
+        },
+        {
+          "id": "A10",
+          "status": "pass",
+          "note": "Retains invoice retrieval, confirmed status=paid, matching existing order_id, pending on retrieval or condition failure, and no reversal by late created E1. One local grant remains conditional on database/retention assumptions and eventual successful receipt, retries, retrieval, paid confirmation, and matching. All three alternative limitations, contention/recovery costs, five exclusions, no real changes, and no global exactly-once claim remain."
+        }
+      ],
+      "issues": []
+    },
+    "ko": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/architecture/ko/attempt.json",
+      "output_sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a",
+      "facts": [
+        {
+          "id": "A01",
+          "status": "pass",
+          "note": "Retains Stripe's lack of generation-order delivery guarantee and the inability of second-level created values to establish order or uniqueness; E1 and E2 may share a timestamp second."
+        },
+        {
+          "id": "A02",
+          "status": "pass",
+          "note": "Keeps same-Event redelivery distinct from separate duplicate Event objects and preserves E3 as a distinct Event without another grant."
+        },
+        {
+          "id": "A03",
+          "status": "pass",
+          "note": "Preserves data.object.id with event.type for separate duplicate identification and the express warning that this does not suppress all later object updates. Attribution remains in the Stripe discussion."
+        },
+        {
+          "id": "A04",
+          "status": "pass",
+          "note": "Keeps unchanged raw-body signature verification and distinguishes successful receipt acknowledgment from completed business processing."
+        },
+        {
+          "id": "A05",
+          "status": "pass",
+          "note": "Retains the fictional proposal rather than a live change, one account/environment, assumed snapshot version 2026-10-28.preview, existing invoice/order mappings, and one non-revocable local entitlement per invoice. Identifier origins and the account/invoice/grant_entitlement operation key remain unchanged."
+        },
+        {
+          "id": "A06",
+          "status": "pass",
+          "note": "Retains the four-delivery E2/E2/E1/E3 sequence, three Event IDs, two types, one invoice/order, earlier generation of E1 with possibly equal-second created values, no new work for repeat E2, and no second grant for distinct E3."
+        },
+        {
+          "id": "A07",
+          "status": "pass",
+          "note": "Keeps the inbox as durable queue without external publication, the payload/receipt-time/pending-or-completed fields and account/event uniqueness, pending retries, and no inbox or operation record deletion within the example."
+        },
+        {
+          "id": "A08",
+          "status": "pass",
+          "note": "Retains verification, durable commit or existing-row confirmation, then prompt 2xx; no success on persistence failure; no new/discarded/completed pending work on repeat E2; and committed work surviving the receipt-commit-to-acknowledgment crash gap."
+        },
+        {
+          "id": "A09",
+          "status": "pass",
+          "note": "Preserves the single ACID database, locks and unique constraints, atomic ledger/grant/inbox-completion transaction, duplicate-operation completion without another grant including E3, and impossibility of completion-only commit after a transaction crash."
+        },
+        {
+          "id": "A10",
+          "status": "pass",
+          "note": "Keeps retrieval, status=paid and existing order_id matching, pending on failure, and late E1 completing without resetting entitlement. The one-local-grant conclusion still requires the stated database/retention assumptions and eventual successful receipt/retries/retrieval/paid confirmation/matching. All alternative limitations, contention/recovery costs, five exclusions, fictional-change boundary, and rejection of global exactly-once remain."
+        }
+      ],
+      "issues": []
+    }
+  }
+}

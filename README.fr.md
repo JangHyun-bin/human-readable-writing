@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>Un skill pour rédiger des textes techniques clairs et précis.</strong><br>
+  <strong>Un skill de rédaction pour votre agent.</strong><br>
   Cible Claude Code, Codex, OpenCode, Pi et oh-my-pi ; le périmètre vérifié varie selon l’outil.
 </p>
 
@@ -21,7 +21,7 @@
 
 ---
 
-Précisez qui a fait quoi, dans quelles conditions, et ce que les éléments disponibles permettent d’affirmer. Utilisez ce skill pour les descriptions de pull requests, les points de situation sur un incident, les notes de recherche et les consignes d’exploitation.
+Ce skill fournit des consignes pour les textes professionnels, notamment les notes de recherche, les analyses financières, les dossiers d’investissement, les notes de politique publique, les décisions d’architecture, les descriptions de pull requests et les points de situation sur un incident. Les consignes relient les acteurs, les conditions, les éléments probants et leurs conséquences pratiques.
 
 ## Les mêmes faits, plus faciles à suivre
 
@@ -139,7 +139,9 @@ Aucun ordre de développement n’est fixé entre les langues des trois guides t
 
 Voir la [politique linguistique](skills/human-readable-writing/references/language-support.md). Le 2026-11-02, avec l’ancienne disposition où la racine du dépôt servait de skill, des vérifications limitées en anglais et en coréen ont réussi avec Codex, Claude Code, Pi et oh-my-pi. OpenCode 2 présente des résultats partiels et des échecs. Les [notes de compatibilité](docs/tool-support.md) précisent les versions, chemins testés et limites ; ces résultats ne valident pas la qualité du français. Pour la nouvelle disposition, consultez le [registre de vérification actuel](docs/verification.md).
 
-Dans l’environnement de test actuel, Claude Code fournit un parcours natif vérifié. L’appel natif avec Codex 0.167.0 a été bloqué par des erreurs de version ou de compte du fournisseur ; il n’est pas présenté comme une réussite dans le registre actuel.
+La vérification de distribution du 2026-11-10 confirme un parcours natif avec Claude Code. L’appel natif avec Codex 0.167.0 a été bloqué par des erreurs de version ou de compte du fournisseur ; il n’est pas présenté comme une réussite.
+
+Les [exemples professionnels en anglais et en coréen](examples/professional/README.md) ont été exécutés le 2026-11-11 avec Claude Code 2.1.322 et `claude-sonnet-5-5`, dans des copies de projet isolées. Leur [registre](verification/professional-examples-20261111/README.md) distingue les premières révisions et une correction après retour de vérification. Ils ne valident ni les textes français ni les autres environnements.
 
 ## Éléments probants et limites
 

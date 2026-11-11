@@ -1,0 +1,109 @@
+{
+  "id": "capex",
+  "genre": {
+    "en": "Capital investment review memorandum",
+    "ko": "설비투자 검토서"
+  },
+  "topic": {
+    "en": "Fictional four-zone warehouse automation proposal before pilot approval",
+    "ko": "파일럿 승인 전 가상 물류센터 4개 구역 자동화 제안"
+  },
+  "audience": {
+    "en": "Operations director and investment committee comparing immediate deployment with a pilot and separately approved expansion",
+    "ko": "전면 도입과 파일럿 후 별도 승인 확장을 비교하는 운영총괄 및 투자심의위원회"
+  },
+  "source_mode": "fictional",
+  "sources": [],
+  "facts": [
+    {
+      "id": "C01",
+      "kind": "scenario_assumption",
+      "en": "All figures are fictional pre-investment assumptions, not measured equipment performance. Four comparable zones each process 1,200 eligible cases daily over 300 operating days annually. Demand is fixed, with no sales uplift. Each zone has eight scheduled hours daily, of which 75%, or six hours, are occupied processing time.",
+      "ko": "모든 수치는 설비 성능 측정값이 아닌 가상의 투자 전 가정이다. 비교 가능한 4개 구역이 각각 하루 1,200건의 자동화 대상 물량을 연간 300일 처리한다. 수요는 고정이며 매출 증가 효과는 없다. 구역별 하루 예정 작업시간은 8시간이며, 그중 75%인 6시간이 실제 처리에 쓰인다.",
+      "source_ids": []
+    },
+    {
+      "id": "C02",
+      "kind": "scenario_assumption",
+      "en": "A two-worker team manually processes 200 cases per occupied team-hour. Automation targets an unvalidated 300 with the same staffing and case mix. At fixed volume, occupied team-hours would fall from six to four daily, releasing four worker-hours per zone daily, or 1,200 annually and 4,800 across four zones. Scheduled hours are not occupied team-hours, and team-hours are not worker-hours.",
+      "ko": "2인 팀의 수작업 처리량은 실제 팀 작업시간당 200건으로 가정한다. 자동화 목표는 같은 인원과 물량 구성에서 시간당 300건이며 아직 검증되지 않았다. 고정 물량에서 실제 팀 작업시간은 하루 6시간에서 4시간으로 줄어 구역당 하루 4인시, 연간 1,200인시, 4개 구역 합계 연간 4,800인시의 절감 작업시간이 생긴다. 예정 작업시간과 실제 팀 작업시간, 팀 작업시간과 인시는 서로 다르다.",
+      "source_ids": []
+    },
+    {
+      "id": "C03",
+      "kind": "scenario_assumption",
+      "en": "Cash realization assumes each zone can cancel 600 agency hours annually at KRW 30,000 per invoiced hour, saving KRW 18 million per zone. Four zones cancel 2,400 paid hours, not all 4,800 released worker-hours. Permanent payroll is unchanged. Other released hours support redeployment without cash savings. Agency-spend cancellation remains unvalidated.",
+      "ko": "실제 현금지출 감소는 구역당 연간 외주 인력 600시간을 청구 시간당 30,000원에 취소할 수 있다는 가정에 따른다. 구역당 감소액은 18백만원이다. 4개 구역에서 취소하는 유급 시간은 2,400시간이며, 절감 작업시간 4,800인시 전체가 아니다. 정규직 급여는 변하지 않는다. 나머지 절감 작업시간은 재배치에 쓰이며 현금절감은 없다. 외주비 취소 가능성은 아직 검증되지 않았다.",
+      "source_ids": []
+    },
+    {
+      "id": "C04",
+      "kind": "scenario_assumption",
+      "en": "All capital and annual cash amounts are in constant KRW million. Immediate four-zone deployment requires 240 upfront. The one-zone pilot lasts one operating year and requires 75 upfront. Conditional expansion reuses pilot equipment but requires another 190, for staged capital of 265.",
+      "ko": "설비투자액과 연간 현금 금액의 단위는 불변가격 기준 백만원이다. 4개 구역 전면 도입은 최초 240이 필요하다. 1개 구역 파일럿은 1운영연도 동안 진행하며 최초 75가 필요하다. 조건부 확장은 파일럿 설비를 재사용하지만 추가 190이 필요하므로 단계적 도입의 총 설비투자액은 265다.",
+      "source_ids": []
+    },
+    {
+      "id": "C05",
+      "kind": "scenario_assumption",
+      "en": "Annual gross cash savings are 18 for the pilot and 72 for four zones. Incremental maintenance, software and energy costs total 4 annually for the pilot and 12 for four zones. Annual net cash savings are therefore 14 and 60 respectively.",
+      "ko": "연간 현금지출 총감소액은 파일럿 18, 4개 구역 72다. 유지보수·소프트웨어·에너지의 연간 추가 비용 합계는 파일럿 4, 4개 구역 12다. 따라서 연간 순현금절감액은 각각 14와 60이다.",
+      "source_ids": []
+    },
+    {
+      "id": "C06",
+      "kind": "scenario_assumption",
+      "en": "Spending and go-live coincide, with no ramp, constant savings and uniform cash accrual. Conditional expansion starts immediately after the pilot's first operating year. Calculations exclude tax, depreciation, financing, discounting, working capital and salvage.",
+      "ko": "지출과 가동 개시 시점은 일치하며, 초기 가동률 상승 기간 없이 절감액이 일정하고 현금절감이 기간에 걸쳐 균등하게 발생한다고 가정한다. 조건부 확장은 파일럿의 첫 운영연도 직후 시작한다. 계산에서 세금·감가상각·금융비용·할인·운전자본·잔존가치는 제외한다.",
+      "source_ids": []
+    },
+    {
+      "id": "C07",
+      "kind": "scenario_assumption",
+      "en": "Under these assumptions, full-deployment simple payback is 240 / 60 = 4.00 years. Pilot-only payback is 75 / 14, about 5.36 years if it continues without expansion. Conditional staged payback from the initial outlay is 1 + (75 - 14 + 190) / 60, about 5.18 years. The first year earns only the pilot's 14, not the full site's 60.",
+      "ko": "이 가정에서 전면 도입의 단순 투자회수기간은 240 / 60 = 4.00년이다. 확장 없이 파일럿만 계속 운영하면 75 / 14로 약 5.36년이다. 최초 지출부터 계산한 조건부 단계적 도입의 회수기간은 1 + (75 - 14 + 190) / 60으로 약 5.18년이다. 첫해 절감액은 전면 도입의 60이 아니라 파일럿의 14뿐이다.",
+      "source_ids": []
+    },
+    {
+      "id": "C08",
+      "kind": "scenario_assumption",
+      "en": "Proposed expansion gates require target throughput on comparable case mix, a case-error rate no higher than 0.5%, no unresolved critical safety findings and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics. Expansion requires separate approval.",
+      "ko": "제안된 확장 조건은 비교 가능한 물량 구성에서 목표 처리량 달성, 건별 오류율 0.5% 이하, 미해결 중대 안전 지적사항 없음, 파일럿 연도 중 외주 인력 600시간 취소 증빙이다. 재무팀과 운영팀은 나머지 구역의 경제성을 입증해야 한다. 확장은 별도 승인이 필요하다.",
+      "source_ids": []
+    },
+    {
+      "id": "C09",
+      "kind": "author_judgment",
+      "en": "Management recommends authorizing only the 75 pilot tranche because throughput and spend cancellation remain unvalidated. Neither pilot nor expansion is approved or completed. The pilot commits 165 less initially than full deployment, but staged capital costs 25 more and modeled payback is slower. Immediate deployment is better on assumed economics, while committing more capital before cash realization is proven.",
+      "ko": "처리량과 외주비 취소 가능성이 검증되지 않았으므로 경영진은 75의 파일럿 예산만 승인하도록 권고한다. 파일럿과 확장은 모두 승인되거나 완료되지 않았다. 파일럿은 전면 도입보다 최초 투입액이 165 적지만, 단계적 도입의 총 설비투자액은 25 많고 모형상 회수도 더 늦다. 가정한 경제성은 전면 도입이 우세하지만, 현금절감 실현을 입증하기 전에 더 많은 자본을 투입하게 된다.",
+      "source_ids": []
+    }
+  ],
+  "review_checks": [
+    {
+      "id": "C-R01",
+      "en": "Both drafts label the scenario fictional and retain unvalidated targets, fixed demand, no sales uplift and unchanged permanent payroll. No pilot approval or measured result is added.",
+      "ko": "두 초안 모두 가상 사례임을 표시하고 미검증 목표·고정 수요·매출 증가 없음·정규직 급여 불변을 유지한다. 파일럿 승인이나 측정 성과를 추가하지 않는다."
+    },
+    {
+      "id": "C-R02",
+      "en": "The 1,200 daily cases reconcile with six manual or four target team-hours. Two workers make the difference four worker-hours daily. Annual released hours reconcile to 1,200 per zone and 4,800 sitewide, while canceled agency hours total only 2,400 sitewide.",
+      "ko": "하루 1,200건이 수작업 팀 작업시간 6시간 및 목표 4시간과 일치한다. 2인 팀의 차이는 하루 4인시다. 연간 절감 작업시간은 구역당 1,200인시·전체 4,800인시이며 취소 외주시간은 전체 2,400시간뿐이다."
+    },
+    {
+      "id": "C-R03",
+      "en": "Cash savings depend on canceling 600 invoiced agency hours per zone at KRW 30,000 each. Net annual savings remain 18 - 4 = 14 for the pilot and 72 - 12 = 60 for four zones. Redeployment is not monetized.",
+      "ko": "현금절감은 구역당 청구 외주시간 600시간을 시간당 30,000원에 취소한다는 조건에 따른다. 연간 순절감액은 파일럿 18 - 4 = 14, 전체 72 - 12 = 60을 유지한다. 재배치를 현금으로 환산하지 않는다."
+    },
+    {
+      "id": "C-R04",
+      "en": "Capital is 240 full, 75 pilot and 190 later expansion, totaling 265 staged. Payback preserves the first year's 14, the later expansion outlay, the 4.00 versus approximately 5.18-year comparison, and all timing assumptions and exclusions. Pilot-only 5.36 years is conditional on continued operation without expansion.",
+      "ko": "설비투자액은 전면 240·파일럿 75·후속 확장 190이며 단계적 도입 합계는 265다. 회수 계산은 첫해 절감액 14·후속 확장 지출·4.00년 대 약 5.18년 비교·모든 시점 가정과 제외사항을 유지한다. 파일럿만의 5.36년은 확장 없이 운영을 계속하는 조건이다."
+    },
+    {
+      "id": "C-R05",
+      "en": "Only the pilot tranche is recommended. Its lower initial commitment, staged-capital premium and slower payback remain explicit. All four expansion gates, finance and operations ownership, remaining-zone economics and separate approval remain intact.",
+      "ko": "권고 대상은 파일럿 예산뿐이다. 낮은 최초 투입액·단계적 도입 추가 투자액·늦어진 회수를 명시한다. 네 가지 확장 조건·재무팀과 운영팀의 책임·나머지 구역 경제성·별도 승인을 모두 유지한다."
+    }
+  ]
+}

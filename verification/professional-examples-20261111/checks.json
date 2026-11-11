@@ -1,0 +1,58 @@
+{
+  "scope": "Executed repository integrity checks, separate from semantic source-fidelity reviews",
+  "capture_parser_tests": {
+    "command": "python3 -m unittest discover -s verification -p test_run_professional_examples.py",
+    "tests": 3,
+    "status": "pass"
+  },
+  "corpus_assembly": {
+    "command": "python3 verification/professional-examples-20261111/assemble.py",
+    "status": "pass",
+    "results": "summary.json"
+  },
+  "negative_control": {
+    "mutation": "Swap research and finance case identities in an in-memory catalog while retaining the same number of cases",
+    "status": "rejected",
+    "observed_error": "Attempt identity mismatch: expected ('finance', 'en'), observed ('research', 'en')",
+    "repository_files_changed": false
+  },
+  "local_documentation_links": {
+    "checked_targets": 305,
+    "markdown_documents": 57,
+    "broken_targets": 0,
+    "timing": "After final index assembly, before adding this check report link"
+  },
+  "package_integrity": {
+    "status": "pass",
+    "checked_files": 7,
+    "expected_hashes": "summary.json#/package_sha256",
+    "comparison": "Current package file hashes match every recorded native attempt"
+  },
+  "preservation": {
+    "baseline_commit": "a0d872b26fe32942e4e5be6080735352b771bddd",
+    "status": "pass",
+    "unchanged": [
+      "MANIFEST.md writing-principles body",
+      "Korean guidance and language-support reference",
+      "Installed LICENSE and NOTICE.md",
+      "Explicit-invocation policy flags",
+      "research/",
+      "ANALYSIS.md",
+      "VALIDATION.md",
+      "docs/verification.md",
+      "site/",
+      ".github/workflows/landing-pages.yml",
+      "Root LICENSE and NOTICE.md"
+    ]
+  },
+  "public_evidence_scan": {
+    "status": "no matches",
+    "checked_patterns": [
+      "Absolute user-home paths and email addresses",
+      "Credential-like token prefixes and access/refresh-token assignments",
+      "AI-authorship signature phrases",
+      "Internal parent/handoff and authoring-stage narration in published case notes"
+    ],
+    "limit": "Targeted pattern checks, not a general security audit"
+  }
+}

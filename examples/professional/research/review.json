@@ -1,0 +1,106 @@
+{
+  "case_id": "research",
+  "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+  "source_parity": {
+    "status": "pass",
+    "issues": []
+  },
+  "languages": {
+    "en": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/research-run/research/en/attempt.json",
+      "output_sha256": "8893a89984aecb10550f7b706dd50570e976aec7fc0c63b05e030d0da5c7f9aa",
+      "facts": [
+        {
+          "id": "R01",
+          "status": "pass",
+          "note": "Output paragraph under Study design retains Bloom, Han and Liang's linked 2024 study, 1,612 graduate employees, engineering/marketing/finance roles, Airfare/IT divisions, Shanghai, one employer, and exclusions of interns and probationary new employees."
+        },
+        {
+          "id": "R02",
+          "status": "pass",
+          "note": "Assignment paragraph and bullets retain random odd/even birthday-date assignment, 792 odd-birthday employees with optional Wednesday/Friday home days and three office days, and 820 even-birthday controls with five office days. Eligibility is not recast as mandatory actual use."
+        },
+        {
+          "id": "R03",
+          "status": "pass",
+          "note": "The enrolment paragraph retains 518 initial volunteers starting in the week of 9 August 2021 and the remaining 1,094 non-volunteers starting in the week of 13 September. These remain enrolment cohorts, distinct from assignment groups."
+        },
+        {
+          "id": "R04",
+          "status": "pass",
+          "note": "Take-up paragraph retains approximately 55% for eligible volunteers and 40% for eligible non-volunteers, Wednesday/Friday opportunities, public-holiday/personal-holiday/excused-absence exclusions, neither all employees nor all weekdays as denominator, and typical use of about one day weekly."
+        },
+        {
+          "id": "R05",
+          "status": "pass",
+          "note": "Timing paragraph preserves the nominal six months, effective 21 January 2022 end caused by a COVID case and company-wide home-working access, separate caption follow-up through 23 January, and explicit rejection of two years of randomized policy exposure."
+        },
+        {
+          "id": "R06",
+          "status": "pass",
+          "note": "Quit rates paragraph retains assigned-group control 7.20% versus treatment 4.80%, P = 0.043 for the difference, and experiment-period rather than annual rates."
+        },
+        {
+          "id": "R07",
+          "status": "pass",
+          "note": "The absolute difference remains 2.40 percentage points and the relative reduction about 33% against control. The separate interpretation paragraph identifies assignment to the optional policy, explicitly not actual home working twice every week, as the estimated effect."
+        },
+        {
+          "id": "R08",
+          "status": "pass",
+          "note": "Final paragraph retains 'My judgment', consideration of a comparable optional-policy trial for graduate office roles conditional on checking work/commuting similarity, and the distinction from research findings. It promises neither the same reduction elsewhere nor fully remote equivalence and adds no approval or recommendation."
+        }
+      ],
+      "issues": []
+    },
+    "ko": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/research-run/research/ko/attempt.json",
+      "output_sha256": "8379b9dbc401c60b2454a8e589a21a8994ff7dbcdb948b372d9e06ebd2155412",
+      "facts": [
+        {
+          "id": "R01",
+          "status": "pass",
+          "note": "연구 대상과 배정 방식 retains the linked Bloom/Han/Liang 2024 study, 1,612 graduate employees, Shanghai Trip.com as a single employer, Airfare/IT divisions, engineering/marketing/finance roles, and exclusion of interns and probationary new employees."
+        },
+        {
+          "id": "R02",
+          "status": "pass",
+          "note": "The assignment paragraph and bullets retain birthday day-of-month odd/even randomization, odd-birthday treatment n = 792, even-birthday control n = 820, optional Wednesday/Friday home working, three versus five office days, and explicit non-mandatory use."
+        },
+        {
+          "id": "R03",
+          "status": "pass",
+          "note": "The enrolment sentence retains 518 initial volunteers in the week containing 9 August 2021 and the remaining 1,094 non-volunteers in the week containing 13 September. It does not relabel these cohorts as treatment/control counts."
+        },
+        {
+          "id": "R04",
+          "status": "pass",
+          "note": "실제 재택근무 이용률과 해석의 범위 retains assigned eligibility, approximate volunteer/non-volunteer take-up of 55%/40%, Wednesday/Friday opportunity denominator, all three exclusions, rejection of whole-workforce/all-weekday denominators, and typical use of about one day weekly."
+        },
+        {
+          "id": "R05",
+          "status": "pass",
+          "note": "The timing paragraph distinguishes the nominal six-month experiment's effective 21 January 2022 end following a COVID case and home-working access for everyone from caption follow-up through 23 January. It explicitly rejects two years of randomized policy exposure."
+        },
+        {
+          "id": "R06",
+          "status": "pass",
+          "note": "퇴사율 결과 retains assigned-group experiment-period rates of control 7.20% and treatment 4.80%, P = 0.043 for the difference, and the explicit statement that these are not annual rates."
+        },
+        {
+          "id": "R07",
+          "status": "pass",
+          "note": "The quit-rate difference remains 2.40퍼센트포인트 and approximately 33% relative to control. The interpretation states an effect of assignment to the optional policy and explicitly denies estimating actual home working twice every week."
+        },
+        {
+          "id": "R08",
+          "status": "pass",
+          "note": "Final paragraph explicitly attributes the judgment to 작성자, retains the work/commuting-similarity condition and consideration of a comparable optional-policy trial for graduate office roles, and rejects equal effects elsewhere and fully remote equivalence as research findings. No trial approval or stronger recommendation is added."
+        }
+      ],
+      "issues": []
+    }
+  }
+}

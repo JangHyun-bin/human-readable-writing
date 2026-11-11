@@ -1,8 +1,8 @@
-# Human-readable technical writing
+# Human-readable writing
 
 ## Purpose and scope
 
-Help readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to technical explanations, pull request descriptions, incident updates, research notes, and instructions.
+Help readers understand what happened, why a claim is warranted, and what decision or action follows. Apply this guidance to professional explanations and decision-oriented documents, including research notes, financial analyses, investment reviews, policy memos, design records, pull request descriptions, and incident updates.
 
 Keep the requested language, register, spelling variety, and document format. Write idiomatically in that language. Preserve code, identifiers, paths, commands, API names, quotations, and established technical terms. Follow the user's glossary; explain an unfamiliar term when the intended reader needs it.
 

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>让技术文字清晰、准确的写作技能。</strong><br>
+  <strong>面向智能体的专业写作技能。</strong><br>
   以 Claude Code、Codex、OpenCode、Pi 和 oh-my-pi 为支持目标，各工具的验证范围不同。
 </p>
 
@@ -21,7 +21,7 @@
 
 ---
 
-写清谁做了什么、在什么条件下发生，以及证据支持什么结论。这个技能适用于拉取请求说明、事故进展通报、研究笔记和操作指引。
+这个技能适用于专业说明和决策文档，包括研究解读、财务分析、投资评审、政策备忘录、设计决策记录、拉取请求说明和事故进展通报。写作指导关注主体、条件、依据与实际影响之间的关系。
 
 ## 事实不变，更容易读懂
 
@@ -139,7 +139,9 @@ ln -s "$skill" "$HOME/.claude/skills/human-readable-writing"
 
 详见[语言政策](skills/human-readable-writing/references/language-support.md)。2026-11-02，在以仓库根目录作为技能的旧版目录结构下，Codex、Claude Code、Pi 和 oh-my-pi 通过了有限的英语及韩语运行检查。OpenCode 2 仅得到部分验证，仍有失败记录。[兼容性说明](docs/tool-support.md)列出了版本、测试路径和限制；这些结果并不验证中文输出质量。新目录结构的检查情况请参阅[当前验证记录](docs/verification.md)。
 
-在当前测试环境中，Claude Code 的原生首次使用流程已得到验证。Codex 0.167.0 的原生调用被提供商的版本或账号错误阻止，当前验证记录不会将其标为通过。
+2026-11-10的分发结构验证确认了Claude Code的原生首次使用流程。Codex 0.167.0的原生调用被提供商的版本或账号错误阻止，未被标为通过。
+
+[英语及韩语的专业写作示例](examples/professional/README.md)于2026-11-11在隔离的项目副本中使用Claude Code 2.1.322和`claude-sonnet-5-5`运行。[记录](verification/professional-examples-20261111/README.md)区分了首次修改与收到核查反馈后的单独修正，并未验证中文输出或其他运行环境。
 
 ## 证据与局限
 

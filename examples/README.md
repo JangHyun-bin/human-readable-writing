@@ -9,6 +9,10 @@ Each example shows the request, the source text, the revision, and the facts the
 
 Neither kind shows that readers understand the revision better. The [README](../README.md) explains how to install and call the skill.
 
+## Professional genres (recorded outputs)
+
+[Research interpretation, financial analysis, capital investment, policy evaluation, and architecture decisions](professional/README.md) each have English and Korean originals, real native revisions, fact ledgers, source/rights notes, and reviews. The Korean finance example includes a recorded feedback correction; its first failed revision is retained.
+
 ## PR description (illustration)
 
 **Request**

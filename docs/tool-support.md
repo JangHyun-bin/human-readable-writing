@@ -2,13 +2,19 @@
 
 Keep the complete installable directory at `skills/human-readable-writing`. Required guidance and agent metadata ship together; research logs and repository documentation do not need to be installed. [Installation, updates, removal, and migration](install.md) describe the current layout.
 
-## Current distribution checks
+## Distribution checks, 2026-11-10
 
-The current native first-use path is verified with Claude Code 2.1.321 in project and user scopes. Pi 1.4.0 and oh-my-pi 18.18.6 also loaded the package in bounded project checks. Native Codex 0.167.0 was blocked by provider version/account errors with the test account. These are different outcomes, not four current passes. The verification record also notes a formatting failure and unsupported additions in some outputs.
+The 2026-11-10 package snapshot's native first-use path was verified with Claude Code 2.1.321 in project and user scopes. Pi 1.4.0 and oh-my-pi 18.18.6 also loaded that package in bounded project checks. Native Codex 0.167.0 was blocked by provider version/account errors with the test account. These are different outcomes, not four passes. The verification record also notes a formatting failure and unsupported additions in some outputs.
 
-See the [current verification record](verification.md) for tests of this layout, installer lifecycle, exact runtime versions, and installation scopes. A previous successful load does not validate a later layout, runtime, model, or installation scope. Neither runtime compatibility nor a source-fidelity check establishes improved human comprehension or general writing quality.
+The [distribution verification record](verification.md) preserves tests of that layout, installer lifecycle, exact runtime versions, and installation scopes. A previous successful load does not validate a later package snapshot, runtime, model, or scope. Neither runtime compatibility nor a source-fidelity check establishes improved human comprehension or general writing quality.
 
 Claude Code, Codex, OpenCode, Pi, and oh-my-pi are all target runtimes. The latest test results describe observed coverage, not the project's full support goal. CLI instructions cover Codex, Claude Code, and Pi; oh-my-pi also has a manual path. OpenCode support remains partial. The installer supporting an agent is not evidence that this skill works reliably in that agent, and completing OpenCode compatibility remains part of the support goal.
+
+## Professional examples, 2026-11-11
+
+Five English/Korean source pairs were explicitly invoked in isolated project copies using Claude Code 2.1.322 and `claude-sonnet-5-5`. All ten initial calls read `MANIFEST.md`; all five Korean calls also read the Korean guidance. Separate agent reviews accepted nine initial revisions and rejected one Korean finance revision for an unsupported causal explanation. A separate feedback-correction call used the same source, package and model; the integration owner reviewed and accepted that corrected output. The first failure remains in the record.
+
+The [dated record](../verification/professional-examples-20261111/README.md) fixes the package hashes, requests, outputs and review links. Introduction metadata now covers professional prose; the writing-principles body and explicit-invocation flags were not changed. This project-copy exercise does not repeat installer lifecycle, user-scope, uninvoked-control, or other-runtime checks.
 
 ## Historical observations, 2026-11-02
 
@@ -68,6 +74,8 @@ These results do not justify advertising a generally reliable CLI mention or API
 
 ## 한국어 요약
 
-현재 설치물은 `skills/human-readable-writing`이며, [설치 안내](install.md)의 새 경로를 사용합니다. 이번 구조·설치 범위의 검증은 [현재 검증 기록](verification.md)에서 확인합니다. 이전 프로젝트 로컬 검증을 새 구조나 사용자 전역 설치의 검증으로 간주하지 않습니다.
+현재 설치물은 `skills/human-readable-writing`이며, [설치 안내](install.md)의 경로를 사용합니다. 2026-11-10의 구조·설치 범위 검사는 [배포 구조 검증 기록](verification.md)에 있습니다. 이전 프로젝트 로컬 검증을 새 패키지나 사용자 전역 설치의 검증으로 간주하지 않습니다.
 
 과거 Codex·Claude Code·Pi·oh-my-pi 검증은 제한된 사례의 호출·참조 로딩과 원문 보존 관찰입니다. 사람의 이해도나 일반적인 글쓰기 품질 향상을 입증하지 않습니다. OpenCode의 사본 선택·참조 로딩·조건 변경 문제는 이번 문서·배포 정리에서 해결했다고 주장하지 않습니다.
+
+2026-11-11 전문 실무 예시는 격리된 프로젝트 사본에서 Claude Code 2.1.322와 `claude-sonnet-5-5`로 실행했습니다. 한·영 최초 수정본 열 개 중 아홉 개는 별도 에이전트의 원문 보존 검토를 통과했습니다. 한국어 재무 수정본 한 개는 원문에 없는 인과관계 때문에 거절했고, 별도 피드백 요청으로 재수정한 뒤 통합 담당자가 검토했습니다. [날짜별 기록](../verification/professional-examples-20261111/README.md)에 첫 실패도 보존했습니다. 다른 도구·사용자 전역 설치·명시적 호출 없는 비교 요청은 이 실행에서 다시 검사하지 않았습니다.

@@ -1,0 +1,106 @@
+{
+  "case_id": "policy",
+  "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+  "source_parity": {
+    "status": "pass",
+    "issues": []
+  },
+  "languages": {
+    "en": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/policy/en/attempt.json",
+      "output_sha256": "2efa5820352c7e314ae4c71f0434927c0949e77bbf337ac8ea3005dfd73a46d7",
+      "facts": [
+        {
+          "id": "P01",
+          "status": "pass",
+          "note": "The introduction retains MTA, December 17, 2025, the board presentation title and page 13. It explicitly attributes all three table results to that presentation rather than to the memo author's measurements."
+        },
+        {
+          "id": "P02",
+          "status": "pass",
+          "note": "The first table row retains 11% fewer CBD vehicle entries and 71,000 fewer per day, explicitly distinguishes entries from unique cars and vehicle-miles, and says rounded figures cannot establish an exact baseline count."
+        },
+        {
+          "id": "P03",
+          "status": "pass",
+          "note": "The entry row identifies observation and comparison periods and baseline construction as unspecified on the slide. It supplies no inferred dates or baseline."
+        },
+        {
+          "id": "P04",
+          "status": "pass",
+          "note": "The speed row retains the 4.3% increase in CBD car speeds, rejects an equal-percentage travel-time decrease, and retains every unknown: absolute speeds, weighting, hours covered, measurement provider, baseline, and observation and comparison periods."
+        },
+        {
+          "id": "P05",
+          "status": "pass",
+          "note": "The PM2.5 row retains MTA's attributed 22% first-six-month claim and Cornell University, 2025 credit. It preserves the concentration distinction and the exclusions of a 22% reduction in emissions, all pollutants or individual exposure."
+        },
+        {
+          "id": "P06",
+          "status": "pass",
+          "note": "The table preserves unspecified exact study dates, concentration statistic, percentage denominator and detailed geography. The following paragraph retains the Congestion Relief Zone heading context and rejects a common full-year comparison inferred from the title. The table explicitly rejects a citywide generalization."
+        },
+        {
+          "id": "P07",
+          "status": "pass",
+          "note": "The author's first-person judgment still treats the implementing agency's summary as a record of attributed claims, not independent causal proof of policy effects."
+        },
+        {
+          "id": "P08",
+          "status": "pass",
+          "note": "The author's evidence request retains traffic series, calculation methods, missing periods and baselines, and the underlying air-quality study's geography, statistic, counterfactual method and uncertainty. The closing sentence excludes MTA authorship and repeal or expansion advice. It does not claim that independent review has occurred."
+        }
+      ],
+      "issues": []
+    },
+    "ko": {
+      "status": "pass",
+      "attempt": "verification/professional-examples-20261111/remaining-run/policy/ko/attempt.json",
+      "output_sha256": "909188e7c67127b505a8e94261d32cf678ad38556b8a7e00c228fa5da051e9a9",
+      "facts": [
+        {
+          "id": "P01",
+          "status": "pass",
+          "note": "The first metric paragraph retains MTA, the December 17, 2025 board presentation, 2025 in Data and page 13. All three metric paragraphs explicitly identify MTA as the reporting agency, not the memo author as the measurer."
+        },
+        {
+          "id": "P02",
+          "status": "pass",
+          "note": "The vehicle-entry paragraph retains the CBD, 11% and 하루 71,000건 reductions. It explicitly distinguishes 진입 건수 from 고유 차량 수 and 차량 주행거리 and rejects an exact baseline count inferred from rounded values."
+        },
+        {
+          "id": "P03",
+          "status": "pass",
+          "note": "The entry paragraph preserves the unspecified observation period, comparison period and baseline construction without supplying a date range or baseline."
+        },
+        {
+          "id": "P04",
+          "status": "pass",
+          "note": "The speed paragraph retains the 4.3% CBD car-speed increase and explicitly rejects a 4.3% travel-time reduction. It preserves all unknowns: absolute speed, weighting, included hours, measurement provider, baseline, observation period and comparison period."
+        },
+        {
+          "id": "P05",
+          "status": "pass",
+          "note": "The PM2.5 paragraph retains MTA's report, Cornell University, 2025 attribution, 첫 6개월간 and 22%. It retains the concentration limitation and does not assert a corresponding reduction in emissions, all pollutants or individual exposure."
+        },
+        {
+          "id": "P06",
+          "status": "pass",
+          "note": "The PM2.5 paragraph retains the Congestion Relief Zone heading context and unspecified exact dates, concentration statistic, percentage denominator and detailed geographic coverage. It explicitly rejects generalization to all New York City and an inferred shared annual comparison."
+        },
+        {
+          "id": "P07",
+          "status": "pass",
+          "note": "The first-person judgment preserves the distinction between an implementing agency's attributed claims and independent causal proof of the policy's effects."
+        },
+        {
+          "id": "P08",
+          "status": "pass",
+          "note": "The request retains traffic time series and calculation methods, missing observation and comparison periods and baselines, and the underlying air-quality study's geography, statistic, counterfactual method and uncertainty. The closing sentences preserve author ownership and explicitly exclude MTA advice and repeal or expansion advice. No completed review is asserted."
+        }
+      ],
+      "issues": []
+    }
+  }
+}

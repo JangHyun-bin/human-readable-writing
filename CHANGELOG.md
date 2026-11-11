@@ -17,6 +17,7 @@ This file lists changes that affect people who install or maintain the skill. No
 - The [English landing](https://human-readable-writing.vercel.app/) and [Korean landing](https://human-readable-writing.vercel.app/ko/) are hosted on Vercel. CLI deployment is manual and excludes research records, the installable skill, and repository tooling.
 - Five [professional example packets](examples/professional/README.md) in English and Korean: research interpretation, financial analysis, capital investment, policy evaluation, and architecture decisions. Originals, fact ledgers, sources and rights are separate from unchanged native outputs.
 - A [2026-11-11 execution and source-fidelity record](verification/professional-examples-20261111/README.md): ten initial native calls, nine accepted first revisions, one retained failure, and a separately requested Korean finance correction. Accepted examples and review provenance are indexed without rewriting failed records.
+- The English and Korean landing pages display all five professional genres directly, with accessible genre selection, complete-text comparison, and local source/execution records. A dependency-free publisher and deployment freshness check keep the pages aligned with the accepted revisions. Pull-request CI runs capture-parser, example and design checks without deployment or model calls.
 
 ### Changed
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Human-readable writing is a writing skill for coding agents. The site includes a before-and-after example, installation and explicit invocation instructions, and agent support details.">
+  <meta name="description" content="A writing skill for coding agents, with before-and-after examples in research, finance, capital investment, policy, and architecture. Includes installation, explicit invocation, and support details.">
   <title>Human-readable writing · A writing skill for your agent.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,36 +27,374 @@
       <section class="intro wrap" aria-labelledby="page-title">
         <h1 id="page-title">A writing skill for your agent.</h1>
         <div class="intro-copy">
-          <p>Your coding agent uses this skill to revise PR descriptions, incident updates, research notes, and operational guides.</p>
+          <p>A writing skill your coding agent uses to revise research memos, financial analyses, and other professional prose.</p>
           <a class="install-link" href="#install">Installation <span aria-hidden="true">↓</span></a>
         </div>
       </section>
   </div>
       <section class="comparison wrap" id="example" aria-labelledby="example-title">
         <div class="comparison-heading">
-          <h2 id="example-title">A PR description, before and after.</h2>
-          <p class="example-notice">Illustrative edit.</p>
+          <h2 id="example-title">Before and after, across five fields.</h2>
+          <p class="example-notice">Matching excerpts from original drafts and recorded revisions.</p>
         </div>
+        <!-- professional-examples:start -->
+        <div data-example-browser>
+        <nav class="example-tabs" data-example-tabs aria-label="Writing genre">
+        <a class="example-tab" href="#example-research" id="example-tab-research">Research</a>
+        <a class="example-tab" href="#example-finance" id="example-tab-finance">Finance</a>
+        <a class="example-tab" href="#example-capex" id="example-tab-capex">Capital investment</a>
+        <a class="example-tab" href="#example-policy" id="example-tab-policy">Policy</a>
+        <a class="example-tab" href="#example-architecture" id="example-tab-architecture">Architecture</a>
+        </nav>
+        <article class="example-panel" id="example-research" data-example-panel aria-labelledby="example-topic-research">
+        <h3 class="example-topic" id="example-topic-research">Trip.com&#x27;s hybrid-work trial</h3>
+        <p class="example-notice">Recorded skill revision.</p>
         <figure class="edit">
-          <div class="diptych">
-            <section class="document document-before" aria-labelledby="before-title">
-              <h3 id="before-title">Before</h3>
-              <blockquote>
-                <p>To prevent previous-user data from reappearing when a profile response arrives after logout, this change gates screen updates on a match between the <code>sessionVersion</code> captured when the request starts and its current value when the response arrives, with the value incremented on logout. In-flight requests are not cancelled, and the behavior has been checked only in a browser.</p>
-              </blockquote>
-            </section>
-            <section class="document document-after" aria-labelledby="after-title">
-              <h3 id="after-title">After</h3>
-              <blockquote>
-                <p>A profile response that arrives after logout can put the previous user's data back on screen. This change prevents that by incrementing <code>sessionVersion</code> on logout. When a response arrives, the app updates the screen <mark>only if</mark> the version saved when the request started still matches the current version.</p>
-                <p>In-flight requests are not cancelled. The behavior has been checked only in a browser.</p>
-              </blockquote>
-            </section>
-          </div>
-          <figcaption class="edit-notes">
-            <a class="text-link" href="https://github.com/JangHyun-bin/human-readable-writing/blob/main/examples/README.md">More examples <span aria-hidden="true">↗</span></a>
-          </figcaption>
+        <details class="example-detail">
+        <summary><span class="when-closed">Full source and revision</span><span class="when-open">Excerpt view</span></summary>
+        <div class="diptych">
+        <section class="document document-before" aria-labelledby="example-research-full-before-label">
+        <h4 class="document-label" id="example-research-full-before-label">Original</h4>
+        <div class="document-copy">
+        <h5>Trip.com retention evidence for hybrid-policy review</h5>
+        <h6>Evidence for the HR director</h6>
+        <p>Bloom, Han and Liang&#x27;s <a href="https://www.nature.com/articles/s41586-024-07500-2">2024 Nature study</a> covered 1,612 university-graduate engineering, marketing and finance employees in Trip.com&#x27;s Airfare and IT divisions in Shanghai. Interns and new employees on probation were excluded. At this single employer, random assignment by odd or even birthday dates put 792 odd-birthday employees in a group allowed to work from home on Wednesday and Friday, with three office days, and 820 even-birthday employees in a five-office-day control group. The two home days were optional. The 518 initial volunteers started in the week of 9 August 2021, and the remaining 1,094 non-volunteers in the week of 13 September.</p>
+        <p>During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control. The nominal six-month experiment effectively ended on 21 January 2022 when a COVID case led the company to allow everyone to work from home, although the attrition figure caption reports follow-up through 23 January. This was not two years of randomized policy exposure.</p>
+        <p>Among employees assigned eligibility, actual take-up was about 55% for volunteers and 40% for non-volunteers across Wednesday and Friday opportunities, excluding public holidays, personal holidays and excused absences. These percentages use neither all employees nor all weekdays as their denominator. Typical use was about one day weekly. The quit-rate comparison therefore estimates assignment to the optional policy, not the effect of actually working from home twice every week.</p>
+        <h6>Implication for our review</h6>
+        <p>My judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking how similar our work and commuting conditions are. That is a policy judgment, not a research finding that another employer will achieve the same quit-rate reduction or that fully remote work is equivalent.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-research-full-after-label">
+        <h4 class="document-label" id="example-research-full-after-label">Revision</h4>
+        <div class="document-copy">
+        <h5>Trip.com retention evidence for hybrid-policy review</h5>
+        <h6>Evidence for the HR director</h6>
+        <p><strong>Study design.</strong> Bloom, Han and Liang&#x27;s <a href="https://www.nature.com/articles/s41586-024-07500-2">2024 Nature study</a> covered 1,612 university-graduate engineering, marketing and finance employees in Trip.com&#x27;s Airfare and IT divisions in Shanghai. Interns and new employees on probation were excluded. The study took place at a single employer.</p>
+        <p>Assignment was random, based on whether an employee&#x27;s birthday date was odd or even:</p>
+        <ul><li>792 odd-birthday employees were allowed to work from home on Wednesday and Friday, leaving three office days. The two home days were optional.</li><li>820 even-birthday employees formed a control group with five office days.</li></ul>
+        <p>The 518 initial volunteers started in the week of 9 August 2021. The remaining 1,094 non-volunteers started in the week of 13 September.</p>
+        <p><strong>Quit rates.</strong> During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control.</p>
+        <p>The experiment was nominally six months long. It effectively ended on 21 January 2022, when a COVID case led the company to allow everyone to work from home. The attrition figure caption reports follow-up through 23 January. The study did not involve two years of randomized policy exposure.</p>
+        <p><strong>Take-up.</strong> Among employees assigned eligibility, actual take-up was about 55% for volunteers and 40% for non-volunteers. These figures count Wednesday and Friday opportunities and exclude public holidays, personal holidays and excused absences. The denominator is therefore neither all employees nor all weekdays. Typical use was about one day weekly.</p>
+        <p>The quit-rate comparison therefore estimates the effect of being assigned to the optional policy. It does not estimate the effect of actually working from home twice every week.</p>
+        <h6>Implication for our review</h6>
+        <p>My judgment is that this evidence warrants considering a comparable optional-policy trial for graduate office roles, subject to checking how similar our work and commuting conditions are. This is a policy judgment. The research does not show that another employer will achieve the same quit-rate reduction, or that fully remote work is equivalent.</p>
+        </div>
+        </section>
+        </div>
+        </details>
+        <div class="diptych example-preview">
+        <section class="document document-before" aria-labelledby="example-research-preview-before-label">
+        <h4 class="document-label" id="example-research-preview-before-label">Original</h4>
+        <div class="document-copy">
+        <p>During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control. The nominal six-month experiment effectively ended on 21 January 2022 when a COVID case led the company to allow everyone to work from home, although the attrition figure caption reports follow-up through 23 January. This was not two years of randomized policy exposure.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-research-preview-after-label">
+        <h4 class="document-label" id="example-research-preview-after-label">Revision</h4>
+        <div class="document-copy">
+        <p><strong>Quit rates.</strong> During the experiment, quit rates by assigned group were 7.20% in control and 4.80% in treatment, with P = 0.043 for the difference. These are experiment-period rates, not annual rates. The 2.40-percentage-point difference is about a 33% reduction relative to control.</p>
+        <p>The experiment was nominally six months long. It effectively ended on 21 January 2022, when a COVID case led the company to allow everyone to work from home. The attrition figure caption reports follow-up through 23 January. The study did not involve two years of randomized policy exposure.</p>
+        </div>
+        </section>
+        </div>
+        <figcaption class="edit-notes">
+        <details class="example-provenance">
+        <summary>Sources and run record</summary>
+        <p><code>claude-sonnet-5-5</code> · 2.1.322 (Claude Code). Source-fidelity review by a separate agent.</p>
+        <p>Nicholas Bloom, Ruobing Han and James Liang, <a href="https://www.nature.com/articles/s41586-024-07500-2">Hybrid working from home improves retention without damaging performance</a>, Nature 630, 920–925 (2024), DOI 10.1038/s41586-024-07500-2. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Findings selected and paraphrased into project-authored English and Korean memos, with a policy judgment added. The Korean memo is not an authorized translation.</p>
+        <p><a href="assets/examples/research/record.json" download>Source packet and run record (JSON)</a> · <a href="assets/examples/LICENSE">Project MIT license</a> · <a href="assets/examples/NOTICE.md">Notice</a></p>
+        </details>
+        </figcaption>
         </figure>
+        </article>
+        <article class="example-panel" id="example-finance" data-example-panel aria-labelledby="example-topic-finance">
+        <h3 class="example-topic" id="example-topic-finance">Profit rises while operating cash flow falls</h3>
+        <p class="example-notice">Fictional case · Recorded skill revision.</p>
+        <figure class="edit">
+        <details class="example-detail">
+        <summary><span class="when-closed">Full source and revision</span><span class="when-open">Excerpt view</span></summary>
+        <div class="diptych">
+        <section class="document document-before" aria-labelledby="example-finance-full-before-label">
+        <h4 class="document-label" id="example-finance-full-before-label">Original</h4>
+        <div class="document-copy">
+        <h5>Quarterly profit and operating cash flow review</h5>
+        <p>This fictional manufacturer reports on an unchanged scope for the standalone April 1 through June 30 quarters of 2025 and 2026, not year-to-date periods. All amounts are exact KRW million. Net income increased by 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow fell by 300 but remained positive in both quarters. Net income is a supplied bottom-line input rather than a reconstructed income statement.</p>
+        <h6>Reconciliation</h6>
+        <p>For the balance rows, the table gives each quarter&#x27;s opening and closing balances followed by the cash flow adjustment.</p>
+        <table><thead><tr><th scope="col">Item</th><th scope="col">Q2 2025</th><th scope="col">Q2 2026</th></tr></thead><tbody><tr><td>Net income</td><td>1,000</td><td>1,200</td></tr><tr><td>Depreciation expense included in net income, added back</td><td>+200</td><td>+240</td></tr><tr><td>Trade receivables</td><td>800 to 900, adjustment -100</td><td>900 to 1,300, adjustment -400</td></tr><tr><td>Inventory</td><td>1,000 to 1,250, adjustment -250</td><td>1,200 to 1,800, adjustment -600</td></tr><tr><td>Trade payables</td><td>500 to 550, adjustment +50</td><td>600 to 760, adjustment +160</td></tr><tr><td>Other adjustments</td><td>0</td><td>0</td></tr><tr><td>Operating cash flow</td><td>900</td><td>600</td></tr></tbody></table>
+        <p>Other adjustments total zero by design, and no acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect these balance changes. Depreciation is a noncash add-back, not a cash receipt. Accordingly, the reconciliations are <code>1,000 + 200 - 100 - 250 + 50 = 900</code> and <code>1,200 + 240 - 400 - 600 + 160 = 600</code>.</p>
+        <p>The combined working-capital adjustment moved from -300 to -840. Its additional -540 outweighed the +200 net income change and +40 depreciation adjustment change. The operating cash flow change bridge is <code>+200 + 40 - 300 - 350 + 110 = -300</code>, with the last three components reflecting the larger receivable increase, larger inventory increase, and larger payable increase, respectively.</p>
+        <h6>Interpretation limits</h6>
+        <p>Cash balances, investing and financing flows, collection terms, receivable aging, inventory plans, and profit-growth causes are not supplied. Unknown is not zero. The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a cash-balance change or support a complete liquidity assessment.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-finance-full-after-label">
+        <h4 class="document-label" id="example-finance-full-after-label">Revision</h4>
+        <div class="document-copy">
+        <h5>Quarterly profit and operating cash flow review</h5>
+        <p>This review covers a fictional manufacturer on an unchanged scope. It compares the standalone quarters of April 1 through June 30, 2025 and 2026, not year-to-date periods. All amounts are exact KRW million.</p>
+        <p>Net income rose by 200, which is 20% of the Q2 2025 base of 1,000. Operating cash flow fell by 300 but stayed positive in both quarters. Net income is a supplied bottom-line input, not a reconstructed income statement.</p>
+        <h6>Reconciliation</h6>
+        <p>For the balance rows, the table gives each quarter&#x27;s opening and closing balances, followed by the cash flow adjustment.</p>
+        <table><thead><tr><th scope="col">Item</th><th scope="col">Q2 2025</th><th scope="col">Q2 2026</th></tr></thead><tbody><tr><td>Net income</td><td>1,000</td><td>1,200</td></tr><tr><td>Depreciation expense included in net income, added back</td><td>+200</td><td>+240</td></tr><tr><td>Trade receivables</td><td>800 to 900, adjustment -100</td><td>900 to 1,300, adjustment -400</td></tr><tr><td>Inventory</td><td>1,000 to 1,250, adjustment -250</td><td>1,200 to 1,800, adjustment -600</td></tr><tr><td>Trade payables</td><td>500 to 550, adjustment +50</td><td>600 to 760, adjustment +160</td></tr><tr><td>Other adjustments</td><td>0</td><td>0</td></tr><tr><td>Operating cash flow</td><td>900</td><td>600</td></tr></tbody></table>
+        <p>Other adjustments total zero by design. No acquisitions, currency translation, write-offs, reclassifications, or other noncash movements affect these balance changes. Depreciation is a noncash add-back, not a cash receipt. The reconciliations are therefore:</p>
+        <ul><li>Q2 2025: <code>1,000 + 200 - 100 - 250 + 50 = 900</code></li><li>Q2 2026: <code>1,200 + 240 - 400 - 600 + 160 = 600</code></li></ul>
+        <p>The combined working-capital adjustment moved from -300 to -840. That additional -540 outweighed the +200 change in net income and the +40 change in the depreciation add-back.</p>
+        <p>The bridge for the change in operating cash flow is <code>+200 + 40 - 300 - 350 + 110 = -300</code>. The first two terms are the changes in net income and the depreciation add-back. The last three reflect the larger receivable increase (-300), the larger inventory increase (-350), and the larger payable increase (+110), respectively.</p>
+        <h6>Interpretation limits</h6>
+        <p>The source does not supply cash balances, investing and financing flows, collection terms, receivable aging, inventory plans, or the causes of profit growth. Unknown is not zero.</p>
+        <p>The reconciliation does not establish overdue customers, unsold inventory, or financial distress. Operating cash flow alone cannot establish a change in the cash balance or support a complete liquidity assessment.</p>
+        </div>
+        </section>
+        </div>
+        </details>
+        <div class="diptych example-preview">
+        <section class="document document-before" aria-labelledby="example-finance-preview-before-label">
+        <h4 class="document-label" id="example-finance-preview-before-label">Original</h4>
+        <div class="document-copy">
+        <p>This fictional manufacturer reports on an unchanged scope for the standalone April 1 through June 30 quarters of 2025 and 2026, not year-to-date periods. All amounts are exact KRW million. Net income increased by 200, or 20% of the Q2 2025 base of 1,000, while operating cash flow fell by 300 but remained positive in both quarters. Net income is a supplied bottom-line input rather than a reconstructed income statement.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-finance-preview-after-label">
+        <h4 class="document-label" id="example-finance-preview-after-label">Revision</h4>
+        <div class="document-copy">
+        <p>This review covers a fictional manufacturer on an unchanged scope. It compares the standalone quarters of April 1 through June 30, 2025 and 2026, not year-to-date periods. All amounts are exact KRW million.</p>
+        <p>Net income rose by 200, which is 20% of the Q2 2025 base of 1,000. Operating cash flow fell by 300 but stayed positive in both quarters. Net income is a supplied bottom-line input, not a reconstructed income statement.</p>
+        </div>
+        </section>
+        </div>
+        <figcaption class="edit-notes">
+        <details class="example-provenance">
+        <summary>Sources and run record</summary>
+        <p><code>claude-sonnet-5-5</code> · 2.1.322 (Claude Code). Source-fidelity review by a separate agent.</p>
+        <p>The scenario, figures and drafts are project-authored fiction. The <a href="https://www.sec.gov/investor/pubs/begfinstmtguide.htm">SEC financial-statement guide</a> is a conceptual reference, not the source of the figures. No SEC graphics or tables are reproduced.</p>
+        <p><a href="assets/examples/finance/record.json" download>Source packet and run record (JSON)</a> · <a href="assets/examples/LICENSE">Project MIT license</a> · <a href="assets/examples/NOTICE.md">Notice</a></p>
+        </details>
+        </figcaption>
+        </figure>
+        </article>
+        <article class="example-panel" id="example-capex" data-example-panel aria-labelledby="example-topic-capex">
+        <h3 class="example-topic" id="example-topic-capex">Warehouse automation before pilot approval</h3>
+        <p class="example-notice">Fictional case · Recorded skill revision.</p>
+        <figure class="edit">
+        <details class="example-detail">
+        <summary><span class="when-closed">Full source and revision</span><span class="when-open">Excerpt view</span></summary>
+        <div class="diptych">
+        <section class="document document-before" aria-labelledby="example-capex-full-before-label">
+        <h4 class="document-label" id="example-capex-full-before-label">Original</h4>
+        <div class="document-copy">
+        <h5>Warehouse automation investment review</h5>
+        <p>Fictional scenario. Prepared for the operations director and investment committee. All figures are pre-investment assumptions, not measured equipment performance. Money is in constant KRW million unless stated otherwise.</p>
+        <p>Four comparable zones each process 1,200 eligible cases daily for 300 operating days annually, with fixed demand and no sales uplift. Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets an unvalidated 300 with the same staffing and case mix. Processing would take four rather than six team-hours, releasing four worker-hours daily per zone, or 1,200 annually and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.</p>
+        <p>Cash realization assumes cancellation of 600 agency hours per zone annually at KRW 30,000 per invoiced hour. This yields 18 per zone and cancels only 2,400 sitewide hours, not all released hours. Permanent payroll stays unchanged. Other released hours support redeployment without cash savings. Spend cancellation remains unvalidated. Annual gross cash savings are 18 for the pilot and 72 sitewide. Incremental maintenance, software and energy cost 4 and 12 respectively, leaving net savings of 14 and 60.</p>
+        <p>Immediate four-zone deployment costs 240 upfront. A one-zone pilot lasts one operating year and costs 75 upfront. Conditional expansion reuses pilot equipment but costs another 190, totaling 265. Spending and go-live coincide. The model assumes no ramp, constant savings and uniform cash accrual, with expansion immediately after year one. It excludes tax, depreciation, financing, discounting, working capital and salvage. Simple payback is 240 / 60 = 4.00 years for full deployment. Continuing the pilot without expansion gives 75 / 14, about 5.36 years. Conditional staged payback from initial outlay is 1 + (75 - 14 + 190) / 60, about 5.18 years. Year one earns only 14.</p>
+        <p>Expansion would require target throughput on comparable case mix, a case-error rate at most 0.5%, no unresolved critical safety findings and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones&#x27; economics before separate expansion approval. Management recommends authorizing only the 75 pilot tranche because throughput and spend cancellation remain unvalidated. Neither tranche is approved or completed. The pilot commits 165 less initially, but staging adds 25 in capital and delays modeled payback. Immediate deployment has better assumed economics but commits more capital before cash realization is proven.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-capex-full-after-label">
+        <h4 class="document-label" id="example-capex-full-after-label">Revision</h4>
+        <div class="document-copy">
+        <h5>Warehouse automation investment review</h5>
+        <p><em>Fictional scenario. Prepared for the operations director and investment committee. All figures are pre-investment assumptions, not measured equipment performance. Money is in constant KRW million unless stated otherwise.</em></p>
+        <h6>Decision</h6>
+        <p>Management recommends authorizing only the 75 pilot tranche, because throughput and spend cancellation remain unvalidated. Neither tranche is approved or completed.</p>
+        <p>The pilot commits 165 less initially than immediate deployment. Staging, however, adds 25 in capital and delays modeled payback. Immediate deployment has better assumed economics but commits more capital before cash realization is proven.</p>
+        <h6>Operating assumptions</h6>
+        <p>Four comparable zones each process 1,200 eligible cases daily for 300 operating days annually. Demand is fixed and the model assumes no sales uplift.</p>
+        <p>Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets 300 cases per occupied team-hour, which is unvalidated, with the same staffing and case mix.</p>
+        <p>At 300 cases per team-hour, processing would take four team-hours instead of six. This releases four worker-hours daily per zone, or 1,200 annually per zone and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.</p>
+        <h6>Cash savings</h6>
+        <p>Cash realization assumes the cancellation of 600 agency hours per zone annually at KRW 30,000 per invoiced hour. This yields 18 per zone. Sitewide, it cancels only 2,400 hours, not all released hours.</p>
+        <p>Permanent payroll stays unchanged. The other released hours support redeployment without cash savings. Spend cancellation remains unvalidated.</p>
+        <table><thead><tr><th scope="col">Annual figure</th><th scope="col">Pilot (1 zone)</th><th scope="col">Sitewide (4 zones)</th></tr></thead><tbody><tr><td>Gross cash savings</td><td>18</td><td>72</td></tr><tr><td>Incremental maintenance, software and energy cost</td><td>4</td><td>12</td></tr><tr><td>Net savings</td><td>14</td><td>60</td></tr></tbody></table>
+        <h6>Capital and payback</h6>
+        <p>Immediate four-zone deployment costs 240 upfront. A one-zone pilot lasts one operating year and costs 75 upfront. Conditional expansion reuses pilot equipment but costs another 190, for a total of 265.</p>
+        <p>The model makes these assumptions:</p>
+        <ul><li>Spending and go-live coincide.</li><li>There is no ramp, savings are constant, and cash accrues uniformly.</li><li>Expansion occurs immediately after year one.</li><li>The model excludes tax, depreciation, financing, discounting, working capital and salvage.</li></ul>
+        <table><thead><tr><th scope="col">Option</th><th scope="col">Upfront capital</th><th scope="col">Total capital</th><th scope="col">Simple payback</th></tr></thead><tbody><tr><td>Immediate four-zone deployment</td><td>240</td><td>240</td><td>240 / 60 = 4.00 years</td></tr><tr><td>Pilot only, no expansion</td><td>75</td><td>75</td><td>75 / 14, about 5.36 years</td></tr><tr><td>Pilot, then expansion</td><td>75</td><td>265</td><td>1 + (75 − 14 + 190) / 60, about 5.18 years from initial outlay</td></tr></tbody></table>
+        <p>Year one earns only 14 in the staged case.</p>
+        <h6>Conditions for expansion</h6>
+        <p>Expansion would require all of the following:</p>
+        <ul><li>target throughput on a comparable case mix;</li><li>a case-error rate of 0.5% or less;</li><li>no unresolved critical safety findings;</li><li>documented cancellation of 600 agency hours during the pilot year.</li></ul>
+        <p>Finance and operations must also substantiate the economics of the remaining zones before a separate expansion approval.</p>
+        </div>
+        </section>
+        </div>
+        </details>
+        <div class="diptych example-preview">
+        <section class="document document-before" aria-labelledby="example-capex-preview-before-label">
+        <h4 class="document-label" id="example-capex-preview-before-label">Original</h4>
+        <div class="document-copy">
+        <p>Four comparable zones each process 1,200 eligible cases daily for 300 operating days annually, with fixed demand and no sales uplift. Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets an unvalidated 300 with the same staffing and case mix. Processing would take four rather than six team-hours, releasing four worker-hours daily per zone, or 1,200 annually and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-capex-preview-after-label">
+        <h4 class="document-label" id="example-capex-preview-after-label">Revision</h4>
+        <div class="document-copy">
+        <p>Four comparable zones each process 1,200 eligible cases daily for 300 operating days annually. Demand is fixed and the model assumes no sales uplift.</p>
+        <p>Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets 300 cases per occupied team-hour, which is unvalidated, with the same staffing and case mix.</p>
+        <p>At 300 cases per team-hour, processing would take four team-hours instead of six. This releases four worker-hours daily per zone, or 1,200 annually per zone and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.</p>
+        </div>
+        </section>
+        </div>
+        <figcaption class="edit-notes">
+        <details class="example-provenance">
+        <summary>Sources and run record</summary>
+        <p><code>claude-sonnet-5-5</code> · 2.1.322 (Claude Code). Source-fidelity review by a separate agent.</p>
+        <p>The scenario, figures and drafts are project-authored fiction. They are pre-investment assumptions, not measured equipment performance. No third-party material is reproduced.</p>
+        <p><a href="assets/examples/capex/record.json" download>Source packet and run record (JSON)</a> · <a href="assets/examples/LICENSE">Project MIT license</a> · <a href="assets/examples/NOTICE.md">Notice</a></p>
+        </details>
+        </figcaption>
+        </figure>
+        </article>
+        <article class="example-panel" id="example-policy" data-example-panel aria-labelledby="example-topic-policy">
+        <h3 class="example-topic" id="example-topic-policy">Congestion-pricing figures and missing evidence</h3>
+        <p class="example-notice">Recorded skill revision.</p>
+        <figure class="edit">
+        <details class="example-detail">
+        <summary><span class="when-closed">Full source and revision</span><span class="when-open">Excerpt view</span></summary>
+        <div class="diptych">
+        <section class="document document-before" aria-labelledby="example-policy-full-before-label">
+        <h4 class="document-label" id="example-policy-full-before-label">Original</h4>
+        <div class="document-copy">
+        <h5>Evidence request on New York congestion pricing</h5>
+        <p>To the transport-policy reviewer</p>
+        <h6>Reported results and missing definitions</h6>
+        <p>Page 13 of MTA&#x27;s December 17, 2025 board presentation, <em>2025 in Data</em>, reports 11% fewer vehicle entries into the central business district, or CBD, and 71,000 fewer per day. These are entry counts, not unique cars or vehicle-miles, and the rounded figures do not establish an exact baseline count. Observation and comparison periods and baseline construction are unspecified on the slide.</p>
+        <p>MTA also reports car speeds within the CBD up 4.3%, which does not mean travel time fell 4.3%. Absolute speeds, weighting, hours covered, measurement provider, baseline, and observation and comparison periods are unspecified.</p>
+        <p>MTA reports PM2.5 down 22% in the first six months, crediting Cornell University, 2025. The slide places this claim under a Congestion Relief Zone heading without specifying exact study dates, the concentration statistic, the percentage denominator, or detailed geographic coverage. The concentration claim does not establish a 22% reduction in emissions, all pollutants, or individual exposure, and cannot be generalized citywide. The presentation title does not establish a common full-year comparison for these metrics.</p>
+        <h6>Evidence requested</h6>
+        <p>I treat the implementing agency&#x27;s summary as a record of attributed claims, not independent causal proof of the policy&#x27;s effects. For independent review, I request the traffic series and calculation methods, the missing periods and baselines, and the underlying air-quality study&#x27;s geography, statistic, counterfactual method, and uncertainty. This is my request for evidence, not MTA&#x27;s recommendation or a recommendation to repeal or expand congestion pricing.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-policy-full-after-label">
+        <h4 class="document-label" id="example-policy-full-after-label">Revision</h4>
+        <div class="document-copy">
+        <h5>Evidence request on New York congestion pricing</h5>
+        <p>To the transport-policy reviewer</p>
+        <h6>Reported results and missing definitions</h6>
+        <p>Page 13 of MTA&#x27;s December 17, 2025 board presentation, <em>2025 in Data</em>, reports three results. The tables below set out each claim, what it does not establish, and what the slide leaves unspecified.</p>
+        <table><thead><tr><th scope="col">Reported result</th><th scope="col">What it does not establish</th><th scope="col">Unspecified on the slide</th></tr></thead><tbody><tr><td>11% fewer vehicle entries into the central business district (CBD), and 71,000 fewer per day</td><td>These are entry counts, not unique cars or vehicle-miles. The rounded figures do not establish an exact baseline count.</td><td>Observation and comparison periods; baseline construction</td></tr><tr><td>Car speeds within the CBD up 4.3%</td><td>A 4.3% speed increase does not mean travel time fell 4.3%.</td><td>Absolute speeds; weighting; hours covered; measurement provider; baseline; observation and comparison periods</td></tr><tr><td>PM2.5 down 22% in the first six months, crediting Cornell University, 2025</td><td>The concentration claim does not establish a 22% reduction in emissions, all pollutants, or individual exposure. It cannot be generalized citywide.</td><td>Exact study dates; the concentration statistic; the percentage denominator; detailed geographic coverage</td></tr></tbody></table>
+        <p>MTA places the PM2.5 claim under a Congestion Relief Zone heading. The presentation title, <em>2025 in Data</em>, does not establish a common full-year comparison for these metrics.</p>
+        <h6>Evidence requested</h6>
+        <p>I treat the implementing agency&#x27;s summary as a record of attributed claims, not independent causal proof of the policy&#x27;s effects. For independent review, I request:</p>
+        <ul><li>the traffic series and calculation methods;</li><li>the missing periods and baselines;</li><li>the underlying air-quality study&#x27;s geography, statistic, counterfactual method, and uncertainty.</li></ul>
+        <p>This is my request for evidence, not MTA&#x27;s recommendation or a recommendation to repeal or expand congestion pricing.</p>
+        </div>
+        </section>
+        </div>
+        </details>
+        <div class="diptych example-preview">
+        <section class="document document-before" aria-labelledby="example-policy-preview-before-label">
+        <h4 class="document-label" id="example-policy-preview-before-label">Original</h4>
+        <div class="document-copy">
+        <p>Page 13 of MTA&#x27;s December 17, 2025 board presentation, <em>2025 in Data</em>, reports 11% fewer vehicle entries into the central business district, or CBD, and 71,000 fewer per day. These are entry counts, not unique cars or vehicle-miles, and the rounded figures do not establish an exact baseline count. Observation and comparison periods and baseline construction are unspecified on the slide.</p>
+        <p>MTA also reports car speeds within the CBD up 4.3%, which does not mean travel time fell 4.3%. Absolute speeds, weighting, hours covered, measurement provider, baseline, and observation and comparison periods are unspecified.</p>
+        <p>MTA reports PM2.5 down 22% in the first six months, crediting Cornell University, 2025. The slide places this claim under a Congestion Relief Zone heading without specifying exact study dates, the concentration statistic, the percentage denominator, or detailed geographic coverage. The concentration claim does not establish a 22% reduction in emissions, all pollutants, or individual exposure, and cannot be generalized citywide. The presentation title does not establish a common full-year comparison for these metrics.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-policy-preview-after-label">
+        <h4 class="document-label" id="example-policy-preview-after-label">Revision</h4>
+        <div class="document-copy">
+        <p>Page 13 of MTA&#x27;s December 17, 2025 board presentation, <em>2025 in Data</em>, reports three results. The tables below set out each claim, what it does not establish, and what the slide leaves unspecified.</p>
+        <table><thead><tr><th scope="col">Reported result</th><th scope="col">What it does not establish</th><th scope="col">Unspecified on the slide</th></tr></thead><tbody><tr><td>11% fewer vehicle entries into the central business district (CBD), and 71,000 fewer per day</td><td>These are entry counts, not unique cars or vehicle-miles. The rounded figures do not establish an exact baseline count.</td><td>Observation and comparison periods; baseline construction</td></tr><tr><td>Car speeds within the CBD up 4.3%</td><td>A 4.3% speed increase does not mean travel time fell 4.3%.</td><td>Absolute speeds; weighting; hours covered; measurement provider; baseline; observation and comparison periods</td></tr><tr><td>PM2.5 down 22% in the first six months, crediting Cornell University, 2025</td><td>The concentration claim does not establish a 22% reduction in emissions, all pollutants, or individual exposure. It cannot be generalized citywide.</td><td>Exact study dates; the concentration statistic; the percentage denominator; detailed geographic coverage</td></tr></tbody></table>
+        <p>MTA places the PM2.5 claim under a Congestion Relief Zone heading. The presentation title, <em>2025 in Data</em>, does not establish a common full-year comparison for these metrics.</p>
+        </div>
+        </section>
+        </div>
+        <figcaption class="edit-notes">
+        <details class="example-provenance">
+        <summary>Sources and run record</summary>
+        <p><code>claude-sonnet-5-5</code> · 2.1.322 (Claude Code). Source-fidelity review by a separate agent.</p>
+        <p><a href="https://www.mta.info/document/194491">MTA, 2025 in Data</a>, December 17, 2025, p. 13. The original memo paraphrases attributed facts, not slides or graphics. MTA reserves rights. Its <a href="https://www.mta.info/terms-and-conditions">terms</a> and <a href="https://www.mta.info/copyright-notice">copyright notice</a> do not grant this project a general reproduction license.</p>
+        <p><a href="assets/examples/policy/record.json" download>Source packet and run record (JSON)</a> · <a href="assets/examples/LICENSE">Project MIT license</a> · <a href="assets/examples/NOTICE.md">Notice</a></p>
+        </details>
+        </figcaption>
+        </figure>
+        </article>
+        <article class="example-panel" id="example-architecture" data-example-panel aria-labelledby="example-topic-architecture">
+        <h3 class="example-topic" id="example-topic-architecture">Duplicate webhooks and entitlement grants</h3>
+        <p class="example-notice">Fictional case · Recorded skill revision.</p>
+        <figure class="edit">
+        <details class="example-detail">
+        <summary><span class="when-closed">Full source and revision</span><span class="when-open">Excerpt view</span></summary>
+        <div class="diptych">
+        <section class="document document-before" aria-labelledby="example-architecture-full-before-label">
+        <h4 class="document-label" id="example-architecture-full-before-label">Original</h4>
+        <div class="document-copy">
+        <h5>ADR 01. Durable invoice-event receipt and local entitlement grants</h5>
+        <h6>Context</h6>
+        <p>This proposed ADR is a fictional application design, not a Stripe, API, or production change. It assumes one account, one environment, snapshot <code>invoice.created</code> and <code>invoice.paid</code> events at version <code>2026-10-28.preview</code>, existing invoice-to-order mappings, and one non-revocable local entitlement per invoice.</p>
+        <p>Stripe documents <a href="https://docs.stripe.com/webhooks#event-ordering">unordered delivery</a> and <a href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate events</a>. Snapshot <code>created</code> values have second-level precision and establish neither order nor uniqueness. Repeated delivery of one Event and separate duplicate Event objects differ. Stripe recommends <code>data.object.id</code> with <code>event.type</code> for the latter, not blanket suppression of future object updates.</p>
+        <p>The fictional arrival trace is <code>invoice.paid</code> E2, repeated E2, late <code>invoice.created</code> E1, and distinct duplicate <code>invoice.paid</code> E3. These four deliveries contain three Event IDs and two types for one invoice and order. E1 was generated before E2, possibly within the same timestamp second.</p>
+        <h6>Decision</h6>
+        <p>Use a durable inbox as the work queue, without external queue publication. Store payload, receipt time, and <code>pending</code> or <code>completed</code> state under a unique <code>(account_id, event_id)</code> key. <code>account_id</code> is configured account context, not an assumed payload field. <code>event_id</code>, <code>event_type</code>, and <code>invoice_id</code> come from <code>Event.id</code>, <code>Event.type</code>, and <code>data.object.id</code>. The business-operation key is <code>(account_id, invoice_id, operation_kind=grant_entitlement)</code>, not the Event ID.</p>
+        <p>Following Stripe&#x27;s <a href="https://docs.stripe.com/webhooks#create-a-handler">handler guidance</a>, verify the signature against the unmodified raw body. Commit the inbox row or confirm its durable predecessor before promptly returning <code>2xx</code>. Persistence failure receives no success response. Receipt acknowledges delivery, not business completion. Repeated E2 adds no work, including when its existing row is still pending. It neither discards that row nor marks it completed. A crash after receipt commit but before acknowledgment leaves the committed work available on redelivery.</p>
+        <p>One ACID database holds inbox, operation ledger, and entitlement, with locks and unique constraints for concurrent workers. Paid processing retrieves the invoice and requires confirmed <code>status=paid</code> and its matching existing <code>order_id</code>. Retrieval failure or an unmet condition leaves work pending. For a new operation, ledger insertion, entitlement mutation, and inbox completion commit atomically. An existing operation permits completion without another grant, including for E3. A transaction crash cannot commit only completion. Created processing completes its receipt without resetting entitlement, so late E1 cannot undo a grant.</p>
+        <h6>Alternatives</h6>
+        <p>Event-ID-only deduplication misses E3. Acknowledgment before persistence risks losing work. Timestamp sorting cannot establish order. None replaces business-operation uniqueness.</p>
+        <h6>Consequences and limits</h6>
+        <p>Database contention and pending-work recovery are costs. Pending rows remain retryable, and inbox and operation records are not pruned within this example. Under these database and retention assumptions, eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching produce one local grant for this trace, not global exactly-once execution. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-architecture-full-after-label">
+        <h4 class="document-label" id="example-architecture-full-after-label">Revision</h4>
+        <div class="document-copy">
+        <h5>ADR 01. Durable invoice-event receipt and local entitlement grants</h5>
+        <h6>Context</h6>
+        <p>This proposed ADR describes a fictional application design. It is not a Stripe change, an API change, or a production change. It assumes one account, one environment, snapshot <code>invoice.created</code> and <code>invoice.paid</code> events at version <code>2026-10-28.preview</code>, existing invoice-to-order mappings, and one non-revocable local entitlement per invoice.</p>
+        <p>Stripe documents <a href="https://docs.stripe.com/webhooks#event-ordering">unordered delivery</a> and <a href="https://docs.stripe.com/webhooks#handle-duplicate-events">duplicate events</a>. Snapshot <code>created</code> values have second-level precision, so they establish neither order nor uniqueness. Two cases must be kept apart: repeated delivery of one Event, and separate duplicate Event objects. For the second case, Stripe recommends using <code>data.object.id</code> together with <code>event.type</code>. It does not recommend blanket suppression of future object updates.</p>
+        <p>The fictional arrival trace has four deliveries for one invoice and order, in this order:</p>
+        <ol><li><code>invoice.paid</code> E2</li><li>A repeat of E2</li><li>A late <code>invoice.created</code> E1</li><li>A distinct duplicate <code>invoice.paid</code> E3</li></ol>
+        <p>The four deliveries contain three Event IDs and two event types. E1 was generated before E2, possibly within the same timestamp second.</p>
+        <h6>Decision</h6>
+        <p><strong>Inbox.</strong> Use a durable inbox as the work queue, without external queue publication. Store the payload, the receipt time, and a <code>pending</code> or <code>completed</code> state under a unique <code>(account_id, event_id)</code> key.</p>
+        <ul><li><code>account_id</code> is configured account context, not an assumed payload field.</li><li><code>event_id</code>, <code>event_type</code>, and <code>invoice_id</code> come from <code>Event.id</code>, <code>Event.type</code>, and <code>data.object.id</code>.</li><li>The business-operation key is <code>(account_id, invoice_id, operation_kind=grant_entitlement)</code>, not the Event ID.</li></ul>
+        <p><strong>Receipt.</strong> Following Stripe&#x27;s <a href="https://docs.stripe.com/webhooks#create-a-handler">handler guidance</a>, verify the signature against the unmodified raw body. Then commit the inbox row, or confirm that a durable earlier row exists, before promptly returning <code>2xx</code>. If persistence fails, the handler does not return a success response. Receipt acknowledges delivery, not business completion.</p>
+        <ul><li>A repeated E2 adds no work, including when its existing row is still pending. The repeat neither discards that row nor marks it completed.</li><li>If a crash occurs after the receipt commit but before the acknowledgment, the committed work remains available when the event is redelivered.</li></ul>
+        <p><strong>Processing.</strong> One ACID database holds the inbox, the operation ledger, and the entitlement. Locks and unique constraints handle concurrent workers.</p>
+        <ul><li>Paid processing retrieves the invoice. It requires a confirmed <code>status=paid</code> and a matching existing <code>order_id</code>. If retrieval fails or either condition is unmet, the work stays pending.</li><li>For a new operation, the ledger insertion, the entitlement mutation, and the inbox completion commit atomically.</li><li>If the operation already exists, the worker may complete the inbox row without another grant. This includes E3.</li><li>A transaction crash cannot commit only the completion.</li><li>Created processing completes its receipt without resetting the entitlement, so a late E1 cannot undo a grant.</li></ul>
+        <h6>Alternatives</h6>
+        <table><thead><tr><th scope="col">Alternative</th><th scope="col">Limit</th></tr></thead><tbody><tr><td>Event-ID-only deduplication</td><td>Misses E3.</td></tr><tr><td>Acknowledgment before persistence</td><td>Risks losing work.</td></tr><tr><td>Timestamp sorting</td><td>Cannot establish order.</td></tr></tbody></table>
+        <p>None of these replaces business-operation uniqueness.</p>
+        <h6>Consequences and limits</h6>
+        <p>Database contention and pending-work recovery are costs. Pending rows remain retryable. Inbox and operation records are not pruned within this example.</p>
+        <p>Under these database and retention assumptions, the following together produce one local grant for this trace: eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching. This is not global exactly-once execution.</p>
+        <p>Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded.</p>
+        </div>
+        </section>
+        </div>
+        </details>
+        <div class="diptych example-preview">
+        <section class="document document-before" aria-labelledby="example-architecture-preview-before-label">
+        <h4 class="document-label" id="example-architecture-preview-before-label">Original</h4>
+        <div class="document-copy">
+        <p>The fictional arrival trace is <code>invoice.paid</code> E2, repeated E2, late <code>invoice.created</code> E1, and distinct duplicate <code>invoice.paid</code> E3. These four deliveries contain three Event IDs and two types for one invoice and order. E1 was generated before E2, possibly within the same timestamp second.</p>
+        </div>
+        </section>
+        <section class="document document-after" aria-labelledby="example-architecture-preview-after-label">
+        <h4 class="document-label" id="example-architecture-preview-after-label">Revision</h4>
+        <div class="document-copy">
+        <p>The fictional arrival trace has four deliveries for one invoice and order, in this order:</p>
+        <ol><li><code>invoice.paid</code> E2</li><li>A repeat of E2</li><li>A late <code>invoice.created</code> E1</li><li>A distinct duplicate <code>invoice.paid</code> E3</li></ol>
+        <p>The four deliveries contain three Event IDs and two event types. E1 was generated before E2, possibly within the same timestamp second.</p>
+        </div>
+        </section>
+        </div>
+        <figcaption class="edit-notes">
+        <details class="example-provenance">
+        <summary>Sources and run record</summary>
+        <p><code>claude-sonnet-5-5</code> · 2.1.322 (Claude Code). Source-fidelity review by a separate agent.</p>
+        <p>The fictional ADR paraphrases facts from Stripe's <a href="https://docs.stripe.com/webhooks">webhook</a>, <a href="https://docs.stripe.com/api/events/object">Event</a>, <a href="https://docs.stripe.com/api/events/types">event-type</a> and <a href="https://docs.stripe.com/api/invoices/object">Invoice</a> documentation. Stripe documentation redistribution permission is unverified. No vendor code, figures or tables are reproduced.</p>
+        <p><a href="assets/examples/architecture/record.json" download>Source packet and run record (JSON)</a> · <a href="assets/examples/LICENSE">Project MIT license</a> · <a href="assets/examples/NOTICE.md">Notice</a></p>
+        </details>
+        </figcaption>
+        </figure>
+        </article>
+        </div>
+        <!-- professional-examples:end -->
       </section>
       <div class="install-surface">
         <section class="installation wrap" id="install" aria-labelledby="install-title">

@@ -20,6 +20,7 @@ Issues are public. Remove credentials, personal data, and confidential text firs
 - `docs/` holds the English and Korean installation guides, tool support, and verification. `examples/` holds the English and Korean examples.
 - `examples/professional/` holds fact-ledger-based cases and source/rights notes. Its [catalog](examples/professional/catalog.json) selects the exact recorded revision for each language; the dated [assembly script](verification/professional-examples-20261111/assemble.py) checks source/request/output hashes and review coverage before generating the indexes.
 - `site/` holds the English and Korean static landing pages and their shared design catalog. [Preview, design checks, and manual deployment](site/README.md) describe how to maintain them without changing the installed skill.
+- `site/build-examples.py` publishes the reviewed cases into both landing pages and the design catalog, with public provenance downloads. After changing a displayed example, generation and its `--check` must pass; editing the repository example index alone does not update the visitor-facing page. The read-only `.github/workflows/validate.yml` runs parser, publication and design checks on PRs and `main` without deploying.
 - `ANALYSIS.md`, `VALIDATION.md`, and `research/` are historical records. Do not edit them. Add a new dated record instead.
 
 ## Change the instructions

@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "case_id": "capex",
+  "date": "2026-11-11",
+  "scope": "Textual source-fidelity review, not a readability benchmark or cross-runtime compatibility test",
+  "path_base": "repository_root",
+  "fact_ledger": {
+    "id": "capex",
+    "genre": {
+      "en": "Capital investment review memorandum",
+      "ko": "설비투자 검토서"
+    },
+    "topic": {
+      "en": "Fictional four-zone warehouse automation proposal before pilot approval",
+      "ko": "파일럿 승인 전 가상 물류센터 4개 구역 자동화 제안"
+    },
+    "audience": {
+      "en": "Operations director and investment committee comparing immediate deployment with a pilot and separately approved expansion",
+      "ko": "전면 도입과 파일럿 후 별도 승인 확장을 비교하는 운영총괄 및 투자심의위원회"
+    },
+    "source_mode": "fictional",
+    "sources": [],
+    "facts": [
+      {
+        "id": "C01",
+        "kind": "scenario_assumption",
+        "en": "All figures are fictional pre-investment assumptions, not measured equipment performance. Four comparable zones each process 1,200 eligible cases daily over 300 operating days annually. Demand is fixed, with no sales uplift. Each zone has eight scheduled hours daily, of which 75%, or six hours, are occupied processing time.",
+        "ko": "모든 수치는 설비 성능 측정값이 아닌 가상의 투자 전 가정이다. 비교 가능한 4개 구역이 각각 하루 1,200건의 자동화 대상 물량을 연간 300일 처리한다. 수요는 고정이며 매출 증가 효과는 없다. 구역별 하루 예정 작업시간은 8시간이며, 그중 75%인 6시간이 실제 처리에 쓰인다.",
+        "source_ids": []
+      },
+      {
+        "id": "C02",
+        "kind": "scenario_assumption",
+        "en": "A two-worker team manually processes 200 cases per occupied team-hour. Automation targets an unvalidated 300 with the same staffing and case mix. At fixed volume, occupied team-hours would fall from six to four daily, releasing four worker-hours per zone daily, or 1,200 annually and 4,800 across four zones. Scheduled hours are not occupied team-hours, and team-hours are not worker-hours.",
+        "ko": "2인 팀의 수작업 처리량은 실제 팀 작업시간당 200건으로 가정한다. 자동화 목표는 같은 인원과 물량 구성에서 시간당 300건이며 아직 검증되지 않았다. 고정 물량에서 실제 팀 작업시간은 하루 6시간에서 4시간으로 줄어 구역당 하루 4인시, 연간 1,200인시, 4개 구역 합계 연간 4,800인시의 절감 작업시간이 생긴다. 예정 작업시간과 실제 팀 작업시간, 팀 작업시간과 인시는 서로 다르다.",
+        "source_ids": []
+      },
+      {
+        "id": "C03",
+        "kind": "scenario_assumption",
+        "en": "Cash realization assumes each zone can cancel 600 agency hours annually at KRW 30,000 per invoiced hour, saving KRW 18 million per zone. Four zones cancel 2,400 paid hours, not all 4,800 released worker-hours. Permanent payroll is unchanged. Other released hours support redeployment without cash savings. Agency-spend cancellation remains unvalidated.",
+        "ko": "실제 현금지출 감소는 구역당 연간 외주 인력 600시간을 청구 시간당 30,000원에 취소할 수 있다는 가정에 따른다. 구역당 감소액은 18백만원이다. 4개 구역에서 취소하는 유급 시간은 2,400시간이며, 절감 작업시간 4,800인시 전체가 아니다. 정규직 급여는 변하지 않는다. 나머지 절감 작업시간은 재배치에 쓰이며 현금절감은 없다. 외주비 취소 가능성은 아직 검증되지 않았다.",
+        "source_ids": []
+      },
+      {
+        "id": "C04",
+        "kind": "scenario_assumption",
+        "en": "All capital and annual cash amounts are in constant KRW million. Immediate four-zone deployment requires 240 upfront. The one-zone pilot lasts one operating year and requires 75 upfront. Conditional expansion reuses pilot equipment but requires another 190, for staged capital of 265.",
+        "ko": "설비투자액과 연간 현금 금액의 단위는 불변가격 기준 백만원이다. 4개 구역 전면 도입은 최초 240이 필요하다. 1개 구역 파일럿은 1운영연도 동안 진행하며 최초 75가 필요하다. 조건부 확장은 파일럿 설비를 재사용하지만 추가 190이 필요하므로 단계적 도입의 총 설비투자액은 265다.",
+        "source_ids": []
+      },
+      {
+        "id": "C05",
+        "kind": "scenario_assumption",
+        "en": "Annual gross cash savings are 18 for the pilot and 72 for four zones. Incremental maintenance, software and energy costs total 4 annually for the pilot and 12 for four zones. Annual net cash savings are therefore 14 and 60 respectively.",
+        "ko": "연간 현금지출 총감소액은 파일럿 18, 4개 구역 72다. 유지보수·소프트웨어·에너지의 연간 추가 비용 합계는 파일럿 4, 4개 구역 12다. 따라서 연간 순현금절감액은 각각 14와 60이다.",
+        "source_ids": []
+      },
+      {
+        "id": "C06",
+        "kind": "scenario_assumption",
+        "en": "Spending and go-live coincide, with no ramp, constant savings and uniform cash accrual. Conditional expansion starts immediately after the pilot's first operating year. Calculations exclude tax, depreciation, financing, discounting, working capital and salvage.",
+        "ko": "지출과 가동 개시 시점은 일치하며, 초기 가동률 상승 기간 없이 절감액이 일정하고 현금절감이 기간에 걸쳐 균등하게 발생한다고 가정한다. 조건부 확장은 파일럿의 첫 운영연도 직후 시작한다. 계산에서 세금·감가상각·금융비용·할인·운전자본·잔존가치는 제외한다.",
+        "source_ids": []
+      },
+      {
+        "id": "C07",
+        "kind": "scenario_assumption",
+        "en": "Under these assumptions, full-deployment simple payback is 240 / 60 = 4.00 years. Pilot-only payback is 75 / 14, about 5.36 years if it continues without expansion. Conditional staged payback from the initial outlay is 1 + (75 - 14 + 190) / 60, about 5.18 years. The first year earns only the pilot's 14, not the full site's 60.",
+        "ko": "이 가정에서 전면 도입의 단순 투자회수기간은 240 / 60 = 4.00년이다. 확장 없이 파일럿만 계속 운영하면 75 / 14로 약 5.36년이다. 최초 지출부터 계산한 조건부 단계적 도입의 회수기간은 1 + (75 - 14 + 190) / 60으로 약 5.18년이다. 첫해 절감액은 전면 도입의 60이 아니라 파일럿의 14뿐이다.",
+        "source_ids": []
+      },
+      {
+        "id": "C08",
+        "kind": "scenario_assumption",
+        "en": "Proposed expansion gates require target throughput on comparable case mix, a case-error rate no higher than 0.5%, no unresolved critical safety findings and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics. Expansion requires separate approval.",
+        "ko": "제안된 확장 조건은 비교 가능한 물량 구성에서 목표 처리량 달성, 건별 오류율 0.5% 이하, 미해결 중대 안전 지적사항 없음, 파일럿 연도 중 외주 인력 600시간 취소 증빙이다. 재무팀과 운영팀은 나머지 구역의 경제성을 입증해야 한다. 확장은 별도 승인이 필요하다.",
+        "source_ids": []
+      },
+      {
+        "id": "C09",
+        "kind": "author_judgment",
+        "en": "Management recommends authorizing only the 75 pilot tranche because throughput and spend cancellation remain unvalidated. Neither pilot nor expansion is approved or completed. The pilot commits 165 less initially than full deployment, but staged capital costs 25 more and modeled payback is slower. Immediate deployment is better on assumed economics, while committing more capital before cash realization is proven.",
+        "ko": "처리량과 외주비 취소 가능성이 검증되지 않았으므로 경영진은 75의 파일럿 예산만 승인하도록 권고한다. 파일럿과 확장은 모두 승인되거나 완료되지 않았다. 파일럿은 전면 도입보다 최초 투입액이 165 적지만, 단계적 도입의 총 설비투자액은 25 많고 모형상 회수도 더 늦다. 가정한 경제성은 전면 도입이 우세하지만, 현금절감 실현을 입증하기 전에 더 많은 자본을 투입하게 된다.",
+        "source_ids": []
+      }
+    ],
+    "review_checks": [
+      {
+        "id": "C-R01",
+        "en": "Both drafts label the scenario fictional and retain unvalidated targets, fixed demand, no sales uplift and unchanged permanent payroll. No pilot approval or measured result is added.",
+        "ko": "두 초안 모두 가상 사례임을 표시하고 미검증 목표·고정 수요·매출 증가 없음·정규직 급여 불변을 유지한다. 파일럿 승인이나 측정 성과를 추가하지 않는다."
+      },
+      {
+        "id": "C-R02",
+        "en": "The 1,200 daily cases reconcile with six manual or four target team-hours. Two workers make the difference four worker-hours daily. Annual released hours reconcile to 1,200 per zone and 4,800 sitewide, while canceled agency hours total only 2,400 sitewide.",
+        "ko": "하루 1,200건이 수작업 팀 작업시간 6시간 및 목표 4시간과 일치한다. 2인 팀의 차이는 하루 4인시다. 연간 절감 작업시간은 구역당 1,200인시·전체 4,800인시이며 취소 외주시간은 전체 2,400시간뿐이다."
+      },
+      {
+        "id": "C-R03",
+        "en": "Cash savings depend on canceling 600 invoiced agency hours per zone at KRW 30,000 each. Net annual savings remain 18 - 4 = 14 for the pilot and 72 - 12 = 60 for four zones. Redeployment is not monetized.",
+        "ko": "현금절감은 구역당 청구 외주시간 600시간을 시간당 30,000원에 취소한다는 조건에 따른다. 연간 순절감액은 파일럿 18 - 4 = 14, 전체 72 - 12 = 60을 유지한다. 재배치를 현금으로 환산하지 않는다."
+      },
+      {
+        "id": "C-R04",
+        "en": "Capital is 240 full, 75 pilot and 190 later expansion, totaling 265 staged. Payback preserves the first year's 14, the later expansion outlay, the 4.00 versus approximately 5.18-year comparison, and all timing assumptions and exclusions. Pilot-only 5.36 years is conditional on continued operation without expansion.",
+        "ko": "설비투자액은 전면 240·파일럿 75·후속 확장 190이며 단계적 도입 합계는 265다. 회수 계산은 첫해 절감액 14·후속 확장 지출·4.00년 대 약 5.18년 비교·모든 시점 가정과 제외사항을 유지한다. 파일럿만의 5.36년은 확장 없이 운영을 계속하는 조건이다."
+      },
+      {
+        "id": "C-R05",
+        "en": "Only the pilot tranche is recommended. Its lower initial commitment, staged-capital premium and slower payback remain explicit. All four expansion gates, finance and operations ownership, remaining-zone economics and separate approval remain intact.",
+        "ko": "권고 대상은 파일럿 예산뿐이다. 낮은 최초 투입액·단계적 도입 추가 투자액·늦어진 회수를 명시한다. 네 가지 확장 조건·재무팀과 운영팀의 책임·나머지 구역 경제성·별도 승인을 모두 유지한다."
+      }
+    ]
+  },
+  "source_notes": {
+    "path": "examples/professional/capex/sources.md",
+    "sha256": "fd2e692605373973e20e2cfdae6b2f9d70825d736760b44589339544930fa429",
+    "text": "# Capex source packet\n\n## Topic, reader and purpose\n\nThis fictional pre-investment memorandum compares immediate automation of four warehouse zones with a one-zone pilot followed by conditional expansion. The operations director and investment committee need to distinguish released worker-hours from cash savings and the proposed pilot authorization from any later expansion approval. The recommendation is only for the pilot tranche. No pilot is approved, started or completed, and no equipment performance is measured.\n\n이 가상 투자 전 검토서는 물류센터 4개 구역의 전면 자동화와 1개 구역 파일럿 후 조건부 확장을 비교한다. 운영총괄과 투자심의위원회가 절감 작업시간과 실제 현금지출 감소액, 파일럿 승인 권고와 후속 확장 승인을 구분하도록 작성했다. 승인 권고 대상은 파일럿 예산뿐이다. 승인·착수·완료된 파일럿이나 측정된 설비 성과는 없다.\n\n## Provenance and rights\n\nThe scenario, numbers, ledger and both drafts are original project-authored illustration material. There are no external source URLs, vendor quotations, real-company data, copied figures or third-party tables. Accordingly, `source_mode` is `fictional`, `sources` is empty and every fact has an empty `source_ids` array. `C01` through `C08` are scenario assumptions, including their arithmetic consequences. `C09` is the scenario management recommendation and is classified as author judgment, not external evidence.\n\nThe governing input was the proposed four-zone warehouse case in `local://professional-examples/capex-plan.md`, as narrowed by `local://professional-examples/production-contract.md`. Those planning documents are not empirical evidence or records of executed checks. The self-contained public packet consists of this note, `facts.json`, `before.en.md` and `before.ko.md`.\n\nThe repository's root `LICENSE` is the MIT License, copyright 2026 Hyunbin Jang, and covers associated documentation. These original example files are intended as project documentation under that license. Its copyright and permission notice must be retained when applicable. There is no third-party material whose rights could be expanded through that license.\n\nThe scenario assumptions are original source material, not measured equipment performance.\n\n## Selected fact set and bilingual alignment\n\nNine records, `C01` through `C09`, are selected for both drafts. They retain the same assumptions and recommendation strength in English and Korean.\n\n| Fact | Content carried by both drafts |\n| --- | --- |\n| C01 | Fictional assumptions, four comparable zones, fixed eligible volume, operating calendar, occupied versus scheduled time, no sales uplift |\n| C02 | Two-worker manual team, unvalidated automation target, same case mix and staffing, team-hour to worker-hour relationship |\n| C03 | Conditional agency cancellation, invoiced hourly rate, unchanged permanent payroll, redeployment without cash savings |\n| C04 | Full, pilot and expansion capital, one operating-year pilot, equipment reuse, staged total |\n| C05 | Gross cash savings, incremental operating costs and net annual savings |\n| C06 | Spend and go-live timing, no ramp, constant and uniform accrual, expansion timing, all appraisal exclusions |\n| C07 | Full, pilot-only and conditional staged simple payback with distinct timelines |\n| C08 | Proposed throughput, error, safety and cancellation gates, finance and operations ownership, remaining-zone economics, separate approval |\n| C09 | Pilot-only recommendation, neither tranche approved or completed, lower initial commitment but capital premium and slower modeled recovery |\n\nThe English draft places the financial assumptions before the recommendation. The Korean draft follows a natural internal-review register rather than translating each sentence mechanically. Both retain the operational-to-cash relationship, timing, exclusions and decision gates, with the recommendation at the end.\n\n## Arithmetic and condition notes\n\nAll capital, costs and savings below are in constant KRW million unless another unit is shown. These are arithmetic relationships within a fictional model, not measurements.\n\n### Processing time is not cash savings\n\n- Baseline occupied time per zone is 8 scheduled hours × 75% = 6 team-hours daily.\n- Manual volume is 200 cases per team-hour × 6 team-hours = 1,200 cases daily. The two-worker team is the denominator, not one worker.\n- The target is 300 cases per team-hour with unchanged two-worker staffing and case mix. At fixed volume, 1,200 / 300 = 4 team-hours daily. This is unvalidated, not an observed improvement.\n- Released time per zone is (6 - 4) team-hours × 2 workers = 4 worker-hours daily. Over 300 operating days, this is 1,200 worker-hours annually per zone and 4,800 across four zones.\n- Only 600 invoiced agency hours per zone are assumed cancelable. At KRW 30,000 each, this is KRW 18,000,000, or 18, annually per zone. Four zones cancel 2,400 hours and save 72, not the value of all 4,800 released worker-hours.\n- The remaining 600 worker-hours per zone support redeployment. They generate no modeled cash savings. Permanent payroll is unchanged. The scenario does not establish that agency contracts can actually be canceled or that gains scale across zones.\n\n### Capital and annual net cash savings\n\n| Item | One-zone pilot | Immediate four-zone deployment |\n| --- | ---: | ---: |\n| Upfront capital | 75 | 240 |\n| Annual gross cash savings | 18 | 4 × 18 = 72 |\n| Annual incremental maintenance, software and energy | 4 | 12 |\n| Annual net cash savings | 18 - 4 = 14 | 72 - 12 = 60 |\n\nConditional expansion costs an additional 190 even though pilot equipment is reused. Staged capital is 75 + 190 = 265. The pilot's initial commitment is 240 - 75 = 165 less than immediate full deployment, but total staged capital is 265 - 240 = 25 more. The 12 annual recurring cost and 60 annual net savings after expansion are for all four zones, including the pilot zone. Adding the pilot's 14 again would double-count it.\n\n### Payback follows the spending timeline\n\nThe first outlay and go-live are time zero. Spending and go-live coincide for each tranche. Savings accrue uniformly at constant rates, with no ramp period. Conditional expansion spends 190 and goes live immediately after the first operating year. This timing is a model assumption, not an implementation promise.\n\n- Immediate deployment pays back in 240 / 60 = 4.00 years from time zero.\n- If only the pilot continues with unchanged annual net savings and no expansion, 75 / 14 = 5.3571 years, rounded to 5.36. This is not recovery within the proposed one-year pilot evaluation period.\n- At the end of pilot year one, 14 has been recovered from the initial 75. Expansion then adds 190, leaving 75 - 14 + 190 = 251 unrecovered.\n- At 60 annual net savings after expansion, the remaining recovery takes 251 / 60 = 4.1833 years. Total staged payback is 1 + 251 / 60 = 5.1833 years, rounded to 5.18 from the initial outlay.\n- Dividing 265 by stabilized annual savings of 60 would ignore the pilot year's lower savings and the actual outlay timing. It is not the staged payback calculation.\n\nThe simple-payback model excludes tax, depreciation, financing, discounting, working capital and salvage. Its cash-realization assumption depends on agency cancellation. It does not value redeployment, revenue growth or changes in permanent payroll. Immediate deployment is superior on these assumed economics. The pilot recommendation instead limits initial commitment while the throughput and cash-realization assumptions remain unvalidated. Its capital premium and slower modeled payback remain explicit.\n\n### Expansion remains a proposal\n\nAll of the following are proposed gates, not achieved results:\n\n- Target throughput on comparable case mix.\n- Case-error rate no higher than 0.5%.\n- No unresolved critical safety findings.\n- Documented cancellation of 600 agency hours during the pilot year.\n\nFinance and operations must substantiate the remaining zones' economics. Passing the pilot gates does not itself authorize expansion. Expansion needs separate approval. Neither the pilot nor expansion is approved or completed. The packet does not invent cross-zone scalability evidence, a safety test protocol or an error-measurement protocol.\n\n## Background not selected for the drafts\n\nThe planning case includes capital components. Immediate deployment is equipment 180 + integration 35 + training 10 + contingency 15 = 240. The pilot is equipment 50 + integration 15 + training 5 + contingency 5 = 75. These component breakdowns are background only, not selected facts required in either draft. The aggregate capital amounts, extra expansion outlay and reuse assumption remain selected.\n\nNo sensitivity case is selected. In particular, the planning example of a 25% reduction in canceled agency hours is not a result and is not included in either draft. Vendor selection, financing arrangements, discounted-cash-flow appraisal, tax effects, salvage estimates and later implementation decisions are outside scope. Unknown actual costs and performance are not represented as zero. The listed appraisal exclusions describe what the model omits, not facts about real expenditures.\n\n## Terminology\n\n| English | Korean | Scope |\n| --- | --- | --- |\n| Capital expenditure | 설비투자액 | Cash capital outlay, distinct from annual operating costs |\n| Staged deployment | 단계적 도입 | Pilot first, separately approved expansion after year one |\n| Throughput | 처리량 | Eligible cases per occupied two-worker team-hour |\n| Occupied team-hour | 실제 팀 작업시간 1시간 | One hour of processing by the two-worker team |\n| Worker-hour | 인시 | One worker's hour, not one team's hour |\n| Released worker-hours | 절감 작업시간 | Available time, not automatically canceled payroll |\n| Agency hours | 외주 인력 시간 | Invoiced hours assumed cancelable at the stated rate |\n| Cash savings | 실제 현금지출 감소액 | Avoided agency cash cost, not all labor-time value |\n| Net cash savings | 순현금절감액 | Avoided cash cost less incremental annual operating costs |\n| Simple payback period | 단순 투자회수기간 | Undiscounted recovery under the stated timing and exclusions |\n| Proposed authorization | 승인 권고 | A request, not an approval or an accomplished pilot |\n\n## Recorded outputs\n\nThe [English attempt](../../../verification/professional-examples-20261111/remaining-run/capex/en/attempt.json) and [Korean attempt](../../../verification/professional-examples-20261111/remaining-run/capex/ko/attempt.json) record actual requests, model, package hashes and observed reference reads. The [fidelity review](review.md) covers C01–C09 without changing the outputs.\n"
+  },
+  "initial_review": {
+    "path": "examples/professional/capex/review.json",
+    "json": {
+      "case_id": "capex",
+      "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+      "source_parity": {
+        "status": "pass",
+        "issues": []
+      },
+      "languages": {
+        "en": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/remaining-run/capex/en/attempt.json",
+          "output_sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7",
+          "facts": [
+            {
+              "id": "C01",
+              "status": "pass",
+              "note": "Output lines 3 and 13-15 retain fictional pre-investment assumptions rather than measured performance, four comparable zones, 1,200 eligible cases per zone daily, 300 operating days annually, fixed demand, no sales uplift, and six occupied hours out of eight scheduled hours at 75%."
+            },
+            {
+              "id": "C02",
+              "status": "pass",
+              "note": "Output lines 15-17 retain the two-worker team, 200 manual cases per occupied team-hour, unvalidated 300 target with unchanged staffing and case mix, six-to-four team-hours, and four released worker-hours daily per zone. Annual release stays 1,200 per zone and 4,800 sitewide. Scheduled, occupied team and worker hours remain distinct. The release follows an explicit target condition, not an observed performance claim."
+            },
+            {
+              "id": "C03",
+              "status": "pass",
+              "note": "Output lines 21-23 retain the unvalidated assumption of canceling 600 agency hours per zone annually at KRW 30,000 per invoiced hour, yielding 18 per zone. Only 2,400 sitewide hours are canceled, not all 4,800 released hours. Permanent payroll stays unchanged and redeployment creates no cash savings."
+            },
+            {
+              "id": "C04",
+              "status": "pass",
+              "note": "Output lines 3, 33 and 41-45 retain constant KRW million, 240 upfront for immediate four-zone deployment, 75 upfront for a one-zone pilot lasting one operating year, equipment reuse, an additional conditional expansion outlay of 190 and staged capital of 265."
+            },
+            {
+              "id": "C05",
+              "status": "pass",
+              "note": "Output lines 25-29 preserve annual gross cash savings of 18 and 72, incremental maintenance, software and energy costs of 4 and 12, and net cash savings of 14 and 60 for the pilot and all four zones respectively. No extra pilot savings are added to the sitewide total."
+            },
+            {
+              "id": "C06",
+              "status": "pass",
+              "note": "Output lines 33-39 preserve the one-operating-year pilot, coincident spending and go-live, no ramp, constant savings, uniform cash accrual, expansion immediately after year one, and all six exclusions: tax, depreciation, financing, discounting, working capital and salvage. These remain model assumptions."
+            },
+            {
+              "id": "C07",
+              "status": "pass",
+              "note": "Output lines 41-47 distinguish immediate simple payback of 240 / 60 = 4.00 years, continued pilot-only operation without expansion at 75 / 14 or about 5.36 years, and conditional staging at 1 + (75 - 14 + 190) / 60 or about 5.18 years from initial outlay. The staged first year earns only 14."
+            },
+            {
+              "id": "C08",
+              "status": "pass",
+              "note": "Output lines 49-57 retain proposed rather than achieved expansion conditions: target throughput on comparable case mix, case-error rate at most 0.5%, no unresolved critical safety findings, and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics before separate expansion approval."
+            },
+            {
+              "id": "C09",
+              "status": "pass",
+              "note": "Output lines 7-9 retain management's recommendation to authorize only the 75 pilot tranche because throughput and cash realization remain unvalidated. Neither tranche is approved or completed. The pilot commits 165 less initially, staging adds 25 and delays modeled payback, and immediate deployment has better assumed economics but greater capital exposure before cash realization is proven."
+            }
+          ],
+          "issues": []
+        },
+        "ko": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/remaining-run/capex/ko/attempt.json",
+          "output_sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2",
+          "facts": [
+            {
+              "id": "C01",
+              "status": "pass",
+              "note": "Output lines 3 and 23-25 retain the fictional, pre-investment rather than measured status, four comparable zones, 1,200 eligible cases per zone daily, 300 operating days annually, fixed demand, no sales uplift, and six occupied hours out of eight scheduled hours at 75%."
+            },
+            {
+              "id": "C02",
+              "status": "pass",
+              "note": "Output lines 25-33 retain the two-worker team's 200 manual cases per actual team-hour, unvalidated 300 target at the same staffing and case mix, and the conditional six-to-four team-hour change. Release remains four worker-hours daily per zone, 1,200 annually per zone and 4,800 annually sitewide. Scheduled time, actual team time and worker-hours remain distinct."
+            },
+            {
+              "id": "C03",
+              "status": "pass",
+              "note": "Output lines 37-41 preserve the unvalidated assumption of canceling 600 agency hours per zone annually at KRW 30,000 per invoiced hour, yielding 18 per zone. Only 2,400 sitewide hours are canceled, not all released time. Permanent payroll is unchanged and the remaining time supports redeployment without cash savings."
+            },
+            {
+              "id": "C04",
+              "status": "pass",
+              "note": "Output lines 3, 13-17 and 50-52 retain constant-price million-won units, 240 upfront for four zones, 75 upfront for a one-zone pilot lasting one operating year, reuse of pilot equipment, another 190 for conditional expansion and total staged capital of 265."
+            },
+            {
+              "id": "C05",
+              "status": "pass",
+              "note": "Output lines 43-46 preserve annual gross cash savings of 18 and 72, incremental maintenance, software and energy costs of 4 and 12, and annual net cash savings of 14 and 60 for the pilot and all four zones respectively. The summary correctly uses 14 in year one and 60 after expansion."
+            },
+            {
+              "id": "C06",
+              "status": "pass",
+              "note": "Output lines 51 and 54-61 preserve a one-operating-year pilot, coincident spending and go-live, no ramp, constant savings, uniform cash accrual and expansion immediately after the first operating year. Tax, depreciation, financing, discounting, working capital and salvage all remain excluded from the calculation rather than asserted to be zero real costs."
+            },
+            {
+              "id": "C07",
+              "status": "pass",
+              "note": "Output lines 13-17 and 63 preserve 4.00 years for immediate deployment, about 5.36 years only if the pilot continues without expansion, and about 5.18 years for conditional staging from the first outlay. The staged formula remains 1 + (75 - 14 + 190) / 60 and year one earns only the pilot's 14, not 60."
+            },
+            {
+              "id": "C08",
+              "status": "pass",
+              "note": "Output lines 65-74 explicitly propose all four expansion gates, without claiming their achievement: target throughput at comparable case mix, case-error rate at most 0.5%, no unresolved critical safety findings, and proof of 600 canceled agency hours during the pilot year. Finance and operations retain responsibility for the remaining zones' economics, and expansion still needs separate approval."
+            },
+            {
+              "id": "C09",
+              "status": "pass",
+              "note": "Output lines 9-11 and 19 preserve management's pilot-only 75 authorization recommendation, the unvalidated throughput and agency-spend cancellation rationale, and the fact that neither pilot nor expansion is approved or completed. Initial commitment is 165 lower, staged capital is 25 higher and modeled recovery is slower. Immediate deployment's advantage remains limited to the assumed economics and comes with more capital committed before cash realization is proven."
+            }
+          ],
+          "issues": []
+        }
+      }
+    },
+    "markdown": {
+      "path": "examples/professional/capex/review.md",
+      "sha256": "8c62a912de412031fc6067a8454aa8c40b12217967161236ab51a795b3fc408b",
+      "text": "# Capex source-fidelity review\n\nThe review checks whether the English and Korean native revisions preserve the fictional warehouse investment case for the operations director and investment committee.\n\n## Verdicts\n\n- Input parity passes. Both drafts carry the same C01-C09 assumptions, arithmetic, exclusions, proposal status and management judgment.\n- English passes all nine fact checks. No material source-fidelity issue was found.\n- Korean passes all nine fact checks. No material source-fidelity issue was found.\n\nThe complete outputs were examined, including additions and rearrangements. Headings, decision-first summaries and new tables do not change the source meaning. These verdicts concern textual source fidelity, not readability or human comprehension.\n\n## Material checks\n\nBoth outputs retain fixed demand with no sales uplift. They distinguish scheduled hours, occupied two-worker team-hours and worker-hours. The unvalidated 200-to-300 throughput target releases 1,200 worker-hours per zone annually, but only 600 invoiced agency hours per zone are assumed cancelable. The sitewide figures remain 4,800 released versus 2,400 canceled hours. Neither output monetizes redeployment or reduces permanent payroll.\n\nCapital remains 240 for immediate deployment versus 75 plus 190, totaling 265, for conditional staging despite equipment reuse. Annual net cash savings remain 14 for the pilot and 60 for all four zones. The latter already includes the pilot zone.\n\nBoth outputs preserve all timing assumptions and appraisal exclusions. They distinguish immediate 4.00-year payback, about 5.36 years for continued pilot-only operation without expansion, and about 5.18 years for conditional staging from initial outlay. The staged first year earns only 14, with the additional 190 spent immediately after the first operating year.\n\nAll four proposed expansion gates remain intact, along with finance and operations ownership of the remaining zones' economics and separate expansion approval. Only the 75 pilot tranche is recommended. Neither tranche is approved or completed. The lower initial commitment of 165 does not erase the staged capital premium of 25 or slower modeled payback. No target or cash-realization assumption becomes measured performance or a guarantee.\n\n## Evidence examined\n\nThe review examined the full current `facts.json`, `before.en.md`, `before.ko.md` and `sources.md`, plus the frozen `facts.json` and each language's complete `request.md`, `output.md` and `attempt.json` under `verification/professional-examples-20261111/remaining-run/capex/`.\n\nThe frozen and current ledgers have the same SHA-256, `3feace0feec1e8fb12456e338c64472059681e93171624d9dce81458af7a7fce`. The source text embedded in each request matches its corresponding draft. Recomputed draft and request hashes match the attempt records.\n\n| Language | Draft SHA-256 | Request SHA-256 |\n| --- | --- | --- |\n| English | `8276ef469361725afa2ff9fc2e3cab113c0ab50870455e2deca14c0020a16da1` | `98b58050adbbbb5eaa497045ec3573ba8888a971223e730da8abcbb3889dae92` |\n| Korean | `9d720d774ffb9edccf22560085dd79df39212f6161e6fa4780f7c8f26d166f88` | `4e02641c78a4bccb173c4f53154e97624dc8176274d94e69ca4920ed81072965` |\n\nBoth attempt records report `captured`, exit code 0, observed model `claude-sonnet-5-5`, and runtime `2.1.322 (Claude Code)`. Each contains a successful manifest `tool_reads` entry consistent with `manifest_read: true`. The Korean record also contains a successful `references/korean.md` read consistent with `korean_reference_read: true`. English records no Korean-reference read, which is not required for its English request. Both records have empty provider-error arrays and identical package-hash maps. This is inspected recorded capture evidence, not a fresh observation of native execution. The records' `fidelity_status: not_reviewed` is historical and separate from these review verdicts.\n\nRecomputed output hashes match the recorded hashes exactly.\n\n| Language | Output SHA-256 |\n| --- | --- |\n| English | `6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7` |\n| Korean | `94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2` |\n\nOnly text and evidence review, including hash comparison, was performed. No native rerun, reader study, build, lint, test or formatter was run. Source packets, raw outputs and historical execution evidence were not changed.\n"
+    }
+  },
+  "initial_run": {
+    "manifest_path": "verification/professional-examples-20261111/remaining-run/manifest.json",
+    "metadata": {
+      "scope": "Native professional writing examples, not a readability benchmark",
+      "source": "Working-tree package snapshot; not a claim of GitHub default-branch availability",
+      "base_commit": "a0d872b26fe32942e4e5be6080735352b771bddd",
+      "runtime": "2.1.322 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "package_sha256": {
+        "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+        "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+        "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+        "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+      },
+      "fidelity_status": "not_reviewed"
+    },
+    "records": [
+      {
+        "case_id": "capex",
+        "language": "en",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/capex/en"
+      },
+      {
+        "case_id": "capex",
+        "language": "ko",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/capex/ko"
+      }
+    ],
+    "runner_sha256": "78170a67fac79639b483f183b9d80a49e6a92fc9413e8fa3abcb72c65a26ab0e"
+  },
+  "project_terms": {
+    "license": {
+      "path": "LICENSE",
+      "sha256": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+      "text": "MIT License\n\nCopyright (c) 2026 Hyunbin Jang\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    },
+    "notice": {
+      "path": "NOTICE.md",
+      "sha256": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+      "text": "# Notice\n\nCopyright (c) 2026 Hyunbin Jang\n\n[English](#english) · [한국어](#한국어)\n\n## English\n\nThis notice covers the human-readable-writing repository at <https://github.com/JangHyun-bin/human-readable-writing>. It also covers the installable skill directory, `skills/human-readable-writing/`, including copies installed from it. The repository root and that directory contain the same notice and [LICENSE](LICENSE). This notice is provided in English and Korean.\n\n### License for this project\n\nThe material written for this project is licensed under the MIT License in [LICENSE](LICENSE). This material includes the skill instructions, writing guidance, documentation, hypothetical examples, scripts, and evaluation tasks. The writing guidance is the project's own work, based on ideas from the research cited below.\n\nThe MIT License covers only the project's own material. It does not apply to the following, and this project does not relicense them:\n\n- Quotations from third-party works, including the papers listed below. Each quotation keeps the terms that apply to its source.\n- The cited works themselves, including their text, figures, data, and code. They keep the licenses recorded below or the terms set by their rights holders.\n\nThis notice also records the sources and use of the original paper. It does not apply the paper's CC BY 4.0 license to all of the separately written code, guidance, and evaluation material.\n\n### Model outputs in research records\n\nSome files in this project contain or adapt text generated by AI models and coding-agent tools. The research records in [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research) and [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md) keep such outputs as evidence. The MIT License applies to these outputs only to the extent that the copyright holder has rights in them. This notice does not claim unrestricted rights to every recorded or adapted output. Terms set by the model and tool providers may also apply.\n\n### Original paper\n\n- Title: *Why is AI-generated language so hard to understand?*\n- Authors: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, submitted on 2026-10-21\n- Source: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- License of the original paper: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- Checked: 2026-10-27. The `view license` link for that arXiv version pointed to CC BY 4.0.\n\nFor the license terms of the original paper, see the [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en).\n\n### Use of and changes to the paper\n\nThis project summarizes and interprets the paper's findings in Korean. It builds separate writing guidance, hypothetical examples, and evaluation tasks from those findings. The quotations and research findings that the repository's analysis documents take from the paper are attributed to the paper. These interpretations and the writing guidance do not mean that the paper's authors reviewed them or validated their effects.\n\nThe repository's tracked files do not include the paper's PDF, figures, TeX source, research code, or original corpus. The benchmark scripts, hypothetical tasks, and recorded model responses were written or collected separately for this project.\n\nExpressions reused from the paper, and the changes made to them, follow the paper's license terms. This attribution does not mean that the paper's authors approve, sponsor, or endorse this repository.\n\n### Follow-up references, 2026-10-29\n\nThe detailed sources for the follow-up research notes are recorded in the [related literature notes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md), in Korean. The following two key works are available under a different license from the original Clark paper.\n\n| Work | Source and license checked |\n|---|---|\n| Martínez, Mollica & Gibson (2022), a study of reading legal text | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), a comparison of LLM writing styles | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\nEach license above applies to its own source. The CC BY 4.0 license of the original Clark paper does not extend to the other references. The follow-up notes summarize and interpret research findings and add separately written hypothetical examples. This repository does not include the original PDFs, figures, research code, or original corpora of these works. The notes do not mean that the papers' authors reviewed, approved, or validated them.\n\n## 한국어\n\n이 notice는 <https://github.com/JangHyun-bin/human-readable-writing> repository에 적용된다. 설치용 skill directory인 `skills/human-readable-writing/`과 이 directory에서 설치한 사본에도 적용된다. Repository root와 이 directory에는 같은 notice와 [LICENSE](LICENSE)가 있다. 이 notice는 영어와 한국어로 제공된다.\n\n### 이 project의 license\n\n이 project를 위해 작성한 자료에는 [LICENSE](LICENSE)의 MIT License를 적용한다. 이 자료에는 skill 지침, 작성 지침, 문서, 가상 예시, script, 평가 과제가 포함된다. 작성 지침은 아래 연구의 착안을 바탕으로 이 project에서 직접 작성한 것이다.\n\nMIT License는 이 project의 자료에만 적용된다. 다음 자료에는 적용되지 않으며, 이 project가 다시 license하지 않는다.\n\n- 아래 논문을 포함한 제3자 저작물의 인용문. 각 인용문은 해당 출처에 적용되는 조건을 따른다.\n- 인용한 저작물 자체와 그 본문·figure·data·code. 아래에 기록한 license 또는 권리자가 정한 조건을 따른다.\n\n이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다.\n\n### 연구 기록의 model 출력\n\n이 project의 일부 file은 AI model과 coding agent 도구가 생성한 text를 포함하거나 각색해 사용한다. [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research)와 [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md)의 연구 기록은 이러한 출력을 근거 자료로 보존한다. MIT License는 저작권자가 권리를 가진 범위에서만 이 출력에 적용된다. 이 notice는 기록하거나 각색한 모든 출력에 대해 제한 없는 권리를 주장하지 않는다. Model과 도구 제공자의 이용 조건도 적용될 수 있다.\n\n### 원논문\n\n- 제목: *Why is AI-generated language so hard to understand?*\n- 저자: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, 2026-10-21 제출\n- 원문: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- 원논문의 license: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- 확인일: 2026-10-27. 해당 arXiv version의 `view license` link가 CC BY 4.0을 가리킴을 확인하였다.\n\n원논문의 실제 license 조건은 [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)를 참조한다.\n\n### 이 repository의 이용과 변경\n\n원논문의 연구 결과를 한국어로 요약·해석하고, 별도의 작성 지침·가상 예시·평가 과제로 구성하였다. 분석 문서의 원문 인용과 연구 결과는 위 논문에 귀속된다. 이러한 해석과 작성 지침은 논문 저자들이 검토하거나 효과를 검증한 결과라는 의미가 아니다.\n\n현재 tracked file에는 원논문의 PDF·figure·TeX source·연구용 code·원본 corpus를 포함하지 않는다. Benchmark script와 가상 과제·실측 model 답변은 이 작업에서 별도로 작성·수집한 자료이다.\n\n원논문에서 재사용한 표현과 변경한 내용에는 원논문의 license 조건을 따른다. 위 출처 표시는 논문 저자들의 이 repository에 대한 승인·후원·보증을 의미하지 않는다.\n\n### 후속 참고문헌 — 2026-10-29\n\n후속 연구 노트의 상세 출처는 [관련 문헌](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md)에 기록하였다. 다음 두 핵심 문헌은 최초 Clark 논문과 다른 license로 제공된다.\n\n| 문헌 | 원문과 확인한 license |\n|---|---|\n| Martínez, Mollica & Gibson (2022), 법률 문장 독해 연구 | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), LLM 문체 비교 연구 | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\n위 license는 해당 원문에 관한 것이며, 최초 Clark 논문의 CC BY 4.0을 다른 참고문헌에 일괄 적용하지 않는다. 후속 노트는 연구 결과의 요약·해석과 별도로 작성한 가상 예시이며, 원문 PDF·figure·연구 code·원본 corpus를 이 repository에 포함하지 않았다. 논문 저자들의 검토·승인·효과 검증을 의미하지 않는다.\n"
+    }
+  },
+  "languages": {
+    "en": {
+      "original": {
+        "path": "examples/professional/capex/before.en.md",
+        "sha256": "8276ef469361725afa2ff9fc2e3cab113c0ab50870455e2deca14c0020a16da1",
+        "text": "# Warehouse automation investment review\n\nFictional scenario. Prepared for the operations director and investment committee. All figures are pre-investment assumptions, not measured equipment performance. Money is in constant KRW million unless stated otherwise.\n\nFour comparable zones each process 1,200 eligible cases daily for 300 operating days annually, with fixed demand and no sales uplift. Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets an unvalidated 300 with the same staffing and case mix. Processing would take four rather than six team-hours, releasing four worker-hours daily per zone, or 1,200 annually and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.\n\nCash realization assumes cancellation of 600 agency hours per zone annually at KRW 30,000 per invoiced hour. This yields 18 per zone and cancels only 2,400 sitewide hours, not all released hours. Permanent payroll stays unchanged. Other released hours support redeployment without cash savings. Spend cancellation remains unvalidated. Annual gross cash savings are 18 for the pilot and 72 sitewide. Incremental maintenance, software and energy cost 4 and 12 respectively, leaving net savings of 14 and 60.\n\nImmediate four-zone deployment costs 240 upfront. A one-zone pilot lasts one operating year and costs 75 upfront. Conditional expansion reuses pilot equipment but costs another 190, totaling 265. Spending and go-live coincide. The model assumes no ramp, constant savings and uniform cash accrual, with expansion immediately after year one. It excludes tax, depreciation, financing, discounting, working capital and salvage. Simple payback is 240 / 60 = 4.00 years for full deployment. Continuing the pilot without expansion gives 75 / 14, about 5.36 years. Conditional staged payback from initial outlay is 1 + (75 - 14 + 190) / 60, about 5.18 years. Year one earns only 14.\n\nExpansion would require target throughput on comparable case mix, a case-error rate at most 0.5%, no unresolved critical safety findings and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics before separate expansion approval. Management recommends authorizing only the 75 pilot tranche because throughput and spend cancellation remain unvalidated. Neither tranche is approved or completed. The pilot commits 165 less initially, but staging adds 25 in capital and delays modeled payback. Immediate deployment has better assumed economics but commits more capital before cash realization is proven.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "capex",
+          "language": "en",
+          "attempt": "verification/professional-examples-20261111/remaining-run/capex/en/attempt.json",
+          "review": "examples/professional/capex/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/capex/en/output.md",
+          "status": "pass",
+          "output_sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": false,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "capex",
+          "language": "en",
+          "started_at": "2026-11-11T08:38:56.820865+00:00",
+          "finished_at": "2026-11-11T08:39:08.266973+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "8276ef469361725afa2ff9fc2e3cab113c0ab50870455e2deca14c0020a16da1",
+          "request_sha256": "98b58050adbbbb5eaa497045ec3573ba8888a971223e730da8abcbb3889dae92",
+          "output_sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7",
+          "raw_event_stream_sha256": "84e3c4a3affd52cee19e04a49360e51ef07e80c7f19013000d3c413f4a418ead",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/capex/en/request.md",
+          "sha256": "98b58050adbbbb5eaa497045ec3573ba8888a971223e730da8abcbb3889dae92",
+          "text": "/human-readable-writing Edit this Capital investment review memorandum in English for Operations director and investment committee comparing immediate deployment with a pilot and separately approved expansion. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# Warehouse automation investment review\n\nFictional scenario. Prepared for the operations director and investment committee. All figures are pre-investment assumptions, not measured equipment performance. Money is in constant KRW million unless stated otherwise.\n\nFour comparable zones each process 1,200 eligible cases daily for 300 operating days annually, with fixed demand and no sales uplift. Of eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets an unvalidated 300 with the same staffing and case mix. Processing would take four rather than six team-hours, releasing four worker-hours daily per zone, or 1,200 annually and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.\n\nCash realization assumes cancellation of 600 agency hours per zone annually at KRW 30,000 per invoiced hour. This yields 18 per zone and cancels only 2,400 sitewide hours, not all released hours. Permanent payroll stays unchanged. Other released hours support redeployment without cash savings. Spend cancellation remains unvalidated. Annual gross cash savings are 18 for the pilot and 72 sitewide. Incremental maintenance, software and energy cost 4 and 12 respectively, leaving net savings of 14 and 60.\n\nImmediate four-zone deployment costs 240 upfront. A one-zone pilot lasts one operating year and costs 75 upfront. Conditional expansion reuses pilot equipment but costs another 190, totaling 265. Spending and go-live coincide. The model assumes no ramp, constant savings and uniform cash accrual, with expansion immediately after year one. It excludes tax, depreciation, financing, discounting, working capital and salvage. Simple payback is 240 / 60 = 4.00 years for full deployment. Continuing the pilot without expansion gives 75 / 14, about 5.36 years. Conditional staged payback from initial outlay is 1 + (75 - 14 + 190) / 60, about 5.18 years. Year one earns only 14.\n\nExpansion would require target throughput on comparable case mix, a case-error rate at most 0.5%, no unresolved critical safety findings and documented cancellation of 600 agency hours during the pilot year. Finance and operations must substantiate the remaining zones' economics before separate expansion approval. Management recommends authorizing only the 75 pilot tranche because throughput and spend cancellation remain unvalidated. Neither tranche is approved or completed. The pilot commits 165 less initially, but staging adds 25 in capital and delays modeled payback. Immediate deployment has better assumed economics but commits more capital before cash realization is proven.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/capex/en/output.md",
+          "sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7",
+          "text": "# Warehouse automation investment review\n\n*Fictional scenario. Prepared for the operations director and investment committee. All figures are pre-investment assumptions, not measured equipment performance. Money is in constant KRW million unless stated otherwise.*\n\n## Decision\n\nManagement recommends authorizing only the 75 pilot tranche, because throughput and spend cancellation remain unvalidated. Neither tranche is approved or completed.\n\nThe pilot commits 165 less initially than immediate deployment. Staging, however, adds 25 in capital and delays modeled payback. Immediate deployment has better assumed economics but commits more capital before cash realization is proven.\n\n## Operating assumptions\n\nFour comparable zones each process 1,200 eligible cases daily for 300 operating days annually. Demand is fixed and the model assumes no sales uplift.\n\nOf eight scheduled hours daily, 75%, or six hours, are occupied processing time. A two-worker team processes 200 cases per occupied team-hour manually. Automation targets 300 cases per occupied team-hour, which is unvalidated, with the same staffing and case mix.\n\nAt 300 cases per team-hour, processing would take four team-hours instead of six. This releases four worker-hours daily per zone, or 1,200 annually per zone and 4,800 sitewide. Scheduled time, occupied team-hours and worker-hours are different measures.\n\n## Cash savings\n\nCash realization assumes the cancellation of 600 agency hours per zone annually at KRW 30,000 per invoiced hour. This yields 18 per zone. Sitewide, it cancels only 2,400 hours, not all released hours.\n\nPermanent payroll stays unchanged. The other released hours support redeployment without cash savings. Spend cancellation remains unvalidated.\n\n| Annual figure | Pilot (1 zone) | Sitewide (4 zones) |\n|---|---|---|\n| Gross cash savings | 18 | 72 |\n| Incremental maintenance, software and energy cost | 4 | 12 |\n| Net savings | 14 | 60 |\n\n## Capital and payback\n\nImmediate four-zone deployment costs 240 upfront. A one-zone pilot lasts one operating year and costs 75 upfront. Conditional expansion reuses pilot equipment but costs another 190, for a total of 265.\n\nThe model makes these assumptions:\n- Spending and go-live coincide.\n- There is no ramp, savings are constant, and cash accrues uniformly.\n- Expansion occurs immediately after year one.\n- The model excludes tax, depreciation, financing, discounting, working capital and salvage.\n\n| Option | Upfront capital | Total capital | Simple payback |\n|---|---|---|---|\n| Immediate four-zone deployment | 240 | 240 | 240 / 60 = 4.00 years |\n| Pilot only, no expansion | 75 | 75 | 75 / 14, about 5.36 years |\n| Pilot, then expansion | 75 | 265 | 1 + (75 − 14 + 190) / 60, about 5.18 years from initial outlay |\n\nYear one earns only 14 in the staged case.\n\n## Conditions for expansion\n\nExpansion would require all of the following:\n- target throughput on a comparable case mix;\n- a case-error rate of 0.5% or less;\n- no unresolved critical safety findings;\n- documented cancellation of 600 agency hours during the pilot year.\n\nFinance and operations must also substantiate the economics of the remaining zones before a separate expansion approval."
+        }
+      },
+      "selected": {
+        "case_id": "capex",
+        "language": "en",
+        "attempt": "verification/professional-examples-20261111/remaining-run/capex/en/attempt.json",
+        "review": "examples/professional/capex/review.json",
+        "revision": "verification/professional-examples-20261111/remaining-run/capex/en/output.md",
+        "status": "pass",
+        "output_sha256": "6045cec0388790e6ea4e92b786ffb5f0d9f6f6eaf2845f71013c10312833e6f7",
+        "kind": "first_attempt"
+      }
+    },
+    "ko": {
+      "original": {
+        "path": "examples/professional/capex/before.ko.md",
+        "sha256": "9d720d774ffb9edccf22560085dd79df39212f6161e6fa4780f7c8f26d166f88",
+        "text": "# 물류센터 자동화 설비투자 검토서\n\n가상 사례. 운영총괄 및 투자심의위원회 검토용이다. 모든 수치는 설비 성능 측정값이 아닌 투자 전 가정이며, 별도 표시가 없는 금액 단위는 불변가격 기준 백만원이다.\n\n비교 가능한 4개 구역은 각각 자동화 대상 물량을 하루 1,200건씩 연간 300일 처리한다. 수요는 고정이며 매출 증가 효과는 없다. 하루 예정 작업시간 8시간 중 실제 처리에 쓰이는 시간은 75%인 6시간이다. 2인 팀의 수작업 처리량은 실제 팀 작업시간당 200건이며, 자동화 목표는 같은 인원과 물량 구성에서 시간당 300건이다. 목표는 아직 검증되지 않았다. 목표대로라면 실제 팀 작업시간이 하루 6시간에서 4시간으로 줄어 구역당 하루 4인시, 연간 1,200인시, 전체 연간 4,800인시의 절감 작업시간이 생긴다. 예정 작업시간, 실제 팀 작업시간, 인시는 구분해야 한다.\n\n실제 현금지출 감소는 구역당 연간 외주 인력 600시간을 청구 시간당 30,000원에 취소할 수 있다는 가정에 따른다. 감소액은 구역당 18이다. 전체 취소 시간은 2,400시간으로, 절감 작업시간 전체가 아니다. 정규직 급여는 변하지 않으며 나머지 절감 작업시간은 현금절감 없이 재배치에 쓴다. 외주비 취소 가능성도 미검증 상태다. 연간 현금지출 총감소액은 파일럿 18, 전면 도입 72다. 유지보수·소프트웨어·에너지의 연간 추가 비용은 각각 4와 12이므로 순현금절감액은 14와 60이다.\n\n4개 구역 전면 도입의 최초 설비투자액은 240이다. 1개 구역 파일럿은 1운영연도 동안 진행하며 최초 75가 필요하다. 조건부 확장은 파일럿 설비를 재사용해도 추가 190이 들어 단계적 도입의 총투자액은 265다. 지출과 가동 개시 시점은 일치한다. 초기 가동률 상승 기간 없이 절감액이 일정하고 현금절감이 기간에 걸쳐 균등하게 발생하며, 확장은 첫 운영연도 직후 시작한다고 가정한다. 세금·감가상각·금융비용·할인·운전자본·잔존가치는 계산에서 제외한다. 전면 도입의 단순 투자회수기간은 240 / 60 = 4.00년이다. 확장 없이 파일럿만 계속 운영하면 75 / 14로 약 5.36년이다. 조건부 단계적 도입은 첫해에 14만 절감하므로 최초 지출부터 1 + (75 - 14 + 190) / 60, 약 5.18년이 걸린다.\n\n확장 조건으로는 비교 가능한 물량 구성에서 목표 처리량 달성, 건별 오류율 0.5% 이하, 미해결 중대 안전 지적사항 없음, 파일럿 연도 중 외주 인력 600시간 취소 증빙을 제안한다. 재무팀과 운영팀은 나머지 구역의 경제성을 입증해야 하며 확장은 별도 승인이 필요하다. 경영진은 처리량과 외주비 취소 가능성이 검증되지 않았다는 이유로 파일럿 예산 75만 승인하도록 권고한다. 파일럿과 확장은 모두 승인되거나 완료되지 않았다. 파일럿은 최초 투입액이 165 적지만 단계적 도입의 총투자액은 25 많고 모형상 회수도 더 늦다. 가정한 경제성은 전면 도입이 우세하나, 현금절감 실현을 입증하기 전에 더 많은 자본을 투입하게 된다.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "capex",
+          "language": "ko",
+          "attempt": "verification/professional-examples-20261111/remaining-run/capex/ko/attempt.json",
+          "review": "examples/professional/capex/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/capex/ko/output.md",
+          "status": "pass",
+          "output_sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": true,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            },
+            {
+              "path": ".claude/skills/human-readable-writing/references/korean.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "capex",
+          "language": "ko",
+          "started_at": "2026-11-11T08:38:56.815956+00:00",
+          "finished_at": "2026-11-11T08:39:13.806563+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "9d720d774ffb9edccf22560085dd79df39212f6161e6fa4780f7c8f26d166f88",
+          "request_sha256": "4e02641c78a4bccb173c4f53154e97624dc8176274d94e69ca4920ed81072965",
+          "output_sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2",
+          "raw_event_stream_sha256": "ca0db50c152854a923ca361f8c1e9891153caae1ca8892ffba558136924f90e6",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/capex/ko/request.md",
+          "sha256": "4e02641c78a4bccb173c4f53154e97624dc8176274d94e69ca4920ed81072965",
+          "text": "/human-readable-writing Edit this Capital investment review memorandum in Korean for Operations director and investment committee comparing immediate deployment with a pilot and separately approved expansion. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# 물류센터 자동화 설비투자 검토서\n\n가상 사례. 운영총괄 및 투자심의위원회 검토용이다. 모든 수치는 설비 성능 측정값이 아닌 투자 전 가정이며, 별도 표시가 없는 금액 단위는 불변가격 기준 백만원이다.\n\n비교 가능한 4개 구역은 각각 자동화 대상 물량을 하루 1,200건씩 연간 300일 처리한다. 수요는 고정이며 매출 증가 효과는 없다. 하루 예정 작업시간 8시간 중 실제 처리에 쓰이는 시간은 75%인 6시간이다. 2인 팀의 수작업 처리량은 실제 팀 작업시간당 200건이며, 자동화 목표는 같은 인원과 물량 구성에서 시간당 300건이다. 목표는 아직 검증되지 않았다. 목표대로라면 실제 팀 작업시간이 하루 6시간에서 4시간으로 줄어 구역당 하루 4인시, 연간 1,200인시, 전체 연간 4,800인시의 절감 작업시간이 생긴다. 예정 작업시간, 실제 팀 작업시간, 인시는 구분해야 한다.\n\n실제 현금지출 감소는 구역당 연간 외주 인력 600시간을 청구 시간당 30,000원에 취소할 수 있다는 가정에 따른다. 감소액은 구역당 18이다. 전체 취소 시간은 2,400시간으로, 절감 작업시간 전체가 아니다. 정규직 급여는 변하지 않으며 나머지 절감 작업시간은 현금절감 없이 재배치에 쓴다. 외주비 취소 가능성도 미검증 상태다. 연간 현금지출 총감소액은 파일럿 18, 전면 도입 72다. 유지보수·소프트웨어·에너지의 연간 추가 비용은 각각 4와 12이므로 순현금절감액은 14와 60이다.\n\n4개 구역 전면 도입의 최초 설비투자액은 240이다. 1개 구역 파일럿은 1운영연도 동안 진행하며 최초 75가 필요하다. 조건부 확장은 파일럿 설비를 재사용해도 추가 190이 들어 단계적 도입의 총투자액은 265다. 지출과 가동 개시 시점은 일치한다. 초기 가동률 상승 기간 없이 절감액이 일정하고 현금절감이 기간에 걸쳐 균등하게 발생하며, 확장은 첫 운영연도 직후 시작한다고 가정한다. 세금·감가상각·금융비용·할인·운전자본·잔존가치는 계산에서 제외한다. 전면 도입의 단순 투자회수기간은 240 / 60 = 4.00년이다. 확장 없이 파일럿만 계속 운영하면 75 / 14로 약 5.36년이다. 조건부 단계적 도입은 첫해에 14만 절감하므로 최초 지출부터 1 + (75 - 14 + 190) / 60, 약 5.18년이 걸린다.\n\n확장 조건으로는 비교 가능한 물량 구성에서 목표 처리량 달성, 건별 오류율 0.5% 이하, 미해결 중대 안전 지적사항 없음, 파일럿 연도 중 외주 인력 600시간 취소 증빙을 제안한다. 재무팀과 운영팀은 나머지 구역의 경제성을 입증해야 하며 확장은 별도 승인이 필요하다. 경영진은 처리량과 외주비 취소 가능성이 검증되지 않았다는 이유로 파일럿 예산 75만 승인하도록 권고한다. 파일럿과 확장은 모두 승인되거나 완료되지 않았다. 파일럿은 최초 투입액이 165 적지만 단계적 도입의 총투자액은 25 많고 모형상 회수도 더 늦다. 가정한 경제성은 전면 도입이 우세하나, 현금절감 실현을 입증하기 전에 더 많은 자본을 투입하게 된다.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/capex/ko/output.md",
+          "sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2",
+          "text": "# 물류센터 자동화 설비투자 검토서\n\n가상 사례이며, 운영총괄과 투자심의위원회의 검토용이다. 모든 수치는 설비 성능 측정값이 아니라 투자 전 가정이다. 별도 표시가 없는 금액 단위는 불변가격 기준 백만원이다.\n\n## 1. 검토 대상과 결론\n\n이 검토서는 4개 구역 전면 도입과, 1개 구역 파일럿 후 별도 승인을 거치는 조건부 확장을 비교한다.\n\n- 경영진은 처리량과 외주비 취소 가능성이 검증되지 않았다는 이유로 파일럿 예산 75만 승인하도록 권고한다.\n- 파일럿과 확장은 모두 승인되거나 완료되지 않았다.\n- 가정한 경제성은 전면 도입이 우세하다. 다만 전면 도입은 현금절감 실현을 입증하기 전에 더 많은 자본을 투입한다.\n\n| 구분 | 최초 투자액 | 총투자액 | 연간 순현금절감액 | 단순 투자회수기간 |\n|---|---|---|---|---|\n| 4개 구역 전면 도입 | 240 | 240 | 60 | 240 / 60 = 4.00년 |\n| 파일럿만 계속 운영(확장 없음) | 75 | 75 | 14 | 75 / 14 = 약 5.36년 |\n| 조건부 단계적 도입 | 75 | 265 | 첫해 14, 확장 후 60 | 최초 지출부터 1 + (75 - 14 + 190) / 60 = 약 5.18년 |\n\n파일럿은 최초 투입액이 전면 도입보다 165 적다. 반면 단계적 도입의 총투자액은 전면 도입보다 25 많고, 모형상 회수도 더 늦다.\n\n## 2. 처리량과 작업시간 가정\n\n비교 가능한 4개 구역은 각각 자동화 대상 물량을 하루 1,200건씩 연간 300일 처리한다. 수요는 고정이며 매출 증가 효과는 없다.\n\n하루 예정 작업시간 8시간 중 실제 처리에 쓰이는 시간은 75%인 6시간이다. 2인 팀의 수작업 처리량은 실제 팀 작업시간당 200건이다. 자동화 목표는 같은 인원과 물량 구성에서 시간당 300건이며, 이 목표는 아직 검증되지 않았다.\n\n목표대로라면 실제 팀 작업시간이 하루 6시간에서 4시간으로 줄어든다. 이때 생기는 절감 작업시간은 다음과 같다.\n\n- 구역당 하루 4인시\n- 구역당 연간 1,200인시\n- 전체 연간 4,800인시\n\n예정 작업시간, 실제 팀 작업시간, 인시는 서로 다른 개념이므로 구분해서 읽어야 한다.\n\n## 3. 현금절감 가정\n\n실제 현금지출 감소는 구역당 연간 외주 인력 600시간을 청구 시간당 30,000원에 취소할 수 있다는 가정에 따른다. 이에 따른 감소액은 구역당 18이다. 외주비 취소 가능성도 검증되지 않았다.\n\n- 전체 취소 시간은 2,400시간이며, 절감 작업시간 전체가 아니다.\n- 정규직 급여는 변하지 않는다.\n- 나머지 절감 작업시간은 현금절감 없이 재배치에 쓴다.\n\n| 구분 | 연간 현금지출 총감소액 | 연간 추가 비용(유지보수·소프트웨어·에너지) | 연간 순현금절감액 |\n|---|---|---|---|\n| 파일럿(1개 구역) | 18 | 4 | 14 |\n| 전면 도입(4개 구역) | 72 | 12 | 60 |\n\n## 4. 투자액과 회수기간 계산의 전제\n\n- 4개 구역 전면 도입의 최초 설비투자액은 240이다.\n- 1개 구역 파일럿은 1운영연도 동안 진행하며 최초 75가 필요하다.\n- 조건부 확장은 파일럿 설비를 재사용해도 추가 190이 든다. 따라서 단계적 도입의 총투자액은 265다.\n\n계산에는 다음을 가정한다.\n\n- 지출과 가동 개시 시점이 일치한다.\n- 초기 가동률 상승 기간 없이 절감액이 일정하다.\n- 현금절감이 기간에 걸쳐 균등하게 발생한다.\n- 확장은 첫 운영연도 직후 시작한다.\n\n세금, 감가상각, 금융비용, 할인, 운전자본, 잔존가치는 계산에서 제외한다.\n\n조건부 단계적 도입은 첫해에 파일럿의 순현금절감액 14만 얻는다. 그래서 최초 지출부터 회수까지 1 + (75 - 14 + 190) / 60, 약 5.18년이 걸린다.\n\n## 5. 확장 조건\n\n확장 조건으로 다음 네 가지를 제안한다.\n\n1. 비교 가능한 물량 구성에서 목표 처리량을 달성한다.\n2. 건별 오류율이 0.5% 이하이다.\n3. 미해결 중대 안전 지적사항이 없다.\n4. 파일럿 연도 중 외주 인력 600시간 취소를 증빙한다.\n\n재무팀과 운영팀은 나머지 구역의 경제성을 입증해야 한다. 확장은 별도 승인이 필요하다."
+        }
+      },
+      "selected": {
+        "case_id": "capex",
+        "language": "ko",
+        "attempt": "verification/professional-examples-20261111/remaining-run/capex/ko/attempt.json",
+        "review": "examples/professional/capex/review.json",
+        "revision": "verification/professional-examples-20261111/remaining-run/capex/ko/output.md",
+        "status": "pass",
+        "output_sha256": "94b5942897b41ded790498b547f95556938596acc267fa85b7014e8407739aa2",
+        "kind": "first_attempt"
+      }
+    }
+  }
+}

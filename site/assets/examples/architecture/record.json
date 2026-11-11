@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "case_id": "architecture",
+  "date": "2026-11-11",
+  "scope": "Textual source-fidelity review, not a readability benchmark or cross-runtime compatibility test",
+  "path_base": "repository_root",
+  "fact_ledger": {
+    "id": "architecture",
+    "genre": {
+      "en": "Architecture decision record",
+      "ko": "설계 결정 기록"
+    },
+    "topic": {
+      "en": "Durable receipt and one local entitlement grant for duplicate, out-of-order invoice events",
+      "ko": "중복·순서 역전 송장 이벤트의 영속 수신과 로컬 이용 권한 1회 부여"
+    },
+    "audience": {
+      "en": "Backend implementers and architecture reviewers",
+      "ko": "백엔드 구현자와 설계 검토자"
+    },
+    "source_mode": "source_based_with_fictional_design",
+    "sources": [
+      {
+        "id": "S1",
+        "url": "https://docs.stripe.com/webhooks",
+        "locator": "Event ordering; Handle duplicate events; Create a handler; Handle events asynchronously; Quickly return a 2xx response; snapshot event-destination registration example",
+        "rights": "Facts paraphrased with attribution. Stripe redistribution permission is unverified. No third-party figures, tables or code are reproduced."
+      },
+      {
+        "id": "S2",
+        "url": "https://docs.stripe.com/api/events/object",
+        "locator": "Event attributes id, type, data, created, account and api_version",
+        "rights": "Field names and facts paraphrased with attribution. No license grant for Stripe documentation is asserted."
+      },
+      {
+        "id": "S3",
+        "url": "https://docs.stripe.com/api/events/types",
+        "locator": "Snapshot event types invoice.created and invoice.paid",
+        "rights": "Event names and facts paraphrased with attribution. No third-party event payload is reproduced."
+      },
+      {
+        "id": "S4",
+        "url": "https://docs.stripe.com/api/invoices/object",
+        "locator": "Invoice attributes id and status",
+        "rights": "Field names and facts paraphrased with attribution. No license grant for Stripe documentation is asserted."
+      }
+    ],
+    "facts": [
+      {
+        "id": "A01",
+        "kind": "reported_fact",
+        "en": "Stripe does not guarantee generation-order delivery. Snapshot Event created timestamps are measured in seconds, so distinct Events can share a timestamp. created establishes neither delivery order nor uniqueness.",
+        "ko": "Stripe는 이벤트 생성 순서대로 전달된다고 보장하지 않는다. 스냅샷 Event의 created는 초 단위이므로 서로 다른 Event가 같은 타임스탬프를 가질 수 있다. created로 전달 순서나 고유성을 판정할 수 없다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      },
+      {
+        "id": "A02",
+        "kind": "reported_fact",
+        "en": "The same Event can arrive repeatedly, and separate Event objects can describe a duplicate operation. Distinct Event IDs therefore do not establish distinct business operations.",
+        "ko": "같은 Event가 반복 전달될 수 있으며, 별개의 Event 객체가 중복 연산을 나타낼 수도 있다. 따라서 이벤트 ID가 다르다고 업무 연산도 다르다고 볼 수 없다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "A03",
+        "kind": "reported_fact",
+        "en": "Stripe recommends identifying separate duplicate Event objects with data.object.id and event.type. This duplicate-identification guidance is not a rule to suppress every future update for an object.",
+        "ko": "Stripe는 별개의 중복 Event 객체를 식별할 때 data.object.id와 event.type을 함께 사용하도록 권고한다. 이 중복 식별 지침을 객체의 모든 후속 갱신을 무시하는 규칙으로 확대할 수는 없다.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "id": "A04",
+        "kind": "reported_fact",
+        "en": "Signature verification requires the unmodified raw request body. A prompt 2xx response acknowledges delivery, not completion of the application's business operation.",
+        "ko": "서명 검증에는 변경하지 않은 요청 본문 원문이 필요하다. 신속한 2xx 응답은 전달에 대한 수신 확인이지 애플리케이션의 업무 처리 완료를 뜻하지 않는다.",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      },
+      {
+        "id": "A05",
+        "kind": "scenario_assumption",
+        "en": "The fictional application handles one Stripe account, one environment, and snapshot invoice.created and invoice.paid events with the assumed version 2026-10-28.preview. Existing invoice_id-to-order_id mappings support one non-revocable local entitlement per invoice. account_id comes from configured account context, event_id from Event.id, event_type from Event.type, and invoice_id from data.object.id. The unique business-operation key is account_id plus invoice_id plus operation_kind=grant_entitlement, not event_id.",
+        "ko": "가상 애플리케이션은 Stripe 계정 하나와 환경 하나에서 스냅샷 invoice.created 및 invoice.paid 이벤트를 다루며, 버전은 2026-10-28.preview로 가정한다. invoice_id와 order_id의 매핑은 이미 존재하며 송장마다 철회하지 않는 로컬 이용 권한 하나를 부여한다. account_id는 설정된 계정 문맥에서, event_id는 Event.id에서, event_type은 Event.type에서, invoice_id는 data.object.id에서 얻는다. 고유한 업무 연산 키는 event_id가 아니라 account_id, invoice_id, operation_kind=grant_entitlement의 조합이다.",
+        "source_ids": []
+      },
+      {
+        "id": "A06",
+        "kind": "scenario_assumption",
+        "en": "Four fictional deliveries arrive as invoice.paid E2, repeated E2, late invoice.created E1, and a distinct duplicate invoice.paid E3. They concern one invoice and one order, with three Event IDs and two event types. E1 was generated before E2, although their created timestamps may share a second. The repeated E2 creates no new work; E3 remains a separate Event but must not cause a second grant.",
+        "ko": "가상 전달 순서는 invoice.paid E2, E2 재전송, 늦게 도착한 invoice.created E1, 별개의 중복 invoice.paid E3이다. 네 번의 전달은 송장 하나와 주문 하나에 관한 것이며 이벤트 ID는 세 개, 이벤트 유형은 두 개다. E1은 E2보다 먼저 생성되었지만 created는 같은 초를 나타낼 수 있다. E2 재전송은 새 작업을 만들지 않으며, E3는 별개의 Event로 남되 두 번째 권한 부여를 일으켜서는 안 된다.",
+        "source_ids": []
+      },
+      {
+        "id": "A07",
+        "kind": "scenario_assumption",
+        "en": "The durable inbox is the work queue, with no external queue-publication step. It stores payload, receipt time, and pending or completed state, with a unique account_id-plus-event_id key. Receipt alone is not completion. Pending rows remain retryable, and neither inbox nor operation records are pruned within this example.",
+        "ko": "영속 inbox가 작업 큐이며 외부 큐에 발행하는 단계는 없다. inbox는 페이로드, 수신 시각, pending 또는 completed 상태를 저장하고 account_id와 event_id의 조합에 고유 제약을 둔다. 수신만으로 처리가 완료되지는 않는다. pending 행은 재시도할 수 있으며 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다.",
+        "source_ids": []
+      },
+      {
+        "id": "A08",
+        "kind": "scenario_assumption",
+        "en": "After signature verification, the endpoint commits the inbox row or confirms the existing durable row before returning 2xx. Persistence failure receives no successful acknowledgment. An existing pending row is acknowledged without being discarded or relabeled completed. A crash after receipt commit but before acknowledgment leaves committed work available on redelivery.",
+        "ko": "엔드포인트는 서명 검증 후 inbox 행을 커밋하거나 기존 행이 영속 저장되어 있음을 확인한 뒤 2xx를 반환한다. 저장에 실패하면 성공 응답을 보내지 않는다. 기존 pending 행에는 수신 확인을 응답하되 작업을 버리거나 completed로 바꾸지 않는다. 수신 기록을 커밋한 뒤 응답 전에 장애가 나도 재전송 시 커밋된 작업이 남아 있다.",
+        "source_ids": []
+      },
+      {
+        "id": "A09",
+        "kind": "scenario_assumption",
+        "en": "One ACID database contains the inbox, operation ledger, and entitlement. Locks and unique constraints arbitrate concurrent workers. For a new grant, ledger insertion, entitlement mutation, and inbox completion commit atomically. An existing operation permits inbox completion without another grant. A business-transaction crash cannot commit only the completion marker.",
+        "ko": "단일 ACID 데이터베이스가 inbox, 연산 원장, 이용 권한을 보관한다. 잠금과 고유 제약으로 동시 작업자를 조정한다. 새 권한을 부여할 때 원장 삽입, 권한 변경, inbox의 완료 처리를 하나의 트랜잭션으로 커밋한다. 연산이 이미 기록되어 있으면 다시 부여하지 않고 해당 inbox 처리를 완료한다. 업무 트랜잭션 도중 장애가 나도 완료 표시만 따로 커밋될 수는 없다.",
+        "source_ids": []
+      },
+      {
+        "id": "A10",
+        "kind": "author_judgment",
+        "en": "Paid processing retrieves the invoice and requires confirmed status=paid and a matching existing order. Retrieval failure or an unmet condition leaves work pending. Created processing completes its receipt without resetting a grant, so late E1 cannot undo it. Under the stated database and retention assumptions, eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching yield one local grant for this trace, not global exactly-once execution. Event-ID-only deduplication misses E3, acknowledgment before persistence risks lost work, and timestamp sorting cannot establish order. Database contention and pending-work recovery are costs. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded. This ADR proposes no real Stripe, API, or production changes.",
+        "ko": "paid 처리 시 송장을 조회하여 status=paid와 기존 주문의 일치를 확인해야 한다. 조회에 실패하거나 조건을 충족하지 못하면 작업은 pending으로 남는다. created 처리는 수신 건을 완료하되 부여된 권한을 초기화하지 않으므로 늦은 E1이 권한을 되돌리지 못한다. 명시한 데이터베이스·기록 보존 가정 아래 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 이벤트 ID만으로 중복을 제거하면 E3를 놓치고, 저장 전 응답은 작업 유실 위험이 있으며, 타임스탬프 정렬로는 순서를 확정할 수 없다. 데이터베이스 경합과 pending 작업 복구가 비용이다. 환불, 분쟁, 구독 변경, 외부 이행, 외부 결제 API의 멱등성은 제외한다. 이 ADR은 실제 Stripe·API·운영 환경 변경을 제안하지 않는다.",
+        "source_ids": []
+      }
+    ],
+    "review_checks": [
+      {
+        "id": "AC01",
+        "en": "Both drafts retain genuine ADR context, decision, alternatives, and consequences, and identify the application, version, and trace as fictional assumptions.",
+        "ko": "두 초안 모두 ADR의 배경·결정·대안·결과를 유지하고 애플리케이션·버전·전달 사례를 가상 가정으로 표시한다."
+      },
+      {
+        "id": "AC02",
+        "en": "Four deliveries remain E2, repeated E2, late E1, and distinct duplicate paid E3, with three Event IDs, two types, one invoice, one order, and one business operation.",
+        "ko": "네 전달은 E2, E2 재전송, 늦은 E1, 별개의 중복 paid E3로 유지되며 이벤트 ID 세 개·유형 두 개·송장 하나·주문 하나·업무 연산 하나를 구분한다."
+      },
+      {
+        "id": "AC03",
+        "en": "Account/event receipt uniqueness remains distinct from account/invoice/grant_entitlement operation uniqueness. E2 creates no new work, and E3 causes no second grant without being erased as an Event.",
+        "ko": "계정·이벤트 기준의 수신 고유성과 계정·송장·grant_entitlement 기준의 연산 고유성을 구분한다. E2는 새 작업을 만들지 않고 E3는 Event로 남되 두 번째 권한을 부여하지 않는다."
+      },
+      {
+        "id": "AC04",
+        "en": "Raw-body signature verification precedes durable receipt, and durable receipt precedes 2xx. Pending is neither completed nor discarded. Both crash boundaries retain their meaning.",
+        "ko": "본문 원문 서명 검증, 영속 수신 기록, 2xx의 순서를 유지한다. pending을 completed나 폐기 상태로 바꾸지 않으며 두 장애 경계의 의미를 보존한다."
+      },
+      {
+        "id": "AC05",
+        "en": "Atomic local ledger insertion, entitlement mutation, and inbox completion retain the one-ACID-database boundary and concurrent-worker constraints.",
+        "ko": "로컬 원장 삽입·권한 변경·inbox 완료의 원자성에 단일 ACID 데이터베이스와 동시 작업자 제약이라는 경계를 유지한다."
+      },
+      {
+        "id": "AC06",
+        "en": "Invoice retrieval, confirmed paid status, matching order, pending on failure, and eventual-processing conditions remain explicit. Late created E1 cannot undo the grant.",
+        "ko": "송장 조회·결제 완료 확인·주문 일치·실패 시 pending 유지·최종 처리 조건을 명시한다. 늦은 created E1이 권한 부여를 되돌릴 수 없다."
+      },
+      {
+        "id": "AC07",
+        "en": "Neither timestamps nor deduplication become an ordering guarantee. No blanket future-update suppression, universal exactly-once claim, external-effect guarantee, or real production change is introduced.",
+        "ko": "타임스탬프나 중복 제거를 순서 보장으로 바꾸지 않는다. 모든 후속 갱신의 일괄 무시·전역 exactly-once·외부 효과 보장·실제 운영 변경을 추가하지 않는다."
+      },
+      {
+        "id": "AC08",
+        "en": "No external queue-publication gap, retained records, non-revocation, database contention, recovery costs, and all named exclusions remain attached to the bounded conclusion.",
+        "ko": "외부 큐 발행 간극이 없다는 점·기록 보존·권한 비철회·데이터베이스 경합·복구 비용·명시된 제외 범위를 한정된 결론과 함께 유지한다."
+      }
+    ]
+  },
+  "source_notes": {
+    "path": "examples/professional/architecture/sources.md",
+    "sha256": "8fcf403e8ad573880421f3114633d86928fbb655ffe88ad8fc1e1b130c3c4f21",
+    "text": "# Architecture source packet\n\n## Topic, reader, and purpose\n\nThis packet supplies an English and Korean architecture decision record for backend implementers and architecture reviewers. The question is whether durable receipt and a local business-operation key can prevent duplicate entitlement grants when invoice events arrive repeatedly and out of order. The application and delivery trace are fictional. This is a professional-writing source example, not an implementation, production proposal, deployment record, or recorded model output.\n\n`facts.json` selects ten groups, A01 through A10. Both `before` drafts contain all ten. The groups separate public webhook constraints from application assumptions and the author's bounded design judgment.\n\n## Official sources and locators\n\nSources were read on 2026-11-11. The following hashes identify separately retrieved complete response bodies, requested with `Accept: text/markdown`, with retrieval completed at 2026-11-11T08:24:58Z. All four responses reported `text/markdown; charset=utf-8`. These are hashes of dynamic documentation responses, not stable publication editions or hashes of excerpts. No full third-party response body is distributed in this packet.\n\n### S1. Stripe webhook documentation\n\nURL: https://docs.stripe.com/webhooks\n\nSHA-256: `23ec0d42e0618b33a13503b31d0e7c9a3938ad9b48d692ab21ed88e973c35f44`\n\nResponse length: 48,050 bytes.\n\nRelevant sections:\n\n- [Event ordering](https://docs.stripe.com/webhooks#event-ordering). Delivery need not follow generation order. Snapshot `created` timestamps are in seconds, may collide, and are unsuitable for event ordering or duplicate identification. The section also permits retrieval of missing objects when `invoice.paid` arrives first.\n- [Handle duplicate events](https://docs.stripe.com/webhooks#handle-duplicate-events). The same Event may be delivered repeatedly. Separate Event objects may also be duplicates, for which Stripe recommends the object ID in `data.object` together with `event.type`.\n- [Create a handler](https://docs.stripe.com/webhooks#create-a-handler). Signature verification requires the unchanged raw request body. Prompt successful acknowledgment precedes complex business work. The snapshot-handler subsection distinguishes event-time data from a retrieved current resource.\n- [Handle events asynchronously](https://docs.stripe.com/webhooks#handle-events-asynchronously) and [Quickly return a 2xx response](https://docs.stripe.com/webhooks#quickly-return-a-2xx-response). These support the separation of receipt from business completion. They do not prescribe this packet's database schema, retention, or transaction design.\n- The snapshot event-destination registration example uses `Stripe-Version: 2026-10-28.preview`. This is the documented version chosen as the fictional scenario's version assumption. No endpoint registration was performed.\n\nA01 through A04 paraphrase S1. The qualification in A03 rejects an overgeneralization of the documented duplicate rule. Stripe does not prescribe a permanent suppression policy for every future update to an object.\n\n### S2. Stripe Event object\n\nURL: https://docs.stripe.com/api/events/object\n\nSHA-256: `81768fc3868ada2555aa2aedc6e26e5d475b364cc5059a6d405a9758b9d16abc`\n\nResponse length: 2,975 bytes.\n\nRelevant attributes are `id`, `type`, `data`, `created`, `account`, `api_version`, and `pending_webhooks`. `created` is measured in seconds since the Unix epoch. `api_version` identifies the version used to render the event's data, which does not change after creation. `account` describes a connected account and is nullable. Consequently, the fictional single-account application obtains its local `account_id` from configured account context rather than assuming that every payload contains `account`.\n\nThe draft's local names map `event_id` to `Event.id`, `event_type` to `Event.type`, and `invoice_id` to the invoice's `data.object.id`. `order_id` and `operation_kind` are application identifiers, not Stripe Event fields. The configured-account choice and composite database keys are original design assumptions, not vendor requirements.\n\n### S3. Stripe snapshot event types\n\nURL: https://docs.stripe.com/api/events/types\n\nSHA-256: `1bfb1e526e1a4e01d687da97a2652a276bd38e08bb397a5542f99779b255fb88`\n\nResponse length: 51,696 bytes.\n\nThe `invoice.created` entry describes creation of an invoice. The `invoice.paid` entry describes a successful invoice payment attempt or an invoice marked paid out of band. Both carry an invoice in `data.object`. The selected ADR uses only their names and invoice relationship. It does not infer that `invoice.paid` proves a particular charge, cash-settlement method, or external fulfillment result.\n\n### S4. Stripe Invoice object\n\nURL: https://docs.stripe.com/api/invoices/object\n\nSHA-256: `feea3905740bbebbddafecec1cf7cd45ba72fc6f7c06f0f9cafe4376808c4ff3`\n\nResponse length: 21,234 bytes.\n\nThe `id` and `status` attributes support identifying the invoice and checking for `status=paid`. Current documentation lists `draft`, `open`, `paid`, `uncollectible`, and `void` as statuses. The other statuses are background only, not selected claims requiring reproduction in the drafts. The decision to retrieve the invoice before granting and to require a matching local order belongs to the fictional application.\n\n## Application assumptions and bounded judgment\n\nA05 through A09 define the fictional application. A10 is the author's assessment of the consequences under those assumptions, not a Stripe guarantee. The version `2026-10-28.preview` is a documented version string used to bound the hypothetical snapshot schema. It is not a claim that a live account is configured to that version. No version-specific request, historical payload, API response, or SDK compatibility was tested. The packet uses only the documented identifier, timestamp, type, and invoice-status fields, not a purported complete executable payload.\n\nThe scenario has one account and one environment. The latter prevents the local account key from silently merging independent test and live namespaces. Invoice-to-order mappings already exist. A grant is local and non-revocable within the scenario. The inbox, operation ledger, and entitlement share one ACID database. The inbox itself supplies durable queued work, so no acknowledgment-to-external-queue publication gap is assumed. Inbox and operation records remain retained throughout the example.\n\nThe acknowledgment protocol and transaction boundary are proposed application rules. Stripe's prompt-response guidance is not a guarantee that receipt is durable, and its duplicate guidance is not a guarantee that the application's operation has completed. These distinctions are the writing example's central reasoning.\n\n## Relationships for editorial review\n\nThe trace is a fixture, not observed Stripe traffic. No timestamps, throughput, latency, or error rates were measured.\n\n| Arrival | Event | Meaning | Required local interpretation |\n| --- | --- | --- | --- |\n| 1 | E2 | `invoice.paid` for the one invoice | Durable receipt creates pending work. The paid conditions control any grant. |\n| 2 | E2 again | Another delivery of the same Event | The account/event key finds the existing row. No new work is created, including when the row is pending. |\n| 3 | E1 | Late `invoice.created` for the same invoice | It is a distinct receipt. Completing it never resets an existing grant. |\n| 4 | E3 | Separate duplicate `invoice.paid` Event for the same invoice | It retains its own inbox row. The business-operation key prevents another grant. |\n\nThe fixture therefore has four deliveries, three Event IDs, two event types, one invoice, one order, and one grant operation. E1 was generated before E2, although their second-precision `created` values may be equal. Arrival order is not a worker scheduling guarantee. Whichever eligible paid worker wins the operation key may perform the grant. Processing the other paid Event completes its receipt without another grant.\n\nReceipt uniqueness is `(account_id, event_id)`. Operation uniqueness is `(account_id, invoice_id, operation_kind=grant_entitlement)`. An invoice ID alone is neither a receipt ID nor a universal rule for suppressing all later invoice activity.\n\nThe endpoint verifies the raw-body signature before persisting or confirming a durable receipt and before returning `2xx`. A committed pending row remains work, not evidence of business completion. If persistence fails, the endpoint does not return successful acceptance. If the process crashes after the receipt commit and before acknowledgment, redelivery finds the retained row rather than creating new work or losing the committed work.\n\nFor a new grant, ledger insertion, entitlement mutation, and inbox completion commit together. A business-transaction crash therefore cannot leave only the completion marker committed. Locks and unique constraints arbitrate concurrent workers. A worker that finds the operation already committed completes its own inbox receipt without mutating the grant again. The ADR does not specify lock syntax, isolation-level details, retry scheduling, or a general worker algorithm.\n\nThe at-most-one local grant argument depends on operation uniqueness, atomicity, retained records, and non-revocation. Reaching one grant also requires eventual successful receipt and worker processing, invoice retrieval, confirmed paid status, and order matching. Retrieval failure or an unmet condition leaves pending work. Neither successful receipt nor uniqueness alone supplies this eventual-processing condition. Permanently failed retrieval, stopped workers, or a permanently unmatched order do not justify a completion claim.\n\nThe alternatives preserve distinct reasons for rejection. Event-ID-only handling misses the separate duplicate E3. Acknowledgment before persistence risks lost work. Timestamp sorting cannot establish generation order or uniqueness. The proposal carries database contention and pending-work recovery costs rather than eliminating failure handling.\n\n## Excluded claims and uncertainty\n\nThere is no global exactly-once guarantee, ordering guarantee, or general claim that all future invoice updates can be ignored. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded. An external email, shipment, payment call, or another database would need a different effect-delivery design. No such design is supplied or implied here.\n\nRetry duration, manual replay windows, automatic invoice-finalization timing, and the full set of snapshot payload fields are background, not selected draft facts. No production Stripe account, actual event, or business transaction was inspected. The source constraints were checked against the public documentation, while the version-specific behavior of an implemented endpoint remains untested because no endpoint is part of the assignment.\n\n## Rights and attribution\n\nBoth drafts, the fictional identifiers and trace, the selected fact descriptions, and the editorial analysis are original project-authored text. Public-source facts are paraphrased and attributed to Stripe. Stripe documentation redistribution permission has not been established. Citation does not place Stripe's wording, code, figures, tables, or documentation under this repository's MIT license. No third-party figure, table, sample payload, source code, or long quotation is reproduced.\n\n## Specialized terminology\n\n| English | Korean | Meaning in this packet |\n| --- | --- | --- |\n| Architecture decision record, ADR | 설계 결정 기록, ADR | Context, decision, alternatives, and consequences of one bounded choice. |\n| Snapshot Event | 스냅샷 Event | The documented Event format, not a thin event notification. |\n| Event ID | 이벤트 ID | The identity of an Event object, not the grant operation. |\n| Duplicate delivery | 중복 전달 | Another receipt of the same Event. |\n| Separate duplicate Event object | 별개의 중복 Event 객체 | An Event with a distinct ID that describes the same grant-triggering business occurrence here. |\n| Business-operation key | 업무 연산 키 | Account, invoice, and `grant_entitlement` together. |\n| Acknowledgment | 수신 확인 응답 | Successful delivery response, not business completion. |\n| Durable inbox | 영속 inbox | Retained receipt records that also constitute the work queue. |\n| Pending | 처리 대기, `pending` | Received work that has not completed. |\n| Completed | 처리 완료, `completed` | The inbox receipt's processing is complete, including a duplicate-operation no-op. |\n| Operation ledger | 연산 원장 | Local record of committed grant operations. |\n| Entitlement | 이용 권한 | One non-revocable local grant per invoice in the fictional application. |\n| Out-of-order delivery | 생성 순서와 다른 전달 | Arrival order differs from generation order. |\n| Idempotency | 멱등성 | Repetition does not add a grant within the named local operation boundary. |\n\n## Editorial rationale\n\nBoth drafts preserve the ADR structure, delivery trace, receipt/completion distinction, crash boundaries and conditional guarantee. English and Korean use their own sentence flow with the same selected facts.\n\n## Recorded outputs\n\nThe [English attempt](../../../verification/professional-examples-20261111/remaining-run/architecture/en/attempt.json) and [Korean attempt](../../../verification/professional-examples-20261111/remaining-run/architecture/ko/attempt.json) record actual requests, model, package hashes and observed reference reads. The [fidelity review](review.md) covers A01–A10. No live Stripe call or production implementation was performed.\n"
+  },
+  "initial_review": {
+    "path": "examples/professional/architecture/review.json",
+    "json": {
+      "case_id": "architecture",
+      "scope": "Independent agent review of input parity and textual source fidelity; not human comprehension",
+      "source_parity": {
+        "status": "pass",
+        "issues": []
+      },
+      "languages": {
+        "en": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/remaining-run/architecture/en/attempt.json",
+          "output_sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f",
+          "facts": [
+            {
+              "id": "A01",
+              "status": "pass",
+              "note": "Retains Stripe attribution, unordered delivery, second-level created precision, and neither order nor uniqueness. E1 may share E2's timestamp second despite earlier generation."
+            },
+            {
+              "id": "A02",
+              "status": "pass",
+              "note": "Separates repeat delivery of one Event from separate duplicate Event objects; distinct E3 does not imply another grant operation."
+            },
+            {
+              "id": "A03",
+              "status": "pass",
+              "note": "Preserves Stripe's data.object.id plus event.type recommendation for separate duplicate Events and explicitly rejects blanket suppression of future updates."
+            },
+            {
+              "id": "A04",
+              "status": "pass",
+              "note": "Requires signature verification against the unmodified raw body; prompt 2xx acknowledges delivery rather than business completion."
+            },
+            {
+              "id": "A05",
+              "status": "pass",
+              "note": "Keeps the proposed fictional design, one account and environment, assumed snapshot version 2026-10-28.preview, existing invoice/order mappings, and one non-revocable local entitlement per invoice. Preserves all identifier origins and the account/invoice/grant_entitlement operation key, distinct from Event ID."
+            },
+            {
+              "id": "A06",
+              "status": "pass",
+              "note": "The ordered list retains E2, repeated E2, late created E1, distinct duplicate paid E3, four deliveries, three Event IDs, two types, and one invoice/order. E2 adds no work; E3 may complete its separate inbox receipt without a second grant."
+            },
+            {
+              "id": "A07",
+              "status": "pass",
+              "note": "Inbox remains the durable work queue without external queue publication. Payload, receipt time, pending/completed states, unique account/event key, pending retries, and retention of inbox and operation records remain explicit."
+            },
+            {
+              "id": "A08",
+              "status": "pass",
+              "note": "Signature verification precedes commit or confirmation of a durable predecessor and then 2xx. Persistence failure receives no success. Repeat E2 neither discards nor completes pending work; a post-receipt-commit, pre-acknowledgment crash leaves it available on redelivery."
+            },
+            {
+              "id": "A09",
+              "status": "pass",
+              "note": "Keeps one ACID database, locks and unique constraints, atomic ledger insertion/entitlement mutation/inbox completion, existing-operation completion without another grant, and no completion-only commit on a transaction crash."
+            },
+            {
+              "id": "A10",
+              "status": "pass",
+              "note": "Retains invoice retrieval, confirmed status=paid, matching existing order_id, pending on retrieval or condition failure, and no reversal by late created E1. One local grant remains conditional on database/retention assumptions and eventual successful receipt, retries, retrieval, paid confirmation, and matching. All three alternative limitations, contention/recovery costs, five exclusions, no real changes, and no global exactly-once claim remain."
+            }
+          ],
+          "issues": []
+        },
+        "ko": {
+          "status": "pass",
+          "attempt": "verification/professional-examples-20261111/remaining-run/architecture/ko/attempt.json",
+          "output_sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a",
+          "facts": [
+            {
+              "id": "A01",
+              "status": "pass",
+              "note": "Retains Stripe's lack of generation-order delivery guarantee and the inability of second-level created values to establish order or uniqueness; E1 and E2 may share a timestamp second."
+            },
+            {
+              "id": "A02",
+              "status": "pass",
+              "note": "Keeps same-Event redelivery distinct from separate duplicate Event objects and preserves E3 as a distinct Event without another grant."
+            },
+            {
+              "id": "A03",
+              "status": "pass",
+              "note": "Preserves data.object.id with event.type for separate duplicate identification and the express warning that this does not suppress all later object updates. Attribution remains in the Stripe discussion."
+            },
+            {
+              "id": "A04",
+              "status": "pass",
+              "note": "Keeps unchanged raw-body signature verification and distinguishes successful receipt acknowledgment from completed business processing."
+            },
+            {
+              "id": "A05",
+              "status": "pass",
+              "note": "Retains the fictional proposal rather than a live change, one account/environment, assumed snapshot version 2026-10-28.preview, existing invoice/order mappings, and one non-revocable local entitlement per invoice. Identifier origins and the account/invoice/grant_entitlement operation key remain unchanged."
+            },
+            {
+              "id": "A06",
+              "status": "pass",
+              "note": "Retains the four-delivery E2/E2/E1/E3 sequence, three Event IDs, two types, one invoice/order, earlier generation of E1 with possibly equal-second created values, no new work for repeat E2, and no second grant for distinct E3."
+            },
+            {
+              "id": "A07",
+              "status": "pass",
+              "note": "Keeps the inbox as durable queue without external publication, the payload/receipt-time/pending-or-completed fields and account/event uniqueness, pending retries, and no inbox or operation record deletion within the example."
+            },
+            {
+              "id": "A08",
+              "status": "pass",
+              "note": "Retains verification, durable commit or existing-row confirmation, then prompt 2xx; no success on persistence failure; no new/discarded/completed pending work on repeat E2; and committed work surviving the receipt-commit-to-acknowledgment crash gap."
+            },
+            {
+              "id": "A09",
+              "status": "pass",
+              "note": "Preserves the single ACID database, locks and unique constraints, atomic ledger/grant/inbox-completion transaction, duplicate-operation completion without another grant including E3, and impossibility of completion-only commit after a transaction crash."
+            },
+            {
+              "id": "A10",
+              "status": "pass",
+              "note": "Keeps retrieval, status=paid and existing order_id matching, pending on failure, and late E1 completing without resetting entitlement. The one-local-grant conclusion still requires the stated database/retention assumptions and eventual successful receipt/retries/retrieval/paid confirmation/matching. All alternative limitations, contention/recovery costs, five exclusions, fictional-change boundary, and rejection of global exactly-once remain."
+            }
+          ],
+          "issues": []
+        }
+      }
+    },
+    "markdown": {
+      "path": "examples/professional/architecture/review.md",
+      "sha256": "6ff10107667e69af62025cad1de0608aa888d61bad51cd7b2589dd0ad372923b",
+      "text": "# Architecture source-fidelity review\n\nThe review checks whether both native revisions preserve the fictional ADR's source facts and bounded design judgment. Source parity passes. English passes A01 through A10. Korean passes A01 through A10. No material source-fidelity issue or unsupported added claim was found.\n\n## Evidence examined\n\nExamined the complete English and Korean `before` drafts, `sources.md`, current `facts.json`, frozen `remaining-run/architecture/facts.json`, and each language's full `request.md`, `output.md`, and `attempt.json` under `verification/professional-examples-20261111/remaining-run/architecture/`.\n\nThe English and Korean source drafts express the same selected facts, conditions, and exclusions. The frozen and current fact ledgers contain the same facts and review checks; their JSON formatting differs. Both requests contain the corresponding complete source draft and an instruction to preserve facts and judgment strength without additions. The source, request, and output SHA-256 values were computed with `shasum -a 256`. Source and request hashes match each attempt's recorded `input_sha256` and `request_sha256`.\n\nBoth attempt records report `capture_status=captured`, exit code 0, observed and requested model `claude-sonnet-5-5`, and runtime `2.1.322 (Claude Code)`. Each records a successful read of `.claude/skills/human-readable-writing/MANIFEST.md` and `manifest_read=true`. Korean additionally records a successful read of `.claude/skills/human-readable-writing/references/korean.md` and `korean_reference_read=true`. English records `korean_reference_read=false`. These are inspected derived tool-read records, not an independent inspection of unpublished raw execution streams. Capture success is not the basis of the fidelity verdict.\n\nThe computed output hashes match the attempt records:\n\n| Language | Output SHA-256 |\n| --- | --- |\n| English | `deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f` |\n| Korean | `fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a` |\n\n## Findings\n\nBoth outputs preserve the ADR context, decision, alternatives, and consequences. Added lists, subheadings, and alternative tables change presentation without changing the decision.\n\nA01 through A03 retain unordered delivery, second-level timestamp limits, the distinction between repeated delivery and separate duplicate Events, and the qualified object-ID/type recommendation. Neither output turns duplicate handling into suppression of future updates.\n\nA04 through A08 retain raw-body signature verification before durable receipt, durable receipt before successful acknowledgment, and receipt as distinct from business completion. The four arrivals remain E2, E2 again, late E1, and distinct duplicate paid E3. Both retain the three Event IDs, two types, one invoice and order, distinct receipt and operation keys, configured account context, and all identifier mappings. Repeated E2 creates no new work even while pending; it neither discards nor completes that row. Committed receipt work survives a crash before acknowledgment.\n\nA09 retains the single ACID database, concurrency constraints, and atomic ledger insertion, entitlement mutation, and inbox completion. The business transaction cannot commit only completion. E3 can finish its own receipt without a second grant.\n\nA10 retains retrieval, confirmed paid status, matching existing order, pending on failure, and no reversal from late created E1. The eventual one-local-grant conclusion remains conditional on successful processing, database assumptions, and retained records. Both preserve pending retries, contention and recovery costs, and the exclusion of refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency. Neither claims global exactly-once execution or implemented Stripe behavior. The application and version remain fictional scenario assumptions, not a live deployment or tested endpoint.\n\nOnly text and recorded-evidence review was performed. No native rerun, live Stripe call, build, lint, test, formatter, or reader study was performed. Fact-by-fact verdicts are in `review.json`.\n"
+    }
+  },
+  "initial_run": {
+    "manifest_path": "verification/professional-examples-20261111/remaining-run/manifest.json",
+    "metadata": {
+      "scope": "Native professional writing examples, not a readability benchmark",
+      "source": "Working-tree package snapshot; not a claim of GitHub default-branch availability",
+      "base_commit": "a0d872b26fe32942e4e5be6080735352b771bddd",
+      "runtime": "2.1.322 (Claude Code)",
+      "model": "claude-sonnet-5-5",
+      "package_sha256": {
+        "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+        "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+        "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+        "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+        "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+        "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+        "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+      },
+      "fidelity_status": "not_reviewed"
+    },
+    "records": [
+      {
+        "case_id": "architecture",
+        "language": "en",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/architecture/en"
+      },
+      {
+        "case_id": "architecture",
+        "language": "ko",
+        "capture_status": "captured",
+        "fidelity_status": "not_reviewed",
+        "path": "verification/professional-examples-20261111/remaining-run/architecture/ko"
+      }
+    ],
+    "runner_sha256": "78170a67fac79639b483f183b9d80a49e6a92fc9413e8fa3abcb72c65a26ab0e"
+  },
+  "project_terms": {
+    "license": {
+      "path": "LICENSE",
+      "sha256": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+      "text": "MIT License\n\nCopyright (c) 2026 Hyunbin Jang\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    },
+    "notice": {
+      "path": "NOTICE.md",
+      "sha256": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+      "text": "# Notice\n\nCopyright (c) 2026 Hyunbin Jang\n\n[English](#english) · [한국어](#한국어)\n\n## English\n\nThis notice covers the human-readable-writing repository at <https://github.com/JangHyun-bin/human-readable-writing>. It also covers the installable skill directory, `skills/human-readable-writing/`, including copies installed from it. The repository root and that directory contain the same notice and [LICENSE](LICENSE). This notice is provided in English and Korean.\n\n### License for this project\n\nThe material written for this project is licensed under the MIT License in [LICENSE](LICENSE). This material includes the skill instructions, writing guidance, documentation, hypothetical examples, scripts, and evaluation tasks. The writing guidance is the project's own work, based on ideas from the research cited below.\n\nThe MIT License covers only the project's own material. It does not apply to the following, and this project does not relicense them:\n\n- Quotations from third-party works, including the papers listed below. Each quotation keeps the terms that apply to its source.\n- The cited works themselves, including their text, figures, data, and code. They keep the licenses recorded below or the terms set by their rights holders.\n\nThis notice also records the sources and use of the original paper. It does not apply the paper's CC BY 4.0 license to all of the separately written code, guidance, and evaluation material.\n\n### Model outputs in research records\n\nSome files in this project contain or adapt text generated by AI models and coding-agent tools. The research records in [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research) and [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md) keep such outputs as evidence. The MIT License applies to these outputs only to the extent that the copyright holder has rights in them. This notice does not claim unrestricted rights to every recorded or adapted output. Terms set by the model and tool providers may also apply.\n\n### Original paper\n\n- Title: *Why is AI-generated language so hard to understand?*\n- Authors: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, submitted on 2026-10-21\n- Source: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- License of the original paper: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- Checked: 2026-10-27. The `view license` link for that arXiv version pointed to CC BY 4.0.\n\nFor the license terms of the original paper, see the [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en).\n\n### Use of and changes to the paper\n\nThis project summarizes and interprets the paper's findings in Korean. It builds separate writing guidance, hypothetical examples, and evaluation tasks from those findings. The quotations and research findings that the repository's analysis documents take from the paper are attributed to the paper. These interpretations and the writing guidance do not mean that the paper's authors reviewed them or validated their effects.\n\nThe repository's tracked files do not include the paper's PDF, figures, TeX source, research code, or original corpus. The benchmark scripts, hypothetical tasks, and recorded model responses were written or collected separately for this project.\n\nExpressions reused from the paper, and the changes made to them, follow the paper's license terms. This attribution does not mean that the paper's authors approve, sponsor, or endorse this repository.\n\n### Follow-up references, 2026-10-29\n\nThe detailed sources for the follow-up research notes are recorded in the [related literature notes](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md), in Korean. The following two key works are available under a different license from the original Clark paper.\n\n| Work | Source and license checked |\n|---|---|\n| Martínez, Mollica & Gibson (2022), a study of reading legal text | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), a comparison of LLM writing styles | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\nEach license above applies to its own source. The CC BY 4.0 license of the original Clark paper does not extend to the other references. The follow-up notes summarize and interpret research findings and add separately written hypothetical examples. This repository does not include the original PDFs, figures, research code, or original corpora of these works. The notes do not mean that the papers' authors reviewed, approved, or validated them.\n\n## 한국어\n\n이 notice는 <https://github.com/JangHyun-bin/human-readable-writing> repository에 적용된다. 설치용 skill directory인 `skills/human-readable-writing/`과 이 directory에서 설치한 사본에도 적용된다. Repository root와 이 directory에는 같은 notice와 [LICENSE](LICENSE)가 있다. 이 notice는 영어와 한국어로 제공된다.\n\n### 이 project의 license\n\n이 project를 위해 작성한 자료에는 [LICENSE](LICENSE)의 MIT License를 적용한다. 이 자료에는 skill 지침, 작성 지침, 문서, 가상 예시, script, 평가 과제가 포함된다. 작성 지침은 아래 연구의 착안을 바탕으로 이 project에서 직접 작성한 것이다.\n\nMIT License는 이 project의 자료에만 적용된다. 다음 자료에는 적용되지 않으며, 이 project가 다시 license하지 않는다.\n\n- 아래 논문을 포함한 제3자 저작물의 인용문. 각 인용문은 해당 출처에 적용되는 조건을 따른다.\n- 인용한 저작물 자체와 그 본문·figure·data·code. 아래에 기록한 license 또는 권리자가 정한 조건을 따른다.\n\n이 notice는 원논문에 대한 출처와 이용 내역을 명시한다. 별도로 작성한 code·지침·평가 자료 전체에 CC BY 4.0을 일괄 적용하는 선언은 아니다.\n\n### 연구 기록의 model 출력\n\n이 project의 일부 file은 AI model과 coding agent 도구가 생성한 text를 포함하거나 각색해 사용한다. [`research/`](https://github.com/JangHyun-bin/human-readable-writing/tree/main/research)와 [`VALIDATION.md`](https://github.com/JangHyun-bin/human-readable-writing/blob/main/VALIDATION.md)의 연구 기록은 이러한 출력을 근거 자료로 보존한다. MIT License는 저작권자가 권리를 가진 범위에서만 이 출력에 적용된다. 이 notice는 기록하거나 각색한 모든 출력에 대해 제한 없는 권리를 주장하지 않는다. Model과 도구 제공자의 이용 조건도 적용될 수 있다.\n\n### 원논문\n\n- 제목: *Why is AI-generated language so hard to understand?*\n- 저자: Thomas Hikaru Clark, Matias B. Martin, Kyle Mahowald\n- Version: arXiv:2610.29162v1, 2026-10-21 제출\n- 원문: [arXiv](https://arxiv.org/abs/2610.29162v1)\n- 원논문의 license: [Creative Commons Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n- 확인일: 2026-10-27. 해당 arXiv version의 `view license` link가 CC BY 4.0을 가리킴을 확인하였다.\n\n원논문의 실제 license 조건은 [CC BY 4.0 legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)를 참조한다.\n\n### 이 repository의 이용과 변경\n\n원논문의 연구 결과를 한국어로 요약·해석하고, 별도의 작성 지침·가상 예시·평가 과제로 구성하였다. 분석 문서의 원문 인용과 연구 결과는 위 논문에 귀속된다. 이러한 해석과 작성 지침은 논문 저자들이 검토하거나 효과를 검증한 결과라는 의미가 아니다.\n\n현재 tracked file에는 원논문의 PDF·figure·TeX source·연구용 code·원본 corpus를 포함하지 않는다. Benchmark script와 가상 과제·실측 model 답변은 이 작업에서 별도로 작성·수집한 자료이다.\n\n원논문에서 재사용한 표현과 변경한 내용에는 원논문의 license 조건을 따른다. 위 출처 표시는 논문 저자들의 이 repository에 대한 승인·후원·보증을 의미하지 않는다.\n\n### 후속 참고문헌 — 2026-10-29\n\n후속 연구 노트의 상세 출처는 [관련 문헌](https://github.com/JangHyun-bin/human-readable-writing/blob/main/research/related-literature.md)에 기록하였다. 다음 두 핵심 문헌은 최초 Clark 논문과 다른 license로 제공된다.\n\n| 문헌 | 원문과 확인한 license |\n|---|---|\n| Martínez, Mollica & Gibson (2022), 법률 문장 독해 연구 | [Publisher PDF](https://www.pure.ed.ac.uk/ws/files/256304933/Poor_Writing_MARTINEZ_DOA17022022_VOR_CC_BY_NC_ND.pdf), CC BY-NC-ND 4.0 |\n| Reinhart et al. (2025), LLM 문체 비교 연구 | [arXiv v2](https://arxiv.org/html/2410.16107v2), CC BY-NC-ND 4.0 |\n\n위 license는 해당 원문에 관한 것이며, 최초 Clark 논문의 CC BY 4.0을 다른 참고문헌에 일괄 적용하지 않는다. 후속 노트는 연구 결과의 요약·해석과 별도로 작성한 가상 예시이며, 원문 PDF·figure·연구 code·원본 corpus를 이 repository에 포함하지 않았다. 논문 저자들의 검토·승인·효과 검증을 의미하지 않는다.\n"
+    }
+  },
+  "languages": {
+    "en": {
+      "original": {
+        "path": "examples/professional/architecture/before.en.md",
+        "sha256": "630ba3aa02627ff29105aa0be29f627f452ec62f1b70765b1fbd480581ea3e21",
+        "text": "# ADR 01. Durable invoice-event receipt and local entitlement grants\n\n## Context\n\nThis proposed ADR is a fictional application design, not a Stripe, API, or production change. It assumes one account, one environment, snapshot `invoice.created` and `invoice.paid` events at version `2026-10-28.preview`, existing invoice-to-order mappings, and one non-revocable local entitlement per invoice.\n\nStripe documents [unordered delivery](https://docs.stripe.com/webhooks#event-ordering) and [duplicate events](https://docs.stripe.com/webhooks#handle-duplicate-events). Snapshot `created` values have second-level precision and establish neither order nor uniqueness. Repeated delivery of one Event and separate duplicate Event objects differ. Stripe recommends `data.object.id` with `event.type` for the latter, not blanket suppression of future object updates.\n\nThe fictional arrival trace is `invoice.paid` E2, repeated E2, late `invoice.created` E1, and distinct duplicate `invoice.paid` E3. These four deliveries contain three Event IDs and two types for one invoice and order. E1 was generated before E2, possibly within the same timestamp second.\n\n## Decision\n\nUse a durable inbox as the work queue, without external queue publication. Store payload, receipt time, and `pending` or `completed` state under a unique `(account_id, event_id)` key. `account_id` is configured account context, not an assumed payload field. `event_id`, `event_type`, and `invoice_id` come from `Event.id`, `Event.type`, and `data.object.id`. The business-operation key is `(account_id, invoice_id, operation_kind=grant_entitlement)`, not the Event ID.\n\nFollowing Stripe's [handler guidance](https://docs.stripe.com/webhooks#create-a-handler), verify the signature against the unmodified raw body. Commit the inbox row or confirm its durable predecessor before promptly returning `2xx`. Persistence failure receives no success response. Receipt acknowledges delivery, not business completion. Repeated E2 adds no work, including when its existing row is still pending. It neither discards that row nor marks it completed. A crash after receipt commit but before acknowledgment leaves the committed work available on redelivery.\n\nOne ACID database holds inbox, operation ledger, and entitlement, with locks and unique constraints for concurrent workers. Paid processing retrieves the invoice and requires confirmed `status=paid` and its matching existing `order_id`. Retrieval failure or an unmet condition leaves work pending. For a new operation, ledger insertion, entitlement mutation, and inbox completion commit atomically. An existing operation permits completion without another grant, including for E3. A transaction crash cannot commit only completion. Created processing completes its receipt without resetting entitlement, so late E1 cannot undo a grant.\n\n## Alternatives\n\nEvent-ID-only deduplication misses E3. Acknowledgment before persistence risks losing work. Timestamp sorting cannot establish order. None replaces business-operation uniqueness.\n\n## Consequences and limits\n\nDatabase contention and pending-work recovery are costs. Pending rows remain retryable, and inbox and operation records are not pruned within this example. Under these database and retention assumptions, eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching produce one local grant for this trace, not global exactly-once execution. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "architecture",
+          "language": "en",
+          "attempt": "verification/professional-examples-20261111/remaining-run/architecture/en/attempt.json",
+          "review": "examples/professional/architecture/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/architecture/en/output.md",
+          "status": "pass",
+          "output_sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": false,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "architecture",
+          "language": "en",
+          "started_at": "2026-11-11T08:39:05.547343+00:00",
+          "finished_at": "2026-11-11T08:39:15.220444+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "630ba3aa02627ff29105aa0be29f627f452ec62f1b70765b1fbd480581ea3e21",
+          "request_sha256": "68cf61622cd4e382581e37d8eab07be23d095297ad955098448171f714dd8a74",
+          "output_sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f",
+          "raw_event_stream_sha256": "6087dbbef4fed72e8a9010239f975c0b89c6b59ffec00d99b68f6bc18cb3df3f",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/architecture/en/request.md",
+          "sha256": "68cf61622cd4e382581e37d8eab07be23d095297ad955098448171f714dd8a74",
+          "text": "/human-readable-writing Edit this Architecture decision record in English for Backend implementers and architecture reviewers. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# ADR 01. Durable invoice-event receipt and local entitlement grants\n\n## Context\n\nThis proposed ADR is a fictional application design, not a Stripe, API, or production change. It assumes one account, one environment, snapshot `invoice.created` and `invoice.paid` events at version `2026-10-28.preview`, existing invoice-to-order mappings, and one non-revocable local entitlement per invoice.\n\nStripe documents [unordered delivery](https://docs.stripe.com/webhooks#event-ordering) and [duplicate events](https://docs.stripe.com/webhooks#handle-duplicate-events). Snapshot `created` values have second-level precision and establish neither order nor uniqueness. Repeated delivery of one Event and separate duplicate Event objects differ. Stripe recommends `data.object.id` with `event.type` for the latter, not blanket suppression of future object updates.\n\nThe fictional arrival trace is `invoice.paid` E2, repeated E2, late `invoice.created` E1, and distinct duplicate `invoice.paid` E3. These four deliveries contain three Event IDs and two types for one invoice and order. E1 was generated before E2, possibly within the same timestamp second.\n\n## Decision\n\nUse a durable inbox as the work queue, without external queue publication. Store payload, receipt time, and `pending` or `completed` state under a unique `(account_id, event_id)` key. `account_id` is configured account context, not an assumed payload field. `event_id`, `event_type`, and `invoice_id` come from `Event.id`, `Event.type`, and `data.object.id`. The business-operation key is `(account_id, invoice_id, operation_kind=grant_entitlement)`, not the Event ID.\n\nFollowing Stripe's [handler guidance](https://docs.stripe.com/webhooks#create-a-handler), verify the signature against the unmodified raw body. Commit the inbox row or confirm its durable predecessor before promptly returning `2xx`. Persistence failure receives no success response. Receipt acknowledges delivery, not business completion. Repeated E2 adds no work, including when its existing row is still pending. It neither discards that row nor marks it completed. A crash after receipt commit but before acknowledgment leaves the committed work available on redelivery.\n\nOne ACID database holds inbox, operation ledger, and entitlement, with locks and unique constraints for concurrent workers. Paid processing retrieves the invoice and requires confirmed `status=paid` and its matching existing `order_id`. Retrieval failure or an unmet condition leaves work pending. For a new operation, ledger insertion, entitlement mutation, and inbox completion commit atomically. An existing operation permits completion without another grant, including for E3. A transaction crash cannot commit only completion. Created processing completes its receipt without resetting entitlement, so late E1 cannot undo a grant.\n\n## Alternatives\n\nEvent-ID-only deduplication misses E3. Acknowledgment before persistence risks losing work. Timestamp sorting cannot establish order. None replaces business-operation uniqueness.\n\n## Consequences and limits\n\nDatabase contention and pending-work recovery are costs. Pending rows remain retryable, and inbox and operation records are not pruned within this example. Under these database and retention assumptions, eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching produce one local grant for this trace, not global exactly-once execution. Refunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/architecture/en/output.md",
+          "sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f",
+          "text": "# ADR 01. Durable invoice-event receipt and local entitlement grants\n\n## Context\n\nThis proposed ADR describes a fictional application design. It is not a Stripe change, an API change, or a production change. It assumes one account, one environment, snapshot `invoice.created` and `invoice.paid` events at version `2026-10-28.preview`, existing invoice-to-order mappings, and one non-revocable local entitlement per invoice.\n\nStripe documents [unordered delivery](https://docs.stripe.com/webhooks#event-ordering) and [duplicate events](https://docs.stripe.com/webhooks#handle-duplicate-events). Snapshot `created` values have second-level precision, so they establish neither order nor uniqueness. Two cases must be kept apart: repeated delivery of one Event, and separate duplicate Event objects. For the second case, Stripe recommends using `data.object.id` together with `event.type`. It does not recommend blanket suppression of future object updates.\n\nThe fictional arrival trace has four deliveries for one invoice and order, in this order:\n\n1. `invoice.paid` E2\n2. A repeat of E2\n3. A late `invoice.created` E1\n4. A distinct duplicate `invoice.paid` E3\n\nThe four deliveries contain three Event IDs and two event types. E1 was generated before E2, possibly within the same timestamp second.\n\n## Decision\n\n**Inbox.** Use a durable inbox as the work queue, without external queue publication. Store the payload, the receipt time, and a `pending` or `completed` state under a unique `(account_id, event_id)` key.\n\n- `account_id` is configured account context, not an assumed payload field.\n- `event_id`, `event_type`, and `invoice_id` come from `Event.id`, `Event.type`, and `data.object.id`.\n- The business-operation key is `(account_id, invoice_id, operation_kind=grant_entitlement)`, not the Event ID.\n\n**Receipt.** Following Stripe's [handler guidance](https://docs.stripe.com/webhooks#create-a-handler), verify the signature against the unmodified raw body. Then commit the inbox row, or confirm that a durable earlier row exists, before promptly returning `2xx`. If persistence fails, the handler does not return a success response. Receipt acknowledges delivery, not business completion.\n\n- A repeated E2 adds no work, including when its existing row is still pending. The repeat neither discards that row nor marks it completed.\n- If a crash occurs after the receipt commit but before the acknowledgment, the committed work remains available when the event is redelivered.\n\n**Processing.** One ACID database holds the inbox, the operation ledger, and the entitlement. Locks and unique constraints handle concurrent workers.\n\n- Paid processing retrieves the invoice. It requires a confirmed `status=paid` and a matching existing `order_id`. If retrieval fails or either condition is unmet, the work stays pending.\n- For a new operation, the ledger insertion, the entitlement mutation, and the inbox completion commit atomically.\n- If the operation already exists, the worker may complete the inbox row without another grant. This includes E3.\n- A transaction crash cannot commit only the completion.\n- Created processing completes its receipt without resetting the entitlement, so a late E1 cannot undo a grant.\n\n## Alternatives\n\n| Alternative | Limit |\n| --- | --- |\n| Event-ID-only deduplication | Misses E3. |\n| Acknowledgment before persistence | Risks losing work. |\n| Timestamp sorting | Cannot establish order. |\n\nNone of these replaces business-operation uniqueness.\n\n## Consequences and limits\n\nDatabase contention and pending-work recovery are costs. Pending rows remain retryable. Inbox and operation records are not pruned within this example.\n\nUnder these database and retention assumptions, the following together produce one local grant for this trace: eventual successful receipt, worker retries, retrieval, paid confirmation, and order matching. This is not global exactly-once execution.\n\nRefunds, disputes, subscription changes, external fulfillment, and outbound payment API idempotency are excluded."
+        }
+      },
+      "selected": {
+        "case_id": "architecture",
+        "language": "en",
+        "attempt": "verification/professional-examples-20261111/remaining-run/architecture/en/attempt.json",
+        "review": "examples/professional/architecture/review.json",
+        "revision": "verification/professional-examples-20261111/remaining-run/architecture/en/output.md",
+        "status": "pass",
+        "output_sha256": "deacba2f25ffe66bda73097fe061fd8703d0b52fc08791d2d471d8dcf936418f",
+        "kind": "first_attempt"
+      }
+    },
+    "ko": {
+      "original": {
+        "path": "examples/professional/architecture/before.ko.md",
+        "sha256": "8109b38c4617d0970023ad7ecf6ca4fdf62201195ef8b66ae320750b26d30629",
+        "text": "# ADR 01. 송장 이벤트의 영속 수신과 로컬 이용 권한 부여\n\n## 배경\n\n이 ADR은 가상 애플리케이션을 위한 설계 제안이며 실제 Stripe·API·운영 환경을 변경하는 작업이 아니다. 계정 하나와 환경 하나에서 버전 `2026-10-28.preview`의 스냅샷 `invoice.created` 및 `invoice.paid` 이벤트를 받는다고 가정한다. 송장과 주문의 매핑은 이미 존재하며 송장마다 철회하지 않는 로컬 이용 권한 하나를 부여한다.\n\nStripe는 [생성 순서대로의 전달을 보장하지 않으며](https://docs.stripe.com/webhooks#event-ordering) [중복 이벤트가 발생할 수 있다고 설명한다](https://docs.stripe.com/webhooks#handle-duplicate-events). 스냅샷의 `created`는 초 단위이므로 순서나 고유성의 근거가 되지 못한다. 같은 Event의 재전송과 별개의 중복 Event 객체는 구분해야 한다. 후자의 식별에는 `data.object.id`와 `event.type`을 함께 사용하라는 권고가 있지만, 객체의 모든 후속 갱신을 무시하라는 뜻은 아니다.\n\n가상 전달 사례에서는 `invoice.paid` E2, E2 재전송, 늦게 도착한 `invoice.created` E1, 별개의 중복 `invoice.paid` E3 순으로 수신한다. 네 번의 전달은 송장 하나와 주문 하나에 관한 것으로 이벤트 ID는 세 개, 유형은 두 개다. E1은 E2보다 먼저 생성되었으며 `created`가 같은 초를 나타낼 수도 있다.\n\n## 결정\n\n영속 inbox를 작업 큐로 사용하고 외부 큐에 발행하는 단계는 두지 않는다. 페이로드·수신 시각·`pending` 또는 `completed` 상태를 저장하며 `(account_id, event_id)`에 고유 제약을 둔다. `account_id`는 페이로드에 있다고 가정하지 않고 설정된 계정 문맥에서 얻는다. `event_id`·`event_type`·`invoice_id`는 각각 `Event.id`·`Event.type`·`data.object.id`에서 얻는다. 업무 연산 키는 이벤트 ID가 아니라 `(account_id, invoice_id, operation_kind=grant_entitlement)`이다.\n\nStripe의 [핸들러 지침](https://docs.stripe.com/webhooks#create-a-handler)에 따라 변경하지 않은 요청 본문 원문으로 서명을 검증한다. inbox 행을 커밋하거나 기존 행의 영속 저장을 확인한 뒤 신속히 `2xx`를 반환한다. 저장 실패에는 성공 응답을 보내지 않는다. 수신 확인은 전달을 받았다는 뜻이지 업무 처리 완료가 아니다. E2 재전송은 기존 행이 pending이어도 새 작업을 만들지 않으며, 그 행을 폐기하거나 completed로 바꾸지도 않는다. 수신 기록 커밋 후 응답 전에 장애가 나더라도 재전송 시 커밋된 작업이 남는다.\n\ninbox·연산 원장·이용 권한은 단일 ACID 데이터베이스에 두고 잠금과 고유 제약으로 동시 작업자를 조정한다. paid 처리 시 송장을 조회하여 `status=paid`와 기존 `order_id`의 일치를 확인한다. 조회 실패나 조건 미충족 시 작업은 pending으로 남는다. 새 연산의 원장 삽입·권한 변경·inbox 완료는 하나의 트랜잭션으로 커밋하며, 이미 기록된 연산이면 E3도 권한을 다시 부여하지 않고 처리를 완료한다. 트랜잭션 장애로 완료 표시만 따로 커밋될 수는 없다. created 처리는 해당 수신 건을 완료하되 권한을 초기화하지 않으므로 늦은 E1이 권한 부여를 되돌리지 못한다.\n\n## 대안\n\n이벤트 ID만으로 중복을 제거하면 E3를 놓친다. 영속 저장 전 응답은 작업 유실 위험이 있고 타임스탬프 정렬로는 순서를 확정할 수 없다. 어느 대안도 업무 연산의 고유성을 대신하지 못한다.\n\n## 결과와 한계\n\n데이터베이스 경합과 pending 작업 복구가 비용이다. pending 행은 재시도할 수 있으며 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다. 이 데이터베이스·기록 보존 가정 아래 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 환불·분쟁·구독 변경·외부 이행·외부 결제 API의 멱등성은 제외한다.\n"
+      },
+      "initial": {
+        "selection": {
+          "case_id": "architecture",
+          "language": "ko",
+          "attempt": "verification/professional-examples-20261111/remaining-run/architecture/ko/attempt.json",
+          "review": "examples/professional/architecture/review.json",
+          "revision": "verification/professional-examples-20261111/remaining-run/architecture/ko/output.md",
+          "status": "pass",
+          "output_sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a"
+        },
+        "attempt": {
+          "capture_status": "captured",
+          "exit_code": 0,
+          "observed_models": [
+            "claude-sonnet-5-5"
+          ],
+          "manifest_read": true,
+          "korean_reference_read": true,
+          "tool_reads": [
+            {
+              "path": ".claude/skills/human-readable-writing/MANIFEST.md",
+              "succeeded": true
+            },
+            {
+              "path": ".claude/skills/human-readable-writing/references/korean.md",
+              "succeeded": true
+            }
+          ],
+          "provider_errors": [],
+          "fidelity_status": "not_reviewed",
+          "case_id": "architecture",
+          "language": "ko",
+          "started_at": "2026-11-11T08:39:08.218627+00:00",
+          "finished_at": "2026-11-11T08:39:25.644107+00:00",
+          "runtime": "2.1.322 (Claude Code)",
+          "requested_model": "claude-sonnet-5-5",
+          "argv": [
+            "claude",
+            "-p",
+            "--model",
+            "claude-sonnet-5-5",
+            "--setting-sources",
+            "project,local",
+            "--settings",
+            "{\"disableAllHooks\":true}",
+            "--strict-mcp-config",
+            "--mcp-config",
+            "{\"mcpServers\":{}}",
+            "--tools",
+            "Read,Skill",
+            "--allowedTools",
+            "Read,Skill",
+            "--permission-mode",
+            "dontAsk",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--no-session-persistence",
+            "${REQUEST}"
+          ],
+          "request_file": "request.md",
+          "output_file": "output.md",
+          "input_sha256": "8109b38c4617d0970023ad7ecf6ca4fdf62201195ef8b66ae320750b26d30629",
+          "request_sha256": "bcb58a4bcf24f23e58aef5828bb8501cf9660952f13e4a476562e40e7d246e12",
+          "output_sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a",
+          "raw_event_stream_sha256": "d0bd7f020decb0d71b10ea3a54468b04846bb31454a7801ee1111407869d6a9d",
+          "package_sha256": {
+            "SKILL.md": "8d37ce712ab2eee77f942bc62d2b38167a0d4b4ce62c5fa7a6a9f6f9c10b6699",
+            "MANIFEST.md": "d9d0e6ecded683bc7bd491b22bf7b707500bf7c132d23049a30f9303b8281ae1",
+            "LICENSE": "0b3028bbef0f1c2ff27877b3dfca784d9d2c8c476f447678eea29834046ae4ce",
+            "NOTICE.md": "2c320bc687fe7961812e427ddd35aa3067dce245bf749734a466a3694eed73d2",
+            "agents/openai.yaml": "4ec3dc6030df054e84787b9ba51729936087384522fb502b8344ffdbc2425cce",
+            "references/korean.md": "e4db3c4cc65e7965b4eff7daf5cee36480a73d6fa1feb707279e2a12ac4ee149",
+            "references/language-support.md": "7439f6abaa48ac5226a1f3d4dd8ba4c91609029225d70fc169c1c9b9fc6d3f51"
+          },
+          "privacy": "Only derived tool-read evidence is public; raw initialization events are not published."
+        },
+        "request": {
+          "path": "verification/professional-examples-20261111/remaining-run/architecture/ko/request.md",
+          "sha256": "bcb58a4bcf24f23e58aef5828bb8501cf9660952f13e4a476562e40e7d246e12",
+          "text": "/human-readable-writing Edit this Architecture decision record in Korean for Backend implementers and architecture reviewers. Return only the revised document. Preserve its genre, tables, specialized terms, facts, quantities, units, periods, denominators, conditions, exclusions, negation, uncertainty, attribution, and the strength of judgments. Add no evidence, assumptions, outcomes, approvals, guarantees, or recommendations absent from the source.\n\nSource text:\n\n# ADR 01. 송장 이벤트의 영속 수신과 로컬 이용 권한 부여\n\n## 배경\n\n이 ADR은 가상 애플리케이션을 위한 설계 제안이며 실제 Stripe·API·운영 환경을 변경하는 작업이 아니다. 계정 하나와 환경 하나에서 버전 `2026-10-28.preview`의 스냅샷 `invoice.created` 및 `invoice.paid` 이벤트를 받는다고 가정한다. 송장과 주문의 매핑은 이미 존재하며 송장마다 철회하지 않는 로컬 이용 권한 하나를 부여한다.\n\nStripe는 [생성 순서대로의 전달을 보장하지 않으며](https://docs.stripe.com/webhooks#event-ordering) [중복 이벤트가 발생할 수 있다고 설명한다](https://docs.stripe.com/webhooks#handle-duplicate-events). 스냅샷의 `created`는 초 단위이므로 순서나 고유성의 근거가 되지 못한다. 같은 Event의 재전송과 별개의 중복 Event 객체는 구분해야 한다. 후자의 식별에는 `data.object.id`와 `event.type`을 함께 사용하라는 권고가 있지만, 객체의 모든 후속 갱신을 무시하라는 뜻은 아니다.\n\n가상 전달 사례에서는 `invoice.paid` E2, E2 재전송, 늦게 도착한 `invoice.created` E1, 별개의 중복 `invoice.paid` E3 순으로 수신한다. 네 번의 전달은 송장 하나와 주문 하나에 관한 것으로 이벤트 ID는 세 개, 유형은 두 개다. E1은 E2보다 먼저 생성되었으며 `created`가 같은 초를 나타낼 수도 있다.\n\n## 결정\n\n영속 inbox를 작업 큐로 사용하고 외부 큐에 발행하는 단계는 두지 않는다. 페이로드·수신 시각·`pending` 또는 `completed` 상태를 저장하며 `(account_id, event_id)`에 고유 제약을 둔다. `account_id`는 페이로드에 있다고 가정하지 않고 설정된 계정 문맥에서 얻는다. `event_id`·`event_type`·`invoice_id`는 각각 `Event.id`·`Event.type`·`data.object.id`에서 얻는다. 업무 연산 키는 이벤트 ID가 아니라 `(account_id, invoice_id, operation_kind=grant_entitlement)`이다.\n\nStripe의 [핸들러 지침](https://docs.stripe.com/webhooks#create-a-handler)에 따라 변경하지 않은 요청 본문 원문으로 서명을 검증한다. inbox 행을 커밋하거나 기존 행의 영속 저장을 확인한 뒤 신속히 `2xx`를 반환한다. 저장 실패에는 성공 응답을 보내지 않는다. 수신 확인은 전달을 받았다는 뜻이지 업무 처리 완료가 아니다. E2 재전송은 기존 행이 pending이어도 새 작업을 만들지 않으며, 그 행을 폐기하거나 completed로 바꾸지도 않는다. 수신 기록 커밋 후 응답 전에 장애가 나더라도 재전송 시 커밋된 작업이 남는다.\n\ninbox·연산 원장·이용 권한은 단일 ACID 데이터베이스에 두고 잠금과 고유 제약으로 동시 작업자를 조정한다. paid 처리 시 송장을 조회하여 `status=paid`와 기존 `order_id`의 일치를 확인한다. 조회 실패나 조건 미충족 시 작업은 pending으로 남는다. 새 연산의 원장 삽입·권한 변경·inbox 완료는 하나의 트랜잭션으로 커밋하며, 이미 기록된 연산이면 E3도 권한을 다시 부여하지 않고 처리를 완료한다. 트랜잭션 장애로 완료 표시만 따로 커밋될 수는 없다. created 처리는 해당 수신 건을 완료하되 권한을 초기화하지 않으므로 늦은 E1이 권한 부여를 되돌리지 못한다.\n\n## 대안\n\n이벤트 ID만으로 중복을 제거하면 E3를 놓친다. 영속 저장 전 응답은 작업 유실 위험이 있고 타임스탬프 정렬로는 순서를 확정할 수 없다. 어느 대안도 업무 연산의 고유성을 대신하지 못한다.\n\n## 결과와 한계\n\n데이터베이스 경합과 pending 작업 복구가 비용이다. pending 행은 재시도할 수 있으며 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다. 이 데이터베이스·기록 보존 가정 아래 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 환불·분쟁·구독 변경·외부 이행·외부 결제 API의 멱등성은 제외한다.\n"
+        },
+        "output": {
+          "path": "verification/professional-examples-20261111/remaining-run/architecture/ko/output.md",
+          "sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a",
+          "text": "# ADR 01. 송장 이벤트의 영속 수신과 로컬 이용 권한 부여\n\n## 배경\n\n이 ADR은 가상 애플리케이션을 위한 설계 제안이다. 실제 Stripe, API, 운영 환경을 변경하는 작업이 아니다. 계정 하나와 환경 하나에서 버전 `2026-10-28.preview`의 스냅샷 `invoice.created`와 `invoice.paid` 이벤트를 받는다고 가정한다. 송장과 주문의 매핑은 이미 존재한다. 송장마다 철회하지 않는 로컬 이용 권한을 하나씩 부여한다.\n\nStripe는 [생성 순서대로의 전달을 보장하지 않으며](https://docs.stripe.com/webhooks#event-ordering) [중복 이벤트가 발생할 수 있다고 설명한다](https://docs.stripe.com/webhooks#handle-duplicate-events). 스냅샷의 `created`는 초 단위여서 순서나 고유성의 근거가 되지 못한다.\n\n같은 Event의 재전송과 별개의 중복 Event 객체는 구분해야 한다. 후자를 식별할 때는 `data.object.id`와 `event.type`을 함께 사용하라는 권고가 있다. 다만 이것이 객체의 모든 후속 갱신을 무시하라는 뜻은 아니다.\n\n가상 전달 사례에서는 다음 순서로 수신한다.\n\n1. `invoice.paid` E2\n2. E2 재전송\n3. 늦게 도착한 `invoice.created` E1\n4. 별개의 중복 `invoice.paid` E3\n\n네 번의 전달은 모두 송장 하나와 주문 하나에 관한 것이며, 이벤트 ID는 세 개, 유형은 두 개다. E1은 E2보다 먼저 생성되었다. 다만 `created`는 두 이벤트에서 같은 초를 나타낼 수도 있다.\n\n## 결정\n\n### 저장 구조와 키\n\n영속 inbox를 작업 큐로 사용하며, 외부 큐에 발행하는 단계는 두지 않는다. inbox에는 페이로드, 수신 시각, `pending` 또는 `completed` 상태를 저장하고 `(account_id, event_id)`에 고유 제약을 둔다.\n\n- `account_id`는 페이로드에 있다고 가정하지 않고 설정된 계정 문맥에서 얻는다.\n- `event_id`, `event_type`, `invoice_id`는 각각 `Event.id`, `Event.type`, `data.object.id`에서 얻는다.\n- 업무 연산 키는 이벤트 ID가 아니라 `(account_id, invoice_id, operation_kind=grant_entitlement)`이다.\n\n### 수신과 응답\n\nStripe의 [핸들러 지침](https://docs.stripe.com/webhooks#create-a-handler)에 따라, 변경하지 않은 요청 본문 원문으로 서명을 검증한다. 검증 뒤에는 inbox 행을 커밋하거나 기존 행이 영속 저장되었음을 확인하고, 신속히 `2xx`를 반환한다. 저장에 실패하면 성공 응답을 보내지 않는다.\n\n수신 확인은 전달을 받았다는 뜻이며 업무 처리가 끝났다는 뜻이 아니다. E2가 재전송되었을 때 기존 행이 pending이더라도 새 작업을 만들지 않는다. 그 행을 폐기하거나 completed로 바꾸지도 않는다. 수신 기록을 커밋한 뒤 응답하기 전에 장애가 나더라도, 재전송이 오면 커밋된 작업이 남아 있다.\n\n### 처리와 권한 부여\n\ninbox, 연산 원장, 이용 권한은 단일 ACID 데이터베이스에 두고, 잠금과 고유 제약으로 동시 작업자를 조정한다.\n\npaid 이벤트를 처리할 때는 송장을 조회해 `status=paid`인지, 기존 `order_id`와 일치하는지 확인한다. 조회에 실패하거나 조건을 충족하지 못하면 작업은 pending으로 남는다.\n\n새 연산이면 원장 삽입, 권한 변경, inbox 완료를 하나의 트랜잭션으로 커밋한다. 이미 기록된 연산이면 E3도 권한을 다시 부여하지 않고 처리만 완료한다. 트랜잭션 장애가 나도 완료 표시만 따로 커밋될 수는 없다.\n\ncreated 이벤트는 해당 수신 건을 완료하지만 권한을 초기화하지 않는다. 따라서 늦게 도착한 E1이 권한 부여를 되돌리지 못한다.\n\n## 대안\n\n| 대안 | 문제 |\n| --- | --- |\n| 이벤트 ID만으로 중복 제거 | E3를 놓친다. |\n| 영속 저장 전에 응답 | 작업을 유실할 위험이 있다. |\n| 타임스탬프 정렬 | 순서를 확정할 수 없다. |\n\n어느 대안도 업무 연산의 고유성을 대신하지 못한다.\n\n## 결과와 한계\n\n비용은 데이터베이스 경합과 pending 작업 복구다. pending 행은 재시도할 수 있다. 이 예시의 범위에서는 inbox와 연산 기록을 삭제하지 않는다.\n\n이 데이터베이스와 기록 보존 가정 아래에서 수신, 작업자 재시도, 조회, 결제 완료 확인, 주문 매칭이 결국 성공하면, 이 전달 사례에서 로컬 권한을 한 번 부여한다. 이는 전역 exactly-once 실행 보장이 아니다. 환불, 분쟁, 구독 변경, 외부 이행, 외부 결제 API의 멱등성은 다루지 않는다."
+        }
+      },
+      "selected": {
+        "case_id": "architecture",
+        "language": "ko",
+        "attempt": "verification/professional-examples-20261111/remaining-run/architecture/ko/attempt.json",
+        "review": "examples/professional/architecture/review.json",
+        "revision": "verification/professional-examples-20261111/remaining-run/architecture/ko/output.md",
+        "status": "pass",
+        "output_sha256": "fdad8d22ff6441be1dd88b7b858d00627adb6081530414dcf68d62a220d6d70a",
+        "kind": "first_attempt"
+      }
+    }
+  }
+}

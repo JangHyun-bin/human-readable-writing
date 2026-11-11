@@ -18,6 +18,7 @@ Issues are public. Remove credentials, personal data, and confidential text firs
 - `skills/human-readable-writing/` is the package that users install. `SKILL.md` is the entry point, and `MANIFEST.md` holds the shared writing principles. `references/` holds the Korean guidance and the language-support policy, and `agents/openai.yaml` holds Codex's invocation policy.
 - `README.md` and `README.ko.md` are the English and Korean guides. `README.fr.md`, `README.zh-CN.md`, and `README.ja.md` are translations.
 - `docs/` holds the English and Korean installation guides, tool support, and verification. `examples/` holds the English and Korean examples.
+- `site/` holds the English and Korean static landing pages and their shared design catalog. [Preview, design checks, and manual deployment](site/README.md) describe how to maintain them without changing the installed skill.
 - `ANALYSIS.md`, `VALIDATION.md`, and `research/` are historical records. Do not edit them. Add a new dated record instead.
 
 ## Change the instructions
@@ -46,6 +47,7 @@ The project uses the [MIT License](LICENSE), and contributions are accepted unde
 
 - 설치·호출 문제와 원문 의미 변경은 각각의 issue 양식으로 알려 주세요. Issue는 공개되므로 인증정보, 개인정보, 기밀 문서를 지우고, 같은 변경을 보여 주는 짧은 가상 원문을 사용해 주세요. 영어나 한국어로 작성하실 수 있습니다.
 - 사용자가 설치하는 패키지는 `skills/human-readable-writing/`입니다. 공통 원칙은 `MANIFEST.md` 한 곳에 두고, 언어별 지침은 구체적인 작성 판단을 바꿀 때만 추가합니다. `SKILL.md`가 읽는 파일은 모두 패키지 안에 두고 상대 경로로 연결합니다.
+- `site/`에는 한·영 정적 랜딩과 공통 디자인 기준이 있습니다. [미리보기·디자인 검사·수동 배포 안내](site/README.md)를 따르고, 설치되는 스킬과 과거 연구 기록은 변경하지 마세요.
 - `ANALYSIS.md`, `VALIDATION.md`, `research/`는 과거 기록이므로 수정하지 말고, 날짜를 적은 새 기록을 추가해 주세요.
 - 지침이나 패키지 구조를 바꾸면 [docs/verification.md](docs/verification.md)의 검사를 다시 수행하고 날짜, 도구 버전, 모델, 명령, 출력을 기록해 주세요.
 - 설치, 호출, 지원 상태, 검증 근거가 바뀌면 `README.md`와 `README.ko.md`를 같은 pull request에서 함께 고쳐 주세요. 변경이 설치 안내에 영향을 주면 `docs/install.md`와 `docs/install.ko.md`도 함께 고쳐 주세요. 번역 문서도 공통 사실과 경로를 맞춰 주세요.

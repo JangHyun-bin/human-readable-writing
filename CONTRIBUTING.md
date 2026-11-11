@@ -29,7 +29,7 @@ Issues are public. Remove credentials, personal data, and confidential text firs
 - Keep every file that `SKILL.md` reads inside the package, and use relative links, so that an installed copy works on its own.
 - Keep `disable-model-invocation: true` in `SKILL.md` and `allow_implicit_invocation: false` in `agents/openai.yaml`, so that the skill loads only when someone calls it by name.
 - After you change the instructions or the package layout, repeat the checks described in [docs/verification.md](docs/verification.md). Record the date, runtime versions, models, commands, and outputs. Earlier records do not cover changed instructions.
-- `verification/run_professional_examples.py` captures explicit native calls in disposable project copies. Capture is not a fidelity pass: each accepted output also needs a fact-by-fact review tied to its hash. Corrections get separate attempts and reviews; initial failures stay unchanged. The [professional-example record](verification/professional-examples-20261111/README.md) describes this protocol.
+- `verification/run_professional_examples.py` captures explicit native calls in disposable project copies. An outside-project read blocks output storage independently of other execution or parsing failures. Capture is not a fidelity pass: each accepted output also needs a fact-by-fact review tied to its hash. Corrections get separate attempts and reviews; initial failures stay unchanged. The [professional-example record](verification/professional-examples-20261111/README.md) describes this protocol.
 
 ## Change the documentation
 

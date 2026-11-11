@@ -98,6 +98,7 @@ def summarize_events(events, exit_code, language, project):
         "manifest_read": manifest,
         "korean_reference_read": korean,
         "tool_reads": reads,
+        "outside_project_read": external_read,
         "provider_errors": errors,
         "output": output,
         "fidelity_status": "not_reviewed",
@@ -187,7 +188,7 @@ def capture(case_id, language, facts, source, output_root, package_hashes, model
         if malformed:
             summary["capture_status"] = "malformed_event_stream"
         output = summary.pop("output")
-        if summary["capture_status"] == "unexpected_context_read":
+        if summary["outside_project_read"]:
             raise RuntimeError("Native process read outside its isolated project; output withheld")
         (target / "output.md").write_text(output)
         (target / "stderr.txt").write_text(public_text(stderr, project))

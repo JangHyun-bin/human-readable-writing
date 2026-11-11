@@ -29,6 +29,10 @@ This file lists changes that affect people who install or maintain the skill. No
 - Both landing pages use descriptive language, including setup instructions and clipboard error messages. The headings are "A writing skill for your agent." and "글쓰기를 위한 에이전트 스킬". Introductions and search descriptions do not restrict writing to technical documents or Markdown output.
 - README and installed-skill introductions describe professional prose rather than only software-engineering documents. The writing-principles body, Korean guidance, license/notice files and explicit-invocation policy remain unchanged.
 
+### Fixed
+
+- The native example runner withholds output after any outside-project read, even when malformed events, provider errors, or process failures change the capture status. The privacy decision now uses the observed read independently of the failure label.
+
 ### Removed
 
 - The repository-root copies of `SKILL.md`, `MANIFEST.md`, `references/korean.md`, and `agents/openai.yaml`, and the old `docs/language-support.md`. Nothing redirects from the old paths.
